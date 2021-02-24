@@ -107,6 +107,8 @@ namespace CardBase
             this.cardType = cardType;
             this.cardColor = cardColor;
             this.cardTitle = cardTitle;
+            energyCost = 0;
+            abilityText = "";
         }
     }
 }
