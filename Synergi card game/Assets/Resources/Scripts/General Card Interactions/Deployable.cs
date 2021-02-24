@@ -104,7 +104,7 @@ public class Deployable : Card
     public virtual void DeployDeployable(string nameOfCardZone)
     {
         GameObject.Find(nameOfCardZone).GetComponent<CardZone>().SendMessage("Deploy", this.GetComponent<Deployable>());
-        Destroy(this.gameObject);
+        Player_Hand.GetComponent<Hand_Manager>().GetRidOfDestroyedCards(this);
     }
 
     //Helper method for setting this card's UI to the values in data.

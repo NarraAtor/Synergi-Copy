@@ -51,7 +51,7 @@ public class Battlefield_Zone_Manager : MonoBehaviour
 
     }
 
-    //Used forshowing the user which card zones they can deploy beings and deployables to and making them selectable.
+    //Used for showing the user which card zones they can deploy beings and deployables to and making them selectable.
     public void ShowDeployableZones()
     {
         foreach (GameObject[] row in battlefieldMatrix)

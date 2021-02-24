@@ -8,7 +8,8 @@ namespace CardBase
     {
         Being,
         Deployable,
-        Tactic
+        Tactic,
+        Crystal
     }
     [CreateAssetMenu(menuName = "Cards/Generic Card")]
     public class CardData : ScriptableObject
@@ -73,13 +74,21 @@ namespace CardBase
             }
         }
 
-        public CardData(CardType cardType, CardColor cardColor, int energyCost, string cardTitle, string abilityText)
+       public CardData(CardType cardType, CardColor cardColor, int energyCost, string cardTitle, string abilityText)
+       {
+           this.cardType = cardType;
+           this.cardColor = cardColor;
+           this.energyCost = energyCost;
+           this.cardTitle = cardTitle;
+           this.abilityText = abilityText;
+       }
+
+        //A constructor for the crystals
+        public CardData(CardType cardType, CardColor cardColor, string cardTitle)
         {
             this.cardType = cardType;
             this.cardColor = cardColor;
-            this.energyCost = energyCost;
             this.cardTitle = cardTitle;
-            this.abilityText = abilityText;
         }
 
         //My DeFacto constructor. Unity's methods for creating a new being are not ideal.
@@ -90,6 +99,14 @@ namespace CardBase
             this.energyCost = energyCost;
             this.cardTitle = cardTitle;
             this.abilityText = abilityText;
+        }
+
+        //My DeFacto constructor. for crystals
+        public void Init(CardType cardType, CardColor cardColor, string cardTitle)
+        {
+            this.cardType = cardType;
+            this.cardColor = cardColor;
+            this.cardTitle = cardTitle;
         }
     }
 }

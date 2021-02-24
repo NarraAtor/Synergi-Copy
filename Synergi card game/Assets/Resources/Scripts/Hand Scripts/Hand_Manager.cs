@@ -35,12 +35,6 @@ public class Hand_Manager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     /// <summary>
     /// Purpose: Adds a card to the hand based on the type of CardData it is.
     /// </summary>

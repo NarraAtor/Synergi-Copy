@@ -48,12 +48,6 @@ public class Deck_InBattle_Manager : MonoBehaviour
         Draw();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     //Draw a card from the top of the deck.
     public void Draw()
     {

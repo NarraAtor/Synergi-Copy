@@ -14,7 +14,8 @@ public enum CardType
 {
     Being,
     Tactic,
-    Deployable
+    Deployable,
+    Crystal
 }
 public class Card : MonoBehaviour
 {

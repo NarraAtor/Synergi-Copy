@@ -151,13 +151,15 @@ public class Being : Card
         switch(this.tag)
         {
             case "Hand":
-                //Only one card may be selected at a time. I get a component in each child just so I have an array.
-                for (int i = 0; i < Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_HandProperty.Count; i++)
                 {
-                    Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_HandProperty[i].GetComponent<Card>().IsSelected = false;
+                    //Only one card may be selected at a time. I get a component in each child just so I have an array.
+                    for (int i = 0; i < Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_HandProperty.Count; i++)
+                    {
+                        Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_HandProperty[i].GetComponent<Card>().IsSelected = false;
+                    }
+                    isSelected = true;
+                    Player_Battlefield.SendMessage("ShowDeployableZones");
                 }
-                isSelected = true;
-                Player_Battlefield.SendMessage("ShowDeployableZones");
                 break;
         }
     }

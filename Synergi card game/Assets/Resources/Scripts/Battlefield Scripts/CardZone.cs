@@ -138,11 +138,15 @@ public class CardZone : MonoBehaviour
     //selectable card zones.
     public void IsClicked()
     {
+        GameObject card;
+
         if (!isOccupied && isClickable)
         {
             //Find the selected card in hand
-            foreach (GameObject card in Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_HandProperty)
+            for (int i = 0; i < Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_HandProperty.Count; i++)
             {
+                card = Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_HandProperty[i];
+
                 if (card.GetComponent<Card>().IsSelected)
                 {
                     if (card.GetComponent<Card>() is Being)

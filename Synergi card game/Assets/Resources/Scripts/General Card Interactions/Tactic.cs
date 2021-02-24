@@ -87,7 +87,7 @@ public class Tactic : Card
     public virtual void Utilize()
     {
         TacticGrid.GetComponent<Tactic_Zone_Manager>().SendMessage("Add", this.GetComponent<Tactic>());
-        Destroy(this.gameObject);
+        Player_Hand.GetComponent<Hand_Manager>().GetRidOfDestroyedCards(this);
     }
 
     public virtual void DestroyTactic()
