@@ -21,16 +21,20 @@ public class Card : MonoBehaviour
 {
     //For when a card is in hand and clicked by a player.
     //Remove Serialized field later.
-    protected bool isSelected;
     protected GameObject Player_Battlefield;
     protected GameObject Player_Hand;
     protected GameObject Player_Graveyard;
     [SerializeField] protected CardColor cardColor;
     protected CardType cardType;
     protected string cardTitle;
-    protected int energyCost;
+    protected int genericEnergyCost;
+    protected int blueEnergyCost;
+    protected int greenEnergyCost;
+    protected int redEnergyCost;
+    protected int purpleEnergyCost;
+    protected int convertedEnergyCost;
     protected string abilityText;
-    protected List<GameObject> CardUI;
+    protected bool isSelected;
     protected GameObject m_CardTitle;
     protected GameObject CardBorder;
     protected GameObject CardArt;
@@ -40,7 +44,6 @@ public class Card : MonoBehaviour
     protected GameObject CardAbility;
     protected GameObject FlavorText;
     protected GameObject CardEnergyCost;
-
     protected GameObject CardBack;
 
     public bool IsSelected
@@ -89,15 +92,59 @@ public class Card : MonoBehaviour
             cardTitle = value;
         }
     }
-    public int EnergyCost
+    public int GenericEnergyCost
     {
         get
         {
-            return energyCost;
+            return genericEnergyCost;
         }
         set
         {
-            energyCost = value;
+            genericEnergyCost = value;
+        }
+    }
+    public int RedEnergyCost
+    {
+        get
+        {
+            return redEnergyCost;
+        }
+        set
+        {
+            redEnergyCost = value;
+        }
+    }
+    public int BlueEnergyCost
+    {
+        get
+        {
+            return blueEnergyCost;
+        }
+        set
+        {
+            blueEnergyCost = value;
+        }
+    }
+    public int GreenEnergyCost
+    {
+        get
+        {
+            return greenEnergyCost;
+        }
+        set
+        {
+            greenEnergyCost = value;
+        }
+    }
+    public int PurpleEnergyCost
+    {
+        get
+        {
+            return purpleEnergyCost;
+        }
+        set
+        {
+            purpleEnergyCost = value;
         }
     }
     public string AbilityText
@@ -112,21 +159,37 @@ public class Card : MonoBehaviour
         }
     }
     
-    public Card(CardType cardType, CardColor cardColor, int energyCost, string cardTitle, string abilityText)
+    public Card(CardType cardType, CardColor cardColor, 
+        int redEnergyCost, int blueEnergyCost, int greenEnergyCost, int purpleEnergyCost, int genericEnergyCost,
+        string cardTitle, string abilityText)
     {
         this.cardType = cardType;
         this.cardColor = cardColor;
-        this.energyCost = energyCost;
+        this.redEnergyCost = redEnergyCost;
+        this.blueEnergyCost = blueEnergyCost;
+        this.greenEnergyCost = greenEnergyCost;
+        this.purpleEnergyCost = purpleEnergyCost;
+        this.genericEnergyCost = genericEnergyCost;
+        convertedEnergyCost = redEnergyCost + blueEnergyCost + greenEnergyCost + purpleEnergyCost + genericEnergyCost;
+        
         this.cardTitle = cardTitle;
         this.abilityText = abilityText;
     }
 
     //My DeFacto constructor. Unity's methods for creating a new being are not ideal.
-    public void Init(CardType cardType, CardColor cardColor, int energyCost, string cardTitle, string abilityText)
+    public void Init(CardType cardType, CardColor cardColor, 
+        int redEnergyCost, int blueEnergyCost, int greenEnergyCost, int purpleEnergyCost, int genericEnergyCost, 
+        string cardTitle, string abilityText)
     {
         this.cardType = cardType;
         this.cardColor = cardColor;
-        this.energyCost = energyCost;
+        this.redEnergyCost = redEnergyCost;
+        this.blueEnergyCost = blueEnergyCost;
+        this.greenEnergyCost = greenEnergyCost;
+        this.purpleEnergyCost = purpleEnergyCost;
+        this.genericEnergyCost = genericEnergyCost;
+        convertedEnergyCost = redEnergyCost + blueEnergyCost + greenEnergyCost + purpleEnergyCost + genericEnergyCost;
+
         this.cardTitle = cardTitle;
         this.abilityText = abilityText;
     }
@@ -192,9 +255,9 @@ public class Card : MonoBehaviour
         //is called from a child. The override "hides" the base method.
         //SetUIComponentColor(cardColor);
         
-        CardAbility.GetComponent<TMP_Text>().text = $"{this.AbilityText}";
-        CardEnergyCost.GetComponent<TMP_Text>().text = $"{this.EnergyCost}";
-        m_CardTitle.GetComponent<TMP_Text>().text = $"{this.CardTitle}";
+        CardAbility.GetComponent<TMP_Text>().text = $"{this.abilityText}";
+        CardEnergyCost.GetComponent<TMP_Text>().text = $"{this.convertedEnergyCost}";
+        m_CardTitle.GetComponent<TMP_Text>().text = $"{this.cardTitle}";
     }
 
     //Sets the color of this card equal to the cardColor variable.
@@ -236,6 +299,6 @@ public class Card : MonoBehaviour
 
     public override string ToString()
     {
-        return $"{cardTitle},{cardType},{cardColor},{energyCost},{abilityText}";
+        return $"{cardTitle},{cardType},{cardColor},{redEnergyCost}, {blueEnergyCost}, {greenEnergyCost}, {purpleEnergyCost}, {convertedEnergyCost},{abilityText}";
     }
 }

@@ -85,15 +85,18 @@ public class Being : Card
         }
     }
     public Being(CardColor cardColor, int originalMaxHealth, int originalPower,
-    string species, string abilityText, int energyCost, string cardTitle)
-    : base(CardType.Being, cardColor, energyCost, cardTitle, abilityText)
+    string species, string abilityText,
+    int redEnergyCost, int blueEnergyCost, int greenEnergyCost, int purpleEnergyCost, int genericEnergyCost, string cardTitle)
+    : base(CardType.Being, cardColor, redEnergyCost, blueEnergyCost, greenEnergyCost, purpleEnergyCost, genericEnergyCost, cardTitle, abilityText)
     {
-        this.Init(cardColor, originalMaxHealth, originalPower, species, abilityText, energyCost, cardTitle);
+        this.Init(cardColor, originalMaxHealth, originalPower, species, abilityText, redEnergyCost, blueEnergyCost, greenEnergyCost, purpleEnergyCost, genericEnergyCost, cardTitle);
     }
 
     //My DeFacto constructor. Unity's methods for creating a new being are not ideal.
     public void Init(CardColor cardColor, int originalMaxHealth, int originalPower,
-    string species, string abilityText, int energyCost, string cardTitle)
+    string species, string abilityText,
+    int redEnergyCost, int blueEnergyCost, int greenEnergyCost, int purpleEnergyCost, int genericEnergyCost,
+    string cardTitle)
     {
         this.originalMaxHealth = originalMaxHealth;
         this.currentMaxHealth = originalMaxHealth;
@@ -101,7 +104,7 @@ public class Being : Card
         this.originalPower = originalPower;
         this.currentPower = originalPower;
         this.species = species;
-        base.Init(CardType.Being, cardColor, energyCost, cardTitle, abilityText);
+        base.Init(CardType.Being, cardColor, redEnergyCost, blueEnergyCost, greenEnergyCost, purpleEnergyCost, genericEnergyCost, cardTitle, abilityText);
     }
     // Start is called before the first frame update
     protected override void Start()
