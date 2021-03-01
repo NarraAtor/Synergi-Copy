@@ -247,7 +247,7 @@ public class CardZone : MonoBehaviour
             CardTypeAndSubtypes.GetComponent<TMP_Text>().text = $"Being/{currentCard.Species}";
             BeingStatsText.GetComponent<TMP_Text>().text = $"{currentCard.OriginalMaxHealth}/{currentCard.OriginalPower}";
             CardAbility.GetComponent<TMP_Text>().text = $"{currentCard.AbilityText}";
-            CardEnergyCost.GetComponent<TMP_Text>().text = $"{cardData.EnergyCost}";
+            CardEnergyCost.GetComponent<TMP_Text>().text = $"Red:{cardData.RedEnergyCost} Blue:{cardData.BlueEnergyCost} Green:{cardData.GreenEnergyCost} Purple:{cardData.PurpleEnergyCost}";
             m_CardTitle.GetComponent<TMP_Text>().text = $"{currentCard.CardTitle}";
         }
         else if (cardData is Deployable)
@@ -269,7 +269,7 @@ public class CardZone : MonoBehaviour
             CardTypeAndSubtypes.GetComponent<TMP_Text>().text = $"Deployable/{currentCard.Subtype}";
             DeployableDurabilityText.GetComponent<TMP_Text>().text = $"{currentCard.Durability}";
             CardAbility.GetComponent<TMP_Text>().text = $"{currentCard.AbilityText}";
-            CardEnergyCost.GetComponent<TMP_Text>().text = $"{cardData.EnergyCost}";
+            CardEnergyCost.GetComponent<TMP_Text>().text = $"Red:{cardData.RedEnergyCost} Blue:{cardData.BlueEnergyCost} Green:{cardData.GreenEnergyCost} Purple:{cardData.PurpleEnergyCost}";
             m_CardTitle.GetComponent<TMP_Text>().text = $"{currentCard.CardTitle}";
         }
         else

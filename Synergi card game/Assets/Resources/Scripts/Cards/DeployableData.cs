@@ -33,15 +33,16 @@ namespace CardBase
                 subtype = value;
             }
         }
-        public DeployableData(CardColor cardColor, int energyCost, string cardTitle, string abilityText, int durability) :
-        base(CardType.Deployable, cardColor, energyCost, cardTitle, abilityText)
+        public DeployableData(CardColor cardColor, int redEnergyCost, int blueEnergyCost, int greenEnergyCost, int purpleEnergyCost, int genericEnergyCost,
+                              string cardTitle, string abilityText, int durability) :
+        base(CardType.Deployable, cardColor, redEnergyCost, blueEnergyCost, greenEnergyCost, purpleEnergyCost, genericEnergyCost, cardTitle, abilityText)
         {
             this.durability = durability;
         }
         //My DeFacto constructor. Unity's methods for creating a new card are not ideal.
         public void Init(CardColor cardColor, int energyCost, string cardTitle, string abilityText, int durability)
         {
-            base.Init(CardType.Deployable, cardColor, energyCost, cardTitle, abilityText);
+            base.Init(CardType.Deployable, cardColor, redEnergyCost, blueEnergyCost, greenEnergyCost, purpleEnergyCost, genericEnergyCost, cardTitle, abilityText);
             this.durability = durability;
         }
     }

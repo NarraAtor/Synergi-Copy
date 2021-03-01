@@ -22,16 +22,20 @@ namespace CardBase
             }
         }
 
-        public TacticData(CardColor cardColor, int energyCost, string cardTitle, string abilityText, TacticSubtypes subtype) :
-        base(CardType.Tactic, cardColor, energyCost, cardTitle, abilityText)
+        public TacticData(CardColor cardColor, 
+                          int redEnergyCost, int blueEnergyCost, int greenEnergyCost, int purpleEnergyCost, int genericEnergyCost, 
+                          string cardTitle, string abilityText, TacticSubtypes subtype) :
+        base(CardType.Tactic, cardColor, redEnergyCost, blueEnergyCost, greenEnergyCost, purpleEnergyCost, genericEnergyCost, cardTitle, abilityText)
         {
             this.subtype = subtype;
         }
 
         //My DeFacto constructor. Unity's methods for creating a new card are not ideal.
-        public void Init(CardColor cardColor, int energyCost, string cardTitle, string abilityText, TacticSubtypes subtype)
+        public void Init(CardColor cardColor, 
+                         int redEnergyCost, int blueEnergyCost, int greenEnergyCost, int purpleEnergyCost, int genericEnergyCost, 
+                         string cardTitle, string abilityText, TacticSubtypes subtype)
         {
-            base.Init(CardType.Being, cardColor, energyCost, cardTitle, abilityText);
+            base.Init(CardType.Tactic, cardColor, redEnergyCost, blueEnergyCost, greenEnergyCost, purpleEnergyCost, genericEnergyCost, cardTitle, abilityText);
             this.subtype = subtype;
         }
     }

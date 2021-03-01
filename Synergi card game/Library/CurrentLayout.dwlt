@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 548}
+  m_MinSize: {x: 950, y: 398}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -46,7 +46,7 @@ MonoBehaviour:
     y: 0
     width: 1536
     height: 781
-  m_MinSize: {x: 950, y: 548}
+  m_MinSize: {x: 950, y: 398}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -113,10 +113,10 @@ MonoBehaviour:
     y: 30
     width: 1536
     height: 731
-  m_MinSize: {x: 887, y: 498}
-  m_MaxSize: {x: 18008, y: 14048}
+  m_MinSize: {x: 887, y: 348}
+  m_MaxSize: {x: 16012, y: 8048}
   vertical: 0
-  controlID: 103
+  controlID: 136
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -164,10 +164,10 @@ MonoBehaviour:
     y: 0
     width: 698
     height: 731
-  m_MinSize: {x: 408, y: 498}
-  m_MaxSize: {x: 10004, y: 14048}
+  m_MinSize: {x: 408, y: 348}
+  m_MaxSize: {x: 8008, y: 8048}
   vertical: 1
-  controlID: 66
+  controlID: 13
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_MinSize: {x: 408, y: 224}
   m_MaxSize: {x: 8008, y: 4024}
   vertical: 0
-  controlID: 67
+  controlID: 14
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -265,14 +265,14 @@ MonoBehaviour:
     y: 454
     width: 698
     height: 277
-  m_MinSize: {x: 234, y: 274}
-  m_MaxSize: {x: 10004, y: 10024}
-  m_ActualView: {fileID: 17}
+  m_MinSize: {x: 104, y: 124}
+  m_MaxSize: {x: 4004, y: 4024}
+  m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 17}
   - {fileID: 18}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -408,9 +408,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: f8eeffff
-      m_LastClickedID: -4360
-      m_ExpandedIDs: defbffff8a10000036160000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: c8fbffff3c1100003c140000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -465,9 +465,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 699.78503, y: 76.26075, z: 1.84375}
+    m_Target: {x: 689.52075, y: 24.121891, z: 0.639144}
     speed: 2
-    m_Value: {x: 699.78503, y: 76.26075, z: 1.84375}
+    m_Value: {x: 689.52075, y: 24.121891, z: 0.639144}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -499,9 +499,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: -1}
   m_Size:
-    m_Target: 163.90402
+    m_Target: 284.69006
     speed: 2
-    m_Value: 163.90402
+    m_Value: 284.69006
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -577,20 +577,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Resources/Scripts/Cards
+    - Assets/Resources/Scripts/Graveyard And Abyss Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Resources/Scripts/Cards
+  - Assets/Resources/Scripts/Graveyard And Abyss Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\NarraAtor\source\repos\Synergi-Copy\Synergi card game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 80}
-    m_SelectedIDs: a00d0000
-    m_LastClickedID: 3488
-    m_ExpandedIDs: 00000000fe0a0000040b0000260b0000360b0000400b0000960b0000740c0000780c0000a20c0000240d0000620d0000a00d00005c0e0000740f00007e0f0000583500005a350000
+    scrollPos: {x: 0, y: 112}
+    m_SelectedIDs: ca0c0000
+    m_LastClickedID: 3274
+    m_ExpandedIDs: 000000001a0b0000200b0000420b0000520b00005c0b0000b20b0000900c0000940c0000be0c0000400d00007e0d0000bc0d0000780e0000900f00009a0f00001a3500001c350000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -618,7 +618,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fe0a0000040b0000260b0000360b0000400b0000960b0000740c0000780c0000a20c0000240d0000620d0000a00d00005c0e0000740f00007e0f0000583500005a350000
+    m_ExpandedIDs: 000000001a0b0000200b0000420b0000520b00005c0b0000b20b0000900c0000940c0000be0c0000400d00007e0d0000bc0d0000780e0000900f00009a0f00001a3500001c350000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

@@ -83,17 +83,20 @@ namespace CardBase
     }
 
     public BeingData(CardColor cardColor, int originalMaxHealth, int originalPower,
-    string species, string abilityText, int energyCost, string cardTitle)
-    : base(CardType.Being, cardColor, energyCost, cardTitle, abilityText)
-    {
-        this.Init(cardColor, originalMaxHealth, originalPower, species, abilityText, energyCost, cardTitle);
-    }
+    string species, string abilityText,
+    int redEnergyCost, int blueEnergyCost, int greenEnergyCost, int purpleEnergyCost, int genericEnergyCost, string cardTitle)
+    : base(CardType.Being, cardColor, redEnergyCost, blueEnergyCost, greenEnergyCost, purpleEnergyCost, genericEnergyCost, cardTitle, abilityText)
+        {
+            this.Init(cardColor, originalMaxHealth, originalPower, species, abilityText, redEnergyCost, blueEnergyCost, greenEnergyCost, purpleEnergyCost, genericEnergyCost, cardTitle);
+        }
 
     //My DeFacto constructor. Unity's methods for creating a new being are not ideal.
     public void Init(CardColor cardColor, int originalMaxHealth, int originalPower,
-    string species, string abilityText, int energyCost, string cardTitle)
-    {
-        base.Init(CardType.Being, cardColor, energyCost, cardTitle, abilityText);
+    string species, string abilityText,
+    int redEnergyCost, int blueEnergyCost, int greenEnergyCost, int purpleEnergyCost, int genericEnergyCost,
+    string cardTitle)
+        {
+        base.Init(CardType.Being, cardColor, redEnergyCost, blueEnergyCost, greenEnergyCost, purpleEnergyCost, genericEnergyCost, cardTitle, abilityText);
         this.originalMaxHealth = originalMaxHealth;
         this.originalPower = originalPower;
         this.currentMaxHealth = originalPower;

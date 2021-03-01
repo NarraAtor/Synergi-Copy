@@ -163,7 +163,7 @@ public class Graveyard_Manager : MonoBehaviour
             CardTypeAndSubtypes.GetComponent<TMP_Text>().text = $"Being/{currentCard.Species}";
             BeingStatsText.GetComponent<TMP_Text>().text = $"{currentCard.OriginalMaxHealth}/{currentCard.OriginalPower}";
             CardAbility.GetComponent<TMP_Text>().text = $"{currentCard.AbilityText}";
-            CardEnergyCost.GetComponent<TMP_Text>().text = $"{cardData.EnergyCost}";
+            CardEnergyCost.GetComponent<TMP_Text>().text = $"Red:{cardData.RedEnergyCost} Blue:{cardData.BlueEnergyCost} Green:{cardData.GreenEnergyCost} Purple:{cardData.PurpleEnergyCost}";
             m_CardTitle.GetComponent<TMP_Text>().text = $"{currentCard.CardTitle}";
         }
         else if (cardData is Deployable)
@@ -185,7 +185,7 @@ public class Graveyard_Manager : MonoBehaviour
             CardTypeAndSubtypes.GetComponent<TMP_Text>().text = $"Deployable/{currentCard.Subtype}";
             DeployableDurabilityText.GetComponent<TMP_Text>().text = $"{currentCard.Durability}";
             CardAbility.GetComponent<TMP_Text>().text = $"{currentCard.AbilityText}";
-            CardEnergyCost.GetComponent<TMP_Text>().text = $"{cardData.EnergyCost}";
+            CardEnergyCost.GetComponent<TMP_Text>().text = $"Red:{cardData.RedEnergyCost} Blue:{cardData.BlueEnergyCost} Green:{cardData.GreenEnergyCost} Purple:{cardData.PurpleEnergyCost}";
             m_CardTitle.GetComponent<TMP_Text>().text = $"{currentCard.CardTitle}";
         }
         else if(cardData is Tactic)
@@ -210,7 +210,7 @@ public class Graveyard_Manager : MonoBehaviour
             //Time to set text values here
             CardTypeAndSubtypes.GetComponent<TMP_Text>().text = $"Tactic/{currentCard.Subtype}";
             CardAbility.GetComponent<TMP_Text>().text = $"{currentCard.AbilityText}";
-            CardEnergyCost.GetComponent<TMP_Text>().text = $"{cardData.EnergyCost}";
+            CardEnergyCost.GetComponent<TMP_Text>().text = $"Red:{cardData.RedEnergyCost} Blue:{cardData.BlueEnergyCost} Green:{cardData.GreenEnergyCost} Purple:{cardData.PurpleEnergyCost}";
             m_CardTitle.GetComponent<TMP_Text>().text = $"{currentCard.CardTitle}";
         }
         else
@@ -226,17 +226,18 @@ public class Graveyard_Manager : MonoBehaviour
         {
             Being currentCard = (Being)cardData;
             BeingScript.SetUIComponentColor(currentCard.CardColor);
-            BeingScript.CardTitle = currentCard.CardTitle;
-            BeingScript.CardType = CardType.Being;
-            BeingScript.CardColor = currentCard.CardColor;
-            BeingScript.EnergyCost = currentCard.EnergyCost;
-            BeingScript.OriginalMaxHealth = currentCard.OriginalMaxHealth;
-            BeingScript.OriginalPower = currentCard.OriginalPower;
-            BeingScript.CurrentMaxHealth = currentCard.CurrentMaxHealth;
-            BeingScript.CurrentHealth = currentCard.CurrentHealth;
-            BeingScript.CurrentPower = currentCard.CurrentPower;
-            BeingScript.Species = currentCard.Species;
-            BeingScript.AbilityText = currentCard.AbilityText;
+            BeingScript.Init(currentCard.CardColor,
+                             currentCard.OriginalMaxHealth,
+                             currentCard.OriginalPower,
+                             currentCard.Species,
+                             currentCard.AbilityText,
+                             currentCard.RedEnergyCost,
+                             currentCard.BlueEnergyCost,
+                             currentCard.GreenEnergyCost,
+                             currentCard.PurpleEnergyCost,
+                             currentCard.GenericEnergyCost,
+                             currentCard.CardTitle);
+            
             //BeingScript =  currentCard; doesn't change the data on the editor.
             //Use this script to test how data is sent.
             //print(BeingScript);
@@ -245,12 +246,15 @@ public class Graveyard_Manager : MonoBehaviour
         {
             Deployable currentCard = (Deployable)cardData;
             DeployableScript.SetUIComponentColor(currentCard.CardColor);
-            DeployableScript.CardTitle = currentCard.CardTitle;
-            DeployableScript.CardType = CardType.Deployable;
-            DeployableScript.CardColor = currentCard.CardColor;
-            DeployableScript.EnergyCost = currentCard.EnergyCost;
-            DeployableScript.Subtype = currentCard.Subtype;
-            DeployableScript.AbilityText = currentCard.AbilityText;
+            DeployableScript.Init(currentCard.CardColor,
+                                  currentCard.RedEnergyCost,
+                                  currentCard.BlueEnergyCost,
+                                  currentCard.GreenEnergyCost,
+                                  currentCard.PurpleEnergyCost,
+                                  currentCard.GenericEnergyCost,
+                                  currentCard.CardTitle,
+                                  currentCard.AbilityText,
+                                  currentCard.Durability);
             //Use this script to test how data is sent.
             //print(DeployableScript);
         }
@@ -258,12 +262,15 @@ public class Graveyard_Manager : MonoBehaviour
         {
             Tactic currentCard = (Tactic)cardData;
             TacticScript.SetUIComponentColor(currentCard.CardColor);
-            TacticScript.CardTitle = currentCard.CardTitle;
-            TacticScript.CardType = CardType.Tactic;
-            TacticScript.CardColor = currentCard.CardColor;
-            TacticScript.EnergyCost = currentCard.EnergyCost;
-            TacticScript.Subtype = currentCard.Subtype;
-            TacticScript.AbilityText = currentCard.AbilityText;
+            TacticScript.Init(currentCard.CardColor,
+                              currentCard.RedEnergyCost,
+                              currentCard.BlueEnergyCost,
+                              currentCard.GreenEnergyCost,
+                              currentCard.PurpleEnergyCost,
+                              currentCard.GenericEnergyCost,
+                              currentCard.CardTitle,
+                              currentCard.AbilityText,
+                              currentCard.Subtype);
             //Use this script to test how data is sent.
             //print(TacticScript);
         }

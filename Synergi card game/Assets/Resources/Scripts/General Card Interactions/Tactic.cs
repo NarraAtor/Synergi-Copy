@@ -26,15 +26,19 @@ public class Tactic : Card
         }
     }
 
-    public Tactic(CardColor cardColor, int energyCost, string cardTitle, string abilityText, TacticSubtypes subtype) :
-    base(CardType.Tactic, cardColor, energyCost, cardTitle, abilityText)
+    public Tactic(CardColor cardColor, 
+                  int redEnergyCost, int blueEnergyCost, int greenEnergyCost, int purpleEnergyCost, int genericEnergyCost, 
+                  string cardTitle, string abilityText, TacticSubtypes subtype) :
+    base(CardType.Tactic, cardColor, redEnergyCost, blueEnergyCost, greenEnergyCost, purpleEnergyCost, genericEnergyCost, cardTitle, abilityText)
     {
         this.subtype = subtype;
     }
 
-    public void Init(CardColor cardColor, int energyCost, string cardTitle, string abilityText, TacticSubtypes subtype)
+    public void Init(CardColor cardColor, 
+                     int redEnergyCost, int blueEnergyCost, int greenEnergyCost, int purpleEnergyCost, int genericEnergyCost,
+                     string cardTitle, string abilityText, TacticSubtypes subtype)
     {
-        base.Init(CardType.Being, cardColor, energyCost, cardTitle, abilityText);
+        base.Init(CardType.Tactic, cardColor, redEnergyCost, blueEnergyCost, greenEnergyCost, purpleEnergyCost, genericEnergyCost, cardTitle, abilityText);
         this.subtype = subtype;
     }
     // Start is called before the first frame update

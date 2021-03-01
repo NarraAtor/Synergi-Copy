@@ -17,7 +17,11 @@ namespace CardBase
         protected CardType cardType;
         [SerializeField] protected string cardTitle;
         [SerializeField] protected CardColor cardColor;
-        [SerializeField] protected int energyCost;
+        [SerializeField] protected int genericEnergyCost;
+        [SerializeField] protected int blueEnergyCost;
+        [SerializeField] protected int greenEnergyCost;
+        [SerializeField] protected int redEnergyCost;
+        [SerializeField] protected int purpleEnergyCost;
         [SerializeField] protected string abilityText;
         //public Sprite cardImage;
 
@@ -42,15 +46,59 @@ namespace CardBase
             }
         }
 
-        public int EnergyCost
+        public int GenericEnergyCost
         {
             get
             {
-                return energyCost;
+                return genericEnergyCost;
             }
             set
             {
-                energyCost = value;
+                genericEnergyCost = value;
+            }
+        }
+        public int RedEnergyCost
+        {
+            get
+            {
+                return redEnergyCost;
+            }
+            set
+            {
+                redEnergyCost = value;
+            }
+        }
+        public int BlueEnergyCost
+        {
+            get
+            {
+                return blueEnergyCost;
+            }
+            set
+            {
+                blueEnergyCost = value;
+            }
+        }
+        public int GreenEnergyCost
+        {
+            get
+            {
+                return greenEnergyCost;
+            }
+            set
+            {
+                greenEnergyCost = value;
+            }
+        }
+        public int PurpleEnergyCost
+        {
+            get
+            {
+                return purpleEnergyCost;
+            }
+            set
+            {
+                purpleEnergyCost = value;
             }
         }
 
@@ -74,14 +122,20 @@ namespace CardBase
             }
         }
 
-       public CardData(CardType cardType, CardColor cardColor, int energyCost, string cardTitle, string abilityText)
-       {
-           this.cardType = cardType;
-           this.cardColor = cardColor;
-           this.energyCost = energyCost;
-           this.cardTitle = cardTitle;
-           this.abilityText = abilityText;
-       }
+        public CardData(CardType cardType, CardColor cardColor,
+                        int redEnergyCost, int blueEnergyCost, int greenEnergyCost, int purpleEnergyCost, int genericEnergyCost,
+                        string cardTitle, string abilityText)
+        {
+            this.cardType = cardType;
+            this.cardColor = cardColor;
+            this.redEnergyCost = redEnergyCost;
+            this.blueEnergyCost = blueEnergyCost;
+            this.greenEnergyCost = greenEnergyCost;
+            this.purpleEnergyCost = purpleEnergyCost;
+            this.genericEnergyCost = genericEnergyCost;
+            this.cardTitle = cardTitle;
+            this.abilityText = abilityText;
+        }
 
         //A constructor for the crystals
         public CardData(CardType cardType, CardColor cardColor, string cardTitle)
@@ -92,11 +146,17 @@ namespace CardBase
         }
 
         //My DeFacto constructor. Unity's methods for creating a new being are not ideal.
-        public void Init(CardType cardType, CardColor cardColor, int energyCost, string cardTitle, string abilityText)
+        public void Init(CardType cardType, CardColor cardColor,
+                         int redEnergyCost, int blueEnergyCost, int greenEnergyCost, int purpleEnergyCost, int genericEnergyCost, 
+                         string cardTitle, string abilityText)
         {
             this.cardType = cardType;
             this.cardColor = cardColor;
-            this.energyCost = energyCost;
+            this.redEnergyCost = redEnergyCost;
+            this.blueEnergyCost = blueEnergyCost;
+            this.greenEnergyCost = greenEnergyCost;
+            this.purpleEnergyCost = purpleEnergyCost;
+            this.genericEnergyCost = genericEnergyCost;
             this.cardTitle = cardTitle;
             this.abilityText = abilityText;
         }
@@ -107,7 +167,11 @@ namespace CardBase
             this.cardType = cardType;
             this.cardColor = cardColor;
             this.cardTitle = cardTitle;
-            energyCost = 0;
+            this.redEnergyCost = 0;
+            this.blueEnergyCost = 0;
+            this.greenEnergyCost = 0;
+            this.purpleEnergyCost = 0;
+            this.genericEnergyCost = 0;
             abilityText = "";
         }
     }
