@@ -106,6 +106,7 @@ public class Being : Card
         this.species = species;
         base.Init(CardType.Being, cardColor, redEnergyCost, blueEnergyCost, greenEnergyCost, purpleEnergyCost, genericEnergyCost, cardTitle, abilityText);
     }
+
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -161,6 +162,9 @@ public class Being : Card
                         Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_HandProperty[i].GetComponent<Card>().IsSelected = false;
                     }
                     isSelected = true;
+
+                    //Checks if the player has enough energy to play this card.
+                    if()
                     Player_Battlefield.SendMessage("ShowDeployableZones");
                 }
                 break;

@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardTitle: Lackey
   cardColor: 2
-  energyCost: 1
+  genericEnergyCost: 0
+  blueEnergyCost: 0
+  greenEnergyCost: 0
+  redEnergyCost: 0
+  purpleEnergyCost: 1
   abilityText: 
   originalMaxHealth: 5
   originalPower: 5

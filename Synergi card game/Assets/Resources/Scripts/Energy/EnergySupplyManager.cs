@@ -61,6 +61,8 @@ public class EnergySupplyManager : MonoBehaviour
         {
             Init();
         }
+
+
         for (int i = 0; i < crystalStorage.Length; i++)
         {
             if(crystalStorage[i] is null)
