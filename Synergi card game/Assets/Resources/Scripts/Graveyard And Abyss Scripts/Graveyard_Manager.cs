@@ -254,7 +254,8 @@ public class Graveyard_Manager : MonoBehaviour
                                   currentCard.GenericEnergyCost,
                                   currentCard.CardTitle,
                                   currentCard.AbilityText,
-                                  currentCard.Durability);
+                                  currentCard.Durability,
+                                  currentCard.Subtype);
             //Use this script to test how data is sent.
             //print(DeployableScript);
         }

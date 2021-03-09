@@ -26,9 +26,9 @@ public class Hand_Manager : MonoBehaviour
     {
         ChildrenOfPlayer_Hand = this.GetComponentsInChildren<RectTransform>();
         CardsInPlayer_Hand = new List<GameObject>();
-        foreach(RectTransform child in ChildrenOfPlayer_Hand)
+        foreach (RectTransform child in ChildrenOfPlayer_Hand)
         {
-            if(child.tag == "Hand")
+            if (child.tag == "Hand")
             {
                 CardsInPlayer_Hand.Add(child.gameObject);
             }
@@ -41,35 +41,52 @@ public class Hand_Manager : MonoBehaviour
     /// <param name="card"></param>
     public void AddCardToHand(CardData card)
     {
-        if(card is BeingData)
+        if (card is BeingData)
         {
             BeingData beingData = (BeingData)card;
             //addedCard.CardColor = beingData.CardColorProperty;
             GameObject addedCard = Instantiate(BeingPrefab, this.gameObject.transform);
             addedCard.tag = "Hand";
-            addedCard.GetComponent<Being>().Init(beingData.CardColorProperty, beingData.OriginalMaxHealth, 
-            beingData.OriginalPower,beingData.Species, beingData.AbilityText, beingData.EnergyCost, beingData.CardTitle);
+            addedCard.GetComponent<Being>().Init(beingData.CardColorProperty, beingData.OriginalMaxHealth,
+            beingData.OriginalPower, beingData.Species, beingData.AbilityText,
+            beingData.RedEnergyCost, beingData.BlueEnergyCost, beingData.GreenEnergyCost, beingData.PurpleEnergyCost, beingData.GenericEnergyCost,
+            beingData.CardTitle);
             CardsInPlayer_Hand.Add(addedCard.gameObject);
         }
-         if(card is TacticData)
+        if (card is TacticData)
         {
             TacticData tacticData = (TacticData)card;
             GameObject addedCard = Instantiate(TacticPrefab, this.gameObject.transform);
             addedCard.tag = "Hand";
-            addedCard.GetComponent<Tactic>().Init(tacticData.CardColorProperty, tacticData.EnergyCost, 
-            tacticData.CardTitle, tacticData.AbilityText, tacticData.Subtype);
+            addedCard.GetComponent<Tactic>().Init(tacticData.CardColorProperty,
+                                                  tacticData.RedEnergyCost, 
+                                                  tacticData.BlueEnergyCost, 
+                                                  tacticData.GreenEnergyCost, 
+                                                  tacticData.PurpleEnergyCost, 
+                                                  tacticData.GenericEnergyCost,
+                                                  tacticData.CardTitle, 
+                                                  tacticData.AbilityText, 
+                                                  tacticData.Subtype);
             CardsInPlayer_Hand.Add(addedCard.gameObject);
         }
-        
-        if(card is DeployableData)
+
+        if (card is DeployableData)
         {
             DeployableData deployableData = (DeployableData)card;
             GameObject addedCard = Instantiate(DeployablePrefab, this.gameObject.transform);
             addedCard.tag = "Hand";
-            addedCard.GetComponent<Deployable>().Init(deployableData.CardColorProperty, deployableData.EnergyCost, 
-            deployableData.CardTitle, deployableData.AbilityText, deployableData.Durability);
+            addedCard.GetComponent<Deployable>().Init(deployableData.CardColorProperty, 
+                                                      deployableData.RedEnergyCost, 
+                                                      deployableData.BlueEnergyCost, 
+                                                      deployableData.GreenEnergyCost, 
+                                                      deployableData.PurpleEnergyCost, 
+                                                      deployableData.GenericEnergyCost,
+                                                      deployableData.CardTitle, 
+                                                      deployableData.AbilityText, 
+                                                      deployableData.Durability, 
+                                                      deployableData.Subtype);
             CardsInPlayer_Hand.Add(addedCard.gameObject);
-        } 
+        }
     }
 
     /// <summary>
@@ -83,16 +100,16 @@ public class Hand_Manager : MonoBehaviour
         card.gameObject.SetActive(false);
         int flag = -1;
         bool foundCard = false;
-        for(int i = 0; i < CardsInPlayer_Hand.Count; i++)
+        for (int i = 0; i < CardsInPlayer_Hand.Count; i++)
         {
-            if(CardsInPlayer_Hand[i].activeSelf == false)
+            if (CardsInPlayer_Hand[i].activeSelf == false)
             {
                 flag = i;
                 foundCard = true;
             }
         }
 
-        if(foundCard)
+        if (foundCard)
         {
             CardsInPlayer_Hand.RemoveAt(flag);
         }

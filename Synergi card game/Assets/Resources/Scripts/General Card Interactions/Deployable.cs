@@ -36,17 +36,19 @@ public class Deployable : Card
         }
     }
     public Deployable(CardColor cardColor, int redEnergyCost, int blueEnergyCost, int greenEnergyCost, int purpleEnergyCost, int genericEnergyCost,
-                      string cardTitle, string abilityText, int durability) :
+                      string cardTitle, string abilityText, int durability, string Subtype) :
                       base(CardType.Deployable, cardColor, redEnergyCost, blueEnergyCost, greenEnergyCost, purpleEnergyCost, genericEnergyCost, cardTitle, abilityText)
     {
         this.durability = durability;
+        Subtype = subtype;
     }
 
     //My DeFacto constructor. Unity's methods for creating a new card are not ideal.
     public void Init(CardColor cardColor, int redEnergyCost, int blueEnergyCost, int greenEnergyCost, int purpleEnergyCost, int genericEnergyCost,
-                     string cardTitle, string abilityText, int durability)
+                     string cardTitle, string abilityText, int durability, string subtype)
     {
         this.durability = durability;
+        Subtype = subtype;
         base.Init(CardType.Deployable, cardColor, redEnergyCost, blueEnergyCost, greenEnergyCost, purpleEnergyCost, genericEnergyCost, cardTitle, abilityText);
     }
     // Start is called before the first frame update
