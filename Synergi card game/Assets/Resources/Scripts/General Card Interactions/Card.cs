@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using CardBase;
 public enum CardColor
 {
     Red,
@@ -24,6 +25,8 @@ public class Card : MonoBehaviour
     protected GameObject Player_Battlefield;
     protected GameObject Player_Hand;
     protected GameObject Player_Graveyard;
+    protected GameObject Player_Portrait;
+    protected EnergySupplyManager Player_EnergySupply;
     [SerializeField] protected CardColor cardColor;
     protected CardType cardType;
     protected string cardTitle;
@@ -202,7 +205,10 @@ public class Card : MonoBehaviour
         Player_Battlefield = GameObject.Find("Player Battlefield");
         Player_Hand = GameObject.Find("Player Hand");
         Player_Graveyard = GameObject.Find("Player Graveyard");
-        
+        Player_Portrait = GameObject.Find("PlayerPortrait");
+        Player_EnergySupply = Player_Portrait.GetComponent<EnergySupplyManager>();
+
+
         //CardUI = new List<GameObject>();
         foreach (RectTransform component in this.GetComponentsInChildren<RectTransform>(true))
         {

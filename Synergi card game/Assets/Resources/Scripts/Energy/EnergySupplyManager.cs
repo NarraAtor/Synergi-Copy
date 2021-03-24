@@ -27,6 +27,74 @@ public class EnergySupplyManager : MonoBehaviour
     [SerializeField] private GameObject crystalUI;
     private List<Image> crystals = new List<Image>();
     private CrystalData[] crystalStorage = new CrystalData[10];
+    public int TotalRedEnergy
+    {
+        get
+        {
+            int totalRedEnergy = 0;
+            for(int i = 0; i < crystalStorage.Length; i++)
+            {
+                if(crystalStorage[i] is null)
+                {
+                    continue;
+                }
+                totalRedEnergy += crystalStorage[i].RedEnergyGiven;
+            }
+
+            return totalRedEnergy;
+        }
+    }
+    public int TotalBlueEnergy
+    {
+        get
+        {
+            int totalBlueEnergy = 0;
+            for (int i = 0; i < crystalStorage.Length; i++)
+            {
+                if (crystalStorage[i] is null)
+                {
+                    continue;
+                }
+                totalBlueEnergy += crystalStorage[i].BlueEnergyGiven;
+            }
+
+            return totalBlueEnergy;
+        }
+    }
+    public int TotalGreenEnergy
+    {
+        get
+        {
+            int totalGreenEnergy = 0;
+            for (int i = 0; i < crystalStorage.Length; i++)
+            {
+                if (crystalStorage[i] is null)
+                {
+                    continue;
+                }
+                totalGreenEnergy += crystalStorage[i].GreenEnergyGiven;
+            }
+
+            return totalGreenEnergy;
+        }
+    }
+    public int TotalPurpleEnergy
+    {
+        get
+        {
+            int totalPurpleEnergy = 0;
+            for (int i = 0; i < crystalStorage.Length; i++)
+            {
+                if (crystalStorage[i] is null)
+                {
+                    continue;
+                }
+                totalPurpleEnergy += crystalStorage[i].RedEnergyGiven;
+            }
+
+            return totalPurpleEnergy;
+        }
+    }
 
     public CrystalData[] CrystalStorage
     {
@@ -35,6 +103,8 @@ public class EnergySupplyManager : MonoBehaviour
             return crystalStorage;
         }
     }
+
+
 
     //To be used later when its possible to ramp past 10 energy.
     // private List<Energy> bonusEnergySupply = new List<Energy>();

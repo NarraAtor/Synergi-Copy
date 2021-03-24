@@ -164,8 +164,16 @@ public class Being : Card
                     isSelected = true;
 
                     //Checks if the player has enough energy to play this card.
-                    if()
-                    Player_Battlefield.SendMessage("ShowDeployableZones");
+                    //If energyGiven>= energyCost, you can play the card.
+                    if(Player_EnergySupply.TotalRedEnergy >= RedEnergyCost &&
+                       Player_EnergySupply.TotalBlueEnergy >= BlueEnergyCost &&
+                       Player_EnergySupply.TotalGreenEnergy >= GreenEnergyCost &&
+                       Player_EnergySupply.TotalPurpleEnergy >= PurpleEnergyCost
+                       )
+                    {
+                        Player_Battlefield.SendMessage("ShowDeployableZones");
+                    }
+
                 }
                 break;
         }
