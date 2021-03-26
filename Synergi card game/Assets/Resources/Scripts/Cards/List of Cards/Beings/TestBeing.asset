@@ -18,7 +18,7 @@ MonoBehaviour:
   blueEnergyCost: 0
   greenEnergyCost: 0
   redEnergyCost: 0
-  purpleEnergyCost: 1
+  purpleEnergyCost: 0
   abilityText: 
   originalMaxHealth: 5
   originalPower: 5

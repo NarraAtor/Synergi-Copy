@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardTitle: Barrier
   cardColor: 1
-  energyCost: 1
+  genericEnergyCost: 0
+  blueEnergyCost: 0
+  greenEnergyCost: 0
+  redEnergyCost: 0
+  purpleEnergyCost: 0
   abilityText: 
   durability: 5
   subtype: Wall

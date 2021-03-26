@@ -26,6 +26,7 @@ public class Card : MonoBehaviour
     protected GameObject Player_Hand;
     protected GameObject Player_Graveyard;
     protected GameObject Player_Portrait;
+    protected Turn_Manager Turn_Manager;
     protected EnergySupplyManager Player_EnergySupply;
     [SerializeField] protected CardColor cardColor;
     protected CardType cardType;
@@ -207,6 +208,7 @@ public class Card : MonoBehaviour
         Player_Graveyard = GameObject.Find("Player Graveyard");
         Player_Portrait = GameObject.Find("PlayerPortrait");
         Player_EnergySupply = Player_Portrait.GetComponent<EnergySupplyManager>();
+        Turn_Manager = GameObject.Find("GameManager").GetComponent<Turn_Manager>();
 
 
         //CardUI = new List<GameObject>();
@@ -294,13 +296,24 @@ public class Card : MonoBehaviour
 
     public virtual void IsClicked()
     {
-        switch(this.tag)
+        switch (Turn_Manager.currentPlayerTurn)
         {
-            case "Hand":
-                isSelected = true;
-                print("This card has been clicked");
+            case Turn.P1:
+                switch (this.tag)
+                {
+                    case "Hand":
+                        //isSelected = true;
+                        print("This card has been clicked");
+                        break;
+                }
                 break;
+            case Turn.P2:
+                {
+                    print("It's the other player's turn!");
+                    return;
+                }
         }
+        
     }
 
     public override string ToString()

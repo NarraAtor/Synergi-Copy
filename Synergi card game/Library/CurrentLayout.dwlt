@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 398}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -46,7 +46,7 @@ MonoBehaviour:
     y: 0
     width: 1536
     height: 781
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 398}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_MinSize: {x: 887, y: 348}
   m_MaxSize: {x: 16012, y: 8048}
   vertical: 0
-  controlID: 119
+  controlID: 5097
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_MinSize: {x: 408, y: 348}
   m_MaxSize: {x: 8008, y: 8048}
   vertical: 1
-  controlID: 79
+  controlID: 5210
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_MinSize: {x: 408, y: 224}
   m_MaxSize: {x: 8008, y: 4024}
   vertical: 0
-  controlID: 80
+  controlID: 5211
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -210,10 +210,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 329
+    width: 204
     height: 454
-  m_MinSize: {x: 204, y: 224}
-  m_MaxSize: {x: 4004, y: 4024}
+  m_MinSize: {x: 202, y: 224}
+  m_MaxSize: {x: 4002, y: 4024}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -235,9 +235,9 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 329
+    x: 204
     y: 0
-    width: 369
+    width: 494
     height: 454
   m_MinSize: {x: 204, y: 224}
   m_MaxSize: {x: 4004, y: 4024}
@@ -265,8 +265,8 @@ MonoBehaviour:
     y: 454
     width: 698
     height: 277
-  m_MinSize: {x: 104, y: 124}
-  m_MaxSize: {x: 4004, y: 4024}
+  m_MinSize: {x: 102, y: 124}
+  m_MaxSize: {x: 4002, y: 4024}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 17}
@@ -320,12 +320,12 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 651.2
+    x: 526.4
     y: 73.6
-    width: 365
+    width: 490
     height: 434
   m_PersistentViewDataDictionary: {fileID: 0}
-  m_MaximizeOnPlay: 0
+  m_MaximizeOnPlay: 1
   m_Gizmos: 0
   m_Stats: 0
   m_SelectedSizes: 06000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -356,10 +356,10 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 17
-      width: 365
+      width: 490
       height: 417
-    m_Scale: {x: 0.44555664, y: 0.44555664}
-    m_Translation: {x: 182.5, y: 208.5}
+    m_Scale: {x: 0.59814453, y: 0.59814453}
+    m_Translation: {x: 245, y: 208.50002}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -367,14 +367,14 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -409.6
-      y: -467.95398
+      y: -348.57797
       width: 819.2
-      height: 935.90796
+      height: 697.15594
     m_MinimalGUI: 1
-  m_defaultScale: 0.44555664
+  m_defaultScale: 0.59814453
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 1
-  m_LastWindowPixelSize: {x: 456.25, y: 542.5}
+  m_LastWindowPixelSize: {x: 612.5, y: 542.5}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -408,9 +408,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 24070000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: c8fbffff96150000ce150000
+      m_ExpandedIDs: defbffff881000007811000034160000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -456,7 +456,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 322.4
     y: 73.6
-    width: 325
+    width: 200
     height: 434
   m_PersistentViewDataDictionary: {fileID: 0}
   m_WindowGUID: fa01372e723f2a24eb68019b291d2164
@@ -577,20 +577,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Resources/Scripts/Deck_Scripts
+    - Assets/Resources/Scripts/General Card Interactions
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Resources/Scripts/Deck_Scripts
+  - Assets/Resources/Scripts/General Card Interactions
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\NarraAtor\source\repos\Synergi-Copy\Synergi card game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 80}
-    m_SelectedIDs: f80d0000
-    m_LastClickedID: 3576
-    m_ExpandedIDs: 00000000f00a0000f60a0000180b0000280b0000320b0000880b0000660c00006a0c0000940c0000160d0000540d0000920d00004e0e0000660f0000700f0000f0340000f2340000
+    scrollPos: {x: 0, y: 128}
+    m_SelectedIDs: 0e0f0000
+    m_LastClickedID: 3854
+    m_ExpandedIDs: 00000000fc0a0000020b0000240b0000340b00003e0b0000940b0000720c0000760c0000a00c0000220d0000600d00009e0d00005a0e0000720f00007c0f00005635000058350000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -618,7 +618,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000f00a0000f60a0000180b0000280b0000320b0000880b0000660c00006a0c0000940c0000160d0000540d0000920d00004e0e0000660f0000700f0000f0340000f2340000
+    m_ExpandedIDs: 00000000fc0a0000020b0000240b0000340b00003e0b0000940b0000720c0000760c0000a00c0000220d0000600d00009e0d00005a0e0000720f00007c0f00005635000058350000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -643,8 +643,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 24070000
-    m_LastClickedInstanceID: 1828
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000000000000c310000a00a0000
     m_RenameOverlay:

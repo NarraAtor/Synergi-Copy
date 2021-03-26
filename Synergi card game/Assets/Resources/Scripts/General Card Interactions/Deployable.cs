@@ -100,7 +100,17 @@ public class Deployable : Card
                     card.GetComponent<Card>().IsSelected = false;
                 }
                 isSelected = true;
-                Player_Battlefield.SendMessage("ShowDeployableZones");
+
+                //Checks if the player has enough energy to play this card.
+                //If energyGiven >= energyCost, you can play the card.
+                if (Player_EnergySupply.TotalRedEnergy >= RedEnergyCost &&
+                   Player_EnergySupply.TotalBlueEnergy >= BlueEnergyCost &&
+                   Player_EnergySupply.TotalGreenEnergy >= GreenEnergyCost &&
+                   Player_EnergySupply.TotalPurpleEnergy >= PurpleEnergyCost
+                   )
+                {
+                    Player_Battlefield.SendMessage("ShowDeployableZones");
+                }
                 break;
         }
     }

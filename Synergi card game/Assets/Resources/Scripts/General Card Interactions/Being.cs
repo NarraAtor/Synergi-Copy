@@ -152,6 +152,7 @@ public class Being : Card
     //Step 5, have switching the card's tag move it to the proper position on the battlefield.
     public override void IsClicked()
     {
+        base.IsClicked();
         switch(this.tag)
         {
             case "Hand":
@@ -164,7 +165,7 @@ public class Being : Card
                     isSelected = true;
 
                     //Checks if the player has enough energy to play this card.
-                    //If energyGiven>= energyCost, you can play the card.
+                    //If energyGiven >= energyCost, you can play the card.
                     if(Player_EnergySupply.TotalRedEnergy >= RedEnergyCost &&
                        Player_EnergySupply.TotalBlueEnergy >= BlueEnergyCost &&
                        Player_EnergySupply.TotalGreenEnergy >= GreenEnergyCost &&

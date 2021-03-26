@@ -7,7 +7,8 @@ public enum TacticSubtypes
 {
     Normal,
     Lasting,
-    Instant
+    Instant,
+    Equip
 }
 public class Tactic : Card
 {
@@ -73,7 +74,16 @@ public class Tactic : Card
         switch(this.tag)
         {
             case "Hand":
-                Utilize();
+                //Checks if the player has enough energy to play this card.
+                //If energyGiven >= energyCost, you can play the card.
+                if (Player_EnergySupply.TotalRedEnergy >= RedEnergyCost &&
+                   Player_EnergySupply.TotalBlueEnergy >= BlueEnergyCost &&
+                   Player_EnergySupply.TotalGreenEnergy >= GreenEnergyCost &&
+                   Player_EnergySupply.TotalPurpleEnergy >= PurpleEnergyCost
+                   )
+                {
+                    Utilize();
+                }
                 break;
 
             case "Tactical Field":
