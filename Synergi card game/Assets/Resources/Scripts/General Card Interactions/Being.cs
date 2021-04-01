@@ -153,7 +153,8 @@ public class Being : Card
     public override void IsClicked()
     {
         base.IsClicked();
-        switch(this.tag)
+
+        switch (this.tag)
         {
             case "Hand":
                 {
@@ -162,11 +163,17 @@ public class Being : Card
                     {
                         Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_HandProperty[i].GetComponent<Card>().IsSelected = false;
                     }
+
                     isSelected = true;
+
+                    if (!playerActive)
+                    {
+                        return;
+                    }
 
                     //Checks if the player has enough energy to play this card.
                     //If energyGiven >= energyCost, you can play the card.
-                    if(Player_EnergySupply.TotalRedEnergy >= RedEnergyCost &&
+                    if (Player_EnergySupply.TotalRedEnergy >= RedEnergyCost &&
                        Player_EnergySupply.TotalBlueEnergy >= BlueEnergyCost &&
                        Player_EnergySupply.TotalGreenEnergy >= GreenEnergyCost &&
                        Player_EnergySupply.TotalPurpleEnergy >= PurpleEnergyCost

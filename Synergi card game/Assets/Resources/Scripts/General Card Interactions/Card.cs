@@ -38,7 +38,10 @@ public class Card : MonoBehaviour
     protected int purpleEnergyCost;
     protected int convertedEnergyCost;
     protected string abilityText;
+    // for when a player has selected a card in the hand
     protected bool isSelected;
+    // for preventing a player from using a card when it is not their turn
+    protected bool playerActive;
     protected GameObject m_CardTitle;
     protected GameObject CardBorder;
     protected GameObject CardArt;
@@ -162,8 +165,8 @@ public class Card : MonoBehaviour
             abilityText = value;
         }
     }
-    
-    public Card(CardType cardType, CardColor cardColor, 
+
+    public Card(CardType cardType, CardColor cardColor,
         int redEnergyCost, int blueEnergyCost, int greenEnergyCost, int purpleEnergyCost, int genericEnergyCost,
         string cardTitle, string abilityText)
     {
@@ -175,14 +178,14 @@ public class Card : MonoBehaviour
         this.purpleEnergyCost = purpleEnergyCost;
         this.genericEnergyCost = genericEnergyCost;
         convertedEnergyCost = redEnergyCost + blueEnergyCost + greenEnergyCost + purpleEnergyCost + genericEnergyCost;
-        
+
         this.cardTitle = cardTitle;
         this.abilityText = abilityText;
     }
 
     //My DeFacto constructor. Unity's methods for creating a new being are not ideal.
-    public void Init(CardType cardType, CardColor cardColor, 
-        int redEnergyCost, int blueEnergyCost, int greenEnergyCost, int purpleEnergyCost, int genericEnergyCost, 
+    public void Init(CardType cardType, CardColor cardColor,
+        int redEnergyCost, int blueEnergyCost, int greenEnergyCost, int purpleEnergyCost, int genericEnergyCost,
         string cardTitle, string abilityText)
     {
         this.cardType = cardType;
@@ -198,8 +201,8 @@ public class Card : MonoBehaviour
         this.abilityText = abilityText;
     }
 
-   // Unity keeps on calling the CardType of my cards beings(the default type). I think this is because I'm setting
-   // the card type in the constructor instead of start (Unity gets weird when I assign things "before").
+    // Unity keeps on calling the CardType of my cards beings(the default type). I think this is because I'm setting
+    // the card type in the constructor instead of start (Unity gets weird when I assign things "before").
     protected virtual void Start()
     {
         //I may have to eventually change these so that its assigned an object in a serialized field instead.
@@ -262,7 +265,7 @@ public class Card : MonoBehaviour
         //This line of code is kinda useless since Card's SetUIComponent can't be called when this method
         //is called from a child. The override "hides" the base method.
         //SetUIComponentColor(cardColor);
-        
+
         CardAbility.GetComponent<TMP_Text>().text = $"{this.abilityText}";
         CardEnergyCost.GetComponent<TMP_Text>().text = $"{this.convertedEnergyCost}";
         m_CardTitle.GetComponent<TMP_Text>().text = $"{this.cardTitle}";
@@ -275,7 +278,7 @@ public class Card : MonoBehaviour
         switch (cardColor)
         {
             case CardColor.Blue:
-                
+
                 CardBorder.GetComponent<Image>().color = Color.blue;
                 break;
 
@@ -296,24 +299,30 @@ public class Card : MonoBehaviour
 
     public virtual void IsClicked()
     {
-        switch (Turn_Manager.currentPlayerTurn)
+        switch (Turn_Manager.CurrentPlayerTurn)
         {
             case Turn.P1:
                 switch (this.tag)
                 {
                     case "Hand":
                         //isSelected = true;
-                        print("This card has been clicked");
+                        playerActive = true;
+                        //print("This card has been clicked");
                         break;
+
                 }
                 break;
             case Turn.P2:
+                switch (this.tag)
                 {
-                    print("It's the other player's turn!");
-                    return;
+                    case "Hand":
+                        //isSelected = true;
+                        playerActive = false;
+                        //print("It's the other player's turn!");
+                        break;
                 }
+                break;
         }
-        
     }
 
     public override string ToString()

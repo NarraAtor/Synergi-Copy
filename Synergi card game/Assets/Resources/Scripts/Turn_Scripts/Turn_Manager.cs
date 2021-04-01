@@ -22,14 +22,55 @@ public enum Phases
 public class Turn_Manager : MonoBehaviour
 {
     public Phases CurrentPhase {get; set;}
-    public Turn currentPlayerTurn { get; set; }
+    public Turn CurrentPlayerTurn { get; set; }
+    [SerializeField] private Deck_InBattle_Manager P1deck;
+    //[SerializeField] private Deck_InBattle_Manager P2deck;
 
     // Start is called before the first frame update
     void Start()
     {
         CurrentPhase = Phases.Draw;
-        currentPlayerTurn = Turn.P2;
+        CurrentPlayerTurn = Turn.P1;
     }
 
-    
+    void Update()
+    {
+        //Phase State Machine
+        switch (CurrentPhase)
+        {
+            case Phases.Draw:
+                P1deck.Draw();
+                CurrentPhase = Phases.ReadyPhase;
+                break;
+            case Phases.ReadyPhase:
+                //Call turn effects
+                CurrentPhase = Phases.MainPhase1;
+                break;
+            case Phases.MainPhase1:
+                //TODO: End on user input or time end
+                CurrentPhase = Phases.BattlePhase;
+                break;
+            case Phases.BattlePhase:
+                //TODO: Give the user the chance to attack or end this phase. End on time end.
+                CurrentPhase = Phases.MainPhase2;
+                break;
+            case Phases.MainPhase2:
+                //TODO: End on user input or time end
+                CurrentPhase = Phases.EndPhase;
+                break;
+            case Phases.EndPhase:
+                switch (CurrentPlayerTurn)
+                {
+                    case Turn.P1:
+                        //TODO: CurrentPlayerTurn = Turn.P2
+                        break;
+                    case Turn.P2:
+                        CurrentPlayerTurn = Turn.P1;
+                        break;
+                }
+                break;
+        }
+    }
+
+
 }

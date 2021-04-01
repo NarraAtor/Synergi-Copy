@@ -74,6 +74,10 @@ public class Tactic : Card
         switch(this.tag)
         {
             case "Hand":
+                if (!playerActive)
+                {
+                    return;
+                }
                 //Checks if the player has enough energy to play this card.
                 //If energyGiven >= energyCost, you can play the card.
                 if (Player_EnergySupply.TotalRedEnergy >= RedEnergyCost &&
