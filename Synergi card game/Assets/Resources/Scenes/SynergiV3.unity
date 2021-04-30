@@ -11781,7 +11781,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1153992430}
   m_Layer: 5
-  m_Name: Enemy Resource Deck
+  m_Name: Enemy Resource Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12540,7 +12540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1223351595
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19547,7 +19547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1835008802
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21114,7 +21114,7 @@ GameObject:
   - component: {fileID: 1987065854}
   - component: {fileID: 1987065856}
   m_Layer: 5
-  m_Name: Player Resource Deck
+  m_Name: Player Resource Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

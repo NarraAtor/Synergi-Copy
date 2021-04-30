@@ -118,6 +118,20 @@ public class EnergySupplyManager : MonoBehaviour
             crystals.Add(child.GetComponent<Image>());
             child.gameObject.SetActive(false);
         }
+
+        //Mess with the order of the crystals so that it progression goes from left to right, then down.
+        List<Image> temporaryCrystalList = new List<Image>();
+        temporaryCrystalList.Add(crystals[0]);
+        temporaryCrystalList.Add(crystals[2]);
+        temporaryCrystalList.Add(crystals[4]);
+        temporaryCrystalList.Add(crystals[6]);
+        temporaryCrystalList.Add(crystals[8]);
+        temporaryCrystalList.Add(crystals[1]);
+        temporaryCrystalList.Add(crystals[3]);
+        temporaryCrystalList.Add(crystals[5]);
+        temporaryCrystalList.Add(crystals[7]);
+        temporaryCrystalList.Add(crystals[9]);
+        crystals = temporaryCrystalList;
     }
 
     /// <summary>
@@ -125,7 +139,7 @@ public class EnergySupplyManager : MonoBehaviour
     /// </summary>
     public void Add(CrystalData card)
     {
-        //ResourceDeckManager calls this method in its start method so  I'll put some of the code that
+        //ResourceDeckManager calls this method in its start method so I'll put some of the code that
         //would've gone in start in here.
         if(crystals.Count == 0)
         {
