@@ -23,8 +23,11 @@ public class Turn_Manager : MonoBehaviour
 {
     public Phases CurrentPhase {get; set;}
     public Turn CurrentPlayerTurn { get; set; }
-    [SerializeField] private Deck_InBattle_Manager P1deck;
-    //[SerializeField] private Deck_InBattle_Manager P2deck;
+    [SerializeField] private Deck_InBattle_Manager p1deck;
+    [SerializeField] private GameObject p1PhaseIndicator;
+    //[SerializeField] private Deck_InBattle_Manager p2deck;
+    //[SerializeField] private GameObject p2PhaseIndicator;
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +42,8 @@ public class Turn_Manager : MonoBehaviour
         switch (CurrentPhase)
         {
             case Phases.Draw:
-                P1deck.Draw();
+                //p1PhaseIndicator.
+                p1deck.Draw();
                 CurrentPhase = Phases.ReadyPhase;
                 break;
             case Phases.ReadyPhase:
