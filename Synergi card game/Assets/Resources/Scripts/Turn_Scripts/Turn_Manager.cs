@@ -125,7 +125,8 @@ public class Turn_Manager : MonoBehaviour
                         //TODO: End on user input or time end
                         SelectTurnIndicator(p1Main1PhaseIndicator);
                         CurrentPhase = Phases.BattlePhase;
-                        DeselectTurnIndicator(p1Main1PhaseIndicator);
+                        //Commented for testing.
+                        //DeselectTurnIndicator(p1Main1PhaseIndicator);
                         break;
                     case Phases.BattlePhase:
                         //TODO: Give the user the chance to attack or end this phase. End on time end.

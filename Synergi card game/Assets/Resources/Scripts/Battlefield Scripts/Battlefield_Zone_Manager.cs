@@ -5,10 +5,15 @@ using UnityEngine.UI;
 using TMPro;
 public class Battlefield_Zone_Manager : MonoBehaviour
 {
-    private GameObject[][] battlefieldMatrix = new GameObject[3][];
-    private GameObject[] frontRow = new GameObject[3];
-    private GameObject[] middleRow = new GameObject[3];
-    private GameObject[] backRow = new GameObject[3];
+    private GameObject[][] battlefieldMatrix;
+    private GameObject[] frontRow;
+    private GameObject[] middleRow;
+    private GameObject[] backRow;
+    //For convenience sake, lets add columns
+    private GameObject[] leftColumn;
+    private GameObject[] centerColumn;
+    private GameObject[] rightColumn;
+
     //positions are abbreviated for convinience.
     [SerializeField] private GameObject FL;
     [SerializeField] private GameObject FC;
@@ -31,18 +36,14 @@ public class Battlefield_Zone_Manager : MonoBehaviour
         //BL = GameObject.FindGameObjectWithTag("Back Left");
         //BC = GameObject.FindGameObjectWithTag("Back Center");
         //BR = GameObject.FindGameObjectWithTag("Back Right");
-        frontRow[0] = FL;
-        frontRow[1] = FC;
-        frontRow[2] = FR;
-        middleRow[0] = ML;
-        middleRow[1] = MC;
-        middleRow[2] = MR;
-        backRow[0] = BL;
-        backRow[1] = BC;
-        backRow[2] = BR;
-        battlefieldMatrix[0] = frontRow;
-        battlefieldMatrix[1] = middleRow;
-        battlefieldMatrix[2] = backRow;
+
+        frontRow = new GameObject[] { FL, FC, FR };
+        middleRow = new GameObject[] { ML, MC, MR };
+        backRow = new GameObject[] { BL, BC, BR };
+        battlefieldMatrix = new GameObject[][] { frontRow, middleRow, backRow };
+        leftColumn = new GameObject[] { FL, ML, BL };
+        centerColumn = new GameObject[] { FC, MC, BC };;
+        rightColumn = new GameObject[] { FR, MR, BR }; ;
     }
 
     // Update is called once per frame
