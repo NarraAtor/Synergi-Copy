@@ -305,6 +305,7 @@ public class Card : MonoBehaviour
                 switch (this.tag)
                 {
                     case "Hand":
+
                         //isSelected = true;
                         playerActive = true;
                         //print("This card has been clicked");

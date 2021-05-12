@@ -57,6 +57,7 @@ public class Battlefield_Zone_Manager : MonoBehaviour
     {
         foreach (GameObject[] row in battlefieldMatrix)
         {
+            print(row);
             foreach (GameObject position in row)
             {
                 position.SendMessage("ShowDeployableZone");
@@ -69,6 +70,7 @@ public class Battlefield_Zone_Manager : MonoBehaviour
     {
         foreach (GameObject[] row in battlefieldMatrix)
         {
+            //print(row);
             foreach (GameObject position in row)
             {
                 position.SendMessage("HideDeployableZone");
