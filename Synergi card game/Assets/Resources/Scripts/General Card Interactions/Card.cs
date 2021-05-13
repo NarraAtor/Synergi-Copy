@@ -309,7 +309,6 @@ public class Card : MonoBehaviour
     /// </summary>
     public virtual void IsClicked()
     {
-        print($"Clicked!");
         switch (Turn_Manager.CurrentPlayerTurn)
         {
             case Turn.P1:

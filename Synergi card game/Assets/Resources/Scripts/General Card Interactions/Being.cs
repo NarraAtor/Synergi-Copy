@@ -153,7 +153,6 @@ public class Being : Card
     public override void IsClicked()
     {
         base.IsClicked();
-        print($"Clicked!");
         switch (this.tag)
         {
             case "Hand":

@@ -9,6 +9,8 @@ public class CardZone : MonoBehaviour
     //If a card zone is unoccupied, it can have its data set and is set to active when a being or deployable is deployed in to it.
     protected bool isOccupied;
     protected bool isClickable;
+    protected bool occupiedByBeing;
+    protected bool occupiedByDeployable;
 
     private GameObject Player_Battlefield;
     private GameObject Player_Hand;
@@ -40,11 +42,14 @@ public class CardZone : MonoBehaviour
     {
         isOccupied = false;
         isClickable = false;
+        occupiedByBeing = false;
+        occupiedByDeployable = false;
         Player_Battlefield = GameObject.Find("Player Battlefield");
         Player_Hand = GameObject.Find("Player Hand");
         CardUI = new List<GameObject>();
         BeingScript = this.gameObject.GetComponent<Being>();
         DeployableScript = this.gameObject.GetComponent<Deployable>();
+
         //Get all the rect transforms in even the inactive components. We're using this to get access to all children.
         //Then, get the game object this component is attached to.
         foreach (RectTransform component in this.GetComponentsInChildren<RectTransform>(true))
@@ -132,10 +137,16 @@ public class CardZone : MonoBehaviour
 
     }
 
-    //Checks to see if the clicked card zone is unoccupied and is able to be clicked right now.
-    //It then checks through the player's hand for the card that is trying to be placed down.
-    //Finally, it sends a message to that card to Deploy itself and hides all of the other unoccupied
-    //selectable card zones.
+
+    /// <summary>
+    /// Purpose: Checks to see if the clicked card zone is unoccupied and is able to be clicked right now.
+    ///          It then checks through the player's hand for the card that is trying to be placed down.
+    ///          Finally, it sends a message to that card to Deploy itself and hides all of the other unoccupied
+    ///          selectable card zones.
+    /// 
+    ///           For occupied card zones, allows the user to interact with the card zone as if it were the card.
+    /// 
+    /// </summary>
     public void IsClicked()
     {
         GameObject card;
@@ -146,12 +157,10 @@ public class CardZone : MonoBehaviour
             for (int i = 0; i < Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_HandProperty.Count; i++)
             {
                 card = Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_HandProperty[i];
-
                 if (card.GetComponent<Card>().IsSelected)
                 {
                     if (card.GetComponent<Card>() is Being)
                     {
-
                         card.SendMessage("DeployBeing", this.gameObject.name);
                     }
                     if (card.GetComponent<Card>() is Deployable)
@@ -162,6 +171,21 @@ public class CardZone : MonoBehaviour
             }
             isOccupied = true;
             Player_Battlefield.BroadcastMessage("HideDeployableZones");
+        }
+
+        //If there is a card there, hide deployable zones 
+        else if(isOccupied && isClickable)
+        {
+            if(occupiedByBeing)
+            {
+                print("Clicked from Card Zone");
+                BeingScript.IsClicked();
+            }
+
+            if (occupiedByDeployable)
+            {
+                DeployableScript.IsClicked();
+            }
         }
 
     }
@@ -296,9 +320,10 @@ public class CardZone : MonoBehaviour
                              currentCard.PurpleEnergyCost,
                              currentCard.GenericEnergyCost, 
                              currentCard.CardTitle);
+            occupiedByBeing = true;
             //BeingScript =  currentCard; doesn't change the data on the editor.
             //Use this script to test how data is sent.
-            print(BeingScript);
+            //print(BeingScript);
         }
         if (cardData is Deployable)
         {
@@ -314,8 +339,9 @@ public class CardZone : MonoBehaviour
                                   currentCard.AbilityText, 
                                   currentCard.Durability, 
                                   currentCard.Subtype);
+            occupiedByDeployable = true;
             //Use this script to test how data is sent.
-            print(DeployableScript);
+            //print(DeployableScript);
         }
     }
 }
