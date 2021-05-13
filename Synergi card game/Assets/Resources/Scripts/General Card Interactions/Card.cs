@@ -26,6 +26,7 @@ public class Card : MonoBehaviour
     protected GameObject Player_Hand;
     protected GameObject Player_Graveyard;
     protected GameObject Player_Portrait;
+    protected GameObject Enemy_Portrait;
     protected Turn_Manager Turn_Manager;
     protected EnergySupplyManager Player_EnergySupply;
     [SerializeField] protected CardColor cardColor;
@@ -212,6 +213,7 @@ public class Card : MonoBehaviour
         Player_Hand = GameObject.Find("Player Hand");
         Player_Graveyard = GameObject.Find("Player Graveyard");
         Player_Portrait = GameObject.Find("PlayerPortrait");
+        Enemy_Portrait = GameObject.Find("EnemyPortrait");
         Player_EnergySupply = Player_Portrait.GetComponent<EnergySupplyManager>();
         Turn_Manager = GameObject.Find("GameManager").GetComponent<Turn_Manager>();
 
@@ -298,9 +300,16 @@ public class Card : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Purpose: Determines if a card be played. 
+    ///          If so, tells the child instance to do its thing via the cardIsPlayable bool.
+    ///          A card is considered playable until proven unplayable.
+    /// Restrictions:
+    /// TODO: Make either this method or another method that sends the card's data to a zoom in of sorts.
+    /// </summary>
     public virtual void IsClicked()
     {
+        print($"Clicked!");
         switch (Turn_Manager.CurrentPlayerTurn)
         {
             case Turn.P1:

@@ -153,7 +153,7 @@ public class Being : Card
     public override void IsClicked()
     {
         base.IsClicked();
-
+        print($"Clicked!");
         switch (this.tag)
         {
             case "Hand":
@@ -164,6 +164,22 @@ public class Being : Card
                         Player_Battlefield.SendMessage("ShowDeployableZones");
                     }
 
+                }
+                break;
+
+                
+            case "Front Left":
+            case "Middle Left":
+            case "Back Left":
+                {
+                    print($"Case Reached!");
+                    //combat system is below
+                    if (Turn_Manager.CurrentPhase == Phases.BattlePhase && Turn_Manager.CurrentPlayerTurn == Turn.P1)
+                    {
+                        //TODO:Declare attackers
+                        print($"Battle declaration sent!");
+                        Enemy_Portrait.GetComponent<LifeManager>().DamagePlayer(DamageTypes.Battle, CurrentPower);
+                    }
                 }
                 break;
         }

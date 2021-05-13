@@ -71,26 +71,22 @@ public class Tactic : Card
     //Alt 3, have selecting the card send it to a data array list of tactics.
     public override void IsClicked()
     {
+        base.IsClicked();
+
         switch(this.tag)
         {
             case "Hand":
-                if (!playerActive)
-                {
-                    return;
-                }
+
                 //Checks if the player has enough energy to play this card.
                 //If energyGiven >= energyCost, you can play the card.
-                if (Player_EnergySupply.TotalRedEnergy >= RedEnergyCost &&
-                   Player_EnergySupply.TotalBlueEnergy >= BlueEnergyCost &&
-                   Player_EnergySupply.TotalGreenEnergy >= GreenEnergyCost &&
-                   Player_EnergySupply.TotalPurpleEnergy >= PurpleEnergyCost
-                   )
+                if (cardIsPlayable)
                 {
                     Utilize();
                 }
                 break;
 
             case "Tactical Field":
+                //DestroyTactic is being called for testing purposes
                 DestroyTactic();
                 break;
         }

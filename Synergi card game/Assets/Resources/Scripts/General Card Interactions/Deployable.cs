@@ -91,27 +91,12 @@ public class Deployable : Card
     //Deployables should follow the same road map as beings deployment wise. Look at that for reference.
     public override void IsClicked()
     {
+        base.IsClicked();
         switch(this.tag)
         {
             case "Hand":
-                //Only one card may be selected at a time. I get a component in each child just so I have an array.
-                foreach (GameObject card in Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_HandProperty)
-                {
-                    card.GetComponent<Card>().IsSelected = false;
-                }
-                isSelected = true;
 
-                if (!playerActive)
-                {
-                    return;
-                }
-                //Checks if the player has enough energy to play this card.
-                //If energyGiven >= energyCost, you can play the card.
-                if (Player_EnergySupply.TotalRedEnergy >= RedEnergyCost &&
-                   Player_EnergySupply.TotalBlueEnergy >= BlueEnergyCost &&
-                   Player_EnergySupply.TotalGreenEnergy >= GreenEnergyCost &&
-                   Player_EnergySupply.TotalPurpleEnergy >= PurpleEnergyCost
-                   )
+                if (cardIsPlayable)
                 {
                     Player_Battlefield.SendMessage("ShowDeployableZones");
                 }
