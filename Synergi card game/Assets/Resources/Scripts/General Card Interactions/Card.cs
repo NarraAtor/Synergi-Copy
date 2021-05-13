@@ -42,6 +42,8 @@ public class Card : MonoBehaviour
     protected bool isSelected;
     // for preventing a player from using a card when it is not their turn
     protected bool playerActive;
+    // a bool that allows the Card class to do all the work for its children
+    protected bool cardIsPlayable;
     protected GameObject m_CardTitle;
     protected GameObject CardBorder;
     protected GameObject CardArt;
@@ -306,9 +308,43 @@ public class Card : MonoBehaviour
                 {
                     case "Hand":
 
-                        //isSelected = true;
                         playerActive = true;
-                        //print("This card has been clicked");
+                        cardIsPlayable = true;
+                        //Only one card may be selected at a time. I get a component in each child just so I have an array.
+                        for (int i = 0; i < Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_HandProperty.Count; i++)
+                        {
+                            Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_HandProperty[i].GetComponent<Card>().IsSelected = false;
+                        }
+
+                        isSelected = true;
+
+                        //Check if it is this player's turn 
+                        //(certain keywords/abilities will be a part of this if statement in the future. EX: Flash)
+                        if (!playerActive)
+                        {
+                            cardIsPlayable = false;
+                            return;
+                        }
+
+                        //Checks if it is the main phase at this moment
+                        //Again, certain keywords and abilities will be a part of this if statement in the future.)
+                        if (Turn_Manager.CurrentPhase != Phases.MainPhase1 &&
+                           Turn_Manager.CurrentPhase != Phases.MainPhase2)
+                        {
+                            cardIsPlayable = false;
+                            return;
+                        }
+
+                        //Checks if the player has enough energy to play this card.
+                        //If energyGiven < energyCost, you can't play the card.
+                        if (Player_EnergySupply.TotalRedEnergy < RedEnergyCost &&
+                           Player_EnergySupply.TotalBlueEnergy < BlueEnergyCost &&
+                           Player_EnergySupply.TotalGreenEnergy < GreenEnergyCost &&
+                           Player_EnergySupply.TotalPurpleEnergy < PurpleEnergyCost
+                           )
+                        {
+                            cardIsPlayable = false;
+                        }
                         break;
 
                 }

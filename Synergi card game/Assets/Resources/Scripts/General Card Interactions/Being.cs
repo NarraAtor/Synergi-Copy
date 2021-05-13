@@ -158,26 +158,8 @@ public class Being : Card
         {
             case "Hand":
                 {
-                    //Only one card may be selected at a time. I get a component in each child just so I have an array.
-                    for (int i = 0; i < Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_HandProperty.Count; i++)
-                    {
-                        Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_HandProperty[i].GetComponent<Card>().IsSelected = false;
-                    }
-
-                    isSelected = true;
-
-                    if (!playerActive)
-                    {
-                        return;
-                    }
-
-                    //Checks if the player has enough energy to play this card.
-                    //If energyGiven >= energyCost, you can play the card.
-                    if (Player_EnergySupply.TotalRedEnergy >= RedEnergyCost &&
-                       Player_EnergySupply.TotalBlueEnergy >= BlueEnergyCost &&
-                       Player_EnergySupply.TotalGreenEnergy >= GreenEnergyCost &&
-                       Player_EnergySupply.TotalPurpleEnergy >= PurpleEnergyCost
-                       )
+                    
+                    if (cardIsPlayable)
                     {
                         Player_Battlefield.SendMessage("ShowDeployableZones");
                     }
