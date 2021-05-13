@@ -22,8 +22,10 @@ public enum Phases
 /// </summary>
 public class Turn_Manager : MonoBehaviour
 {
-    public Phases CurrentPhase {get; set;}
+    public Phases CurrentPhase { get; set; }
     public Turn CurrentPlayerTurn { get; set; }
+    public bool P1ReadyToPass { get; set; }
+    //public bool P2ReadyToPass { get; set; }
     [SerializeField] private Deck_InBattle_Manager p1deck;
     [SerializeField] private GameObject p1PhaseIndicator;
     private GameObject p1DrawPhaseIndicator;
@@ -41,15 +43,20 @@ public class Turn_Manager : MonoBehaviour
     private GameObject p2EndPhaseIndicator;
     //[SerializeField] private Deck_InBattle_Manager p2deck;
     //[SerializeField] private GameObject p2PhaseIndicator;
-
+    private bool canDrawCardsDuringDrawPhase;
 
     // Start is called before the first frame update
     void Start()
     {
+        //Setting the phase passer to false means the phase only changes if and only if the player 
+        P1ReadyToPass = false;
+
+        canDrawCardsDuringDrawPhase = false;
+
         //Find each phase indicator
-        foreach(Transform child in p1PhaseIndicator.GetComponentInChildren<Transform>())
+        foreach (Transform child in p1PhaseIndicator.GetComponentInChildren<Transform>())
         {
-            switch(child.gameObject.name)
+            switch (child.gameObject.name)
             {
                 case "Draw Phase Indicator":
                     p1DrawPhaseIndicator = child.gameObject;
@@ -110,41 +117,79 @@ public class Turn_Manager : MonoBehaviour
                 {
                     //TODO: Make each phase broadcast messages to the entire game.
                     case Phases.Draw:
+                        
                         SelectTurnIndicator(p1DrawPhaseIndicator);
-                        p1deck.Draw();
-                        CurrentPhase = Phases.ReadyPhase;
-                        DeselectTurnIndicator(p1DrawPhaseIndicator);
+
+                        //Gets rid of infinite draw glitch
+                        if(canDrawCardsDuringDrawPhase)
+                        {
+                            p1deck.Draw();
+                            canDrawCardsDuringDrawPhase = false;
+                        }
+
+                        if (P1ReadyToPass)
+                        {
+
+                            CurrentPhase = Phases.ReadyPhase;
+                            DeselectTurnIndicator(p1DrawPhaseIndicator);
+                        }
+                        P1ReadyToPass = false;
+
                         break;
                     case Phases.ReadyPhase:
                         //Call turn effects
                         SelectTurnIndicator(p1ReadyPhaseIndicator);
-                        CurrentPhase = Phases.MainPhase1;
-                        DeselectTurnIndicator(p1ReadyPhaseIndicator);
+                        if (P1ReadyToPass)
+                        {
+                            CurrentPhase = Phases.MainPhase1;
+                            DeselectTurnIndicator(p1ReadyPhaseIndicator);
+                        }
+                        P1ReadyToPass = false;
+
                         break;
                     case Phases.MainPhase1:
                         //TODO: End on user input or time end
                         SelectTurnIndicator(p1Main1PhaseIndicator);
-                        //Commented for testing.
-                        //CurrentPhase = Phases.BattlePhase;
-                        //DeselectTurnIndicator(p1Main1PhaseIndicator);
+                        if (P1ReadyToPass)
+                        {
+                            CurrentPhase = Phases.BattlePhase;
+                            DeselectTurnIndicator(p1Main1PhaseIndicator);
+                        }
+                        P1ReadyToPass = false;
+
                         break;
                     case Phases.BattlePhase:
                         //TODO: Give the user the chance to attack or end this phase. End on time end.
                         SelectTurnIndicator(p1BattlePhaseIndicator);
-                        CurrentPhase = Phases.MainPhase2;
-                        DeselectTurnIndicator(p1BattlePhaseIndicator);
+                        if (P1ReadyToPass)
+                        {
+                            CurrentPhase = Phases.MainPhase2;
+                            DeselectTurnIndicator(p1BattlePhaseIndicator);
+                        }
+                        P1ReadyToPass = false;
+
                         break;
                     case Phases.MainPhase2:
                         //TODO: End on user input or time end
                         SelectTurnIndicator(p1Main2PhaseIndicator);
-                        CurrentPhase = Phases.EndPhase;
-                        DeselectTurnIndicator(p1Main2PhaseIndicator);
+                        if (P1ReadyToPass)
+                        {
+                            CurrentPhase = Phases.EndPhase;
+                            DeselectTurnIndicator(p1Main2PhaseIndicator);
+                        }
+                        P1ReadyToPass = false;
+
                         break;
                     case Phases.EndPhase:
                         SelectTurnIndicator(p1EndPhaseIndicator);
-                        CurrentPlayerTurn = Turn.P2;
-                        CurrentPhase = Phases.Draw;
-                        DeselectTurnIndicator(p1EndPhaseIndicator);
+                        if (P1ReadyToPass)
+                        {
+                            CurrentPlayerTurn = Turn.P2;
+                            CurrentPhase = Phases.Draw;
+                            DeselectTurnIndicator(p1EndPhaseIndicator);
+                        }
+                        P1ReadyToPass = false;
+                        canDrawCardsDuringDrawPhase = true;
                         break;
                 }
                 break;
@@ -155,44 +200,73 @@ public class Turn_Manager : MonoBehaviour
                     case Phases.Draw:
                         SelectTurnIndicator(p2DrawPhaseIndicator);
                         //p2deck.Draw();
-                        CurrentPhase = Phases.ReadyPhase;
-                        DeselectTurnIndicator(p2DrawPhaseIndicator);
+                        if (P1ReadyToPass)
+                        {
+                            CurrentPhase = Phases.ReadyPhase;
+                            DeselectTurnIndicator(p2DrawPhaseIndicator);
+                        }
+                        P1ReadyToPass = false;
+
                         break;
                     case Phases.ReadyPhase:
                         //Call turn effects
                         SelectTurnIndicator(p2ReadyPhaseIndicator);
-                        CurrentPhase = Phases.MainPhase1;
-                        DeselectTurnIndicator(p2ReadyPhaseIndicator);
+                        if (P1ReadyToPass)
+                        {
+                            CurrentPhase = Phases.MainPhase1;
+                            DeselectTurnIndicator(p2ReadyPhaseIndicator);
+                        }
+                        P1ReadyToPass = false;
+
                         break;
                     case Phases.MainPhase1:
                         //TODO: End on user input or time end
                         SelectTurnIndicator(p2Main1PhaseIndicator);
-                        CurrentPhase = Phases.BattlePhase;
-                        DeselectTurnIndicator(p2Main1PhaseIndicator);
+                        if (P1ReadyToPass)
+                        {
+                            CurrentPhase = Phases.BattlePhase;
+                            DeselectTurnIndicator(p2Main1PhaseIndicator);
+                        }
+                        P1ReadyToPass = false;
+
                         break;
                     case Phases.BattlePhase:
                         //TODO: Give the user the chance to attack or end this phase. End on time end.
                         SelectTurnIndicator(p2BattlePhaseIndicator);
-                        CurrentPhase = Phases.MainPhase2;
-                        DeselectTurnIndicator(p2BattlePhaseIndicator);
+                        if (P1ReadyToPass)
+                        {
+                            CurrentPhase = Phases.MainPhase2;
+                            DeselectTurnIndicator(p2BattlePhaseIndicator);
+                        }
+                        P1ReadyToPass = false;
+
                         break;
                     case Phases.MainPhase2:
                         //TODO: End on user input or time end
                         SelectTurnIndicator(p2Main2PhaseIndicator);
-                        CurrentPhase = Phases.EndPhase;
-                        DeselectTurnIndicator(p2Main2PhaseIndicator);
+                        if (P1ReadyToPass)
+                        {
+                            CurrentPhase = Phases.EndPhase;
+                            DeselectTurnIndicator(p2Main2PhaseIndicator);
+                        }
+                        P1ReadyToPass = false;
+
                         break;
                     case Phases.EndPhase:
-                        //SelectTurnIndicator(p2EndPhaseIndicator);
-                        //Commented to prevent a stack overflow.
-                        //CurrentPlayerTurn = Turn.P1;
-                        //CurrentPhase = Phases.Draw;
-                        //DeselectTurnIndicator(p2EndPhaseIndicator);
+                        SelectTurnIndicator(p2EndPhaseIndicator);
+                        if (P1ReadyToPass)
+                        {
+                            CurrentPlayerTurn = Turn.P1;
+                            CurrentPhase = Phases.Draw;
+                            DeselectTurnIndicator(p2EndPhaseIndicator);
+                        }
+                        P1ReadyToPass = false;
+                        canDrawCardsDuringDrawPhase = true;
                         break;
                 }
                 break;
         }
-        
+
     }
 
     /// <summary>
@@ -218,4 +292,5 @@ public class Turn_Manager : MonoBehaviour
         gameObject.GetComponentInChildren<Image>().color = Color.black;
         gameObject.GetComponentInChildren<Text>().color = Color.white;
     }
+
 }

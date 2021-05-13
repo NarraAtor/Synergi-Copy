@@ -22,10 +22,10 @@ MonoBehaviour:
     y: 30
     width: 1536
     height: 731
-  m_MinSize: {x: 885, y: 348}
-  m_MaxSize: {x: 16010, y: 8048}
+  m_MinSize: {x: 883, y: 348}
+  m_MaxSize: {x: 16008, y: 8048}
   vertical: 0
-  controlID: 5037
+  controlID: 5031
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -163,7 +163,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: defbffff8e100000a61100002015000042170000
+      m_ExpandedIDs: a2fbffff84300000a63000002a340000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -208,10 +208,10 @@ MonoBehaviour:
     y: 0
     width: 699
     height: 731
-  m_MinSize: {x: 408, y: 348}
-  m_MaxSize: {x: 8008, y: 8048}
+  m_MinSize: {x: 404, y: 348}
+  m_MaxSize: {x: 8004, y: 8048}
   vertical: 1
-  controlID: 5038
+  controlID: 5032
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -233,10 +233,10 @@ MonoBehaviour:
     y: 0
     width: 699
     height: 454
-  m_MinSize: {x: 408, y: 224}
-  m_MaxSize: {x: 8008, y: 4024}
+  m_MinSize: {x: 404, y: 224}
+  m_MaxSize: {x: 8004, y: 4024}
   vertical: 0
-  controlID: 5017
+  controlID: 5033
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -295,9 +295,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 754.2047, y: 95.51317, z: 9.8125}
+    m_Target: {x: 25.700012, y: 260.425, z: 0}
     speed: 2
-    m_Value: {x: 754.2047, y: 95.51317, z: 9.8125}
+    m_Value: {x: 25.700012, y: 260.425, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -329,9 +329,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 22
+    m_Target: 227.76189
     speed: 2
-    m_Value: 22
+    m_Value: 227.76189
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -388,8 +388,8 @@ MonoBehaviour:
     y: 0
     width: 374
     height: 454
-  m_MinSize: {x: 204, y: 224}
-  m_MaxSize: {x: 4004, y: 4024}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
@@ -460,20 +460,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Resources/Scripts/Battlefield Scripts
+    - Assets/Resources/Scripts/Turn_Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Resources/Scripts/Battlefield Scripts
+  - Assets/Resources/Scripts/Turn_Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\NarraAtor\source\repos\Synergi-Copy\Synergi card game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 128}
-    m_SelectedIDs: ca0b0000
-    m_LastClickedID: 3018
-    m_ExpandedIDs: 00000000fe0a0000040b0000260b0000360b0000400b0000960b0000740c0000780c0000a20c0000240d0000620d0000a00d00005c0e0000760f0000800f00006e36000070360000
+    m_SelectedIDs: 6c0e0000
+    m_LastClickedID: 3692
+    m_ExpandedIDs: 00000000dc270000e227000004280000142800001e28000074280000522900005629000080290000022a0000402a00007e2a00003a2b0000542c00005e2c00009436000096360000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -501,7 +501,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fe0a0000040b0000260b0000360b0000400b0000960b0000740c0000780c0000a20c0000240d0000620d0000a00d00005c0e0000760f0000800f00006e36000070360000
+    m_ExpandedIDs: 00000000dc270000e227000004280000142800001e28000074280000522900005629000080290000022a0000402a00007e2a00003a2b0000542c00005e2c00009436000096360000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -526,9 +526,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: aa110000
-    m_LastClickedInstanceID: 4522
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: b4130000
+    m_LastClickedInstanceID: 5044
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000000000000c310000a00a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
