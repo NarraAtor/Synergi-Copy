@@ -25,6 +25,10 @@ public class Turn_Manager : MonoBehaviour
     public Phases CurrentPhase { get; set; }
     public Turn CurrentPlayerTurn { get; set; }
     public bool P1ReadyToPass { get; set; }
+    public bool AttackersDeclared { get; set; }
+    public bool BlockersDeclared { get; set; }
+    public Queue<Being> AttackerQueue { get; set; }
+
     //public bool P2ReadyToPass { get; set; }
     [SerializeField] private Deck_InBattle_Manager p1deck;
     [SerializeField] private GameObject p1PhaseIndicator;
@@ -46,7 +50,7 @@ public class Turn_Manager : MonoBehaviour
     [SerializeField] private GameObject p1PassButton;
     //[SerializeField] private GameObject p2PassButton;
     private bool canDrawCardsDuringDrawPhase;
-    private Queue<Being> attackerQueue;
+
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +59,7 @@ public class Turn_Manager : MonoBehaviour
         P1ReadyToPass = false;
 
         canDrawCardsDuringDrawPhase = false;
-        attackerQueue = new Queue<Being>();
+        AttackerQueue = new Queue<Being>();
 
         //Find each phase indicator
         foreach (Transform child in p1PhaseIndicator.GetComponentInChildren<Transform>())
@@ -169,10 +173,21 @@ public class Turn_Manager : MonoBehaviour
                     case Phases.BattlePhase:
                         //TODO: Give the user the chance to attack or end this phase. End on time end.
                         SelectTurnIndicator(p1BattlePhaseIndicator);
+                        AttackersDeclared = false;
+                        BlockersDeclared = false;
+
                         //Test
-                        if (P1ReadyToPass)
+                        if (AttackersDeclared)
                         {
-                            attackerQueue.Clear();
+
+                        }
+                        else if(BlockersDeclared)
+                        {
+
+                        }
+                        else if (P1ReadyToPass)
+                        {
+                            AttackerQueue.Clear();
                             CurrentPhase = Phases.MainPhase2;
                             DeselectTurnIndicator(p1BattlePhaseIndicator);
                         }
@@ -311,10 +326,11 @@ public class Turn_Manager : MonoBehaviour
     {
         //TEST
         print($"Attackers Confirmed!");
-        while(attackerQueue.Count > 0)
+        while(AttackerQueue.Count > 0)
         {
             //attackerQueue.Dequeue().CommitAttack();
         }
     }
+
 
 }

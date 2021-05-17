@@ -252,9 +252,20 @@ public class Being : Card
         }
     }
 
+    /// <summary>
+    /// Purpose: Has the card declare an attack on the enemy.
+    ///          Revealing an attack indicator.
+    /// </summary>
+    protected virtual void DeclareAttack()
+    {
+        Turn_Manager.AttackerQueue.Enqueue(this);
+        BattleNumber.GetComponent<TextMeshProUGUI>().text = $"{Turn_Manager.AttackerQueue.Count}";
+    }
+
     public override string ToString()
     {
         return base.ToString() + $", {originalMaxHealth}, {originalPower}, {currentMaxHealth}, {currentHealth}, {currentPower},{species}";
     }
+
 
 }
