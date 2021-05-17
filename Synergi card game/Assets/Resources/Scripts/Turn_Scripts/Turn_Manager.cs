@@ -43,7 +43,10 @@ public class Turn_Manager : MonoBehaviour
     private GameObject p2EndPhaseIndicator;
     //[SerializeField] private Deck_InBattle_Manager p2deck;
     //[SerializeField] private GameObject p2PhaseIndicator;
+    [SerializeField] private GameObject p1PassButton;
+    //[SerializeField] private GameObject p2PassButton;
     private bool canDrawCardsDuringDrawPhase;
+    private Queue<Being> attackerQueue;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +55,7 @@ public class Turn_Manager : MonoBehaviour
         P1ReadyToPass = false;
 
         canDrawCardsDuringDrawPhase = false;
+        attackerQueue = new Queue<Being>();
 
         //Find each phase indicator
         foreach (Transform child in p1PhaseIndicator.GetComponentInChildren<Transform>())
@@ -103,6 +107,10 @@ public class Turn_Manager : MonoBehaviour
                     break;
             }
         }
+
+        //Find the pass buttons.
+        p1PassButton = GameObject.Find("Player Pass Button");
+
         CurrentPhase = Phases.Draw;
         CurrentPlayerTurn = Turn.P1;
     }
@@ -161,8 +169,10 @@ public class Turn_Manager : MonoBehaviour
                     case Phases.BattlePhase:
                         //TODO: Give the user the chance to attack or end this phase. End on time end.
                         SelectTurnIndicator(p1BattlePhaseIndicator);
+                        //Test
                         if (P1ReadyToPass)
                         {
+                            attackerQueue.Clear();
                             CurrentPhase = Phases.MainPhase2;
                             DeselectTurnIndicator(p1BattlePhaseIndicator);
                         }
@@ -291,6 +301,20 @@ public class Turn_Manager : MonoBehaviour
         //print($"{gameObject.name}, {CurrentPlayerTurn} Deselected");
         gameObject.GetComponentInChildren<Image>().color = Color.black;
         gameObject.GetComponentInChildren<Text>().color = Color.white;
+    }
+
+    /// <summary>
+    /// Purpose: Confirms that all currently selected attackers are attacking.
+    ///          This will call each card's attack method in order of selection.
+    /// </summary>
+    public void CommitAttackers()
+    {
+        //TEST
+        print($"Attackers Confirmed!");
+        while(attackerQueue.Count > 0)
+        {
+            //attackerQueue.Dequeue().CommitAttack();
+        }
     }
 
 }

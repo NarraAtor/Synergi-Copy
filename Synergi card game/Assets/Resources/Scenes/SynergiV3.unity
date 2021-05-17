@@ -11558,6 +11558,7 @@ MonoBehaviour:
   p1deck: {fileID: 7926349265602486298}
   p1PhaseIndicator: {fileID: 1033060309}
   p2PhaseIndicator: {fileID: 2038116136}
+  p1PassButton: {fileID: 0}
 --- !u!1 &962913493
 GameObject:
   m_ObjectHideFlags: 0
@@ -11856,6 +11857,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 983995460}
+  - component: {fileID: 983995461}
   m_Layer: 0
   m_Name: Player Pass Button
   m_TagString: Untagged
@@ -11879,6 +11881,18 @@ Transform:
   m_Father: {fileID: 2107065398}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &983995461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983995459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ee3672eb0d86449be412ba82ebf3a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &998770551 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4654046998260711724, guid: cb3e109b672844241907d4b726a1d4c4,
@@ -16117,9 +16131,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 959040486}
-        m_MethodName: set_P1ReadyToPass
-        m_Mode: 6
+      - m_Target: {fileID: 983995461}
+        m_MethodName: IsClicked
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

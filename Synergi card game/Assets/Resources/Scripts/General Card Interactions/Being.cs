@@ -16,7 +16,7 @@ public class Being : Card
     protected GameObject BeingStatsTextbox;
     protected GameObject BeingStatsText;
     protected GameObject Placement_Text_B;
-
+    protected GameObject BattleNumber;
     public int OriginalMaxHealth
     {
         get
@@ -117,23 +117,23 @@ public class Being : Card
         {
             //CardUI.Add(component.gameObject);
             //This code allows me to access each component more specifically.
-            //A switch would've been better here, oh well.
-
-            if (component.gameObject.name == "BeingStatsBorder")
+            switch(component.gameObject.name)
             {
-                BeingStatsBorder = component.gameObject;
-            }
-            if (component.gameObject.name == "BeingStatsTextbox")
-            {
-                BeingStatsTextbox = component.gameObject;
-            }
-            if (component.gameObject.name == "BeingStatsText")
-            {
-                BeingStatsText = component.gameObject;
-            }
-            if (component.gameObject.name == "Placement Text B")
-            {
-                Placement_Text_B = component.gameObject;
+                case "BeingStatsBorder":
+                    BeingStatsBorder = component.gameObject;
+                    break;
+                case "BeingStatsTextbox":
+                    BeingStatsTextbox = component.gameObject;
+                    break;
+                case "BeingStatsText":
+                    BeingStatsText = component.gameObject;
+                    break;
+                case "Placement Text B":
+                    Placement_Text_B = component.gameObject;
+                    break;
+                case "BattleNumber":
+                    BattleNumber = component.gameObject;
+                    break;
             }
         }
         SetCardUI();
@@ -171,12 +171,37 @@ public class Being : Card
             case "Middle Left":
             case "Back Left":
                 {
-                    print($"Case Reached!");
+                    print($"Attacked down left lane!");
                     //combat system is below
                     if (Turn_Manager.CurrentPhase == Phases.BattlePhase && Turn_Manager.CurrentPlayerTurn == Turn.P1)
                     {
                         //TODO:Declare attackers
-                        print($"Battle declaration sent!");
+                        Enemy_Portrait.GetComponent<LifeManager>().DamagePlayer(DamageTypes.Battle, CurrentPower);
+                    }
+                }
+                break;
+            case "Front Center":
+            case "Middle Center":
+            case "Back Center":
+                {
+                    print($"Attacked down middle lane!");
+                    //combat system is below
+                    if (Turn_Manager.CurrentPhase == Phases.BattlePhase && Turn_Manager.CurrentPlayerTurn == Turn.P1)
+                    {
+                        //TODO:Declare attackers
+                        Enemy_Portrait.GetComponent<LifeManager>().DamagePlayer(DamageTypes.Battle, CurrentPower);
+                    }
+                }
+                break;
+            case "Front Right":
+            case "Middle Right":
+            case "Back Right":
+                {
+                    print($"Attacked down right lane!");
+                    //combat system is below
+                    if (Turn_Manager.CurrentPhase == Phases.BattlePhase && Turn_Manager.CurrentPlayerTurn == Turn.P1)
+                    {
+                        //TODO:Declare attackers
                         Enemy_Portrait.GetComponent<LifeManager>().DamagePlayer(DamageTypes.Battle, CurrentPower);
                     }
                 }
