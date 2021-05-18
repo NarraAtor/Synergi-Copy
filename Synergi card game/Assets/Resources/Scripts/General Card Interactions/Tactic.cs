@@ -126,19 +126,19 @@ public class Tactic : Card
         /* switch (cardColor)
         {
             case CardColor.Blue:
-                BeingStatsBorder.GetComponent<Image>().color = Color.blue;
+                beingStatsBorder.GetComponent<Image>().color = Color.blue;
                 break;
 
             case CardColor.Green:
-                BeingStatsBorder.GetComponent<Image>().color = Color.green;
+                beingStatsBorder.GetComponent<Image>().color = Color.green;
                 break;
 
             case CardColor.Red:
-                BeingStatsBorder.GetComponent<Image>().color = Color.red;
+                beingStatsBorder.GetComponent<Image>().color = Color.red;
                 break;
 
             case CardColor.Purple:
-                BeingStatsBorder.GetComponent<Image>().color = Color.green;
+                beingStatsBorder.GetComponent<Image>().color = Color.green;
                 break;
         } */
     }

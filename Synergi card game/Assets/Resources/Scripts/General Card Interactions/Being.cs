@@ -12,11 +12,11 @@ public class Being : Card
     protected int currentHealth;
     protected int currentPower;
     protected string species;
-    protected GameObject BeingStatsBorder;
-    protected GameObject BeingStatsTextbox;
-    protected GameObject BeingStatsText;
-    protected GameObject Placement_Text_B;
-    protected GameObject BattleNumber;
+    protected GameObject beingStatsBorder;
+    protected GameObject beingStatsTextbox;
+    protected GameObject beingStatsText;
+    protected GameObject placement_Text_B;
+    protected GameObject battleNumber;
     public int OriginalMaxHealth
     {
         get
@@ -84,6 +84,14 @@ public class Being : Card
             species = value;
         }
     }
+
+    public GameObject BattleNumber
+    {
+        get
+        {
+            return battleNumber;
+        }
+    }
     public Being(CardColor cardColor, int originalMaxHealth, int originalPower,
     string species, string abilityText,
     int redEnergyCost, int blueEnergyCost, int greenEnergyCost, int purpleEnergyCost, int genericEnergyCost, string cardTitle)
@@ -120,19 +128,19 @@ public class Being : Card
             switch(component.gameObject.name)
             {
                 case "BeingStatsBorder":
-                    BeingStatsBorder = component.gameObject;
+                    beingStatsBorder = component.gameObject;
                     break;
                 case "BeingStatsTextbox":
-                    BeingStatsTextbox = component.gameObject;
+                    beingStatsTextbox = component.gameObject;
                     break;
                 case "BeingStatsText":
-                    BeingStatsText = component.gameObject;
+                    beingStatsText = component.gameObject;
                     break;
                 case "Placement Text B":
-                    Placement_Text_B = component.gameObject;
+                    placement_Text_B = component.gameObject;
                     break;
                 case "BattleNumber":
-                    BattleNumber = component.gameObject;
+                    battleNumber = component.gameObject;
                     break;
             }
         }
@@ -143,13 +151,10 @@ public class Being : Card
     // Update is called once per frame
     void Update()
     {
-
     }
 
     //When a being is clicked while in the hand, it will prompt the user to select a card zone to deploy the being or hit back.
-    //TODO:
-    //Step 4, have selecting a card zone send data about this card to the card zone.
-    //Step 5, have switching the card's tag move it to the proper position on the battlefield.
+    //TODO: Make a back button;
     public override void IsClicked()
     {
         base.IsClicked();
@@ -172,11 +177,16 @@ public class Being : Card
             case "Back Left":
                 {
                     print($"Attacked down left lane!");
-                    //combat system is below
+                    //attack declaration system is below
+                    //may be moved to turn manager
+
                     if (Turn_Manager.CurrentPhase == Phases.BattlePhase && Turn_Manager.CurrentPlayerTurn == Turn.P1)
                     {
-                        //TODO:Declare attackers
-                        Enemy_Portrait.GetComponent<LifeManager>().DamagePlayer(DamageTypes.Battle, CurrentPower);
+                        Turn_Manager.DeclareAttacker(this);
+                        
+
+                        //Deal Damage to the enemy
+                        //Enemy_Portrait.GetComponent<LifeManager>().DamagePlayer(DamageTypes.Battle, CurrentPower);
                     }
                 }
                 break;
@@ -225,7 +235,7 @@ public class Being : Card
         base.SetCardUI();
         SetUIComponentColor(cardColor);
         CardTypeAndSubtypes.GetComponent<TMP_Text>().text = $"Being/{this.Species}";
-        BeingStatsText.GetComponent<TMP_Text>().text = $"{this.OriginalMaxHealth}/{this.OriginalPower}";
+        beingStatsText.GetComponent<TMP_Text>().text = $"{this.OriginalMaxHealth}/{this.OriginalPower}";
     }
 
     //Sets the color of this card equal to the cardColor variable.
@@ -235,19 +245,19 @@ public class Being : Card
         switch (cardColor)
         {
             case CardColor.Blue:
-                BeingStatsBorder.GetComponent<Image>().color = Color.blue;
+                beingStatsBorder.GetComponent<Image>().color = Color.blue;
                 break;
 
             case CardColor.Green:
-                BeingStatsBorder.GetComponent<Image>().color = Color.green;
+                beingStatsBorder.GetComponent<Image>().color = Color.green;
                 break;
 
             case CardColor.Red:
-                BeingStatsBorder.GetComponent<Image>().color = Color.red;
+                beingStatsBorder.GetComponent<Image>().color = Color.red;
                 break;
 
             case CardColor.Purple:
-                BeingStatsBorder.GetComponent<Image>().color = Color.green;
+                beingStatsBorder.GetComponent<Image>().color = Color.green;
                 break;
         }
     }
@@ -259,7 +269,7 @@ public class Being : Card
     protected virtual void DeclareAttack()
     {
         Turn_Manager.AttackerQueue.Enqueue(this);
-        BattleNumber.GetComponent<TextMeshProUGUI>().text = $"{Turn_Manager.AttackerQueue.Count}";
+        battleNumber.GetComponent<TextMeshProUGUI>().text = $"{Turn_Manager.AttackerQueue.Count}";
     }
 
     public override string ToString()

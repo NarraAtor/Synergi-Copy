@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public enum Turn
 {
@@ -329,6 +330,25 @@ public class Turn_Manager : MonoBehaviour
         while(AttackerQueue.Count > 0)
         {
             //attackerQueue.Dequeue().CommitAttack();
+        }
+    }
+
+    public void DeclareAttacker(Being being)
+    {
+        //TODO:Declare attackers
+        //if a player clicks on a being already in the queue, clear the entire thing
+        if (AttackerQueue.Contains(being))
+        {
+            for (int i = 0; i < AttackerQueue.Count; i++)
+            {
+                AttackerQueue.Dequeue().BattleNumber.SetActive(false);
+            }
+        }
+        else
+        {
+            AttackerQueue.Enqueue(being);
+            //being.BattleNumber.SetActive(true);
+            being.BattleNumber.GetComponent<TextMeshProUGUI>().text = $"{AttackerQueue.Count}";
         }
     }
 
