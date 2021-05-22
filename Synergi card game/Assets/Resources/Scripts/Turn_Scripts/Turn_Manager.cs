@@ -327,19 +327,25 @@ public class Turn_Manager : MonoBehaviour
     {
         //TEST
         print($"Attackers Confirmed!");
-        while(AttackerQueue.Count > 0)
-        {
-            //attackerQueue.Dequeue().CommitAttack();
-        }
+        //while(AttackerQueue.Count > 0)
+        //{
+        //    //attackerQueue.Dequeue().CommitAttack();
+        //}
     }
 
+    /// <summary>
+    /// Purpose: Triggers when a player clicks on a being during their battlephase.
+    ///          If the clicked being is already in the queue, clear the entire thing.
+    ///          Otherwise, add it to the queue.
+    /// </summary>
+    /// <param name="being"></param>
     public void DeclareAttacker(Being being)
     {
         //TODO:Declare attackers
-        //if a player clicks on a being already in the queue, clear the entire thing
+        
         if (AttackerQueue.Contains(being))
         {
-            for (int i = 0; i < AttackerQueue.Count; i++)
+            while(AttackerQueue.Count > 0)
             {
                 AttackerQueue.Dequeue().BattleNumber.SetActive(false);
             }
@@ -347,7 +353,7 @@ public class Turn_Manager : MonoBehaviour
         else
         {
             AttackerQueue.Enqueue(being);
-            //being.BattleNumber.SetActive(true);
+            being.BattleNumber.SetActive(true);
             being.BattleNumber.GetComponent<TextMeshProUGUI>().text = $"{AttackerQueue.Count}";
         }
     }

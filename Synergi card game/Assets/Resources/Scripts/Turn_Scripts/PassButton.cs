@@ -25,10 +25,13 @@ public class PassButton : MonoBehaviour
     {
         //TODO: Make text change if and only if beings are in the process of declaring attacks/blocks.
         //TODO: Make text change depending if the player is declaring attackers or blockers.
-        if(gameManager.GetComponent<Turn_Manager>().CurrentPhase == Phases.BattlePhase)
+        //TODO: Make this work for both players
+        if (gameManager.GetComponent<Turn_Manager>().CurrentPhase == Phases.BattlePhase &&
+           gameManager.GetComponent<Turn_Manager>().CurrentPlayerTurn == Turn.P1 &&
+           gameManager.GetComponent<Turn_Manager>().AttackerQueue.Count > 1)
         {
             //Test
-            passButton.GetComponentInChildren<Text>().text = $"ATTACK";
+                passButton.GetComponentInChildren<Text>().text = $"ATTACK";
         }
         else
         {

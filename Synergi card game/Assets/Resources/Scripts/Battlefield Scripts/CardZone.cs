@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Author: Eric Fotang
+/// Purpose: Manages a card zone in the game.
+/// TODO: Make changes to the cases of variables, general code "cleanliness" clean up.
+/// </summary>
 public class CardZone : MonoBehaviour
 {
     //If a card zone is unoccupied, it can have its data set and is set to active when a being or deployable is deployed in to it.
@@ -12,6 +17,7 @@ public class CardZone : MonoBehaviour
     protected bool occupiedByBeing;
     protected bool occupiedByDeployable;
 
+    //All of these private variables need ot be lowerCamelCased
     private GameObject Player_Battlefield;
     private GameObject Player_Hand;
     private List<GameObject> CardUI;
@@ -30,6 +36,7 @@ public class CardZone : MonoBehaviour
     private GameObject BeingStatsTextbox;
     private GameObject BeingStatsText;
     private GameObject Placement_Text_B;
+    private GameObject BattleNumber;
     private GameObject DeployableDurabilityBorder;
     private GameObject DeployableDurabilityTextbox;
     private GameObject DeployableDurabilityText;
@@ -109,6 +116,10 @@ public class CardZone : MonoBehaviour
             if (component.gameObject.name == "Placement Text B")
             {
                 Placement_Text_B = component.gameObject;
+            }
+            if (component.gameObject.name == "BattleNumber")
+            {
+                BattleNumber = component.gameObject;
             }
             if (component.gameObject.name == "DeployableDurabilityBorder")
             {
@@ -261,7 +272,8 @@ public class CardZone : MonoBehaviour
                 if (uicomponent == DeployableDurabilityBorder ||
                    uicomponent == DeployableDurabilityTextbox ||
                    uicomponent == DeployableDurabilityText ||
-                   uicomponent == Placement_Text_D)
+                   uicomponent == Placement_Text_D ||
+                   uicomponent == BattleNumber)
                 {
                     uicomponent.SetActive(false);
                 }
@@ -283,7 +295,8 @@ public class CardZone : MonoBehaviour
                 if (uicomponent == BeingStatsBorder ||
                    uicomponent == BeingStatsTextbox ||
                    uicomponent == BeingStatsText ||
-                   uicomponent == Placement_Text_B)
+                   uicomponent == Placement_Text_B ||
+                   uicomponent == BattleNumber)
                 {
                     uicomponent.SetActive(false);
                 }

@@ -195,11 +195,16 @@ public class Being : Card
             case "Back Center":
                 {
                     print($"Attacked down middle lane!");
-                    //combat system is below
+                    //attack declaration system is below
+                    //may be moved to turn manager
+
                     if (Turn_Manager.CurrentPhase == Phases.BattlePhase && Turn_Manager.CurrentPlayerTurn == Turn.P1)
                     {
-                        //TODO:Declare attackers
-                        Enemy_Portrait.GetComponent<LifeManager>().DamagePlayer(DamageTypes.Battle, CurrentPower);
+                        Turn_Manager.DeclareAttacker(this);
+
+
+                        //Deal Damage to the enemy
+                        //Enemy_Portrait.GetComponent<LifeManager>().DamagePlayer(DamageTypes.Battle, CurrentPower);
                     }
                 }
                 break;
@@ -208,11 +213,16 @@ public class Being : Card
             case "Back Right":
                 {
                     print($"Attacked down right lane!");
-                    //combat system is below
+                    //attack declaration system is below
+                    //may be moved to turn manager
+
                     if (Turn_Manager.CurrentPhase == Phases.BattlePhase && Turn_Manager.CurrentPlayerTurn == Turn.P1)
                     {
-                        //TODO:Declare attackers
-                        Enemy_Portrait.GetComponent<LifeManager>().DamagePlayer(DamageTypes.Battle, CurrentPower);
+                        Turn_Manager.DeclareAttacker(this);
+
+
+                        //Deal Damage to the enemy
+                        //Enemy_Portrait.GetComponent<LifeManager>().DamagePlayer(DamageTypes.Battle, CurrentPower);
                     }
                 }
                 break;
