@@ -132,7 +132,7 @@ public class Graveyard_Manager : MonoBehaviour
     //Adds a new card to the graveyard and replaces the top card image (or if there's no cards at all the nothingness) with the new card's image.
     public void AddCardToGraveyard(Card card)
     {
-        card.gameObject.tag = "Graveyard";
+        card.CurrentPosition = CardPositions.Graveyard;
         GraveyardArray.Add(card);
         SetUIComponentsToActive(card);
         SendDataToCard(card);

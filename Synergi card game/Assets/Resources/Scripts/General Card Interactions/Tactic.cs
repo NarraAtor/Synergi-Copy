@@ -101,7 +101,6 @@ public class Tactic : Card
 
     public virtual void DestroyTactic()
     {
-        this.tag = "Graveyard";
         Player_Graveyard.GetComponent<Graveyard_Manager>().SendMessage("AddCardToGraveyard", this.GetComponent<Tactic>());
         TacticGrid.GetComponent<Tactic_Zone_Manager>().SendMessage("Remove", this.GetComponent<Tactic>());
     }
