@@ -73,9 +73,9 @@ public class Tactic : Card
     {
         base.IsClicked();
 
-        switch(this.tag)
+        switch(currentPosition)
         {
-            case "Hand":
+            case CardPositions.Hand:
 
                 //Checks if the player has enough energy to play this card.
                 //If energyGiven >= energyCost, you can play the card.
@@ -85,15 +85,10 @@ public class Tactic : Card
                 }
                 break;
 
-            case "Tactical Field":
+            case CardPositions.TacticalField:
                 //DestroyTactic is being called for testing purposes
                 DestroyTactic();
                 break;
-        }
-        if (this.tag == "Tactical Field")
-        {
-            //TODO: Remove the DestroyTactic method so that cards are only destroyed by other card effects.
-            DestroyTactic();
         }
     }
 

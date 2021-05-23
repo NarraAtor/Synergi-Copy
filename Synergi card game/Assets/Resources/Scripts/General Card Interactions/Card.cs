@@ -18,6 +18,22 @@ public enum CardType
     Deployable,
     Crystal
 }
+public enum CardPositions
+{
+    FrontLeft,
+    FrontCenter,
+    FrontRight,
+    MiddleLeft,
+    MiddleCenter,
+    MiddleRight,
+    BackLeft,
+    BackCenter,
+    BackRight,
+    Hand,
+    TacticalField,
+    Graveyard,
+    Abyss
+}
 public class Card : MonoBehaviour
 {
     //For when a card is in hand and clicked by a player.
@@ -31,6 +47,7 @@ public class Card : MonoBehaviour
     protected EnergySupplyManager Player_EnergySupply;
     [SerializeField] protected CardColor cardColor;
     protected CardType cardType;
+    protected CardPositions currentPosition;
     protected string cardTitle;
     protected int genericEnergyCost;
     protected int blueEnergyCost;
@@ -166,6 +183,17 @@ public class Card : MonoBehaviour
         set
         {
             abilityText = value;
+        }
+    }
+    public CardPositions CurrentPosition
+    {
+        get
+        {
+            return currentPosition;
+        }
+        set
+        {
+            currentPosition = value;
         }
     }
 
@@ -312,9 +340,9 @@ public class Card : MonoBehaviour
         switch (Turn_Manager.CurrentPlayerTurn)
         {
             case Turn.P1:
-                switch (this.tag)
+                switch (currentPosition)
                 {
-                    case "Hand":
+                    case CardPositions.Hand:
 
                         playerActive = true;
                         cardIsPlayable = true;
@@ -358,9 +386,9 @@ public class Card : MonoBehaviour
                 }
                 break;
             case Turn.P2:
-                switch (this.tag)
+                switch (currentPosition)
                 {
-                    case "Hand":
+                    case CardPositions.Hand:
                         //isSelected = true;
                         playerActive = false;
                         //print("It's the other player's turn!");

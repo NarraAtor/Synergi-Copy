@@ -158,9 +158,9 @@ public class Being : Card
     public override void IsClicked()
     {
         base.IsClicked();
-        switch (this.tag)
+        switch (currentPosition)
         {
-            case "Hand":
+            case CardPositions.Hand:
                 {
                     
                     if (cardIsPlayable)
@@ -172,9 +172,9 @@ public class Being : Card
                 break;
 
                 
-            case "Front Left":
-            case "Middle Left":
-            case "Back Left":
+            case CardPositions.FrontLeft:
+            case CardPositions.MiddleLeft:
+            case CardPositions.BackLeft:
                 {
                     print($"Attacked down left lane!");
                     //attack declaration system is below
@@ -190,11 +190,11 @@ public class Being : Card
                     }
                 }
                 break;
-            case "Front Center":
-            case "Middle Center":
-            case "Back Center":
+            case CardPositions.FrontCenter:
+            case CardPositions.MiddleCenter:
+            case CardPositions.BackCenter:
                 {
-                    print($"Attacked down middle lane!");
+                    print($"Attacked down center lane!");
                     //attack declaration system is below
                     //may be moved to turn manager
 
@@ -208,9 +208,9 @@ public class Being : Card
                     }
                 }
                 break;
-            case "Front Right":
-            case "Middle Right":
-            case "Back Right":
+            case CardPositions.FrontRight:
+            case CardPositions.MiddleRight:
+            case CardPositions.BackRight:
                 {
                     print($"Attacked down right lane!");
                     //attack declaration system is below

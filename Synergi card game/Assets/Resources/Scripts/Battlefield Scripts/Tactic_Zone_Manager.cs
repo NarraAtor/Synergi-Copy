@@ -30,13 +30,8 @@ public class Tactic_Zone_Manager : MonoBehaviour
     {
         //These 2 lines of code ensures that script doesn't change the tag of the card in hand.
         Tactic NewTactic = Instantiate<Tactic>(tacticCard, TacticGrid.transform);
+        NewTactic.CurrentPosition = CardPositions.TacticalField;
         TacticArray.Add(NewTactic);
-
-        //Give each tactic card in the list the "Tactical Field" tag.
-        foreach(Tactic card in TacticArray)
-        {
-            card.tag = "Tactical Field";
-        }
     }
 
     //Method for when it is time for a tactic to leave the field.

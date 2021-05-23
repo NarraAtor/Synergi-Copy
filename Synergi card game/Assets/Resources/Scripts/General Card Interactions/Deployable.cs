@@ -92,9 +92,9 @@ public class Deployable : Card
     public override void IsClicked()
     {
         base.IsClicked();
-        switch(this.tag)
+        switch(currentPosition)
         {
-            case "Hand":
+            case CardPositions.Hand:
 
                 if (cardIsPlayable)
                 {

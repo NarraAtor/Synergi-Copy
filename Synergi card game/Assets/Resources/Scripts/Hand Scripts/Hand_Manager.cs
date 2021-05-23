@@ -24,11 +24,12 @@ public class Hand_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Adds all the cards in the hand at the start of the game to the HandManager's List.
         ChildrenOfPlayer_Hand = this.GetComponentsInChildren<RectTransform>();
         CardsInPlayer_Hand = new List<GameObject>();
         foreach (RectTransform child in ChildrenOfPlayer_Hand)
         {
-            if (child.tag == "Hand")
+            if (child.gameObject.GetComponent<Card>() != null)
             {
                 CardsInPlayer_Hand.Add(child.gameObject);
             }
@@ -38,7 +39,7 @@ public class Hand_Manager : MonoBehaviour
     /// <summary>
     /// Purpose: Adds a card to the hand based on the type of CardData it is.
     /// </summary>
-    /// <param name="card"></param>
+    /// <param name="card">the card to add to the hand</param>
     public void AddCardToHand(CardData card)
     {
         if (card is BeingData)
@@ -46,7 +47,7 @@ public class Hand_Manager : MonoBehaviour
             BeingData beingData = (BeingData)card;
             //addedCard.CardColor = beingData.CardColorProperty;
             GameObject addedCard = Instantiate(BeingPrefab, this.gameObject.transform);
-            addedCard.tag = "Hand";
+            addedCard.GetComponent<Being>().CurrentPosition = CardPositions.Hand;
             addedCard.GetComponent<Being>().Init(beingData.CardColorProperty, beingData.OriginalMaxHealth,
             beingData.OriginalPower, beingData.Species, beingData.AbilityText,
             beingData.RedEnergyCost, beingData.BlueEnergyCost, beingData.GreenEnergyCost, beingData.PurpleEnergyCost, beingData.GenericEnergyCost,
@@ -57,7 +58,7 @@ public class Hand_Manager : MonoBehaviour
         {
             TacticData tacticData = (TacticData)card;
             GameObject addedCard = Instantiate(TacticPrefab, this.gameObject.transform);
-            addedCard.tag = "Hand";
+            addedCard.GetComponent<Tactic>().CurrentPosition = CardPositions.Hand;
             addedCard.GetComponent<Tactic>().Init(tacticData.CardColorProperty,
                                                   tacticData.RedEnergyCost, 
                                                   tacticData.BlueEnergyCost, 
@@ -74,7 +75,7 @@ public class Hand_Manager : MonoBehaviour
         {
             DeployableData deployableData = (DeployableData)card;
             GameObject addedCard = Instantiate(DeployablePrefab, this.gameObject.transform);
-            addedCard.tag = "Hand";
+            addedCard.GetComponent<Deployable>().CurrentPosition = CardPositions.Hand;
             addedCard.GetComponent<Deployable>().Init(deployableData.CardColorProperty, 
                                                       deployableData.RedEnergyCost, 
                                                       deployableData.BlueEnergyCost, 
