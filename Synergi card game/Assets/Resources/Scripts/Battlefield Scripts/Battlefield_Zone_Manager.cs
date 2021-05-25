@@ -39,6 +39,43 @@ public class Battlefield_Zone_Manager : MonoBehaviour
         //BC = GameObject.FindGameObjectWithTag("Back Center");
         //BR = GameObject.FindGameObjectWithTag("Back Right");
 
+        //Assign Positions to each card zone's card.
+        FL.GetComponent<Being>().CurrentPosition = CardPositions.FrontLeft;
+        FL.GetComponent<Deployable>().CurrentPosition = CardPositions.FrontLeft;
+        FL.GetComponent<Card>().CurrentPosition = CardPositions.FrontLeft;
+
+        FC.GetComponent<Being>().CurrentPosition = CardPositions.FrontCenter;
+        FC.GetComponent<Deployable>().CurrentPosition = CardPositions.FrontCenter;
+        FC.GetComponent<Card>().CurrentPosition = CardPositions.FrontCenter;
+
+        FR.GetComponent<Being>().CurrentPosition = CardPositions.FrontRight;
+        FR.GetComponent<Deployable>().CurrentPosition = CardPositions.FrontRight;
+        FR.GetComponent<Card>().CurrentPosition = CardPositions.FrontRight;
+
+        ML.GetComponent<Being>().CurrentPosition = CardPositions.MiddleLeft;
+        ML.GetComponent<Deployable>().CurrentPosition = CardPositions.MiddleLeft;
+        ML.GetComponent<Card>().CurrentPosition = CardPositions.MiddleLeft;
+
+        MC.GetComponent<Being>().CurrentPosition = CardPositions.MiddleCenter;
+        MC.GetComponent<Deployable>().CurrentPosition = CardPositions.MiddleCenter;
+        MC.GetComponent<Card>().CurrentPosition = CardPositions.MiddleCenter;
+
+        MR.GetComponent<Being>().CurrentPosition = CardPositions.MiddleRight;
+        MR.GetComponent<Deployable>().CurrentPosition = CardPositions.MiddleRight;
+        MR.GetComponent<Card>().CurrentPosition = CardPositions.MiddleRight;
+
+        BL.GetComponent<Being>().CurrentPosition = CardPositions.BackLeft;
+        BL.GetComponent<Deployable>().CurrentPosition = CardPositions.BackLeft;
+        BL.GetComponent<Card>().CurrentPosition = CardPositions.BackLeft;
+
+        BC.GetComponent<Being>().CurrentPosition = CardPositions.BackCenter;
+        BC.GetComponent<Deployable>().CurrentPosition = CardPositions.BackCenter;
+        BC.GetComponent<Card>().CurrentPosition = CardPositions.BackCenter;
+
+        BR.GetComponent<Being>().CurrentPosition = CardPositions.BackRight;
+        BR.GetComponent<Deployable>().CurrentPosition = CardPositions.BackRight;
+        BR.GetComponent<Card>().CurrentPosition = CardPositions.BackRight;
+
         frontRow = new GameObject[] { FL, FC, FR };
         middleRow = new GameObject[] { ML, MC, MR };
         backRow = new GameObject[] { BL, BC, BR };
@@ -51,7 +88,19 @@ public class Battlefield_Zone_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //FOR TROUBLESHOOTING THE DECLARE ATTACKERS ERROR.
+        //foreach(GameObject card in frontRow)
+        //{
+        //    print(card.GetComponent<CardZone>().BeingScript.CurrentPosition);
+        //}
+        //foreach (GameObject card in middleRow)
+        //{
+        //    print(card.GetComponent<CardZone>().BeingScript.CurrentPosition);
+        //}
+        //foreach (GameObject card in backRow)
+        //{
+        //    print(card.GetComponent<CardZone>().BeingScript.CurrentPosition);
+        //}
     }
 
     //Used for showing the user which card zones they can deploy beings and deployables to and making them selectable.

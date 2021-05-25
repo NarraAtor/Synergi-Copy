@@ -338,11 +338,16 @@ public class Turn_Manager : MonoBehaviour
     ///          If the clicked being is already in the queue, clear the entire thing.
     ///          Otherwise, add it to the queue.
     /// </summary>
-    /// <param name="being"></param>
+    /// <param name="being">the being being added to the queue</param>
     public void DeclareAttacker(Being being)
     {
         //TODO:Declare attackers
         
+        //ERROR: Clicking cards that are horizontally adjacent from right to left clears the list.
+        //       Error does not occur in literally any other scenario: 
+        //       - h. adjacent from left to right works.
+        //       - v. adjacent in any otder works.
+        //       - d. adjacent in any order works.
         if (AttackerQueue.Contains(being))
         {
             while(AttackerQueue.Count > 0)

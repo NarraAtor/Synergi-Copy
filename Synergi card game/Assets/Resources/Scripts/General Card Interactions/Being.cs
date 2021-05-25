@@ -176,7 +176,7 @@ public class Being : Card
             case CardPositions.MiddleLeft:
             case CardPositions.BackLeft:
                 {
-                    print($"Attacked down left lane!");
+                    print($"Attacked down left lane! {currentPosition}");
                     //attack declaration system is below
                     //may be moved to turn manager
 
@@ -194,7 +194,7 @@ public class Being : Card
             case CardPositions.MiddleCenter:
             case CardPositions.BackCenter:
                 {
-                    print($"Attacked down center lane!");
+                    print($"Attacked down center lane!  {currentPosition}");
                     //attack declaration system is below
                     //may be moved to turn manager
 
@@ -212,7 +212,7 @@ public class Being : Card
             case CardPositions.MiddleRight:
             case CardPositions.BackRight:
                 {
-                    print($"Attacked down right lane!");
+                    print($"Attacked down right lane! {currentPosition}");
                     //attack declaration system is below
                     //may be moved to turn manager
 
@@ -272,15 +272,6 @@ public class Being : Card
         }
     }
 
-    /// <summary>
-    /// Purpose: Has the card declare an attack on the enemy.
-    ///          Revealing an attack indicator.
-    /// </summary>
-    protected virtual void DeclareAttack()
-    {
-        Turn_Manager.AttackerQueue.Enqueue(this);
-        battleNumber.GetComponent<TextMeshProUGUI>().text = $"{Turn_Manager.AttackerQueue.Count}";
-    }
 
     public override string ToString()
     {

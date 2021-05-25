@@ -41,8 +41,9 @@ public class CardZone : MonoBehaviour
     private GameObject DeployableDurabilityTextbox;
     private GameObject DeployableDurabilityText;
     private GameObject Placement_Text_D;
-    private Being BeingScript;
-    private Deployable DeployableScript;
+    //TODO: make these private
+    public Being BeingScript;
+    public Deployable DeployableScript;
 
     // Start is called before the first frame update
     void Start()
@@ -56,12 +57,10 @@ public class CardZone : MonoBehaviour
         CardUI = new List<GameObject>();
         BeingScript = this.gameObject.GetComponent<Being>();
         DeployableScript = this.gameObject.GetComponent<Deployable>();
-
         //Get all the rect transforms in even the inactive components. We're using this to get access to all children.
         //Then, get the game object this component is attached to.
         foreach (RectTransform component in this.GetComponentsInChildren<RectTransform>(true))
         {
-
             CardUI.Add(component.gameObject);
             //This code allows me to access each component more specifically.
             //A switch would've been better here, oh well.
@@ -137,7 +136,6 @@ public class CardZone : MonoBehaviour
             {
                 Placement_Text_D = component.gameObject;
             }
-
         }
 
     }
@@ -191,6 +189,8 @@ public class CardZone : MonoBehaviour
             {
                 print("Clicked from Card Zone");
                 BeingScript.IsClicked();
+                //Color change for testing
+                BeingScript.SetUIComponentColor(CardColor.Blue);
             }
 
             if (occupiedByDeployable)
@@ -334,6 +334,7 @@ public class CardZone : MonoBehaviour
                              currentCard.GenericEnergyCost, 
                              currentCard.CardTitle);
             occupiedByBeing = true;
+            print(BeingScript.CurrentPosition);
             //BeingScript =  currentCard; doesn't change the data on the editor.
             //Use this script to test how data is sent.
             //print(BeingScript);
