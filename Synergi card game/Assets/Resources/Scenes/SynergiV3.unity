@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 1
+  currentPosition: 0
 --- !u!1 &34887574
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,6 +521,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b8bbc9f3c42cb4fa416aa070d40219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BeingScript: {fileID: 0}
+  DeployableScript: {fileID: 0}
 --- !u!114 &48091892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,6 +536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 0
+  currentPosition: 0
 --- !u!114 &48091893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,6 +550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 0
+  currentPosition: 0
   durability: 0
   subtype: 
 --- !u!224 &50669890 stripped
@@ -2245,6 +2250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 0
+  currentPosition: 0
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -3687,6 +3693,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b8bbc9f3c42cb4fa416aa070d40219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BeingScript: {fileID: 0}
+  DeployableScript: {fileID: 0}
 --- !u!114 &392108424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3700,6 +3708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 0
+  currentPosition: 0
 --- !u!114 &392108425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3713,6 +3722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 0
+  currentPosition: 0
   durability: 0
   subtype: 
 --- !u!1 &397503178
@@ -4137,6 +4147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b8bbc9f3c42cb4fa416aa070d40219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BeingScript: {fileID: 0}
+  DeployableScript: {fileID: 0}
 --- !u!114 &423376237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4150,6 +4162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 0
+  currentPosition: 0
 --- !u!114 &423376238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4163,6 +4176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 0
+  currentPosition: 0
   durability: 0
   subtype: 
 --- !u!1 &424387921
@@ -6989,7 +7003,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7460,7 +7474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8912,6 +8926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 0
+  currentPosition: 0
   durability: 0
   subtype: 
 --- !u!1 &674443446
@@ -9303,6 +9318,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b8bbc9f3c42cb4fa416aa070d40219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BeingScript: {fileID: 0}
+  DeployableScript: {fileID: 0}
 --- !u!114 &732354505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9316,6 +9333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 0
+  currentPosition: 0
 --- !u!114 &732354506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9329,6 +9347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 0
+  currentPosition: 0
   durability: 0
   subtype: 
 --- !u!1001 &740521899
@@ -10438,6 +10457,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b8bbc9f3c42cb4fa416aa070d40219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BeingScript: {fileID: 0}
+  DeployableScript: {fileID: 0}
 --- !u!114 &852232211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10451,6 +10472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 0
+  currentPosition: 0
 --- !u!114 &852232212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10464,6 +10486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 0
+  currentPosition: 0
   durability: 0
   subtype: 
 --- !u!1 &860143071
@@ -11784,6 +11807,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b8bbc9f3c42cb4fa416aa070d40219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BeingScript: {fileID: 0}
+  DeployableScript: {fileID: 0}
 --- !u!114 &933419552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11797,6 +11822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 0
+  currentPosition: 0
 --- !u!114 &933419553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11810,6 +11836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 0
+  currentPosition: 0
   durability: 0
   subtype: 
 --- !u!1 &951419870
@@ -12130,6 +12157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b8bbc9f3c42cb4fa416aa070d40219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BeingScript: {fileID: 0}
+  DeployableScript: {fileID: 0}
 --- !u!114 &967945458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12143,6 +12172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 0
+  currentPosition: 0
 --- !u!114 &967945459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12156,6 +12186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 0
+  currentPosition: 0
   durability: 0
   subtype: 
 --- !u!1 &971715154
@@ -12364,7 +12395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -13432,7 +13463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -13884,6 +13915,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b8bbc9f3c42cb4fa416aa070d40219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BeingScript: {fileID: 0}
+  DeployableScript: {fileID: 0}
 --- !u!114 &1161881806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13897,6 +13930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 0
+  currentPosition: 0
 --- !u!114 &1161881807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13910,6 +13944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 0
+  currentPosition: 0
   durability: 0
   subtype: 
 --- !u!1 &1164531601
@@ -14527,7 +14562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -15058,7 +15093,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -16562,6 +16597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 1
+  currentPosition: 0
   durability: 50
   subtype: Tank
 --- !u!1 &1288985669 stripped
@@ -16582,6 +16618,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b8bbc9f3c42cb4fa416aa070d40219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BeingScript: {fileID: 0}
+  DeployableScript: {fileID: 0}
 --- !u!114 &1288985673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16595,6 +16633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 0
+  currentPosition: 0
 --- !u!114 &1288985674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16608,6 +16647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardColor: 0
+  currentPosition: 0
   durability: 0
   subtype: 
 --- !u!1 &1294093133
@@ -22739,7 +22779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -23842,7 +23882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

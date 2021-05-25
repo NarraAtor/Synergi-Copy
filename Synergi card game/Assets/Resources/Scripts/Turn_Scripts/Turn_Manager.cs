@@ -337,14 +337,12 @@ public class Turn_Manager : MonoBehaviour
     /// Purpose: Triggers when a player clicks on a being during their battlephase.
     ///          If the clicked being is already in the queue, clear the entire thing.
     ///          Otherwise, add it to the queue.
-    ///          Each being occupies a unique spot on the battlefield. 
-    ///          This is used to figure out the specific card that is attacking.
     /// </summary>
     /// <param name="being">the being being added to the queue</param>
     public void DeclareAttacker(Being being)
     {
         //TODO:Declare attackers
-
+        
         //ERROR: Clicking cards that are horizontally adjacent from right to left clears the list.
         //       Error does not occur in literally any other scenario: 
         //       - h. adjacent from left to right works.
@@ -352,16 +350,7 @@ public class Turn_Manager : MonoBehaviour
         //       - d. adjacent in any order works.
         //       The game appears to think the player is clicking the same card. I believe this is a result of using Queue.Contains.
         //       I'll try a different bool.
-        //       The error seems to be a scene issue rather than a code issue. The issue is resolved by clicking near the being's name.
-
-        Being[] attackerArray = AttackerQueue.ToArray();
-        List<CardPositions> attackerPositions = new List<CardPositions>(attackerArray.Length);
-        for (int i = 0; i < attackerArray.Length; i++)
-        {
-            attackerPositions.Add(attackerArray[i].CurrentPosition);
-        }
-
-        if (attackerPositions.Contains(being.CurrentPosition))
+        if (AttackerQueue.Contains(being))
         {
             while(AttackerQueue.Count > 0)
             {
