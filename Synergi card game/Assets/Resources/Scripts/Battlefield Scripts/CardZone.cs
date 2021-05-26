@@ -189,8 +189,6 @@ public class CardZone : MonoBehaviour
             {
                 print("Clicked from Card Zone");
                 BeingScript.IsClicked();
-                //Color change for testing
-                BeingScript.SetUIComponentColor(CardColor.Blue);
             }
 
             if (occupiedByDeployable)
@@ -334,7 +332,6 @@ public class CardZone : MonoBehaviour
                              currentCard.GenericEnergyCost, 
                              currentCard.CardTitle);
             occupiedByBeing = true;
-            print(BeingScript.CurrentPosition);
             //BeingScript =  currentCard; doesn't change the data on the editor.
             //Use this script to test how data is sent.
             //print(BeingScript);

@@ -47,8 +47,7 @@ public class Card : MonoBehaviour
     protected EnergySupplyManager Player_EnergySupply;
     [SerializeField] protected CardColor cardColor;
     protected CardType cardType;
-    //TODO: Remove SerializeField
-    [SerializeField] protected CardPositions currentPosition;
+    protected CardPositions currentPosition;
     protected string cardTitle;
     protected int genericEnergyCost;
     protected int blueEnergyCost;

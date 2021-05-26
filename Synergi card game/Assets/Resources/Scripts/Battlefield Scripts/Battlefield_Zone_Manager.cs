@@ -26,6 +26,8 @@ public class Battlefield_Zone_Manager : MonoBehaviour
     [SerializeField] private GameObject BL;
     [SerializeField] private GameObject BC;
     [SerializeField] private GameObject BR;
+
+    private GameObject p1PassButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -81,8 +83,10 @@ public class Battlefield_Zone_Manager : MonoBehaviour
         backRow = new GameObject[] { BL, BC, BR };
         battlefieldMatrix = new GameObject[][] { frontRow, middleRow, backRow };
         leftColumn = new GameObject[] { FL, ML, BL };
-        centerColumn = new GameObject[] { FC, MC, BC };;
-        rightColumn = new GameObject[] { FR, MR, BR }; ;
+        centerColumn = new GameObject[] { FC, MC, BC };
+        rightColumn = new GameObject[] { FR, MR, BR };
+
+        p1PassButton = GameObject.Find("Player Pass Button");
     }
 
     // Update is called once per frame
@@ -103,20 +107,24 @@ public class Battlefield_Zone_Manager : MonoBehaviour
         //}
     }
 
-    //Used for showing the user which card zones they can deploy beings and deployables to and making them selectable.
+    /// <summary>
+    /// Purpose: Used for showing the user which card zones they can deploy beings and deployables to and making them selectable.
+    /// </summary>
     public void ShowDeployableZones()
     {
         foreach (GameObject[] row in battlefieldMatrix)
         {
-            print(row);
             foreach (GameObject position in row)
             {
-                position.SendMessage("ShowDeployableZone");
+                position.GetComponent<CardZone>().ShowDeployableZone();
             }
         }
+        p1PassButton.GetComponent<PassButton>().ChangeButtonText(PassButton.PassButtonStates.BACK);
     }
 
-    //Used for hiding all unoccupied zones to prevent the player from clicking them anymore.
+    /// <summary>
+    /// Purpose: Used for hiding all unoccupied zones to prevent the player from clicking them anymore.
+    /// </summary>
     public void HideDeployableZones()
     {
         foreach (GameObject[] row in battlefieldMatrix)
@@ -124,8 +132,9 @@ public class Battlefield_Zone_Manager : MonoBehaviour
             //print(row);
             foreach (GameObject position in row)
             {
-                position.SendMessage("HideDeployableZone");
+                position.GetComponent<CardZone>().HideDeployableZone();
             }
         }
+        p1PassButton.GetComponent<PassButton>().ChangeButtonText(PassButton.PassButtonStates.PASS);
     }
 }

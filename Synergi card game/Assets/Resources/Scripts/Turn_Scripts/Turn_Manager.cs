@@ -182,10 +182,10 @@ public class Turn_Manager : MonoBehaviour
                         {
 
                         }
-                        else if(BlockersDeclared)
-                        {
-
-                        }
+                        //else if(BlockersDeclared)
+                        //{
+                        //
+                        //}
                         else if (P1ReadyToPass)
                         {
                             AttackerQueue.Clear();
@@ -327,10 +327,15 @@ public class Turn_Manager : MonoBehaviour
     {
         //TEST
         print($"Attackers Confirmed!");
-        //while(AttackerQueue.Count > 0)
-        //{
-        //    //attackerQueue.Dequeue().CommitAttack();
-        //}
+        while(AttackerQueue.Count > 0)
+        {
+            AttackerQueue.Peek().CommitAttack();
+            AttackerQueue.Dequeue().BattleNumber.SetActive(false);
+        }
+        p1PassButton.GetComponent<PassButton>().ChangeButtonText(PassButton.PassButtonStates.PASS);
+        //p1PassButton.GetComponent<PassButton>().ChangeButtonText(PassButton.PassButtonStates.PASS);
+        //TODO: attackerDeclared = true;
+        //P1ReadyToPass = true;
     }
 
     /// <summary>
@@ -355,6 +360,7 @@ public class Turn_Manager : MonoBehaviour
             while(AttackerQueue.Count > 0)
             {
                 AttackerQueue.Dequeue().BattleNumber.SetActive(false);
+                p1PassButton.GetComponent<PassButton>().ChangeButtonText(PassButton.PassButtonStates.PASS);
             }
         }
         else
@@ -362,6 +368,7 @@ public class Turn_Manager : MonoBehaviour
             AttackerQueue.Enqueue(being);
             being.BattleNumber.SetActive(true);
             being.BattleNumber.GetComponent<TextMeshProUGUI>().text = $"{AttackerQueue.Count}";
+            p1PassButton.GetComponent<PassButton>().ChangeButtonText(PassButton.PassButtonStates.ATTACK);
         }
     }
 

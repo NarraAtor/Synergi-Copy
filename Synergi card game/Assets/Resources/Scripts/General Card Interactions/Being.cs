@@ -239,6 +239,15 @@ public class Being : Card
         Player_Hand.GetComponent<Hand_Manager>().GetRidOfDestroyedCards(this);
     }
 
+    /// <summary>
+    /// Purpose: Confirms that this card is attacking and deals damage to the opposing player.
+    ///          TODO: Have this confirm attackers then go into declare defenders.
+    /// </summary>
+    public virtual void CommitAttack()
+    {
+        Enemy_Portrait.GetComponent<LifeManager>().DamagePlayer(DamageTypes.Battle, CurrentPower);
+    }
+
     //Helper method for setting this card's UI to the values in data.
     protected override void SetCardUI()
     {
