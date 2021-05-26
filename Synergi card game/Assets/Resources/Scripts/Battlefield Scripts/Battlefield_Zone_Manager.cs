@@ -119,7 +119,7 @@ public class Battlefield_Zone_Manager : MonoBehaviour
                 position.GetComponent<CardZone>().ShowDeployableZone();
             }
         }
-        p1PassButton.GetComponent<PassButton>().ChangeButtonText(PassButton.PassButtonStates.BACK);
+        p1PassButton.GetComponent<PassButton>().ChangeButtonState(PassButton.PassButtonStates.BACK);
     }
 
     /// <summary>
@@ -135,6 +135,6 @@ public class Battlefield_Zone_Manager : MonoBehaviour
                 position.GetComponent<CardZone>().HideDeployableZone();
             }
         }
-        p1PassButton.GetComponent<PassButton>().ChangeButtonText(PassButton.PassButtonStates.PASS);
+        p1PassButton.GetComponent<PassButton>().ChangeButtonState(PassButton.PassButtonStates.PASS);
     }
 }

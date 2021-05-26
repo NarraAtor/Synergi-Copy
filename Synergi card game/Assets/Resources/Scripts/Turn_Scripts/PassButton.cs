@@ -25,13 +25,14 @@ public class PassButton : MonoBehaviour
     private GameObject gameManager;
     private GameObject passButton;
     private GameObject playerBattlefield;
+    private PassButtonStates currentState;
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
         passButton = this.gameObject;
         playerBattlefield = GameObject.Find("Player Battlefield");
-        ChangeButtonText(PassButtonStates.PASS);
+        ChangeButtonState(PassButtonStates.PASS);
     }
 
     // Update is called once per frame
@@ -50,24 +51,24 @@ public class PassButton : MonoBehaviour
     public void IsClicked()
     {
 
-        switch(passButton.GetComponentInChildren<Text>().text)
+        switch(currentState)
         {
-            case "PASS":
+            case PassButtonStates.PASS:
                 {
                     gameManager.GetComponent<Turn_Manager>().P1ReadyToPass = true;
                 }
                 break;
-            case "ATTACK":
+            case PassButtonStates.ATTACK:
                 {
                     gameManager.GetComponent<Turn_Manager>().CommitAttackers();
                 }
                 break;
-            case "BLOCK":
+            case PassButtonStates.BLOCK:
                 {
                     //gameManager.GetComponent<Turn_Manager>().CommitDefenders();
                 }
                 break;
-            case "BACK":
+            case PassButtonStates.BACK:
                 {
                     playerBattlefield.GetComponent<Battlefield_Zone_Manager>().HideDeployableZones();
                 }
@@ -79,20 +80,24 @@ public class PassButton : MonoBehaviour
     /// Purpose: Used to change the text of the button.
     /// <paramref name="desiredState"/>the text the passButton's text should be changed to.</param>
     /// </summary>
-    public void ChangeButtonText(PassButtonStates desiredState)
+    public void ChangeButtonState(PassButtonStates desiredState)
     {
         switch (desiredState)
         {
             case PassButtonStates.PASS:
+                currentState = PassButtonStates.PASS;
                 passButton.GetComponentInChildren<Text>().text = $"PASS";
                 break;
             case PassButtonStates.ATTACK:
+                currentState = PassButtonStates.ATTACK;
                 passButton.GetComponentInChildren<Text>().text = $"ATTACK";
                 break;
             case PassButtonStates.BLOCK:
+                currentState = PassButtonStates.BLOCK;
                 passButton.GetComponentInChildren<Text>().text = $"BLOCK";
                 break;
             case PassButtonStates.BACK:
+                currentState = PassButtonStates.BACK;
                 passButton.GetComponentInChildren<Text>().text = $"BACK";
                 break;
         }

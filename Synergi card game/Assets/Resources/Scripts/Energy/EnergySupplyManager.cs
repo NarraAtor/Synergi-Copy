@@ -119,7 +119,7 @@ public class EnergySupplyManager : MonoBehaviour
             child.gameObject.SetActive(false);
         }
 
-        //Mess with the order of the crystals so that it progression goes from left to right, then down.
+        //Mess with the order of the crystals so that progression goes from left to right, then down.
         List<Image> temporaryCrystalList = new List<Image>();
         temporaryCrystalList.Add(crystals[0]);
         temporaryCrystalList.Add(crystals[2]);

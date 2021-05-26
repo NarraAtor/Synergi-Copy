@@ -129,6 +129,7 @@ public class Turn_Manager : MonoBehaviour
                 switch (CurrentPhase)
                 {
                     //TODO: Make each phase broadcast messages to the entire game.
+                          //Alternatively, if I do more research into unity events or use C# events and delegates, use that instead. 
                     case Phases.Draw:
                         
                         SelectTurnIndicator(p1DrawPhaseIndicator);
@@ -332,7 +333,7 @@ public class Turn_Manager : MonoBehaviour
             AttackerQueue.Peek().CommitAttack();
             AttackerQueue.Dequeue().BattleNumber.SetActive(false);
         }
-        p1PassButton.GetComponent<PassButton>().ChangeButtonText(PassButton.PassButtonStates.PASS);
+        p1PassButton.GetComponent<PassButton>().ChangeButtonState(PassButton.PassButtonStates.PASS);
         //p1PassButton.GetComponent<PassButton>().ChangeButtonText(PassButton.PassButtonStates.PASS);
         //TODO: attackerDeclared = true;
         //P1ReadyToPass = true;
@@ -360,7 +361,7 @@ public class Turn_Manager : MonoBehaviour
             while(AttackerQueue.Count > 0)
             {
                 AttackerQueue.Dequeue().BattleNumber.SetActive(false);
-                p1PassButton.GetComponent<PassButton>().ChangeButtonText(PassButton.PassButtonStates.PASS);
+                p1PassButton.GetComponent<PassButton>().ChangeButtonState(PassButton.PassButtonStates.PASS);
             }
         }
         else
@@ -368,7 +369,7 @@ public class Turn_Manager : MonoBehaviour
             AttackerQueue.Enqueue(being);
             being.BattleNumber.SetActive(true);
             being.BattleNumber.GetComponent<TextMeshProUGUI>().text = $"{AttackerQueue.Count}";
-            p1PassButton.GetComponent<PassButton>().ChangeButtonText(PassButton.PassButtonStates.ATTACK);
+            p1PassButton.GetComponent<PassButton>().ChangeButtonState(PassButton.PassButtonStates.ATTACK);
         }
     }
 
