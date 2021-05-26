@@ -24,36 +24,27 @@ public class ResourceDeckManager : MonoBehaviour
 
         //MakeResourceDeck();
 
-        //Draw();
-        //Draw();
-        //Draw();
-        //Draw();
-
-        AddCrystalToSupply(CardColor.Blue);
-        AddCrystalToSupply(CardColor.Green);
-        AddCrystalToSupply(CardColor.Purple);
-        AddCrystalToSupply(CardColor.Red);
     }
 
     /// <summary>
     /// Purpose: Makes a 10 card resource deck. Is hard coded for now.
     ///          TODO: Make cards chosen from the card database form the deck instead.
     /// </summary>
-    private void MakeResourceDeck()
-    {
-        for(int i = 0; i < 10; i++)
-        {
-            //resourceDeckArray.Push(arrayOfBasicCrystals[i % 4]);
-        }
-    }
+    //private void MakeResourceDeck()
+    //{
+    //    for(int i = 0; i < 10; i++)
+    //    {
+    //        //resourceDeckArray.Push(arrayOfBasicCrystals[i % 4]);
+    //    }
+    //}
 
     /// <summary>
     /// Purpose: Draws a card from the resource deck and adds it to the player's Energy Supply.
     /// </summary>
-    public void Draw()
-    {
-        //energySupply.GetComponent<EnergySupplyManager>().Add(resourceDeckArray.Pop());
-    }
+    //public void Draw()
+    //{
+    //    //energySupply.GetComponent<EnergySupplyManager>().Add(resourceDeckArray.Pop());
+    //}
 
     public void AddCrystalToSupply(CardColor color)
     {

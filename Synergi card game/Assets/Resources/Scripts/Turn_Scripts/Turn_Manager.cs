@@ -26,12 +26,14 @@ public class Turn_Manager : MonoBehaviour
     public Phases CurrentPhase { get; set; }
     public Turn CurrentPlayerTurn { get; set; }
     public bool P1ReadyToPass { get; set; }
+    public bool NeedsToInvestInACrystal { get; set; }
     public bool AttackersDeclared { get; set; }
     public bool BlockersDeclared { get; set; }
     public Queue<Being> AttackerQueue { get; set; }
 
     //public bool P2ReadyToPass { get; set; }
     [SerializeField] private Deck_InBattle_Manager p1deck;
+    private GameObject energySelector;
     [SerializeField] private GameObject p1PhaseIndicator;
     private GameObject p1DrawPhaseIndicator;
     private GameObject p1ReadyPhaseIndicator;
@@ -53,6 +55,7 @@ public class Turn_Manager : MonoBehaviour
     private bool canDrawCardsDuringDrawPhase;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +63,8 @@ public class Turn_Manager : MonoBehaviour
         P1ReadyToPass = false;
 
         canDrawCardsDuringDrawPhase = false;
+        NeedsToInvestInACrystal = true;
+
         AttackerQueue = new Queue<Being>();
 
         //Find each phase indicator
@@ -113,8 +118,10 @@ public class Turn_Manager : MonoBehaviour
             }
         }
 
-        //Find the pass buttons.
         p1PassButton = GameObject.Find("Player Pass Button");
+
+        energySelector = GameObject.Find("Player Crystal Selector");
+        energySelector.SetActive(false);
 
         CurrentPhase = Phases.Draw;
         CurrentPlayerTurn = Turn.P1;
@@ -143,7 +150,6 @@ public class Turn_Manager : MonoBehaviour
 
                         if (P1ReadyToPass)
                         {
-
                             CurrentPhase = Phases.ReadyPhase;
                             DeselectTurnIndicator(p1DrawPhaseIndicator);
                         }
@@ -152,6 +158,15 @@ public class Turn_Manager : MonoBehaviour
                         break;
                     case Phases.ReadyPhase:
                         //Call turn effects
+                        if(NeedsToInvestInACrystal)
+                        {
+                            energySelector.SetActive(true);
+                            P1ReadyToPass = false;
+                        }
+                        else
+                        {
+                            energySelector.SetActive(false);
+                        }
                         SelectTurnIndicator(p1ReadyPhaseIndicator);
                         if (P1ReadyToPass)
                         {
@@ -217,6 +232,7 @@ public class Turn_Manager : MonoBehaviour
                         }
                         P1ReadyToPass = false;
                         canDrawCardsDuringDrawPhase = true;
+                        NeedsToInvestInACrystal = true;
                         break;
                 }
                 break;
@@ -289,6 +305,7 @@ public class Turn_Manager : MonoBehaviour
                         }
                         P1ReadyToPass = false;
                         canDrawCardsDuringDrawPhase = true;
+                        NeedsToInvestInACrystal = true;
                         break;
                 }
                 break;

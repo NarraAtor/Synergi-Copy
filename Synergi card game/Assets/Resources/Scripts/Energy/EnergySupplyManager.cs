@@ -116,7 +116,7 @@ public class EnergySupplyManager : MonoBehaviour
         foreach(RectTransform child in crystalUI.GetComponentInChildren<RectTransform>())
         {
             crystals.Add(child.GetComponent<Image>());
-            child.gameObject.SetActive(false);
+            //child.gameObject.SetActive(false);
         }
 
         //Mess with the order of the crystals so that progression goes from left to right, then down.
@@ -152,7 +152,7 @@ public class EnergySupplyManager : MonoBehaviour
             if(crystalStorage[i] is null)
             {
                 crystalStorage[i] = card;
-                crystals[i].gameObject.SetActive(true);
+                //crystals[i].gameObject.SetActive(true);
                 switch (card.CardColorProperty)
                 {
                     case CardColor.Blue:
