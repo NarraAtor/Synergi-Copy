@@ -17,7 +17,7 @@ public class ResourceDeckManager : MonoBehaviour
     //No longer a deck, now just an array of crystals.
     private void Start()
     {
-        arrayOfBasicCrystals = new CrystalData[] { Resources.Load<CrystalData>("Scripts/Cards/List of Cards/Crystals/Blue Crystal"),
+        arrayOfBasicCrystals = new CrystalData[] {Resources.Load<CrystalData>("Scripts/Cards/List of Cards/Crystals/Blue Crystal"),
                                                   Resources.Load<CrystalData>("Scripts/Cards/List of Cards/Crystals/Green Crystal"),
                                                   Resources.Load<CrystalData>("Scripts/Cards/List of Cards/Crystals/Purple Crystal"),
                                                   Resources.Load<CrystalData>("Scripts/Cards/List of Cards/Crystals/Red Crystal")};
