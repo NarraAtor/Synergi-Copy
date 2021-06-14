@@ -1,5 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using MLAPI;
+using MLAPI.Messaging;
+using MLAPI.NetworkVariable;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,15 +11,18 @@ public enum DamageTypes
     Effect,
     Battle
 }
-public class LifeManager : MonoBehaviour
+public class LifeManager : NetworkBehaviour
 {
     [SerializeField] private GameObject portrait;
+    private NetworkManager networkManager;
     private Text lifeAmount;
     public int Life { get; private set; }
+    private NetworkVariable<int> networkLife;
 
     // Start is called before the first frame update
     void Start()
     {
+        networkManager = GameObject.Find("GameManager").GetComponent<NetworkManager>();
         foreach (Transform child in portrait.GetComponentInChildren<Transform>())
         {
             if (child.gameObject.name == "Health")
@@ -25,6 +31,9 @@ public class LifeManager : MonoBehaviour
             }
         }
         Life = 20;
+        networkLife = new NetworkVariable<int>(Life);
+        networkLife.Settings.WritePermission = NetworkVariablePermission.ServerOnly;
+        networkLife.Settings.ReadPermission = NetworkVariablePermission.OwnerOnly;
     }
 
     void Update()

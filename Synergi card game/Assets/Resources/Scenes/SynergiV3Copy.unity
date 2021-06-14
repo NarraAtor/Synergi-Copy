@@ -12255,6 +12255,7 @@ GameObject:
   - component: {fileID: 959040486}
   - component: {fileID: 959040488}
   - component: {fileID: 959040487}
+  - component: {fileID: 959040489}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -12349,11 +12350,14 @@ MonoBehaviour:
   LogLevel: 1
   NetworkConfig:
     ProtocolVersion: 0
-    NetworkTransport: {fileID: 959040487}
+    NetworkTransport: {fileID: 959040489}
     RegisteredScenes:
     - SynergiV3Copy
     AllowRuntimeSceneChanges: 0
-    NetworkPrefabs: []
+    NetworkPrefabs:
+    - Prefab: {fileID: 829410449547890981, guid: d8586b4741258c24183e637ee809f276,
+        type: 3}
+      PlayerPrefab: 1
     PlayerPrefabHash:
       id: 0
     CreatePlayerPrefab: 1
@@ -12381,7 +12385,23 @@ MonoBehaviour:
   references:
     version: 1
     00000000:
-      type: {class: , ns: , asm: }
+      type: {class: NullableBoolSerializable, ns: MLAPI.Configuration, asm: Unity.Multiplayer.MLAPI.Runtime}
+      data:
+        Value: 11182408945722765662
+--- !u!114 &959040489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959040483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf0b801ebdee8c4b838e20292b36ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpreadMethod: 0
+  Transports: []
 --- !u!1 &962913493
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Resources/Scenes/SynergiV3.unity
+    guid: 6ed4ba5a1bc2efb4294b778d55ce628c
   m_configObjects: {}
