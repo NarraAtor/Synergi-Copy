@@ -14,7 +14,7 @@ public enum DamageTypes
 public class LifeManager : NetworkBehaviour
 {
     [SerializeField] private GameObject portrait;
-    private NetworkManager networkManager;
+    //private NetworkManager networkManager;
     private Text lifeAmount;
     public int Life { get; private set; }
     private NetworkVariable<int> networkLife;
@@ -22,7 +22,7 @@ public class LifeManager : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        networkManager = GameObject.Find("GameManager").GetComponent<NetworkManager>();
+        //networkManager = GameObject.Find("GameManager").GetComponent<NetworkManager>();
         foreach (Transform child in portrait.GetComponentInChildren<Transform>())
         {
             if (child.gameObject.name == "Health")
@@ -38,7 +38,9 @@ public class LifeManager : NetworkBehaviour
 
     void Update()
     {
+        Life = networkLife.Value;
         lifeAmount.text = $"Life: {Life}";
+        Debug.Log(networkLife.Value);
     }
     /// <summary>
     /// Purpose: Reduces the player's life based on the damage dealt.
@@ -49,18 +51,31 @@ public class LifeManager : NetworkBehaviour
     /// <param name="damageAmount">how much damage was dealt</param>
     public void DamagePlayer(DamageTypes damageType, int damageAmount)
     {
-        print($"Damage Dealt, {damageAmount}");
-        //For now, these 2 cases do the same thing. 
-        //Later, they'll broadcast different messages to GameManager.
-        //This will allow for different effects.
-        switch (damageType)
+        if(IsClient)
         {
-            case DamageTypes.Effect:
-                Life -= damageAmount;
-                break;
-            case DamageTypes.Battle:
-                Life -= damageAmount;
-                break;
+            DamagePlayerServerRpc(damageType, damageAmount);
         }
+        else
+        {
+            print($"Damage Dealt, {damageAmount}");
+            //For now, these 2 cases do the same thing. 
+            //Later, they'll broadcast different messages to GameManager.
+            //This will allow for different effects.
+            switch (damageType)
+            {
+                case DamageTypes.Effect:
+                    networkLife.Value -= damageAmount;
+                    break;
+                case DamageTypes.Battle:
+                    networkLife.Value -= damageAmount;
+                    break;
+            }
+        }
+    }
+
+    [ServerRpc]
+    public void DamagePlayerServerRpc(DamageTypes damageType, int damageAmount)
+    {
+        DamagePlayer(damageType, damageAmount);
     }
 }

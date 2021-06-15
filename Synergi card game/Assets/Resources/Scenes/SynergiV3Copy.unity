@@ -7045,6 +7045,7 @@ GameObject:
   m_Component:
   - component: {fileID: 556142981}
   - component: {fileID: 556142982}
+  - component: {fileID: 556142983}
   m_Layer: 5
   m_Name: EnemyPortrait
   m_TagString: Untagged
@@ -7090,6 +7091,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portrait: {fileID: 556142980}
+--- !u!114 &556142983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556142980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkInstanceId: 0
+  PrefabHash: 9067966467110981254
+  PrefabHashGenerator: EnemyPortrait
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
 --- !u!1 &561017040
 GameObject:
   m_ObjectHideFlags: 0
@@ -12254,7 +12272,6 @@ GameObject:
   - component: {fileID: 959040484}
   - component: {fileID: 959040486}
   - component: {fileID: 959040488}
-  - component: {fileID: 959040487}
   - component: {fileID: 959040489}
   m_Layer: 0
   m_Name: GameManager
@@ -12308,31 +12325,6 @@ MonoBehaviour:
   p1PhaseIndicator: {fileID: 1033060309}
   p2PhaseIndicator: {fileID: 2038116136}
   p1PassButton: {fileID: 0}
---- !u!114 &959040487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959040483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b84c2d8dfe509a34fb59e2b81f8e1319, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MessageBufferSize: 5120
-  MaxConnections: 100
-  MaxSentMessageQueueSize: 128
-  ConnectAddress: 127.0.0.1
-  ConnectPort: 7777
-  ServerListenPort: 7777
-  ServerWebsocketListenPort: 8887
-  SupportWebsocket: 0
-  Channels: []
-  UseMLAPIRelay: 0
-  MLAPIRelayAddress: 184.72.104.138
-  MLAPIRelayPort: 8888
-  MessageSendMode: 0
 --- !u!114 &959040488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12353,6 +12345,7 @@ MonoBehaviour:
     NetworkTransport: {fileID: 959040489}
     RegisteredScenes:
     - SynergiV3Copy
+    - SynergiV3
     AllowRuntimeSceneChanges: 0
     NetworkPrefabs:
     - Prefab: {fileID: 829410449547890981, guid: d8586b4741258c24183e637ee809f276,
