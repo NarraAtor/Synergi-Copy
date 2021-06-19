@@ -33,12 +33,11 @@ public class LifeManager : NetworkBehaviour
             }
         }
         Life = 20;
-        lifeAmount.text = $"Life: {Life}";
     }
 
     void Update()
     {
-        //lifeAmount.text = $"Life: {Life}";
+        lifeAmount.text = $"Life: {Life}";
     }
     /// <summary>
     /// Purpose: Reduces the player's life based on the damage dealt.
@@ -49,7 +48,7 @@ public class LifeManager : NetworkBehaviour
     /// <param name="damageAmount">how much damage was dealt</param>
     public void DamagePlayer(DamageTypes damageType, int damageAmount, bool sentFromServer)
     {
-        if(IsClient && !sentFromServer)
+        if(IsClient && !sentFromServer && !IsServer)
         {
             SendDamagePlayerServerRpc(damageType, damageAmount);
         }
