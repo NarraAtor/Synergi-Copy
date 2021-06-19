@@ -33,11 +33,12 @@ public class LifeManager : NetworkBehaviour
             }
         }
         Life = 20;
+        lifeAmount.text = $"Life: {Life}";
     }
 
     void Update()
     {
-        lifeAmount.text = $"Life: {Life}";
+        //lifeAmount.text = $"Life: {Life}";
     }
     /// <summary>
     /// Purpose: Reduces the player's life based on the damage dealt.
@@ -52,7 +53,7 @@ public class LifeManager : NetworkBehaviour
         {
             SendDamagePlayerServerRpc(damageType, damageAmount);
         }
-        else if(IsServer)
+        else if(IsServer && !sentFromServer)
         {
             //For now, these 2 cases do the same thing. 
             //Later, they'll broadcast different messages to GameManager.
@@ -67,7 +68,7 @@ public class LifeManager : NetworkBehaviour
                     break;
             }
         }
-        else if(IsClient && sentFromServer)
+        else if(IsClient && sentFromServer && !IsServer)
         {
             //For now, these 2 cases do the same thing. 
             //Later, they'll broadcast different messages to GameManager.
@@ -84,12 +85,15 @@ public class LifeManager : NetworkBehaviour
         }
     }
 
-    //Updates the server
+    //Updates the host
     [ServerRpc(RequireOwnership = false)]
     public void SendDamagePlayerServerRpc(DamageTypes damageType, int damageAmount)
     {
+        //Make changes on the host's end.
         lifeAmount.text = "received message";
         DamagePlayer(damageType, damageAmount, false);
+
+        //Then send these players
         DamagePlayerClientRpc(damageType, damageAmount);
     }
 
@@ -98,6 +102,7 @@ public class LifeManager : NetworkBehaviour
     [ClientRpc]
     public void DamagePlayerClientRpc(DamageTypes damageType, int damageAmount)
     {
+        if (IsServer) { return; }
         DamagePlayer(damageType, damageAmount, true);
     }
 
