@@ -33,28 +33,11 @@ public class LifeManager : NetworkBehaviour
             }
         }
         Life = 20;
-        lifeAmount.text = $"Life: {Life}";
     }
 
     void Update()
     {
-        //lifeAmount.text = $"Life: {Life}";
-        //lifeAmount.text = $"{NetworkManager.Singleton.IsServer}";
-
-        //This worked, so I know that the client and server are connecting at least.
-        //if (IsServer)
-        //{
-        //    lifeAmount.text = $"{NetworkManager.ConnectedClientsList[0].ClientId}";
-        //    ChangeTextClientRpc($"{NetworkManager.ConnectedClientsList[0].ClientId}");
-        //}
-
-
-        if(IsClient)
-        {
-            lifeAmount.text = $"client";
-            ChangeTextToStringServerRpc();
-            //ChangeTextServerRpc();
-        }
+        lifeAmount.text = $"Life: {Life}";
     }
     /// <summary>
     /// Purpose: Reduces the player's life based on the damage dealt.
@@ -67,13 +50,10 @@ public class LifeManager : NetworkBehaviour
     {
         if(IsClient && !sentFromServer)
         {
-            lifeAmount.text = $"Message sent to server!";
             SendDamagePlayerServerRpc(damageType, damageAmount);
         }
         else if(IsServer)
         {
-            print($"Damage Dealt, {damageAmount}");
-            lifeAmount.text = "Damaged";
             //For now, these 2 cases do the same thing. 
             //Later, they'll broadcast different messages to GameManager.
             //This will allow for different effects.
@@ -89,7 +69,6 @@ public class LifeManager : NetworkBehaviour
         }
         else if(IsClient && sentFromServer)
         {
-            print($"Damage Dealt, {damageAmount}");
             //For now, these 2 cases do the same thing. 
             //Later, they'll broadcast different messages to GameManager.
             //This will allow for different effects.
@@ -106,7 +85,7 @@ public class LifeManager : NetworkBehaviour
     }
 
     //Updates the server
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public void SendDamagePlayerServerRpc(DamageTypes damageType, int damageAmount)
     {
         lifeAmount.text = "received message";
@@ -114,20 +93,6 @@ public class LifeManager : NetworkBehaviour
         DamagePlayerClientRpc(damageType, damageAmount);
     }
 
-    //Here's a test method to check if RPCs are working correctly
-    [ServerRpc]
-    public void ChangeTextServerRpc()
-    {
-        lifeAmount.text = $"{NetworkManager.ConnectedClientsList[0].ClientId}";
-        ChangeTextClientRpc(lifeAmount.text);
-    }
-
-    //Here's a test method to check if RPCs are working correctly
-    [ServerRpc(RequireOwnership = false)]
-    public void ChangeTextToStringServerRpc()
-    {
-        lifeAmount.text = $"client";
-    }
 
     //Updates all clients
     [ClientRpc]
@@ -136,11 +101,4 @@ public class LifeManager : NetworkBehaviour
         DamagePlayer(damageType, damageAmount, true);
     }
 
-    //Test method to test RPCs
-
-    [ClientRpc]
-    public void ChangeTextClientRpc(string text)
-    {
-        lifeAmount.text = $"{text}";
-    }
 }
