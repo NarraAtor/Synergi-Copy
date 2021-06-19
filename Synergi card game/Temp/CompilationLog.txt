@@ -1,2 +1,4 @@
 # Starting compiling Assembly-CSharp.dll
-C:\Program Files\UnityEditors\2020.3.9f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-ec34012aa5629ce4692492442e37aa78
+C:\Program Files\UnityEditors\2020.3.9f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-b9f45983bb455d84b8fcec40465edd81
+# Starting IL post processing on Assembly-CSharp.dll
+"C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Temp/UnityTempFile-403a2418066ca324c88e3d449b18e1e3"

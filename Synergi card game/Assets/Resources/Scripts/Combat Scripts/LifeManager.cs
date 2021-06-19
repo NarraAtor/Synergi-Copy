@@ -11,18 +11,20 @@ public enum DamageTypes
     Effect,
     Battle
 }
+/// <summary>
+/// Purpose: Manages each player's life total.
+///          Also adding in networking: I'm going to try to use RPCs so that I don't have to keep track 
+///          of/make NetworkVariables.
+/// </summary>
 public class LifeManager : NetworkBehaviour
 {
     [SerializeField] private GameObject portrait;
-    //private NetworkManager networkManager;
     private Text lifeAmount;
     public int Life { get; private set; }
-    private NetworkVariable<int> networkLife;
 
     // Start is called before the first frame update
     void Start()
     {
-        //networkManager = GameObject.Find("GameManager").GetComponent<NetworkManager>();
         foreach (Transform child in portrait.GetComponentInChildren<Transform>())
         {
             if (child.gameObject.name == "Health")
@@ -31,16 +33,26 @@ public class LifeManager : NetworkBehaviour
             }
         }
         Life = 20;
-        networkLife = new NetworkVariable<int>(Life);
-        networkLife.Settings.WritePermission = NetworkVariablePermission.ServerOnly;
-        networkLife.Settings.ReadPermission = NetworkVariablePermission.OwnerOnly;
+        lifeAmount.text = $"Life: {Life}";
     }
 
     void Update()
     {
-        Life = networkLife.Value;
-        lifeAmount.text = $"Life: {Life}";
-        Debug.Log(networkLife.Value);
+        //lifeAmount.text = $"Life: {Life}";
+        //lifeAmount.text = $"{NetworkManager.Singleton.IsServer}";
+
+        //This worked, so I know that the client and server are connecting at least.
+        //if (IsServer)
+        //{
+        //    lifeAmount.text = $"{NetworkManager.ConnectedClientsList[0].ClientId}";
+        //    ChangeTextClientRpc($"{NetworkManager.ConnectedClientsList[0].ClientId}");
+        //}
+
+
+        if(IsClient)
+        {
+            //ChangeTextServerRpc();
+        }
     }
     /// <summary>
     /// Purpose: Reduces the player's life based on the damage dealt.
@@ -49,13 +61,31 @@ public class LifeManager : NetworkBehaviour
     /// </summary>
     /// <param name="damageType">what type of damage was dealt, going to be used for effects</param>
     /// <param name="damageAmount">how much damage was dealt</param>
-    public void DamagePlayer(DamageTypes damageType, int damageAmount)
+    public void DamagePlayer(DamageTypes damageType, int damageAmount, bool sentFromServer)
     {
-        if(IsClient)
+        if(IsClient && !sentFromServer)
         {
-            DamagePlayerServerRpc(damageType, damageAmount);
+            lifeAmount.text = $"Message sent to server!";
+            SendDamagePlayerServerRpc(damageType, damageAmount);
         }
-        else
+        else if(IsServer)
+        {
+            print($"Damage Dealt, {damageAmount}");
+            lifeAmount.text = "Damaged";
+            //For now, these 2 cases do the same thing. 
+            //Later, they'll broadcast different messages to GameManager.
+            //This will allow for different effects.
+            switch (damageType)
+            {
+                case DamageTypes.Effect:
+                    Life -= damageAmount;
+                    break;
+                case DamageTypes.Battle:
+                    Life -= damageAmount;
+                    break;
+            }
+        }
+        else if(IsClient && sentFromServer)
         {
             print($"Damage Dealt, {damageAmount}");
             //For now, these 2 cases do the same thing. 
@@ -64,18 +94,44 @@ public class LifeManager : NetworkBehaviour
             switch (damageType)
             {
                 case DamageTypes.Effect:
-                    networkLife.Value -= damageAmount;
+                    Life -= damageAmount;
                     break;
                 case DamageTypes.Battle:
-                    networkLife.Value -= damageAmount;
+                    Life -= damageAmount;
                     break;
             }
         }
     }
 
+    //Updates the server
     [ServerRpc]
-    public void DamagePlayerServerRpc(DamageTypes damageType, int damageAmount)
+    public void SendDamagePlayerServerRpc(DamageTypes damageType, int damageAmount)
     {
-        DamagePlayer(damageType, damageAmount);
+        lifeAmount.text = "received message";
+        DamagePlayer(damageType, damageAmount, false);
+        DamagePlayerClientRpc(damageType, damageAmount);
+    }
+
+    //Here's a test method to check if RPCs are working correctly
+    [ServerRpc]
+    public void ChangeTextServerRpc()
+    {
+        lifeAmount.text = $"{NetworkManager.ConnectedClientsList[0].ClientId}";
+        ChangeTextClientRpc(lifeAmount.text);
+    }
+
+    //Updates all clients
+    [ClientRpc]
+    public void DamagePlayerClientRpc(DamageTypes damageType, int damageAmount)
+    {
+        DamagePlayer(damageType, damageAmount, true);
+    }
+
+    //Test method to test RPCs
+
+    [ClientRpc]
+    public void ChangeTextClientRpc(string text)
+    {
+        lifeAmount.text = $"{text}";
     }
 }
