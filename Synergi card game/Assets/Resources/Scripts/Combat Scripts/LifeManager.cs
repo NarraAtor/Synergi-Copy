@@ -51,6 +51,8 @@ public class LifeManager : NetworkBehaviour
 
         if(IsClient)
         {
+            lifeAmount.text = $"client";
+            ChangeTextToStringServerRpc();
             //ChangeTextServerRpc();
         }
     }
@@ -118,6 +120,13 @@ public class LifeManager : NetworkBehaviour
     {
         lifeAmount.text = $"{NetworkManager.ConnectedClientsList[0].ClientId}";
         ChangeTextClientRpc(lifeAmount.text);
+    }
+
+    //Here's a test method to check if RPCs are working correctly
+    [ServerRpc(RequireOwnership = false)]
+    public void ChangeTextToStringServerRpc()
+    {
+        lifeAmount.text = $"client";
     }
 
     //Updates all clients
