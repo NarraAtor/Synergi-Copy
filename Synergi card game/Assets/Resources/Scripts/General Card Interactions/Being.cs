@@ -242,10 +242,12 @@ public class Being : Card
     /// <summary>
     /// Purpose: Confirms that this card is attacking and deals damage to the opposing player.
     ///          TODO: Have this confirm attackers then go into declare defenders.
+    ///          TODO: All cards will need to know if they belong to the player or not. I'll probably handle that
+    ///          with an Enum called owner. It would probably be handled in each card's update loop.
     /// </summary>
     public virtual void CommitAttack()
     {
-        Enemy_Portrait.GetComponent<LifeManager>().DamagePlayer(DamageTypes.Battle, CurrentPower, false);
+        Enemy_Portrait.GetComponent<LifeManager>().DamagePlayer(DamageTypes.Battle, CurrentPower, Turn.P1, false);
     }
 
     //Helper method for setting this card's UI to the values in data.

@@ -34,6 +34,13 @@ public enum CardPositions
     Graveyard,
     Abyss
 }
+
+//Being removed for now since host is automatically determined to be player1.
+//public enum Owner
+//{
+//    Player1,//The player
+//    Player2//The enemy
+//}
 public class Card : MonoBehaviour
 {
     //For when a card is in hand and clicked by a player.
