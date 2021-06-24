@@ -11,8 +11,8 @@ public enum DamageTypes
 }
 /// <summary>
 /// Purpose: Manages each player's life total.
-///          Also adding in networking: I'm going to try to use RPCs so that I don't have to keep track 
-///          of/make NetworkVariables.
+///          Also adding in networking. 
+///          Assume Host is Player1. Each player will have a different perspective depending on their POV.
 /// </summary>
 public class LifeManager : NetworkBehaviour
 {
@@ -56,112 +56,111 @@ public class LifeManager : NetworkBehaviour
         OpposingLife = 20;
     }
 
+    public override void NetworkStart()
+    {
+        if (IsHost)
+        {
+            Player1Life.Value = 20;
+            Player2Life.Value = 20;
+        }
+    }
+
     void Update()
     {
-        if(IsHost)
-        {
 
+        if (IsHost)
+        {
+            Life = Player1Life.Value;
+            OpposingLife = Player2Life.Value;
         }
-        //lifeAmount.text = $"Life: {Life}";
-        //opposingLifeAmount.text = $"Life: {OpposingLife}";
+        else if (IsHost! && IsClient)
+        {
+            Life = Player2Life.Value;
+            OpposingLife = Player1Life.Value;
+        }
+
+        lifeAmount.text = $"Life: {Life}";
+        opposingLifeAmount.text = $"Life: {OpposingLife}";
     }
     /// <summary>
     /// Purpose: Reduces the player's life based on the damage dealt.
     ///          This was made as a method so that players could do things like paying life without any problem later.
+    ///          Note: This doesn't need a portrait as a parameter since I choose which portrait I'm calling
+    ///          the method on when calling the funciton from elsewhere (each portrait has a LifeManager).
     /// Restrictions:
     /// </summary>
     /// <param name="damageType">what type of damage was dealt, going to be used for effects</param>
     /// <param name="damageAmount">how much damage was dealt</param>
-    public void DamagePlayer(DamageTypes damageType, int damageAmount, Turn portraitToManipulate, bool sentFromHost)
+    public void DamagePlayer(DamageTypes damageType, int damageAmount)
     {
-        if(IsClient && !sentFromHost && !IsHost)
+        if (IsClient && IsHost!)
         {
-            SendDamagePlayerServerRpc(damageType, damageAmount, portraitToManipulate);
+            SendDamagePlayerFromClientOnlyServerRpc(damageType, damageAmount);
         }
-        else if(IsHost && !sentFromHost)
+        else if (IsHost)
         {
-            //For now, these 2 cases do the same thing. 
-            //Later, they'll broadcast different messages to GameManager.
-            //This will allow for different effects.
-
-            if(portrait.Equals(portraitToManipulate))
-            {
-                switch (damageType)
-                {
-                    case DamageTypes.Effect:
-                        Life -= damageAmount;
-                        break;
-                    case DamageTypes.Battle:
-                        Life -= damageAmount;
-                        break;
-                }
-
-            }
-            else if(opposingPortrait.Equals(portraitToManipulate))
-            {
-                switch (damageType)
-                {
-                    case DamageTypes.Effect:
-                        OpposingLife -= damageAmount;
-                        break;
-                    case DamageTypes.Battle:
-                        OpposingLife -= damageAmount;
-                        break;
-                }
-            }
-        }
-        else if(IsClient && sentFromHost && !IsHost)
-        {
-            //For now, these 2 cases do the same thing. 
-            //Later, they'll broadcast different messages to GameManager.
-            //This will allow for different effects.
-            if (portrait.Equals(portraitToManipulate))
-            {
-                switch (damageType)
-                {
-                    case DamageTypes.Effect:
-                        Life -= damageAmount;
-                        break;
-                    case DamageTypes.Battle:
-                        Life -= damageAmount;
-                        break;
-                }
-
-            }
-            else if (opposingPortrait.Equals(portraitToManipulate))
-            {
-                switch (damageType)
-                {
-                    case DamageTypes.Effect:
-                        OpposingLife -= damageAmount;
-                        break;
-                    case DamageTypes.Battle:
-                        OpposingLife -= damageAmount;
-                        break;
-                }
-            }
+            SendDamagePlayerFromHostServerRpc(damageType, damageAmount);
+            print("Message sent");
         }
     }
 
-    //Updates the host
+    /// <summary>
+    /// Purpose: Host deals damage to Client
+    /// Restrictions: Meant for 2 players
+    /// </summary>
+    /// <param name="damageType">type of damage dealt</param>
+    /// <param name="damageAmount">how much damage was dealt</param>
     [ServerRpc(RequireOwnership = false)]
-    public void SendDamagePlayerServerRpc(DamageTypes damageType, int damageAmount, Turn portraitToManipulate)
+    public void SendDamagePlayerFromHostServerRpc(DamageTypes damageType, int damageAmount)
     {
-        //Make changes on the host's end.
-        lifeAmount.text = "received message";
-        DamagePlayer(damageType, damageAmount, portraitToManipulate, false);
+        print("message received");
+        //For now, these 2 cases do the same thing. 
+        //Later, they'll broadcast different messages to GameManager.
+        //This will allow for different effects.
 
-        //Then send these players
-        DamagePlayerClientRpc(damageType, damageAmount, portraitToManipulate);
+        switch (damageType)
+        {
+            case DamageTypes.Effect:
+                Player2Life.Value -= damageAmount;
+                break;
+            case DamageTypes.Battle:
+                Player2Life.Value -= damageAmount;
+                break;
+        }
     }
 
 
-    //Updates all clients
-    [ClientRpc]
-    public void DamagePlayerClientRpc(DamageTypes damageType, int damageAmount, Turn portraitToManipulate)
+    /// <summary>
+    /// Purpose: Client deals damage to Host
+    /// Restrictions: Meant for 2 players
+    /// </summary>
+    /// <param name="damageType">type of damage dealt</param>
+    /// <param name="damageAmount">how much damage was dealt</param>
+    [ServerRpc(RequireOwnership = false)]
+    public void SendDamagePlayerFromClientOnlyServerRpc(DamageTypes damageType, int damageAmount)
     {
-        if (IsHost) { return; }
-        DamagePlayer(damageType, damageAmount, portraitToManipulate, true);
+
+        //For now, these 2 cases do the same thing. 
+        //Later, they'll broadcast different messages to GameManager.
+        //This will allow for different effects.
+
+        switch (damageType)
+        {
+            case DamageTypes.Effect:
+                Player1Life.Value -= damageAmount;
+                break;
+            case DamageTypes.Battle:
+                Player1Life.Value -= damageAmount;
+                break;
+        }
     }
 
-}
+    ///// <summary>
+    ///// Purpose: Updates the life totals on each 
+    ///// </summary>
+    //[ClientRpc]
+    //public void UpdateLifeTotalsClientRpc()
+    //{
+    //
+    //}
+}   //

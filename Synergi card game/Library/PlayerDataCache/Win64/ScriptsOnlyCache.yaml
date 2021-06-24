@@ -19,6 +19,7 @@ ScriptsOnlyBuild:
     - LifeManager
     - NetworkAssigner
     - NetworkCommandLine
+    - NetworkDebugLogger
     - PassButton
     - ResourceDeckManager
     - Tactic
@@ -114,83 +115,85 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2002}
     - Class: 114
-      Script: {instanceID: 2172}
+      Script: {instanceID: 2174}
     - Class: 114
-      Script: {instanceID: 2286}
+      Script: {instanceID: 2288}
     - Class: 114
-      Script: {instanceID: 2384}
+      Script: {instanceID: 2386}
     - Class: 114
-      Script: {instanceID: 2420}
+      Script: {instanceID: 2422}
     - Class: 114
-      Script: {instanceID: 2496}
+      Script: {instanceID: 2498}
     - Class: 114
-      Script: {instanceID: 2510}
+      Script: {instanceID: 2512}
     - Class: 114
-      Script: {instanceID: 2596}
+      Script: {instanceID: 2598}
     - Class: 114
-      Script: {instanceID: 2686}
+      Script: {instanceID: 2688}
     - Class: 114
-      Script: {instanceID: 2740}
+      Script: {instanceID: 2742}
     - Class: 114
-      Script: {instanceID: 2778}
+      Script: {instanceID: 2780}
     - Class: 114
-      Script: {instanceID: 2824}
+      Script: {instanceID: 2826}
     - Class: 114
-      Script: {instanceID: 2964}
+      Script: {instanceID: 2966}
     - Class: 114
-      Script: {instanceID: 2990}
+      Script: {instanceID: 2976}
     - Class: 114
-      Script: {instanceID: 3232}
+      Script: {instanceID: 2994}
     - Class: 114
-      Script: {instanceID: 3296}
-    - Class: 114
-      Script: {instanceID: 3298}
+      Script: {instanceID: 3236}
     - Class: 114
       Script: {instanceID: 3300}
     - Class: 114
       Script: {instanceID: 3302}
     - Class: 114
-      Script: {instanceID: 3336}
+      Script: {instanceID: 3304}
     - Class: 114
-      Script: {instanceID: 3368}
+      Script: {instanceID: 3306}
     - Class: 114
-      Script: {instanceID: 3434}
+      Script: {instanceID: 3340}
     - Class: 114
-      Script: {instanceID: 3536}
+      Script: {instanceID: 3372}
     - Class: 114
-      Script: {instanceID: 3546}
+      Script: {instanceID: 3438}
     - Class: 114
-      Script: {instanceID: 3564}
+      Script: {instanceID: 3540}
     - Class: 114
-      Script: {instanceID: 3586}
+      Script: {instanceID: 3550}
     - Class: 114
-      Script: {instanceID: 3614}
+      Script: {instanceID: 3568}
     - Class: 114
-      Script: {instanceID: 3648}
+      Script: {instanceID: 3590}
     - Class: 114
-      Script: {instanceID: 3682}
+      Script: {instanceID: 3618}
     - Class: 114
-      Script: {instanceID: 3810}
+      Script: {instanceID: 3652}
     - Class: 114
-      Script: {instanceID: 3846}
+      Script: {instanceID: 3686}
     - Class: 114
-      Script: {instanceID: 3878}
+      Script: {instanceID: 3814}
     - Class: 114
-      Script: {instanceID: 3950}
+      Script: {instanceID: 3850}
     - Class: 114
-      Script: {instanceID: 4052}
+      Script: {instanceID: 3882}
     - Class: 114
-      Script: {instanceID: 4122}
+      Script: {instanceID: 3954}
     - Class: 114
-      Script: {instanceID: 4208}
+      Script: {instanceID: 4056}
     - Class: 114
-      Script: {instanceID: 4226}
+      Script: {instanceID: 4126}
     - Class: 114
-      Script: {instanceID: 4254}
+      Script: {instanceID: 4212}
     - Class: 114
-      Script: {instanceID: 4290}
+      Script: {instanceID: 4230}
     - Class: 114
-      Script: {instanceID: 4298}
+      Script: {instanceID: 4258}
+    - Class: 114
+      Script: {instanceID: 4294}
+    - Class: 114
+      Script: {instanceID: 4302}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -342,7 +345,7 @@ ScriptsOnlyBuild:
     className: DepthOfField
   - hash:
       serializedVersion: 2
-      Hash: 149fe721413ed3b1754101ec13f53d5c
+      Hash: 0211dbf7c77da9c9002d97011ef36dca
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LifeManager
@@ -370,6 +373,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Text
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: NetworkLogger
   - hash:
       serializedVersion: 2
       Hash: f1d735cc1a21c3704ab52568f4fbfcf8
@@ -628,6 +637,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Tactic_Zone_Manager
+  - hash:
+      serializedVersion: 2
+      Hash: bb560bc3eec556516d3480ba529763ad
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: NetworkDebugLogger
   - hash:
       serializedVersion: 2
       Hash: a86c24afb8b7eb22cb2c7feae921d258

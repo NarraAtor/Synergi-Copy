@@ -343,8 +343,7 @@ public class Turn_Manager : MonoBehaviour
     /// </summary>
     public void CommitAttackers()
     {
-        //TEST
-        print($"Attackers Confirmed!");
+
         while(AttackerQueue.Count > 0)
         {
             AttackerQueue.Peek().CommitAttack();
