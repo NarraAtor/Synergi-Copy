@@ -1,32 +1,32 @@
 # Starting compiling UnityEngine.TestRunner.dll
-C:\Program Files\UnityEditors\2020.3.9f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-ec27e549c45a73141a9fe0070cac2584
+C:\Program Files\UnityEditors\2020.3.9f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-919a46536739279418e093decf830ae3
 # Starting compiling UnityEngine.UI.dll
-C:\Program Files\UnityEditors\2020.3.9f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-2c50656c388ef64448770cab891ba209
+C:\Program Files\UnityEditors\2020.3.9f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-652ef5c78eb984e44bc764a5954d6749
 # Starting IL post processing on UnityEngine.TestRunner.dll
-"C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Temp/UnityTempFile-c4da2eae34544de44ae37dbd19ed176b"
+"C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Temp/UnityTempFile-636f0b52168023345bcbb3f90a4a5d9d"
 # Starting IL post processing on UnityEngine.UI.dll
-"C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Temp/UnityTempFile-b2b15cda48328b44cad35e5aa2043b55"
+"C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Temp/UnityTempFile-be9d98c520160224ba1459fd7b4476e6"
 # Starting compiling Unity.Postprocessing.Runtime.dll
-C:\Program Files\UnityEditors\2020.3.9f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-1c8a631269d396e43a3cab9fcd0b9fc7
+C:\Program Files\UnityEditors\2020.3.9f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-1cfb008888ba49944bb48a0a19bf3457
 # Starting compiling Unity.Timeline.dll
-C:\Program Files\UnityEditors\2020.3.9f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-5b39f616262c1344a82ab4676756126b
+C:\Program Files\UnityEditors\2020.3.9f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-108481a3ebbab464086a61bdcb29ef15
 # Starting compiling Unity.TextMeshPro.dll
-C:\Program Files\UnityEditors\2020.3.9f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-272d2ca44a731d44c8b7744b3ed7ce17
+C:\Program Files\UnityEditors\2020.3.9f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-dcb4012bba08edc4eacc21e68ad87e97
 # Starting compiling Unity.Multiplayer.MLAPI.Runtime.dll
-C:\Program Files\UnityEditors\2020.3.9f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-0d59e7cbb31209d4bb010c10d11ab415
-# Starting IL post processing on Unity.Postprocessing.Runtime.dll
-"C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Temp/UnityTempFile-5b1005bfb37d6e046bec11774ded3dee"
+C:\Program Files\UnityEditors\2020.3.9f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-d3c966c3b7a2d2345ae52ca0c934859d
 # Starting IL post processing on Unity.Timeline.dll
-"C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Temp/UnityTempFile-1b5fb17eb57ec1a46b3ee9f1df48c400"
+"C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Temp/UnityTempFile-9f7d6f3563a230b46bf09cea2b62e53a"
+# Starting IL post processing on Unity.Postprocessing.Runtime.dll
+"C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Temp/UnityTempFile-b22b845f0219deb409837f6c0f894e4a"
 # Starting IL post processing on Unity.Multiplayer.MLAPI.Runtime.dll
-"C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Temp/UnityTempFile-de41e991eaa797b49971f3bf264c1107"
+"C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Temp/UnityTempFile-649d425645dbe89429d815702762189f"
 # Starting compiling Unity.Multiplayer.MLAPI.Prototyping.dll
-C:\Program Files\UnityEditors\2020.3.9f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-0cda57938e4673d419787629c1f8e34d
+C:\Program Files\UnityEditors\2020.3.9f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-c978e527aa6221249beae4db2fad0f30
 # Starting IL post processing on Unity.TextMeshPro.dll
-"C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Temp/UnityTempFile-56a3c6514db96704392b10ca5f7dcf4a"
+"C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Temp/UnityTempFile-25307ad490a137c4590a7d9a99faa717"
 # Starting IL post processing on Unity.Multiplayer.MLAPI.Prototyping.dll
-"C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Temp/UnityTempFile-9c9e5e1077fe6c746bd376a271839f57"
+"C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Temp/UnityTempFile-9dca1906f9d37004cacf34aacb2288a4"
 # Starting compiling Assembly-CSharp.dll
-C:\Program Files\UnityEditors\2020.3.9f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-95ab1eea960873449b9ac81c81e3f595
+C:\Program Files\UnityEditors\2020.3.9f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-6c5371e340b02634ebede049320c8a5f
 # Starting IL post processing on Assembly-CSharp.dll
-"C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Temp/UnityTempFile-eccbb97320a32de4b8a60b23f0e1bc23"
+"C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "C:/Program Files/UnityEditors/2020.3.9f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Temp/UnityTempFile-723d187b7952aa24eba019017727263c"

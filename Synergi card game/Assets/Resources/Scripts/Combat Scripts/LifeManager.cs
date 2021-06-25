@@ -83,7 +83,7 @@ public class LifeManager : NetworkBehaviour
 
         lifeAmount.text = $"Life: {Life} ";
         opposingLifeAmount.text = $"Life: {OpposingLife} ";
-        //print($"P1: {Life}, \n P2: {OpposingLife}");
+        print($"P1: {Life}, \n P2: {OpposingLife}");
 
     }
     /// <summary>
@@ -108,7 +108,7 @@ public class LifeManager : NetworkBehaviour
             SendDamagePlayerFromClientOnlyServerRpc(damageType, damageAmount);
         }
 
-        lifeAmount.text = $"Life: {Life}";
+        //lifeAmount.text = $"Life: {Life}";
     }
 
     /// <summary>
