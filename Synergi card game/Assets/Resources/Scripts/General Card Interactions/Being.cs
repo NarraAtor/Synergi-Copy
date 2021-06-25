@@ -176,7 +176,7 @@ public class Being : Card
             case CardPositions.MiddleLeft:
             case CardPositions.BackLeft:
                 {
-                    print($"Attacked down left lane! {currentPosition}");
+                    //print($"Attacked down left lane! {currentPosition}");
                     //attack declaration system is below
                     //may be moved to turn manager
 
@@ -194,7 +194,7 @@ public class Being : Card
             case CardPositions.MiddleCenter:
             case CardPositions.BackCenter:
                 {
-                    print($"Attacked down center lane!  {currentPosition}");
+                    //print($"Attacked down center lane!  {currentPosition}");
                     //attack declaration system is below
                     //may be moved to turn manager
 
@@ -212,7 +212,7 @@ public class Being : Card
             case CardPositions.MiddleRight:
             case CardPositions.BackRight:
                 {
-                    print($"Attacked down right lane! {currentPosition}");
+                    //print($"Attacked down right lane! {currentPosition}");
                     //attack declaration system is below
                     //may be moved to turn manager
 

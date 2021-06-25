@@ -72,15 +72,19 @@ public class LifeManager : NetworkBehaviour
         {
             Life = Player1Life.Value;
             OpposingLife = Player2Life.Value;
+            //print($"Called in host: P1: {Life}, \n P2: {OpposingLife}");
         }
-        else if (IsHost! && IsClient)
+        else if (IsClient)
         {
             Life = Player2Life.Value;
             OpposingLife = Player1Life.Value;
+            //print($"Called in client: P1: {Life}, \n P2: {OpposingLife}");
         }
 
-        lifeAmount.text = $"Life: {Life}";
-        opposingLifeAmount.text = $"Life: {OpposingLife}";
+        lifeAmount.text = $"Life: {Life} ";
+        opposingLifeAmount.text = $"Life: {OpposingLife} ";
+        //print($"P1: {Life}, \n P2: {OpposingLife}");
+
     }
     /// <summary>
     /// Purpose: Reduces the player's life based on the damage dealt.
@@ -93,15 +97,18 @@ public class LifeManager : NetworkBehaviour
     /// <param name="damageAmount">how much damage was dealt</param>
     public void DamagePlayer(DamageTypes damageType, int damageAmount)
     {
-        if (IsClient && IsHost!)
+        
+        if (IsHost)
+        {
+            SendDamagePlayerFromHostServerRpc(damageType, damageAmount);
+        }
+        //if this is any client aside from the host...
+        else if (IsClient)
         {
             SendDamagePlayerFromClientOnlyServerRpc(damageType, damageAmount);
         }
-        else if (IsHost)
-        {
-            SendDamagePlayerFromHostServerRpc(damageType, damageAmount);
-            print("Message sent");
-        }
+
+        lifeAmount.text = $"Life: {Life}";
     }
 
     /// <summary>
@@ -113,11 +120,10 @@ public class LifeManager : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void SendDamagePlayerFromHostServerRpc(DamageTypes damageType, int damageAmount)
     {
-        print("message received");
+        //print("message received from host");
         //For now, these 2 cases do the same thing. 
         //Later, they'll broadcast different messages to GameManager.
         //This will allow for different effects.
-
         switch (damageType)
         {
             case DamageTypes.Effect:
@@ -125,6 +131,7 @@ public class LifeManager : NetworkBehaviour
                 break;
             case DamageTypes.Battle:
                 Player2Life.Value -= damageAmount;
+                //print($"P1: {Player1Life.Value}, \n P2: {Player2Life.Value}");
                 break;
         }
     }
@@ -139,11 +146,10 @@ public class LifeManager : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void SendDamagePlayerFromClientOnlyServerRpc(DamageTypes damageType, int damageAmount)
     {
-
         //For now, these 2 cases do the same thing. 
         //Later, they'll broadcast different messages to GameManager.
         //This will allow for different effects.
-
+        //print("received message from client");
         switch (damageType)
         {
             case DamageTypes.Effect:
@@ -151,6 +157,7 @@ public class LifeManager : NetworkBehaviour
                 break;
             case DamageTypes.Battle:
                 Player1Life.Value -= damageAmount;
+                //print($"P1: {Player1Life.Value}, \n P2: {Player2Life.Value}");
                 break;
         }
     }

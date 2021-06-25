@@ -187,7 +187,7 @@ public class CardZone : MonoBehaviour
         {
             if(occupiedByBeing)
             {
-                print("Clicked from Card Zone");
+                //print("Clicked from Card Zone");
                 BeingScript.IsClicked();
             }
 
