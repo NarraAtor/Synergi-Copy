@@ -161,13 +161,4 @@ public class LifeManager : NetworkBehaviour
                 break;
         }
     }
-
-    ///// <summary>
-    ///// Purpose: Updates the life totals on each 
-    ///// </summary>
-    //[ClientRpc]
-    //public void UpdateLifeTotalsClientRpc()
-    //{
-    //
-    //}
-}   //
+}   
