@@ -29,19 +29,19 @@ public class Hand_Manager : NetworkBehaviour
     //The opponent's hand locally.
     [SerializeField] private GameObject enemyHand;
 
-    //The host's hand on the network
-    public NetworkVariable<List<GameObject>> Player1Hand = new NetworkVariable<List<GameObject>>(new NetworkVariableSettings
-    {
-        WritePermission = NetworkVariablePermission.ServerOnly,
-        ReadPermission = NetworkVariablePermission.Everyone
-    });
-
-    //The client's hand on the network.
-    public NetworkVariable<List<GameObject>> Player2Hand = new NetworkVariable<List<GameObject>>(new NetworkVariableSettings
-    {
-        WritePermission = NetworkVariablePermission.ServerOnly,
-        ReadPermission = NetworkVariablePermission.Everyone
-    });
+    ////The host's hand on the network
+    //public NetworkVariable<List<GameObject>> Player1Hand = new NetworkVariable<List<GameObject>>(new NetworkVariableSettings
+    //{
+    //    WritePermission = NetworkVariablePermission.ServerOnly,
+    //    ReadPermission = NetworkVariablePermission.Everyone
+    //});
+    //
+    ////The client's hand on the network.
+    //public NetworkVariable<List<GameObject>> Player2Hand = new NetworkVariable<List<GameObject>>(new NetworkVariableSettings
+    //{
+    //    WritePermission = NetworkVariablePermission.ServerOnly,
+    //    ReadPermission = NetworkVariablePermission.Everyone
+    //});
 
 
     public List<GameObject> CardsInPlayer_Hand
@@ -78,24 +78,24 @@ public class Hand_Manager : NetworkBehaviour
 
     void Update()
     {
-        if(IsHost)
-        {
-            Player1Hand.Value = cardsInPlayer_Hand;
-            Player2Hand.Value = cardsInEnemy_Hand;
+        //if(IsHost)
+        //{
+        //    Player1Hand.Value = cardsInPlayer_Hand;
+        //    Player2Hand.Value = cardsInEnemy_Hand;
+        //
+        //}
+        //else if(IsClient)
+        //{
+        //    Player2Hand.Value = cardsInPlayer_Hand;
+        //    Player1Hand.Value = cardsInEnemy_Hand;
+        //}
 
-        }
-        else if(IsClient)
-        {
-            Player2Hand.Value = cardsInPlayer_Hand;
-            Player1Hand.Value = cardsInEnemy_Hand;
-        }
-
-        string listOfCardsInHand = "";
-        foreach(GameObject card in Player1Hand.Value)
-        {
-            listOfCardsInHand += card + " ,";
-        }
-        print($"{listOfCardsInHand}");
+        //string listOfCardsInHand = "";
+        //foreach(GameObject card in Player1Hand.Value)
+        //{
+        //    listOfCardsInHand += card + " ,";
+        //}
+        //print($"{listOfCardsInHand}");
     }
 
     /// <summary>
