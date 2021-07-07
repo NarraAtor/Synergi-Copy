@@ -354,9 +354,9 @@ public class Card : MonoBehaviour
                         playerActive = true;
                         cardIsPlayable = true;
                         //Only one card may be selected at a time. I get a component in each child just so I have an array.
-                        for (int i = 0; i < Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_HandProperty.Count; i++)
+                        for (int i = 0; i < Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_Hand.Count; i++)
                         {
-                            Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_HandProperty[i].GetComponent<Card>().IsSelected = false;
+                            Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_Hand[i].GetComponent<Card>().IsSelected = false;
                         }
 
                         isSelected = true;

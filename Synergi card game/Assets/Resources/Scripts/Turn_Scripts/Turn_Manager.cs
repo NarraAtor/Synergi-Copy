@@ -207,7 +207,6 @@ public class Turn_Manager : NetworkBehaviour
         {
 
             case Turn.Self:
-                print(GlobalCurrentPhase.Value);
                 switch (GlobalCurrentPhase.Value)
                 {
                     //TODO: Make each phase broadcast messages to the entire game.
@@ -306,7 +305,6 @@ public class Turn_Manager : NetworkBehaviour
                 }
                 break;
             case Turn.Other:
-                print(GlobalCurrentPhase.Value);
                 switch (GlobalCurrentPhase.Value)
                 {
                     //TODO: Make each phase broadcast messages to the entire game.

@@ -702,12 +702,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb6f486bbba97640b22ff66a41443fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BeingPrefab: {fileID: 1308931684931525747, guid: aa9a07e3c17d9814084072c46aab2805,
+  beingPrefab: {fileID: 1308931684931525747, guid: aa9a07e3c17d9814084072c46aab2805,
     type: 3}
-  DeployablePrefab: {fileID: 5755583681225483926, guid: 52470a9082e858f489db19ec484826be,
+  deployablePrefab: {fileID: 5755583681225483926, guid: 52470a9082e858f489db19ec484826be,
     type: 3}
-  TacticPrefab: {fileID: 3330126282675716735, guid: bf79a1ca497de8b428536f6e13254466,
+  tacticPrefab: {fileID: 3330126282675716735, guid: bf79a1ca497de8b428536f6e13254466,
     type: 3}
+  enemyHand: {fileID: 819565282}
+  Player1Hand:
+    m_InternalValue: []
+  Player2Hand:
+    m_InternalValue: []
 --- !u!1 &71067629
 GameObject:
   m_ObjectHideFlags: 0

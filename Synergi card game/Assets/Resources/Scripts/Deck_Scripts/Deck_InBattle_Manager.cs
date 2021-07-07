@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using CardBase;
-
-public class Deck_InBattle_Manager : MonoBehaviour
+using MLAPI;
+using MLAPI.Messaging;
+using MLAPI.NetworkVariable;
+public class Deck_InBattle_Manager : NetworkBehaviour
 {
     
     private Stack<CardData> deckArray = new Stack<CardData>(40);
@@ -51,7 +53,7 @@ public class Deck_InBattle_Manager : MonoBehaviour
     //Draw a card from the top of the deck.
     public void Draw()
     {
-        playerHand.GetComponent<Hand_Manager>().AddCardToHand(deckArray.Pop());
+        playerHand.GetComponent<Hand_Manager>().AddCardToHand(deckArray.Pop(), playerHand);
     }
 
     //Places all of the cards in the DeckArray Stack.

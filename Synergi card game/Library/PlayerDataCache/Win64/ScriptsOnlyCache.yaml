@@ -879,7 +879,7 @@ ScriptsOnlyBuild:
     className: PostProcessEffectSettings
   - hash:
       serializedVersion: 2
-      Hash: d7310fb99c46e03615e8eb4729f1ec08
+      Hash: 1a9828c4ac3b33a806d75815116e3cbc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Hand_Manager
