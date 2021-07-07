@@ -345,7 +345,7 @@ ScriptsOnlyBuild:
     className: DepthOfField
   - hash:
       serializedVersion: 2
-      Hash: 0211dbf7c77da9c9002d97011ef36dca
+      Hash: 12c4058742d1f3cfc53f56e9b21cfc1f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LifeManager
@@ -597,7 +597,7 @@ ScriptsOnlyBuild:
     className: Benchmark04
   - hash:
       serializedVersion: 2
-      Hash: a087b3284c4f1a2d9b2d6e0a24e18033
+      Hash: 28ca48e12a4009612e968441f5c1a008
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Turn_Manager

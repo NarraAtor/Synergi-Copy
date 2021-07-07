@@ -180,7 +180,7 @@ public class Being : Card
                     //attack declaration system is below
                     //may be moved to turn manager
 
-                    if (Turn_Manager.CurrentPhase == Phases.BattlePhase && Turn_Manager.CurrentPlayerTurn == Turn.P1)
+                    if (Turn_Manager.GlobalCurrentPhase.Value == Phases.BattlePhase && Turn_Manager.CurrentPlayerTurn == Turn.Self)
                     {
                         Turn_Manager.DeclareAttacker(this);
                         
@@ -198,7 +198,7 @@ public class Being : Card
                     //attack declaration system is below
                     //may be moved to turn manager
 
-                    if (Turn_Manager.CurrentPhase == Phases.BattlePhase && Turn_Manager.CurrentPlayerTurn == Turn.P1)
+                    if (Turn_Manager.GlobalCurrentPhase.Value == Phases.BattlePhase && Turn_Manager.CurrentPlayerTurn == Turn.Self)
                     {
                         Turn_Manager.DeclareAttacker(this);
 
@@ -216,7 +216,7 @@ public class Being : Card
                     //attack declaration system is below
                     //may be moved to turn manager
 
-                    if (Turn_Manager.CurrentPhase == Phases.BattlePhase && Turn_Manager.CurrentPlayerTurn == Turn.P1)
+                    if (Turn_Manager.GlobalCurrentPhase.Value == Phases.BattlePhase && Turn_Manager.CurrentPlayerTurn == Turn.Self)
                     {
                         Turn_Manager.DeclareAttacker(this);
 

@@ -23,13 +23,13 @@ public class LifeManager : NetworkBehaviour
     public int Life { get; private set; }
     public int OpposingLife { get; private set; }
 
-    public NetworkVariable<int> Player1Life = new NetworkVariable<int>(new NetworkVariableSettings
+    private NetworkVariable<int> Player1Life = new NetworkVariable<int>(new NetworkVariableSettings
     {
         WritePermission = NetworkVariablePermission.ServerOnly,
         ReadPermission = NetworkVariablePermission.Everyone
     });
 
-    public NetworkVariable<int> Player2Life = new NetworkVariable<int>(new NetworkVariableSettings
+    private NetworkVariable<int> Player2Life = new NetworkVariable<int>(new NetworkVariableSettings
     {
         WritePermission = NetworkVariablePermission.ServerOnly,
         ReadPermission = NetworkVariablePermission.Everyone
@@ -83,7 +83,7 @@ public class LifeManager : NetworkBehaviour
 
         lifeAmount.text = $"Life: {Life} ";
         opposingLifeAmount.text = $"Life: {OpposingLife} ";
-        print($"P1: {Life}, \n P2: {OpposingLife}");
+        //print($"P1: {Life}, \n P2: {OpposingLife}");
 
     }
     /// <summary>
@@ -118,7 +118,7 @@ public class LifeManager : NetworkBehaviour
     /// <param name="damageType">type of damage dealt</param>
     /// <param name="damageAmount">how much damage was dealt</param>
     [ServerRpc(RequireOwnership = false)]
-    public void SendDamagePlayerFromHostServerRpc(DamageTypes damageType, int damageAmount)
+    private void SendDamagePlayerFromHostServerRpc(DamageTypes damageType, int damageAmount)
     {
         //print("message received from host");
         //For now, these 2 cases do the same thing. 
@@ -144,7 +144,7 @@ public class LifeManager : NetworkBehaviour
     /// <param name="damageType">type of damage dealt</param>
     /// <param name="damageAmount">how much damage was dealt</param>
     [ServerRpc(RequireOwnership = false)]
-    public void SendDamagePlayerFromClientOnlyServerRpc(DamageTypes damageType, int damageAmount)
+    private void SendDamagePlayerFromClientOnlyServerRpc(DamageTypes damageType, int damageAmount)
     {
         //For now, these 2 cases do the same thing. 
         //Later, they'll broadcast different messages to GameManager.
