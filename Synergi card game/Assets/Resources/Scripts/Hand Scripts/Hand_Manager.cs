@@ -89,7 +89,7 @@ public class Hand_Manager : NetworkBehaviour
     public override void NetworkStart()
     {
         base.NetworkStart();
-        TestGameObject.Value = GameObject.Find("GameManager");
+        TestGameObject.Value = GameObject.Find("Background");
         isNetworkConnected = true;
     }
     void Update()
