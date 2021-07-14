@@ -51,7 +51,7 @@ public class Hand_Manager : NetworkBehaviour
     });
 
     private bool isNetworkConnected = false;
-
+    [SerializeField] private NetworkObject prefab;
     //TEST VARIABLES END
 
     public List<GameObject> CardsInPlayer_Hand
@@ -89,7 +89,12 @@ public class Hand_Manager : NetworkBehaviour
     public override void NetworkStart()
     {
         base.NetworkStart();
-        TestGameObject.Value = GameObject.Find("Background");
+        if(IsHost)
+        {
+            NetworkObject background = Instantiate(prefab);
+            background.Spawn();
+            TestGameObject.Value = GameObject.Find("Background");
+        }
         isNetworkConnected = true;
     }
     void Update()

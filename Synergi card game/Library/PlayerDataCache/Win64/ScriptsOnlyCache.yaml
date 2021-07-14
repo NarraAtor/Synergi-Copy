@@ -25,10 +25,14 @@ ScriptsOnlyBuild:
     - Tactic
     - Tactic_Zone_Manager
     - Turn_Manager
+    Unity.Multiplayer.MLAPI.Editor.dll:
+    - UnityEditor.NetworkObjectEditor
     Unity.Multiplayer.MLAPI.Runtime.dll:
     - MLAPI.NetworkManager
     - MLAPI.NetworkObject
     - MLAPI.Transports.UNET.UNetTransport
+    Unity.Postprocessing.Editor.dll:
+    - UnityEditor.Rendering.PostProcessing.PostProcessVolumeEditor
     Unity.Postprocessing.Runtime.dll:
     - UnityEngine.Rendering.PostProcessing.AmbientOcclusion
     - UnityEngine.Rendering.PostProcessing.AutoExposure
@@ -879,7 +883,7 @@ ScriptsOnlyBuild:
     className: PostProcessEffectSettings
   - hash:
       serializedVersion: 2
-      Hash: 660f3fd0dd4f984eb8ab4106952737ef
+      Hash: f6553f831debf0bc0d6dac7b4bd7bcf3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Hand_Manager
