@@ -295,7 +295,16 @@ public class Turn_Manager : NetworkBehaviour
                         SelectTurnIndicator(p1EndPhaseIndicator);
                         if (P1ReadyToPass)
                         {
-                            GlobalCurrentPlayerTurn.Value = Turn.Other;
+                            switch (GlobalCurrentPlayerTurn.Value)
+                            {
+                                case Turn.Self:
+                                    GlobalCurrentPlayerTurn.Value = Turn.Other;
+                                    break;
+                                case Turn.Other:
+                                    GlobalCurrentPlayerTurn.Value = Turn.Self;
+                                    break;
+                            }
+                            
                             GlobalCurrentPhase.Value = Phases.Draw;
                         }
                         P1ReadyToPass = false;
