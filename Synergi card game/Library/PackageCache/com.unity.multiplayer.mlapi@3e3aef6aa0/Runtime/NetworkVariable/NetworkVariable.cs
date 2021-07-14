@@ -582,4 +582,23 @@ namespace MLAPI.NetworkVariable
         /// <inheritdoc />
         public NetworkVariableQuaternion(NetworkVariableSettings settings, Quaternion value) : base(settings, value) { }
     }
+
+    /// <summary>
+    /// A NetworkVariable that holds game object references and support serialization
+    /// </summary>
+    [Serializable]
+    public class NetworkVariableGameObject : NetworkVariable<GameObject>
+    {
+        /// <inheritdoc />
+        public NetworkVariableGameObject() { }
+
+        /// <inheritdoc />
+        public NetworkVariableGameObject(NetworkVariableSettings settings) : base(settings) { }
+
+        /// <inheritdoc />
+        public NetworkVariableGameObject(GameObject value) : base(value) { }
+
+        /// <inheritdoc />
+        public NetworkVariableGameObject(NetworkVariableSettings settings, GameObject value) : base(settings, value) { }
+    }
 }

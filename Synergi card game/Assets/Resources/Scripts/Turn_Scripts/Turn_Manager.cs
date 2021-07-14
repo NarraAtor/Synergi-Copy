@@ -201,7 +201,7 @@ public class Turn_Manager : NetworkBehaviour
                     break;
             }
         }
-        print($"{GlobalCurrentPhase.Value}");
+        //print($"{GlobalCurrentPhase.Value}");
         //Phase/Turn State Machine
         switch (CurrentPlayerTurn)
         {
