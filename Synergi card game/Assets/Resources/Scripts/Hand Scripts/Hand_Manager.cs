@@ -29,20 +29,25 @@ public class Hand_Manager : NetworkBehaviour
     //The opponent's hand locally.
     [SerializeField] private GameObject enemyHand;
 
-   // //The host's hand on the network
-   // public NetworkVariable<List<GameObject>> Player1Hand = new NetworkVariable<List<GameObject>>(new NetworkVariableSettings
-   // {
-   //     WritePermission = NetworkVariablePermission.ServerOnly,
-   //     ReadPermission = NetworkVariablePermission.Everyone
-   // });
-   // 
-   // //The client's hand on the network.
-   // public NetworkVariable<List<GameObject>> Player2Hand = new NetworkVariable<List<GameObject>>(new NetworkVariableSettings
-   // {
-   //     WritePermission = NetworkVariablePermission.ServerOnly,
-   //     ReadPermission = NetworkVariablePermission.Everyone
-   // });
+    // //The host's hand on the network
+    // public NetworkVariable<List<GameObject>> Player1Hand = new NetworkVariable<List<GameObject>>(new NetworkVariableSettings
+    // {
+    //     WritePermission = NetworkVariablePermission.ServerOnly,
+    //     ReadPermission = NetworkVariablePermission.Everyone
+    // });
+    // 
+    // //The client's hand on the network.
+    // public NetworkVariable<List<GameObject>> Player2Hand = new NetworkVariable<List<GameObject>>(new NetworkVariableSettings
+    // {
+    //     WritePermission = NetworkVariablePermission.ServerOnly,
+    //     ReadPermission = NetworkVariablePermission.Everyone
+    // });
 
+    public NetworkVariableGameObject TestGameObject = new NetworkVariableGameObject(new NetworkVariableSettings
+    {
+        WritePermission = NetworkVariablePermission.ServerOnly,
+        ReadPermission = NetworkVariablePermission.Everyone
+    });
 
     public List<GameObject> CardsInPlayer_Hand
     {

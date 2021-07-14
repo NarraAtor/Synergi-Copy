@@ -710,10 +710,6 @@ MonoBehaviour:
   tacticPrefab: {fileID: 3330126282675716735, guid: bf79a1ca497de8b428536f6e13254466,
     type: 3}
   enemyHand: {fileID: 819565282}
-  Player1Hand:
-    m_InternalValue: []
-  Player2Hand:
-    m_InternalValue: []
 --- !u!114 &60070668
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -155,45 +155,45 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3340}
     - Class: 114
-      Script: {instanceID: 3374}
+      Script: {instanceID: 3372}
     - Class: 114
-      Script: {instanceID: 3440}
+      Script: {instanceID: 3438}
     - Class: 114
-      Script: {instanceID: 3542}
+      Script: {instanceID: 3540}
     - Class: 114
-      Script: {instanceID: 3552}
+      Script: {instanceID: 3550}
     - Class: 114
-      Script: {instanceID: 3570}
+      Script: {instanceID: 3568}
     - Class: 114
-      Script: {instanceID: 3592}
+      Script: {instanceID: 3590}
     - Class: 114
-      Script: {instanceID: 3620}
+      Script: {instanceID: 3618}
     - Class: 114
-      Script: {instanceID: 3654}
+      Script: {instanceID: 3652}
     - Class: 114
-      Script: {instanceID: 3688}
+      Script: {instanceID: 3686}
     - Class: 114
-      Script: {instanceID: 3818}
+      Script: {instanceID: 3816}
     - Class: 114
-      Script: {instanceID: 3854}
+      Script: {instanceID: 3852}
     - Class: 114
-      Script: {instanceID: 3886}
+      Script: {instanceID: 3884}
     - Class: 114
-      Script: {instanceID: 3958}
+      Script: {instanceID: 3956}
     - Class: 114
-      Script: {instanceID: 4060}
+      Script: {instanceID: 4058}
     - Class: 114
-      Script: {instanceID: 4130}
+      Script: {instanceID: 4128}
     - Class: 114
-      Script: {instanceID: 4216}
+      Script: {instanceID: 4214}
     - Class: 114
-      Script: {instanceID: 4234}
+      Script: {instanceID: 4232}
     - Class: 114
-      Script: {instanceID: 4262}
+      Script: {instanceID: 4260}
     - Class: 114
-      Script: {instanceID: 4298}
+      Script: {instanceID: 4296}
     - Class: 114
-      Script: {instanceID: 4306}
+      Script: {instanceID: 4304}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -825,12 +825,6 @@ ScriptsOnlyBuild:
     className: CardDatabase
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: NetworkVariableGameObject
-  - hash:
-      serializedVersion: 2
       Hash: a4b9362fce54e4396ae9bf8c71118445
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -885,7 +879,7 @@ ScriptsOnlyBuild:
     className: PostProcessEffectSettings
   - hash:
       serializedVersion: 2
-      Hash: 379ae91adf8626ef629e2659a360dd12
+      Hash: 660f3fd0dd4f984eb8ab4106952737ef
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Hand_Manager
