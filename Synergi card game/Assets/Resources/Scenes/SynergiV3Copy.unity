@@ -712,6 +712,7 @@ MonoBehaviour:
   enemyHand: {fileID: 819565282}
   TestGameObject:
     m_InternalValue: {fileID: 0}
+  prefab: {fileID: 1430303447066144088, guid: 2f482c09ae9d75f48ac67806388138a5, type: 3}
 --- !u!114 &60070668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25517,6 +25518,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Background
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430303447066144092, guid: 2f482c09ae9d75f48ac67806388138a5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f482c09ae9d75f48ac67806388138a5, type: 3}

@@ -25,14 +25,10 @@ ScriptsOnlyBuild:
     - Tactic
     - Tactic_Zone_Manager
     - Turn_Manager
-    Unity.Multiplayer.MLAPI.Editor.dll:
-    - UnityEditor.NetworkObjectEditor
     Unity.Multiplayer.MLAPI.Runtime.dll:
     - MLAPI.NetworkManager
     - MLAPI.NetworkObject
     - MLAPI.Transports.UNET.UNetTransport
-    Unity.Postprocessing.Editor.dll:
-    - UnityEditor.Rendering.PostProcessing.PostProcessVolumeEditor
     Unity.Postprocessing.Runtime.dll:
     - UnityEngine.Rendering.PostProcessing.AmbientOcclusion
     - UnityEngine.Rendering.PostProcessing.AutoExposure

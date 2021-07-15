@@ -93,8 +93,9 @@ public class Hand_Manager : NetworkBehaviour
         {
             NetworkObject background = Instantiate(prefab);
             background.Spawn();
-            TestGameObject.Value = GameObject.Find("Background");
+
         }
+        //TestGameObject.Value = GameObject.Find("Background");
         isNetworkConnected = true;
     }
     void Update()
@@ -102,7 +103,8 @@ public class Hand_Manager : NetworkBehaviour
         //TEST CODE start
         if(IsHost && isNetworkConnected)
         {
-
+            TestGameObject.Value = GameObject.Find("Background");
+            print(TestGameObject.Value.name);
         }
         //TEST CODE end
         //if(IsHost)
