@@ -21,10 +21,10 @@ MonoBehaviour:
     y: 30
     width: 1536
     height: 731
-  m_MinSize: {x: 879, y: 342}
-  m_MaxSize: {x: 16004, y: 8042}
+  m_MinSize: {x: 881, y: 492}
+  m_MaxSize: {x: 16006, y: 14042}
   vertical: 0
-  controlID: 3512
+  controlID: 3810
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -95,7 +95,7 @@ MonoBehaviour:
       y: 21
       width: 396.40002
       height: 400.4
-    m_Scale: {x: 1.092727, y: 1.092727}
+    m_Scale: {x: 1.0609, y: 1.0609}
     m_Translation: {x: 198.20001, y: 200.2}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -103,10 +103,10 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -181.3811
-      y: -183.21136
-      width: 362.7622
-      height: 366.42273
+      x: -186.82253
+      y: -188.7077
+      width: 373.64505
+      height: 377.4154
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 495.50003, y: 526.75}
@@ -136,10 +136,10 @@ MonoBehaviour:
     y: 0
     width: 926.4
     height: 731
-  m_MinSize: {x: 603, y: 342}
-  m_MaxSize: {x: 12003, y: 8042}
+  m_MinSize: {x: 605, y: 492}
+  m_MaxSize: {x: 12005, y: 14042}
   vertical: 1
-  controlID: 3513
+  controlID: 3811
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -162,10 +162,10 @@ MonoBehaviour:
     y: 0
     width: 926.4
     height: 442.4
-  m_MinSize: {x: 603, y: 221}
-  m_MaxSize: {x: 12003, y: 4021}
+  m_MinSize: {x: 605, y: 221}
+  m_MaxSize: {x: 12005, y: 4021}
   vertical: 0
-  controlID: 3514
+  controlID: 3812
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +223,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: ec19ffff101affffe21bffff1624ffff3a24ffff0c26ffffb632ffffda32ffff8643ffff4a4bffff6e4bffff1a5cffff8463ffffa863ffff5474ffffaa7affffce7affff7a8bffffe893ffff0c94ffffb8a4ffff04abffff28abffffd4bbffff5ac3ffff7ec3ffff4ec5ffff7eceffffa2ceffff72d0ffff36d7ffff5ad7ffff0ae8ffff26fbffffe8bf0000c2cb0000a6d8020058de0200
+      m_ExpandedIDs: a2fefeffc8fefeffa600ffffac0affffd00affffa20cfffff60fffff1a10ffffec11ffffec19ffff101affffe21bffff1624ffff3a24ffff0c26ffffb632ffffda32ffff8643ffff4a4bffff6e4bffff1a5cffff8463ffffa863ffff5474ffffaa7affffce7affff7a8bffffe893ffff0c94ffffb8a4ffff04abffff28abffffd4bbffff5ac3ffff7ec3ffff4ec5ffff7eceffffa2ceffff72d0ffff36d7ffff5ad7ffff0ae8ffff26fbffffe8bf0000c2cb0000a6d8020058de0200
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -266,8 +266,8 @@ MonoBehaviour:
     y: 0
     width: 324.8
     height: 442.4
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 8}
   m_Panes:
   - {fileID: 8}
@@ -453,7 +453,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -462,14 +462,14 @@ MonoBehaviour:
     y: 442.4
     width: 926.4
     height: 288.6
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 13}
+  m_MinSize: {x: 230, y: 250}
+  m_MaxSize: {x: 10000, y: 10000}
+  m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 12}
   - {fileID: 13}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -509,22 +509,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Resources/Scripts/General Card Interactions
+    - Assets/Resources/Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Resources/Scripts/General Card Interactions
+  - Assets/Resources/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\NarraAtor\source\repos\Synergi-Copy\Synergi card game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 24}
-    m_SelectedIDs: 52480000
-    m_LastClickedID: 18514
-    m_ExpandedIDs: 0000000024480000
+    m_SelectedIDs: 3a480000
+    m_LastClickedID: 18490
+    m_ExpandedIDs: 00000000244800003448000040480000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -653,8 +653,8 @@ MonoBehaviour:
     y: 0
     width: 609.6
     height: 731
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}

@@ -29,6 +29,7 @@ public class Hand_Manager : NetworkBehaviour
     [SerializeField] private GameObject tacticPrefab;
     //The opponent's hand locally.
     [SerializeField] private GameObject enemyHand;
+    private bool networkIsConnected;
 
     public NetworkList<GameObject> Player1Hand = new NetworkList<GameObject>(new NetworkVariableSettings
     {
@@ -71,8 +72,21 @@ public class Hand_Manager : NetworkBehaviour
                 cardsInPlayer_Hand.Add(child.gameObject);
             }
         }
+        networkIsConnected = false;
     }
 
+    public override void NetworkStart()
+    {
+        base.NetworkStart();
+        if(IsHost)
+        {
+            foreach(GameObject card in cardsInPlayer_Hand)
+            {
+                Player1Hand.Add(card);
+            }
+        }
+        networkIsConnected = true;
+    }
 
     void Update()
     {
