@@ -633,7 +633,6 @@ GameObject:
   - component: {fileID: 60070665}
   - component: {fileID: 60070666}
   - component: {fileID: 60070667}
-  - component: {fileID: 60070668}
   m_Layer: 0
   m_Name: Player Hand
   m_TagString: Untagged
@@ -710,26 +709,6 @@ MonoBehaviour:
   tacticPrefab: {fileID: 3330126282675716735, guid: bf79a1ca497de8b428536f6e13254466,
     type: 3}
   enemyHand: {fileID: 819565282}
-  TestGameObject:
-    m_InternalValue: {fileID: 0}
-  prefab: {fileID: 1430303447066144088, guid: 2f482c09ae9d75f48ac67806388138a5, type: 3}
---- !u!114 &60070668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 60070664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkInstanceId: 0
-  PrefabHash: 5591288511020657413
-  PrefabHashGenerator: Player Hand
-  AlwaysReplicateAsRoot: 0
-  DontDestroyWithOwner: 0
 --- !u!1 &71067629
 GameObject:
   m_ObjectHideFlags: 0
@@ -9492,7 +9471,6 @@ GameObject:
   m_Component:
   - component: {fileID: 819565283}
   - component: {fileID: 819565284}
-  - component: {fileID: 819565285}
   m_Layer: 0
   m_Name: Enemy Hand
   m_TagString: Untagged
@@ -9543,23 +9521,6 @@ MonoBehaviour:
   m_Spacing: {x: 60, y: 100}
   m_Constraint: 2
   m_ConstraintCount: 1
---- !u!114 &819565285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 819565282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkInstanceId: 0
-  PrefabHash: 11243887971492713450
-  PrefabHashGenerator: Enemy Hand
-  AlwaysReplicateAsRoot: 0
-  DontDestroyWithOwner: 0
 --- !u!1 &842736357
 GameObject:
   m_ObjectHideFlags: 0
@@ -25522,9 +25483,10 @@ PrefabInstance:
     - target: {fileID: 1430303447066144092, guid: 2f482c09ae9d75f48ac67806388138a5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1430303447066144088, guid: 2f482c09ae9d75f48ac67806388138a5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2f482c09ae9d75f48ac67806388138a5, type: 3}
 --- !u!1001 &4654046997880894202
 PrefabInstance:

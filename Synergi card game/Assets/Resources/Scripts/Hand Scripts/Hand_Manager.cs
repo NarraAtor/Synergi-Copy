@@ -29,20 +29,6 @@ public class Hand_Manager : NetworkBehaviour
     //The opponent's hand locally.
     [SerializeField] private GameObject enemyHand;
 
-    // //The host's hand on the network
-    // public NetworkVariable<List<GameObject>> Player1Hand = new NetworkVariable<List<GameObject>>(new NetworkVariableSettings
-    // {
-    //     WritePermission = NetworkVariablePermission.ServerOnly,
-    //     ReadPermission = NetworkVariablePermission.Everyone
-    // });
-    // 
-    // //The client's hand on the network.
-    // public NetworkVariable<List<GameObject>> Player2Hand = new NetworkVariable<List<GameObject>>(new NetworkVariableSettings
-    // {
-    //     WritePermission = NetworkVariablePermission.ServerOnly,
-    //     ReadPermission = NetworkVariablePermission.Everyone
-    // });
-
 
     public List<GameObject> CardsInPlayer_Hand
     {
@@ -107,7 +93,7 @@ public class Hand_Manager : NetworkBehaviour
     /// <param name="card">the card to add to the hand</param>
     public void AddCardToHand(CardData card, GameObject hand)
     {
-        if(hand.Equals(this.gameObject))
+        if (hand.Equals(this.gameObject))
         {
             if (card is BeingData)
             {
@@ -156,7 +142,7 @@ public class Hand_Manager : NetworkBehaviour
                 cardsInPlayer_Hand.Add(addedCard.gameObject);
             }
         }
-        else if(hand.Equals(enemyHand))
+        else if (hand.Equals(enemyHand))
         {
             if (card is BeingData)
             {
