@@ -5,6 +5,7 @@ using CardBase;
 using MLAPI;
 using MLAPI.NetworkVariable;
 using MLAPI.Messaging;
+using MLAPI.NetworkVariable.Collections;
 
 /// <summary>
 /// Purpose: Manages each player's hand and controls visibility over what each player sees in each hand.
@@ -29,7 +30,17 @@ public class Hand_Manager : NetworkBehaviour
     //The opponent's hand locally.
     [SerializeField] private GameObject enemyHand;
 
+    public NetworkList<GameObject> Player1Hand = new NetworkList<GameObject>(new NetworkVariableSettings
+    {
+        WritePermission = NetworkVariablePermission.ServerOnly,
+        ReadPermission = NetworkVariablePermission.Everyone
+    });
 
+    public NetworkList<GameObject> Player2Hand = new NetworkList<GameObject>(new NetworkVariableSettings
+    {
+        WritePermission = NetworkVariablePermission.ServerOnly,
+        ReadPermission = NetworkVariablePermission.Everyone
+    });
     public List<GameObject> CardsInPlayer_Hand
     {
         get
