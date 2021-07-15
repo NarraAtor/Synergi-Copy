@@ -43,16 +43,6 @@ public class Hand_Manager : NetworkBehaviour
     //     ReadPermission = NetworkVariablePermission.Everyone
     // });
 
-        //TEST VARIABLES START
-    public NetworkVariableGameObject TestGameObject = new NetworkVariableGameObject(new NetworkVariableSettings
-    {
-        WritePermission = NetworkVariablePermission.ServerOnly,
-        ReadPermission = NetworkVariablePermission.Everyone
-    });
-
-    private bool isNetworkConnected = false;
-    [SerializeField] private NetworkObject prefab;
-    //TEST VARIABLES END
 
     public List<GameObject> CardsInPlayer_Hand
     {
@@ -86,27 +76,10 @@ public class Hand_Manager : NetworkBehaviour
         }
     }
 
-    public override void NetworkStart()
-    {
-        base.NetworkStart();
-        if(IsHost)
-        {
-            NetworkObject background = Instantiate(prefab);
-            background.Spawn();
 
-        }
-        //TestGameObject.Value = GameObject.Find("Background");
-        isNetworkConnected = true;
-    }
     void Update()
     {
-        //TEST CODE start
-        if(IsHost && isNetworkConnected)
-        {
-            TestGameObject.Value = GameObject.Find("Background");
-            print(TestGameObject.Value.name);
-        }
-        //TEST CODE end
+
         //if(IsHost)
         //{
         //    Player1Hand.Value = cardsInPlayer_Hand;
