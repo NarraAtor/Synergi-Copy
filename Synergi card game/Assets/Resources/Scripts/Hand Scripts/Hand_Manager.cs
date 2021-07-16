@@ -31,17 +31,17 @@ public class Hand_Manager : NetworkBehaviour
     [SerializeField] private GameObject enemyHand;
     private bool networkIsConnected;
 
-    public NetworkList<GameObject> Player1Hand = new NetworkList<GameObject>(new NetworkVariableSettings
-    {
-        WritePermission = NetworkVariablePermission.ServerOnly,
-        ReadPermission = NetworkVariablePermission.Everyone
-    });
-
-    public NetworkList<GameObject> Player2Hand = new NetworkList<GameObject>(new NetworkVariableSettings
-    {
-        WritePermission = NetworkVariablePermission.ServerOnly,
-        ReadPermission = NetworkVariablePermission.Everyone
-    });
+   //public NetworkList<GameObject> Player1Hand = new NetworkList<GameObject>(new NetworkVariableSettings
+   //{
+   //    WritePermission = NetworkVariablePermission.ServerOnly,
+   //    ReadPermission = NetworkVariablePermission.Everyone
+   //});
+   //
+   //public NetworkList<GameObject> Player2Hand = new NetworkList<GameObject>(new NetworkVariableSettings
+   //{
+   //    WritePermission = NetworkVariablePermission.ServerOnly,
+   //    ReadPermission = NetworkVariablePermission.Everyone
+   //});
     public List<GameObject> CardsInPlayer_Hand
     {
         get
