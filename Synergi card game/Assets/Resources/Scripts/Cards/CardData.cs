@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MLAPI;
+using MLAPI.Serialization.Pooled;
+using MLAPI.Transports;
 
 namespace CardBase
 {
@@ -12,7 +15,7 @@ namespace CardBase
         Crystal
     }
     [CreateAssetMenu(menuName = "Cards/Generic Card")]
-    public class CardData : ScriptableObject
+    public class CardData : ScriptableObject, INetworkSerializable
     {
         protected CardType cardType;
         [SerializeField] protected string cardTitle;
