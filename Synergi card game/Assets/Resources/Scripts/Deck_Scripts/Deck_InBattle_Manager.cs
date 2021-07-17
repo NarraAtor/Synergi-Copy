@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using CardBase;
-using MLAPI;
-using MLAPI.Messaging;
-using MLAPI.NetworkVariable;
-public class Deck_InBattle_Manager : NetworkBehaviour
+
+public class Deck_InBattle_Manager : MonoBehaviour
 {
     
     private Stack<CardData> deckArray = new Stack<CardData>(40);
