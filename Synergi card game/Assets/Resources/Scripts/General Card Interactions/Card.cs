@@ -371,8 +371,8 @@ public class Card : MonoBehaviour
 
                         //Checks if it is the main phase at this moment
                         //Again, certain keywords and abilities will be a part of this if statement in the future.)
-                        if (Turn_Manager.GlobalCurrentPhase.Value != Phases.MainPhase1 &&
-                           Turn_Manager.GlobalCurrentPhase.Value != Phases.MainPhase2)
+                        if (Turn_Manager.CurrentPhase != Phases.MainPhase1 &&
+                           Turn_Manager.CurrentPhase != Phases.MainPhase2)
                         {
                             cardIsPlayable = false;
                             return;

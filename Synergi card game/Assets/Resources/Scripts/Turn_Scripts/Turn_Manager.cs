@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using MLAPI;
-using MLAPI.Messaging;
-using MLAPI.NetworkVariable;
+using Mirror;
 
 public enum Turn
 {
@@ -27,21 +25,10 @@ public enum Phases
 ///               The client will be treated as player 2.
 ///               The game will assume 2 players are on the network only.
 /// </summary>
-public class Turn_Manager : NetworkBehaviour
+public class Turn_Manager : MonoBehaviour
 {
-    //public Phases CurrentPhase { get; set; }
+    public Phases CurrentPhase { get; set; }
     public Turn CurrentPlayerTurn { get; set; }
-    public NetworkVariable<Turn> GlobalCurrentPlayerTurn = new NetworkVariable<Turn>(new NetworkVariableSettings
-    {
-        WritePermission = NetworkVariablePermission.ServerOnly,
-        ReadPermission = NetworkVariablePermission.Everyone
-    });
-    public NetworkVariable<Phases> GlobalCurrentPhase = new NetworkVariable<Phases>(new NetworkVariableSettings
-    {
-        WritePermission = NetworkVariablePermission.ServerOnly,
-        ReadPermission = NetworkVariablePermission.Everyone
-    });
-
 
     public bool P1ReadyToPass { get; set; }
     public bool NeedsToInvestInACrystal { get; set; }
@@ -162,14 +149,6 @@ public class Turn_Manager : NetworkBehaviour
         CurrentPlayerTurn = Turn.Self;
     }
 
-    public override void NetworkStart()
-    {
-        if (IsHost)
-        {
-            GlobalCurrentPlayerTurn.Value = Turn.Self;
-            GlobalCurrentPhase.Value = Phases.Draw;
-        }
-    }
 
     void Update()
     {
@@ -184,30 +163,14 @@ public class Turn_Manager : NetworkBehaviour
         {
             DeselectTurnIndicator(indicator);
         }
-        if (IsHost)
-        {
-            CurrentPlayerTurn = GlobalCurrentPlayerTurn.Value;
-        }
-        else if (IsClient)
-        {
-
-            switch (GlobalCurrentPlayerTurn.Value)
-            {
-                case Turn.Self:
-                    CurrentPlayerTurn = Turn.Other;
-                    break;
-                case Turn.Other:
-                    CurrentPlayerTurn = Turn.Self;
-                    break;
-            }
-        }
+        
         //print($"{GlobalCurrentPhase.Value}");
         //Phase/Turn State Machine
         switch (CurrentPlayerTurn)
         {
 
             case Turn.Self:
-                switch (GlobalCurrentPhase.Value)
+                switch (CurrentPhase)
                 {
                     //TODO: Make each phase broadcast messages to the entire game.
                     //Alternatively, if I do more research into unity events or use C# events and delegates, use that instead. 
@@ -224,7 +187,7 @@ public class Turn_Manager : NetworkBehaviour
 
                         if (P1ReadyToPass)
                         {
-                            GlobalCurrentPhase.Value = Phases.ReadyPhase;
+                            CurrentPhase = Phases.ReadyPhase;
                         }
                         P1ReadyToPass = false;
 
@@ -243,7 +206,7 @@ public class Turn_Manager : NetworkBehaviour
                         SelectTurnIndicator(p1ReadyPhaseIndicator);
                         if (P1ReadyToPass)
                         {
-                            GlobalCurrentPhase.Value = Phases.MainPhase1;
+                            CurrentPhase = Phases.MainPhase1;
                         }
                         P1ReadyToPass = false;
 
@@ -253,7 +216,7 @@ public class Turn_Manager : NetworkBehaviour
                         SelectTurnIndicator(p1Main1PhaseIndicator);
                         if (P1ReadyToPass)
                         {
-                            GlobalCurrentPhase.Value = Phases.BattlePhase;
+                            CurrentPhase = Phases.BattlePhase;
                         }
                         P1ReadyToPass = false;
 
@@ -276,7 +239,7 @@ public class Turn_Manager : NetworkBehaviour
                         else if (P1ReadyToPass)
                         {
                             AttackerQueue.Clear();
-                            GlobalCurrentPhase.Value = Phases.MainPhase2;
+                            CurrentPhase = Phases.MainPhase2;
                         }
                         P1ReadyToPass = false;
 
@@ -286,7 +249,7 @@ public class Turn_Manager : NetworkBehaviour
                         SelectTurnIndicator(p1Main2PhaseIndicator);
                         if (P1ReadyToPass)
                         {
-                            GlobalCurrentPhase.Value = Phases.EndPhase;
+                            CurrentPhase = Phases.EndPhase;
                         }
                         P1ReadyToPass = false;
 
@@ -295,17 +258,17 @@ public class Turn_Manager : NetworkBehaviour
                         SelectTurnIndicator(p1EndPhaseIndicator);
                         if (P1ReadyToPass)
                         {
-                            switch (GlobalCurrentPlayerTurn.Value)
+                            switch (CurrentPlayerTurn)
                             {
                                 case Turn.Self:
-                                    GlobalCurrentPlayerTurn.Value = Turn.Other;
+                                    CurrentPlayerTurn = Turn.Other;
                                     break;
                                 case Turn.Other:
-                                    GlobalCurrentPlayerTurn.Value = Turn.Self;
+                                    CurrentPlayerTurn = Turn.Self;
                                     break;
                             }
                             
-                            GlobalCurrentPhase.Value = Phases.Draw;
+                            CurrentPhase = Phases.Draw;
                         }
                         P1ReadyToPass = false;
                         canDrawCardsDuringDrawPhase = true;
@@ -314,7 +277,7 @@ public class Turn_Manager : NetworkBehaviour
                 }
                 break;
             case Turn.Other:
-                switch (GlobalCurrentPhase.Value)
+                switch (CurrentPhase)
                 {
                     //TODO: Make each phase broadcast messages to the entire game.
                     case Phases.Draw:

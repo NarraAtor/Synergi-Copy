@@ -1,9 +1,6 @@
-﻿using MLAPI;
-using MLAPI.Messaging;
-using MLAPI.NetworkVariable;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-
+using Mirror;
 public enum DamageTypes
 {
     Effect,
@@ -14,7 +11,7 @@ public enum DamageTypes
 ///          Also adding in networking. 
 ///          Assume Host is Player1. Each player will have a different perspective depending on their POV.
 /// </summary>
-public class LifeManager : NetworkBehaviour
+public class LifeManager : MonoBehaviour
 {
     [SerializeField] private GameObject portrait;
     [SerializeField] private GameObject opposingPortrait;
@@ -22,18 +19,6 @@ public class LifeManager : NetworkBehaviour
     private Text opposingLifeAmount;
     public int Life { get; private set; }
     public int OpposingLife { get; private set; }
-
-    private NetworkVariable<int> Player1Life = new NetworkVariable<int>(new NetworkVariableSettings
-    {
-        WritePermission = NetworkVariablePermission.ServerOnly,
-        ReadPermission = NetworkVariablePermission.Everyone
-    });
-
-    private NetworkVariable<int> Player2Life = new NetworkVariable<int>(new NetworkVariableSettings
-    {
-        WritePermission = NetworkVariablePermission.ServerOnly,
-        ReadPermission = NetworkVariablePermission.Everyone
-    });
 
     // Start is called before the first frame update
     void Start()
@@ -56,31 +41,8 @@ public class LifeManager : NetworkBehaviour
         OpposingLife = 20;
     }
 
-    public override void NetworkStart()
-    {
-        if (IsHost)
-        {
-            Player1Life.Value = 20;
-            Player2Life.Value = 20;
-        }
-    }
-
     void Update()
     {
-
-        if (IsHost)
-        {
-            Life = Player1Life.Value;
-            OpposingLife = Player2Life.Value;
-            //print($"Called in host: P1: {Life}, \n P2: {OpposingLife}");
-        }
-        else if (IsClient)
-        {
-            Life = Player2Life.Value;
-            OpposingLife = Player1Life.Value;
-            //print($"Called in client: P1: {Life}, \n P2: {OpposingLife}");
-        }
-
         lifeAmount.text = $"Life: {Life} ";
         opposingLifeAmount.text = $"Life: {OpposingLife} ";
         //print($"P1: {Life}, \n P2: {OpposingLife}");
@@ -97,68 +59,8 @@ public class LifeManager : NetworkBehaviour
     /// <param name="damageAmount">how much damage was dealt</param>
     public void DamagePlayer(DamageTypes damageType, int damageAmount)
     {
-        
-        if (IsHost)
-        {
-            SendDamagePlayerFromHostServerRpc(damageType, damageAmount);
-        }
-        //if this is any client aside from the host...
-        else if (IsClient)
-        {
-            SendDamagePlayerFromClientOnlyServerRpc(damageType, damageAmount);
-        }
-
+       
         //lifeAmount.text = $"Life: {Life}";
     }
 
-    /// <summary>
-    /// Purpose: Host deals damage to Client
-    /// Restrictions: Meant for 2 players
-    /// </summary>
-    /// <param name="damageType">type of damage dealt</param>
-    /// <param name="damageAmount">how much damage was dealt</param>
-    [ServerRpc(RequireOwnership = false)]
-    private void SendDamagePlayerFromHostServerRpc(DamageTypes damageType, int damageAmount)
-    {
-        //print("message received from host");
-        //For now, these 2 cases do the same thing. 
-        //Later, they'll broadcast different messages to GameManager.
-        //This will allow for different effects.
-        switch (damageType)
-        {
-            case DamageTypes.Effect:
-                Player2Life.Value -= damageAmount;
-                break;
-            case DamageTypes.Battle:
-                Player2Life.Value -= damageAmount;
-                //print($"P1: {Player1Life.Value}, \n P2: {Player2Life.Value}");
-                break;
-        }
-    }
-
-
-    /// <summary>
-    /// Purpose: Client deals damage to Host
-    /// Restrictions: Meant for 2 players
-    /// </summary>
-    /// <param name="damageType">type of damage dealt</param>
-    /// <param name="damageAmount">how much damage was dealt</param>
-    [ServerRpc(RequireOwnership = false)]
-    private void SendDamagePlayerFromClientOnlyServerRpc(DamageTypes damageType, int damageAmount)
-    {
-        //For now, these 2 cases do the same thing. 
-        //Later, they'll broadcast different messages to GameManager.
-        //This will allow for different effects.
-        //print("received message from client");
-        switch (damageType)
-        {
-            case DamageTypes.Effect:
-                Player1Life.Value -= damageAmount;
-                break;
-            case DamageTypes.Battle:
-                Player1Life.Value -= damageAmount;
-                //print($"P1: {Player1Life.Value}, \n P2: {Player2Life.Value}");
-                break;
-        }
-    }
 }   
