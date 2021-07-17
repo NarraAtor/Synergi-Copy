@@ -31,22 +31,18 @@ public class Hand_Manager : NetworkBehaviour
     [SerializeField] private GameObject enemyHand;
     private bool networkIsConnected;
 
-   //public NetworkList<GameObject> Player1Hand = new NetworkList<GameObject>(new NetworkVariableSettings
-   //{
-   //    WritePermission = NetworkVariablePermission.ServerOnly,
-   //    ReadPermission = NetworkVariablePermission.Everyone
-   //});
-   //
-   //public NetworkList<GameObject> Player2Hand = new NetworkList<GameObject>(new NetworkVariableSettings
-   //{
-   //    WritePermission = NetworkVariablePermission.ServerOnly,
-   //    ReadPermission = NetworkVariablePermission.Everyone
-   //});
     public List<GameObject> CardsInPlayer_Hand
     {
         get
         {
             return cardsInPlayer_Hand;
+        }
+    }
+    public List<GameObject> CardsInEnemy_Hand
+    {
+        get
+        {
+            return cardsInEnemy_Hand;
         }
     }
     // Start is called before the first frame update
@@ -78,30 +74,13 @@ public class Hand_Manager : NetworkBehaviour
     public override void NetworkStart()
     {
         base.NetworkStart();
-        if(IsHost)
-        {
-            foreach(GameObject card in cardsInPlayer_Hand)
-            {
-                Player1Hand.Add(card);
-            }
-        }
         networkIsConnected = true;
     }
 
     void Update()
     {
 
-        //if(IsHost)
-        //{
-        //    Player1Hand.Value = cardsInPlayer_Hand;
-        //    Player2Hand.Value = cardsInEnemy_Hand;
-        //
-        //}
-        //else if(IsClient)
-        //{
-        //    Player2Hand.Value = cardsInPlayer_Hand;
-        //    Player1Hand.Value = cardsInEnemy_Hand;
-        //}
+
 
         //string listOfCardsInHand = "";
         //foreach(GameObject card in Player1Hand.Value)
@@ -112,11 +91,37 @@ public class Hand_Manager : NetworkBehaviour
     }
 
     /// <summary>
-    /// Purpose: Adds a card to the hand based on the type of CardData it is.
+    /// Purpose: Sends a request to the server to add a card to a hand
     /// Restrictions: Only works properly with "this" or "enemyHand" variables
     /// </summary>
     /// <param name="card">the card to add to the hand</param>
+    /// <param name="hand">the hand to add the card too</param>
     public void AddCardToHand(CardData card, GameObject hand)
+    {
+        if(IsHost)
+        {
+            GlobalAddCardToHandServerRPC(card, hand, true);
+        }
+        else if(IsClient)
+        {
+            GlobalAddCardToHandServerRPC(card, hand, false);
+        }
+    }
+
+    /// <summary>
+    /// Purpose: Actually adds a card to the hand based on the type of CardData it is.
+    ///          The main reason I overloaded this method is because I wanted to find a straightforward
+    ///          way to differentiate the server call from the actual method without too much code.
+    ///          This whole thing is a workaround since I have no idea how creating my own NetworkList is supposed
+    ///          to work and the default NetworkList has weird internal errors with GameObjects.
+    ///          (Maybe it's just broken?)
+    /// Restrictions: Only works properly with "this" or "enemyHand" variables
+    /// </summary>
+    /// <param name="card">the card to add to the hand</param>
+    /// <param name="hand">the hand to add the card too</param>
+    /// <param name="sentFromPlayer1">whether or not this card was sent from the host; 
+    ///                               only changes the signature here</param>
+    public void AddCardToHand(CardData card, GameObject hand, bool sentFromPlayer1)
     {
         if (hand.Equals(this.gameObject))
         {
@@ -131,6 +136,7 @@ public class Hand_Manager : NetworkBehaviour
                 beingData.RedEnergyCost, beingData.BlueEnergyCost, beingData.GreenEnergyCost, beingData.PurpleEnergyCost, beingData.GenericEnergyCost,
                 beingData.CardTitle);
                 cardsInPlayer_Hand.Add(addedCard.gameObject);
+
             }
             if (card is TacticData)
             {
@@ -220,9 +226,6 @@ public class Hand_Manager : NetworkBehaviour
 
     /// <summary>
     /// Purpose: Removes a card from the CardInPlayer_Hand list (such as when it is deployed).
-    ///          I didn't destroy the card here becuase I figured that if there were 2 copies 
-    ///          of the same card in hand, glitches would occur.
-    ///          This method simply gets rid of destroyed cards in the list.
     /// </summary>
     public void GetRidOfDestroyedCards(Card card)
     {
@@ -244,5 +247,68 @@ public class Hand_Manager : NetworkBehaviour
         }
 
         Destroy(card.gameObject);
+    }
+
+    /// <summary>
+    /// Purpose: Tells all clients to add a card to a hand.
+    /// Restricitons: hand must be this or enemyHand.
+    /// </summary>
+    /// <param name="card">the card to add</param>
+    /// <param name="hand">the hand to add the card too</param>
+    /// <param name="sentFromPlayer1">whether or not this card was sent from the host</param>
+    [ServerRpc]
+    private void GlobalAddCardToHandServerRPC(CardData card, GameObject hand, bool sentFromPlayer1)
+    {
+        GlobalAddCardToHandClientRpc(card, hand, sentFromPlayer1);
+    }
+
+    /// <summary>
+    /// Purpose: Tells each client add a card to their hand.
+    /// Restrictions: hand must be this or enemyHand.
+    /// </summary>
+    /// <param name="card"></param>
+    /// <param name="hand"></param>
+    /// <param name="sentFromPlayer1">whether or not this card was sent from the host</param>
+    [ClientRpc]
+    private void GlobalAddCardToHandClientRpc(CardData card, GameObject hand, bool sentFromPlayer1)
+    {
+        if(IsHost)
+        {
+            if(sentFromPlayer1)
+            {
+                AddCardToHand(card, hand, sentFromPlayer1);
+            }
+            else
+            {
+                //if this wasn't sent from the host, swap hands accordingly.
+                if(hand.Equals(this.gameObject))
+                {
+                    AddCardToHand(card, enemyHand, sentFromPlayer1);
+                }
+                else if(hand.Equals(enemyHand))
+                {
+                    AddCardToHand(card, this.gameObject, sentFromPlayer1);
+                }
+            }
+        }
+        else if(IsClient)
+        {
+            if (sentFromPlayer1)
+            {
+                //if this was sent from the host, swap hands accordingly.
+                if (hand.Equals(this.gameObject))
+                {
+                    AddCardToHand(card, enemyHand, sentFromPlayer1);
+                }
+                else if (hand.Equals(enemyHand))
+                {
+                    AddCardToHand(card, this.gameObject, sentFromPlayer1);
+                }
+            }
+            else
+            {
+                AddCardToHand(card, hand, sentFromPlayer1);
+            }
+        }
     }
 }
