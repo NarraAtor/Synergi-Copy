@@ -15,7 +15,7 @@ namespace CardBase
         Crystal
     }
     [CreateAssetMenu(menuName = "Cards/Generic Card")]
-    public class CardData : ScriptableObject, INetworkSerializable
+    public class CardData : ScriptableObject
     {
         protected CardType cardType;
         [SerializeField] protected string cardTitle;
