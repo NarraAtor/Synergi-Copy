@@ -256,7 +256,7 @@ public class Hand_Manager : NetworkBehaviour
     /// <param name="card">the card to add</param>
     /// <param name="hand">the hand to add the card too</param>
     /// <param name="sentFromPlayer1">whether or not this card was sent from the host</param>
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void GlobalAddCardToHandServerRPC(CardData card, GameObject hand, bool sentFromPlayer1)
     {
         GlobalAddCardToHandClientRpc(card, hand, sentFromPlayer1);
