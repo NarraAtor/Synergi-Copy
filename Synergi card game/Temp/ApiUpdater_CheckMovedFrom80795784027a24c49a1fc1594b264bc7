@@ -1,0 +1,376 @@
+2139171352928
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Cards/CardData.cs
+4
+7
+MLAPI
+0
+0
+2139171353144
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Cards/CardData.cs
+5
+7
+MLAPI
+0
+0
+2139171353360
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Cards/CardData.cs
+6
+7
+MLAPI
+0
+0
+2139171353576
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Combat Scripts/LifeManager.cs
+1
+7
+MLAPI
+0
+0
+2139171353792
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Combat Scripts/LifeManager.cs
+2
+7
+MLAPI
+0
+0
+2139171354008
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Combat Scripts/LifeManager.cs
+3
+7
+MLAPI
+0
+0
+2139171354224
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Deck_Scripts/Deck_InBattle_Manager.cs
+5
+7
+MLAPI
+0
+0
+2139171354440
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Deck_Scripts/Deck_InBattle_Manager.cs
+6
+7
+MLAPI
+0
+0
+2139171354656
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Deck_Scripts/Deck_InBattle_Manager.cs
+7
+7
+MLAPI
+0
+0
+2139171354872
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Hand Scripts/Hand_Manager.cs
+5
+7
+MLAPI
+0
+0
+2139171355088
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Hand Scripts/Hand_Manager.cs
+6
+7
+MLAPI
+0
+0
+2139171355304
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Hand Scripts/Hand_Manager.cs
+7
+7
+MLAPI
+0
+0
+2139171355520
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Hand Scripts/Hand_Manager.cs
+8
+7
+MLAPI
+0
+0
+2139171355736
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/NetworkRelatedScripts/HelloWorldManager.cs
+3
+7
+MLAPI
+0
+0
+2139171355952
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/NetworkRelatedScripts/HelloWorldPlayer.cs
+4
+7
+MLAPI
+0
+0
+2139171356168
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/NetworkRelatedScripts/HelloWorldPlayer.cs
+5
+7
+MLAPI
+0
+0
+2139171356384
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/NetworkRelatedScripts/HelloWorldPlayer.cs
+6
+7
+MLAPI
+0
+0
+2139171356600
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/NetworkRelatedScripts/NetworkAssigner.cs
+4
+7
+MLAPI
+0
+0
+2139171356816
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/NetworkRelatedScripts/NetworkCommandLine.cs
+3
+7
+MLAPI
+0
+0
+2139171357032
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Turn_Scripts/Turn_Manager.cs
+6
+7
+MLAPI
+0
+0
+2139171357248
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Turn_Scripts/Turn_Manager.cs
+7
+7
+MLAPI
+0
+0
+2139171357464
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Turn_Scripts/Turn_Manager.cs
+8
+7
+MLAPI
+0
+0
+2139171357680
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Deck_Scripts/Deck_InBattle_Manager.cs
+8
+38
+NetworkBehaviour
+0
+0
+2139171357896
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Combat Scripts/LifeManager.cs
+17
+28
+NetworkBehaviour
+0
+0
+2139171358328
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Turn_Scripts/Turn_Manager.cs
+30
+29
+NetworkBehaviour
+0
+0
+2139171358544
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/NetworkRelatedScripts/HelloWorldPlayer.cs
+10
+37
+NetworkBehaviour
+0
+0
+2139171358760
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/NetworkRelatedScripts/NetworkCommandLine.cs
+8
+13
+NetworkManager
+0
+0
+2139171358976
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Combat Scripts/LifeManager.cs
+26
+13
+NetworkVariable<>
+0
+0
+2139171359192
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/NetworkRelatedScripts/HelloWorldPlayer.cs
+39
+45
+ServerRpcParams
+0
+0
+2139171359624
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Hand Scripts/Hand_Manager.cs
+15
+29
+NetworkBehaviour
+0
+0
+2139171359840
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Combat Scripts/LifeManager.cs
+32
+13
+NetworkVariable<>
+0
+0
+2139171360272
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/NetworkRelatedScripts/HelloWorldPlayer.cs
+12
+16
+NetworkVariableVector3
+0
+0
+2139171360704
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Turn_Scripts/Turn_Manager.cs
+34
+12
+NetworkVariable<>
+0
+0
+2139171360920
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/NetworkRelatedScripts/HelloWorldPlayer.cs
+38
+10
+ServerRpcAttribute
+0
+0
+2139171361136
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/NetworkRelatedScripts/HelloWorldPlayer.cs
+38
+10
+ServerRpc
+0
+0
+2139171361352
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Turn_Scripts/Turn_Manager.cs
+39
+12
+NetworkVariable<>
+0
+0
+2139171361568
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Combat Scripts/LifeManager.cs
+120
+6
+ServerRpcAttribute
+0
+0
+2139171361784
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Combat Scripts/LifeManager.cs
+120
+6
+ServerRpc
+0
+0
+2139171362000
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Combat Scripts/LifeManager.cs
+120
+16
+RequireOwnership
+0
+0
+2139171362216
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Combat Scripts/LifeManager.cs
+146
+6
+ServerRpcAttribute
+0
+0
+2139171362432
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Combat Scripts/LifeManager.cs
+146
+6
+ServerRpc
+0
+0
+2139171362648
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Combat Scripts/LifeManager.cs
+146
+16
+RequireOwnership
+0
+0
+2139171362864
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Hand Scripts/Hand_Manager.cs
+259
+6
+ServerRpcAttribute
+0
+0
+2139171363080
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Hand Scripts/Hand_Manager.cs
+259
+6
+ServerRpc
+0
+0
+2139171363296
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Hand Scripts/Hand_Manager.cs
+259
+16
+RequireOwnership
+0
+0
+2139171363512
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Hand Scripts/Hand_Manager.cs
+272
+6
+ClientRpcAttribute
+0
+0
+2139171363728
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Hand Scripts/Hand_Manager.cs
+272
+6
+ClientRpc
+0
+0

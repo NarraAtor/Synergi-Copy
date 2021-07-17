@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using CardBase;
-using MLAPI;
-using MLAPI.NetworkVariable;
-using MLAPI.Messaging;
-using MLAPI.NetworkVariable.Collections;
+
 
 /// <summary>
 /// Purpose: Manages each player's hand and controls visibility over what each player sees in each hand.
