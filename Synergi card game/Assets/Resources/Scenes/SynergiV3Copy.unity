@@ -202,8 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95103da49429d3a4a8a3bbad4a62a03d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0
   cardColor: 1
 --- !u!1 &34887574
 GameObject:
@@ -613,8 +611,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408e5defd64a7f34f84e56da7dddcdba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0
   cardColor: 0
 --- !u!114 &48091893
 MonoBehaviour:
@@ -628,8 +624,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5ec363e68c42849a7ec8f028cda8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0
   cardColor: 0
   durability: 0
   subtype: 
@@ -2190,8 +2184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95103da49429d3a4a8a3bbad4a62a03d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0
   cardColor: 0
 --- !u!1 &170076733
 GameObject:
@@ -3779,8 +3771,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408e5defd64a7f34f84e56da7dddcdba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0
   cardColor: 0
 --- !u!114 &392108425
 MonoBehaviour:
@@ -3794,8 +3784,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5ec363e68c42849a7ec8f028cda8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0
   cardColor: 0
   durability: 0
   subtype: 
@@ -4260,8 +4248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408e5defd64a7f34f84e56da7dddcdba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0
   cardColor: 0
 --- !u!114 &423376238
 MonoBehaviour:
@@ -4275,8 +4261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5ec363e68c42849a7ec8f028cda8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0
   cardColor: 0
   durability: 0
   subtype: 
@@ -8798,8 +8782,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408e5defd64a7f34f84e56da7dddcdba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0
   cardColor: 0
 --- !u!114 &732354506
 MonoBehaviour:
@@ -8813,8 +8795,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5ec363e68c42849a7ec8f028cda8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0
   cardColor: 0
   durability: 0
   subtype: 
@@ -9419,10 +9399,7 @@ MonoBehaviour:
   autoCreatePlayer: 0
   playerSpawnMethod: 0
   spawnPrefabs:
-  - {fileID: 7593702100932339406, guid: cb3e109b672844241907d4b726a1d4c4, type: 3}
-  - {fileID: 1308931684931525747, guid: aa9a07e3c17d9814084072c46aab2805, type: 3}
-  - {fileID: 5755583681225483926, guid: 52470a9082e858f489db19ec484826be, type: 3}
-  - {fileID: 3330126282675716735, guid: bf79a1ca497de8b428536f6e13254466, type: 3}
+  - {fileID: 0}
 --- !u!1 &779117857
 GameObject:
   m_ObjectHideFlags: 0
@@ -10015,8 +9992,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408e5defd64a7f34f84e56da7dddcdba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0
   cardColor: 0
 --- !u!114 &852232212
 MonoBehaviour:
@@ -10030,8 +10005,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5ec363e68c42849a7ec8f028cda8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0
   cardColor: 0
   durability: 0
   subtype: 
@@ -11165,8 +11138,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408e5defd64a7f34f84e56da7dddcdba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0
   cardColor: 0
 --- !u!114 &933419553
 MonoBehaviour:
@@ -11180,8 +11151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5ec363e68c42849a7ec8f028cda8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0
   cardColor: 0
   durability: 0
   subtype: 
@@ -11461,8 +11430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd58da905a576d647b3d99cae195ddb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
 --- !u!4 &959040485
 Transform:
   m_ObjectHideFlags: 0
@@ -11650,8 +11617,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408e5defd64a7f34f84e56da7dddcdba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0
   cardColor: 0
 --- !u!114 &967945459
 MonoBehaviour:
@@ -11665,8 +11630,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5ec363e68c42849a7ec8f028cda8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0
   cardColor: 0
   durability: 0
   subtype: 
@@ -13353,8 +13316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408e5defd64a7f34f84e56da7dddcdba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0
   cardColor: 0
 --- !u!114 &1161881807
 MonoBehaviour:
@@ -13368,8 +13329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5ec363e68c42849a7ec8f028cda8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0
   cardColor: 0
   durability: 0
   subtype: 
@@ -15849,8 +15808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5ec363e68c42849a7ec8f028cda8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0
   cardColor: 1
   durability: 50
   subtype: Tank
@@ -15903,8 +15860,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408e5defd64a7f34f84e56da7dddcdba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0
   cardColor: 0
 --- !u!114 &1288985674
 MonoBehaviour:
@@ -15918,8 +15873,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5ec363e68c42849a7ec8f028cda8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0
   cardColor: 0
   durability: 0
   subtype: 

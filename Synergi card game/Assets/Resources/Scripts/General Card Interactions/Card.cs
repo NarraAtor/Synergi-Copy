@@ -42,7 +42,7 @@ public enum CardPositions
 //    Player1,//The player
 //    Player2//The enemy
 //}
-public class Card : NetworkBehaviour
+public class Card : MonoBehaviour
 {
     //For when a card is in hand and clicked by a player.
     //Remove Serialized field later.
