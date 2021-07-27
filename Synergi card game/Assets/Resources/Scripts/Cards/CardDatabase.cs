@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using CardBase;
+using Mirror;
 //This is a script for managing all of the scriptable object cards I make.
 public class CardDatabase : MonoBehaviour
 {
@@ -12,10 +13,7 @@ public class CardDatabase : MonoBehaviour
 
     private void Start()
     {
-        listOfBeings = Resources.LoadAll<BeingData>("Scripts/Cards/List of Cards/Beings");
-        listOfTactics = Resources.LoadAll<TacticData>("Scripts/Cards/List of Cards/Tactics");
-        listOfDeployables = Resources.LoadAll<DeployableData>("Scripts/Cards/List of Cards/Deployables");
-        
+        //TODO: Move variable intializaiton to here.
     }
 
     /// <summary>
@@ -26,6 +24,10 @@ public class CardDatabase : MonoBehaviour
     /// </summary>
     public Stack<CardData> CreateDeck()
     {
+        //Variables moved here temporairly because it sometimes gets a null reference exception.
+        listOfBeings = Resources.LoadAll<BeingData>("Scripts/Cards/List of Cards/Beings");
+        listOfTactics = Resources.LoadAll<TacticData>("Scripts/Cards/List of Cards/Tactics");
+        listOfDeployables = Resources.LoadAll<DeployableData>("Scripts/Cards/List of Cards/Deployables");
         Stack<CardData> deck = new Stack<CardData>();
         for(int i = 0; i < 13; i++)
         {

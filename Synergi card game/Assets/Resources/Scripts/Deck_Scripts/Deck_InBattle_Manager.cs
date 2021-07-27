@@ -43,9 +43,9 @@ public class Deck_InBattle_Manager : MonoBehaviour
 
         //DeckArray.Push(LightningBolt);
 
-        Draw();
-        Draw();
-        Draw();
+        //Draw();
+        //Draw();
+        //Draw();
     }
 
     //Draw a card from the top of the deck.

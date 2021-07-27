@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using CardBase;
+using Mirror;
 public enum CardColor
 {
     Red,
@@ -41,7 +42,7 @@ public enum CardPositions
 //    Player1,//The player
 //    Player2//The enemy
 //}
-public class Card : MonoBehaviour
+public class Card : NetworkBehaviour
 {
     //For when a card is in hand and clicked by a player.
     //Remove Serialized field later.
@@ -306,7 +307,7 @@ public class Card : MonoBehaviour
         //SetUIComponentColor(cardColor);
 
         CardAbility.GetComponent<TMP_Text>().text = $"{this.abilityText}";
-        CardEnergyCost.GetComponent<TMP_Text>().text = $"{this.convertedEnergyCost}";
+        CardEnergyCost.GetComponent<>().text = $"{this.convertedEnergyCost}";
         m_CardTitle.GetComponent<TMP_Text>().text = $"{this.cardTitle}";
     }
 

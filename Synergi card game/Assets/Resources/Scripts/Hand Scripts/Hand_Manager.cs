@@ -10,7 +10,7 @@ using Mirror;
 /// Restrictions:
 /// TODO: Make sure to add a networkobject if this code doesn't work!
 /// </summary>
-public class Hand_Manager : MonoBehaviour
+public class Hand_Manager : NetworkBehaviour
 {
     //This list is just to have some way to grab the data from each child in the Player's hand.
     private RectTransform[] childrenOfPlayer_Hand;

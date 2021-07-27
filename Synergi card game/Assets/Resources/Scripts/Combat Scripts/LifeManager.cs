@@ -11,7 +11,7 @@ public enum DamageTypes
 ///          Also adding in networking. 
 ///          Assume Host is Player1. Each player will have a different perspective depending on their POV.
 /// </summary>
-public class LifeManager : MonoBehaviour
+public class LifeManager : NetworkBehaviour
 {
     [SerializeField] private GameObject portrait;
     [SerializeField] private GameObject opposingPortrait;
