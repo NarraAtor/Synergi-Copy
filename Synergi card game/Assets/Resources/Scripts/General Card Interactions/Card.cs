@@ -307,7 +307,7 @@ public class Card : NetworkBehaviour
         //SetUIComponentColor(cardColor);
 
         CardAbility.GetComponent<TMP_Text>().text = $"{this.abilityText}";
-        CardEnergyCost.GetComponent<>().text = $"{this.convertedEnergyCost}";
+        CardEnergyCost.GetComponent<TMP_Text>().text = $"{this.convertedEnergyCost}";
         m_CardTitle.GetComponent<TMP_Text>().text = $"{this.cardTitle}";
     }
 
