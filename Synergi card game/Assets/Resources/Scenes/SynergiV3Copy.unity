@@ -11456,6 +11456,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56018b7259927524399e79bdbe5a1e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   p1deck: {fileID: 7926349265602486298}
   p1PhaseIndicator: {fileID: 1033060309}
   p2PhaseIndicator: {fileID: 2038116136}
@@ -11946,6 +11948,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ee3672eb0d86449be412ba82ebf3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 959040483}
+  playerBattlefield: {fileID: 399855097}
 --- !u!224 &998770551 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4654046998260711724, guid: cb3e109b672844241907d4b726a1d4c4,
@@ -23643,6 +23647,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1987065854}
   - component: {fileID: 1987065856}
+  - component: {fileID: 1987065855}
   m_Layer: 5
   m_Name: Player Resource Manager
   m_TagString: Untagged
@@ -23670,6 +23675,23 @@ RectTransform:
   m_AnchoredPosition: {x: 407, y: -203.1502}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1987065855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987065853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 1899800357
+  serverOnly: 0
+  visible: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!114 &1987065856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23682,6 +23704,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d226b208a1c33746be5f740045713dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   energySupply: {fileID: 2028914360}
   cardDatabase: {fileID: 959040483}
 --- !u!1 &2003282797
@@ -24122,6 +24146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1433ba189f56a8445aabab60bbf5e0b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   crystalUI: {fileID: 133328454}
 --- !u!114 &2028914363
 MonoBehaviour:
@@ -24151,6 +24177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d226b208a1c33746be5f740045713dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   energySupply: {fileID: 2028914360}
   cardDatabase: {fileID: 959040483}
 --- !u!114 &2028914365
@@ -24167,7 +24195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneId: 3855325089
   serverOnly: 0
-  visible: 0
+  visible: 2
   m_AssetId: 
   hasSpawned: 0
 --- !u!1 &2038116136
@@ -25350,6 +25378,11 @@ PrefabInstance:
         type: 3}
       propertyPath: sceneId
       value: 107742674
+      objectReference: {fileID: 0}
+    - target: {fileID: -1672858324239655629, guid: b7998454b557a574ab03168a40152239,
+        type: 3}
+      propertyPath: visible
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 866825751979630736, guid: b7998454b557a574ab03168a40152239,
         type: 3}

@@ -22,16 +22,14 @@ public class PassButton : MonoBehaviour
         BACK
     }
 
-    private GameObject gameManager;
+    [SerializeField] private GameObject gameManager;
     private GameObject passButton;
-    private GameObject playerBattlefield;
+    [SerializeField] private GameObject playerBattlefield;
     private PassButtonStates currentState;
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameManager");
         passButton = this.gameObject;
-        playerBattlefield = GameObject.Find("Player Battlefield");
         ChangeButtonState(PassButtonStates.PASS);
     }
 

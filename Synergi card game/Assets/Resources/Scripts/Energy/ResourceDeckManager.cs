@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using CardBase;
+using Mirror;
 
-public class ResourceDeckManager : MonoBehaviour
+public class ResourceDeckManager : NetworkBehaviour
 {
     //private Stack<CrystalData> resourceDeckArray = new Stack<CrystalData>(10);
     [SerializeField] private GameObject energySupply;

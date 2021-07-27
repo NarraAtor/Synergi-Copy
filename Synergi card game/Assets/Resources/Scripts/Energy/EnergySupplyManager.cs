@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using CardBase;
+using Mirror;
 
 public enum Energy
 {
@@ -11,7 +12,7 @@ public enum Energy
     Green,
     Purple
 }
-public class EnergySupplyManager : MonoBehaviour
+public class EnergySupplyManager : NetworkBehaviour
 {
     //Will be used later in the same matter as MtG's Mana pool.
     //private Energy[] energySupply;

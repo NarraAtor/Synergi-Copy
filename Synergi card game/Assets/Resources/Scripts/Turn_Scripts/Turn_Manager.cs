@@ -25,15 +25,42 @@ public enum Phases
 ///               The client will be treated as player 2.
 ///               The game will assume 2 players are on the network only.
 /// </summary>
-public class Turn_Manager : MonoBehaviour
+public class Turn_Manager : NetworkBehaviour
 {
-    public Phases CurrentPhase { get; set; }
-    public Turn CurrentPlayerTurn { get; set; }
+    [SyncVar]
+    private Phases currentPhase;
+    [SyncVar]
+    private Turn currentPlayerTurn;
+    public Phases CurrentPhase
+    {
+        get
+        {
+            return currentPhase;
+        }
+
+        set
+        {
+            currentPhase = value;
+        }
+
+    }
+    public Turn CurrentPlayerTurn {
+        get
+        {
+            return currentPlayerTurn;
+        }
+
+        set
+        {
+            currentPlayerTurn = value;
+        }
+    }
 
     public bool P1ReadyToPass { get; set; }
     public bool NeedsToInvestInACrystal { get; set; }
     public bool AttackersDeclared { get; set; }
     public bool BlockersDeclared { get; set; }
+    //TODO: Change Queue into a List.
     public Queue<Being> AttackerQueue { get; set; }
 
     //public bool P2ReadyToPass { get; set; }
@@ -163,7 +190,7 @@ public class Turn_Manager : MonoBehaviour
         {
             DeselectTurnIndicator(indicator);
         }
-        
+
         //print($"{GlobalCurrentPhase.Value}");
         //Phase/Turn State Machine
         switch (CurrentPlayerTurn)
@@ -267,7 +294,7 @@ public class Turn_Manager : MonoBehaviour
                                     CurrentPlayerTurn = Turn.Self;
                                     break;
                             }
-                            
+
                             CurrentPhase = Phases.Draw;
                         }
                         P1ReadyToPass = false;
