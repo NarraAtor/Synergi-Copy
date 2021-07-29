@@ -823,7 +823,7 @@ ScriptsOnlyBuild:
     className: NetworkDiscovery
   - hash:
       serializedVersion: 2
-      Hash: d7ee8d99f0bd8aa586ec8319393be799
+      Hash: fdfba20dc0010c2f091683a3ad0f1cae
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Turn_Manager

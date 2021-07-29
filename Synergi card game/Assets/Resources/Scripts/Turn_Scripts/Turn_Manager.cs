@@ -38,19 +38,20 @@ public class Turn_Manager : NetworkBehaviour
             return currentPhase;
         }
 
-        set
+        private set
         {
             currentPhase = value;
         }
 
     }
-    public Turn CurrentPlayerTurn {
+    public Turn CurrentPlayerTurn
+    {
         get
         {
             return currentPlayerTurn;
         }
 
-        set
+        private set
         {
             currentPlayerTurn = value;
         }
@@ -65,7 +66,7 @@ public class Turn_Manager : NetworkBehaviour
 
     //public bool P2ReadyToPass { get; set; }
     [SerializeField] private Deck_InBattle_Manager p1deck;
-    private GameObject energySelector;
+    [SerializeField] private GameObject energySelector;
     [SerializeField] private GameObject p1PhaseIndicator;
     private GameObject p1DrawPhaseIndicator;
     private GameObject p1ReadyPhaseIndicator;
@@ -166,9 +167,6 @@ public class Turn_Manager : NetworkBehaviour
                                              p2Main2PhaseIndicator,
                                              p2EndPhaseIndicator};
 
-        p1PassButton = GameObject.Find("Player Pass Button");
-
-        energySelector = GameObject.Find("Player Crystal Selector");
         energySelector.SetActive(false);
 
 
@@ -180,15 +178,7 @@ public class Turn_Manager : NetworkBehaviour
     void Update()
     {
 
-        //Set Turn based on whether this is a host (P1) or a client only (P2)
-        if(isServer)
-        {
 
-        }
-        else if(isClientOnly)
-        {
-
-        }
         //Resolve indicator glitch
         foreach (GameObject indicator in p1IndicatorArray)
         {
@@ -199,192 +189,35 @@ public class Turn_Manager : NetworkBehaviour
             DeselectTurnIndicator(indicator);
         }
 
-        //print($"{GlobalCurrentPhase.Value}");
-        //Phase/Turn State Machine
-        switch (CurrentPlayerTurn)
+        //Set Turn based on whether this is a host (P1) or a client only (P2)
+        if (isServer)
         {
-
-            case Turn.Self:
-                switch (CurrentPhase)
-                {
-                    //TODO: Make each phase broadcast messages to the entire game.
-                    //Alternatively, if I do more research into unity events or use C# events and delegates, use that instead. 
-                    case Phases.Draw:
-
-                        SelectTurnIndicator(p1DrawPhaseIndicator);
-
-                        //Gets rid of infinite draw glitch
-                        if (canDrawCardsDuringDrawPhase)
-                        {
-                            p1deck.Draw();
-                            canDrawCardsDuringDrawPhase = false;
-                        }
-
-                        if (P1ReadyToPass)
-                        {
-                            CurrentPhase = Phases.ReadyPhase;
-                        }
-                        P1ReadyToPass = false;
-
-                        break;
-                    case Phases.ReadyPhase:
-                        //Call turn effects
-                        if (NeedsToInvestInACrystal)
-                        {
-                            energySelector.SetActive(true);
-                            P1ReadyToPass = false;
-                        }
-                        else
-                        {
-                            energySelector.SetActive(false);
-                        }
-                        SelectTurnIndicator(p1ReadyPhaseIndicator);
-                        if (P1ReadyToPass)
-                        {
-                            CurrentPhase = Phases.MainPhase1;
-                        }
-                        P1ReadyToPass = false;
-
-                        break;
-                    case Phases.MainPhase1:
-                        //TODO: End on user input or time end
-                        SelectTurnIndicator(p1Main1PhaseIndicator);
-                        if (P1ReadyToPass)
-                        {
-                            CurrentPhase = Phases.BattlePhase;
-                        }
-                        P1ReadyToPass = false;
-
-                        break;
-                    case Phases.BattlePhase:
-                        //TODO: Give the user the chance to attack or end this phase. End on time end.
-                        SelectTurnIndicator(p1BattlePhaseIndicator);
-                        AttackersDeclared = false;
-                        BlockersDeclared = false;
-
-                        //Test
-                        if (AttackersDeclared)
-                        {
-
-                        }
-                        //else if(BlockersDeclared)
-                        //{
-                        //
-                        //}
-                        else if (P1ReadyToPass)
-                        {
-                            AttackerQueue.Clear();
-                            CurrentPhase = Phases.MainPhase2;
-                        }
-                        P1ReadyToPass = false;
-
-                        break;
-                    case Phases.MainPhase2:
-                        //TODO: End on user input or time end
-                        SelectTurnIndicator(p1Main2PhaseIndicator);
-                        if (P1ReadyToPass)
-                        {
-                            CurrentPhase = Phases.EndPhase;
-                        }
-                        P1ReadyToPass = false;
-
-                        break;
-                    case Phases.EndPhase:
-                        SelectTurnIndicator(p1EndPhaseIndicator);
-                        if (P1ReadyToPass)
-                        {
-                            switch (CurrentPlayerTurn)
-                            {
-                                case Turn.Self:
-                                    CurrentPlayerTurn = Turn.Other;
-                                    break;
-                                case Turn.Other:
-                                    CurrentPlayerTurn = Turn.Self;
-                                    break;
-                            }
-
-                            CurrentPhase = Phases.Draw;
-                        }
-                        P1ReadyToPass = false;
-                        canDrawCardsDuringDrawPhase = true;
-                        NeedsToInvestInACrystal = true;
-                        break;
-                }
-                break;
-            case Turn.Other:
-                switch (CurrentPhase)
-                {
-                    //TODO: Make each phase broadcast messages to the entire game.
-                    case Phases.Draw:
-                        SelectTurnIndicator(p2DrawPhaseIndicator);
-                        //p2deck.Draw();
-                        //if (P1ReadyToPass)
-                        //{
-                        //    GlobalCurrentPhase.Value = Phases.ReadyPhase;
-                        //    DeselectTurnIndicator(p2DrawPhaseIndicator);
-                        //}
-                        P1ReadyToPass = false;
-
-                        break;
-                    case Phases.ReadyPhase:
-                        //Call turn effects
-                        SelectTurnIndicator(p2ReadyPhaseIndicator);
-                        //if (P1ReadyToPass)
-                        //{
-                        //    GlobalCurrentPhase.Value = Phases.MainPhase1;
-                        //    DeselectTurnIndicator(p2ReadyPhaseIndicator);
-                        //}
-                        P1ReadyToPass = false;
-
-                        break;
-                    case Phases.MainPhase1:
-                        //TODO: End on user input or time end
-                        SelectTurnIndicator(p2Main1PhaseIndicator);
-                        //if (P1ReadyToPass)
-                        //{
-                        //    GlobalCurrentPhase.Value = Phases.BattlePhase;
-                        //    DeselectTurnIndicator(p2Main1PhaseIndicator);
-                        //}
-                        P1ReadyToPass = false;
-
-                        break;
-                    case Phases.BattlePhase:
-                        //TODO: Give the user the chance to attack or end this phase. End on time end.
-                        SelectTurnIndicator(p2BattlePhaseIndicator);
-                        //if (P1ReadyToPass)
-                        //{
-                        //    GlobalCurrentPhase.Value = Phases.MainPhase2;
-                        //    DeselectTurnIndicator(p2BattlePhaseIndicator);
-                        //}
-                        P1ReadyToPass = false;
-
-                        break;
-                    case Phases.MainPhase2:
-                        //TODO: End on user input or time end
-                        SelectTurnIndicator(p2Main2PhaseIndicator);
-                        //if (P1ReadyToPass)
-                        //{
-                        //    GlobalCurrentPhase.Value = Phases.EndPhase;
-                        //    DeselectTurnIndicator(p2Main2PhaseIndicator);
-                        //}
-                        P1ReadyToPass = false;
-
-                        break;
-                    case Phases.EndPhase:
-                        SelectTurnIndicator(p2EndPhaseIndicator);
-                        //if (P1ReadyToPass)
-                        //{
-                        //    CurrentPlayerTurn = Turn.Self;
-                        //    GlobalCurrentPhase.Value = Phases.Draw;
-                        //    DeselectTurnIndicator(p2EndPhaseIndicator);
-                        //}
-                        P1ReadyToPass = false;
-                        canDrawCardsDuringDrawPhase = true;
-                        NeedsToInvestInACrystal = true;
-                        break;
-                }
-                break;
+            //The host is always right
+            switch (currentPlayerTurn)
+            {
+                case Turn.Self:
+                    ProgressTurn(currentPlayerTurn, currentPhase);
+                    break;
+                case Turn.Other:
+                    ProgressTurn(currentPlayerTurn, currentPhase);
+                    break;
+            }
         }
+        else if (isClientOnly)
+        {
+            //The client is always the opposite of whatever the host is
+            switch (currentPlayerTurn)
+            {
+                case Turn.Self:
+                    ProgressTurn(Turn.Other, currentPhase);
+                    break;
+                case Turn.Other:
+                    ProgressTurn(Turn.Self, currentPhase);
+                    break;
+            }
+        }
+        //print($"{GlobalCurrentPhase.Value}");
+
     }
 
     /// <summary>
@@ -460,6 +293,241 @@ public class Turn_Manager : NetworkBehaviour
             being.BattleNumber.SetActive(true);
             being.BattleNumber.GetComponent<TextMeshProUGUI>().text = $"{AttackerQueue.Count}";
             p1PassButton.GetComponent<PassButton>().ChangeButtonState(PassButton.PassButtonStates.ATTACK);
+        }
+    }
+
+    /// <summary>
+    /// Purpose: A helper method that progresses the player through the phases and turns.
+    /// Restrictions: Limited to 2 players.
+    /// </summary>
+    /// <param name="turn">Whose turn it is.</param>
+    /// <param name="phase">What phase it is.</param>
+    private void ProgressTurn(Turn turn, Phases phase)
+    {
+        //Phase/Turn State Machine
+        switch (turn)
+        {
+
+            case Turn.Self:
+                switch (phase)
+                {
+                    //TODO: Make each phase broadcast messages to the entire game.
+                    //Alternatively, if I do more research into unity events or use C# events and delegates, use that instead. 
+                    case Phases.Draw:
+
+                        SelectTurnIndicator(p1DrawPhaseIndicator);
+
+                        //Gets rid of infinite draw glitch
+                        if (canDrawCardsDuringDrawPhase)
+                        {
+                            p1deck.Draw();
+                            canDrawCardsDuringDrawPhase = false;
+                        }
+
+                        if (P1ReadyToPass)
+                        {
+                            CmdProgressPhase();
+                        }
+                        P1ReadyToPass = false;
+
+                        break;
+                    case Phases.ReadyPhase:
+                        //Call turn effects
+                        if (NeedsToInvestInACrystal)
+                        {
+                            energySelector.SetActive(true);
+                            P1ReadyToPass = false;
+                        }
+                        else
+                        {
+                            energySelector.SetActive(false);
+                        }
+                        SelectTurnIndicator(p1ReadyPhaseIndicator);
+                        if (P1ReadyToPass)
+                        {
+                            CmdProgressPhase();
+                        }
+                        P1ReadyToPass = false;
+
+                        break;
+                    case Phases.MainPhase1:
+                        //TODO: End on user input or time end
+                        SelectTurnIndicator(p1Main1PhaseIndicator);
+                        if (P1ReadyToPass)
+                        {
+                            CmdProgressPhase();
+                        }
+                        P1ReadyToPass = false;
+
+                        break;
+                    case Phases.BattlePhase:
+                        //TODO: Give the user the chance to attack or end this phase. End on time end.
+                        SelectTurnIndicator(p1BattlePhaseIndicator);
+                        AttackersDeclared = false;
+                        BlockersDeclared = false;
+
+                        //Test
+                        if (AttackersDeclared)
+                        {
+
+                        }
+                        //else if(BlockersDeclared)
+                        //{
+                        //
+                        //}
+                        else if (P1ReadyToPass)
+                        {
+                            AttackerQueue.Clear();
+                            CmdProgressPhase();
+                        }
+                        P1ReadyToPass = false;
+
+                        break;
+                    case Phases.MainPhase2:
+                        //TODO: End on user input or time end
+                        SelectTurnIndicator(p1Main2PhaseIndicator);
+                        if (P1ReadyToPass)
+                        {
+                            CmdProgressPhase();
+                        }
+                        P1ReadyToPass = false;
+
+                        break;
+                    case Phases.EndPhase:
+                        SelectTurnIndicator(p1EndPhaseIndicator);
+                        if (P1ReadyToPass)
+                        {
+                            CmdProgressTurn();
+                            CmdProgressPhase();
+                        }
+                        P1ReadyToPass = false;
+                        canDrawCardsDuringDrawPhase = true;
+                        NeedsToInvestInACrystal = true;
+                        break;
+                }
+                break;
+            case Turn.Other:
+                switch (phase)
+                {
+                    //TODO: Make each phase broadcast messages to the entire game.
+                    case Phases.Draw:
+                        SelectTurnIndicator(p2DrawPhaseIndicator);
+                        //p2deck.Draw();
+                        //if (P1ReadyToPass)
+                        //{
+                        //    GlobalCurrentPhase.Value = Phases.ReadyPhase;
+                        //    DeselectTurnIndicator(p2DrawPhaseIndicator);
+                        //}
+                        P1ReadyToPass = false;
+
+                        break;
+                    case Phases.ReadyPhase:
+                        //Call turn effects
+                        SelectTurnIndicator(p2ReadyPhaseIndicator);
+                        //if (P1ReadyToPass)
+                        //{
+                        //    GlobalCurrentPhase.Value = Phases.MainPhase1;
+                        //    DeselectTurnIndicator(p2ReadyPhaseIndicator);
+                        //}
+                        P1ReadyToPass = false;
+
+                        break;
+                    case Phases.MainPhase1:
+                        //TODO: End on user input or time end
+                        SelectTurnIndicator(p2Main1PhaseIndicator);
+                        //if (P1ReadyToPass)
+                        //{
+                        //    GlobalCurrentPhase.Value = Phases.BattlePhase;
+                        //    DeselectTurnIndicator(p2Main1PhaseIndicator);
+                        //}
+                        P1ReadyToPass = false;
+
+                        break;
+                    case Phases.BattlePhase:
+                        //TODO: Give the user the chance to attack or end this phase. End on time end.
+                        SelectTurnIndicator(p2BattlePhaseIndicator);
+                        //if (P1ReadyToPass)
+                        //{
+                        //    GlobalCurrentPhase.Value = Phases.MainPhase2;
+                        //    DeselectTurnIndicator(p2BattlePhaseIndicator);
+                        //}
+                        P1ReadyToPass = false;
+
+                        break;
+                    case Phases.MainPhase2:
+                        //TODO: End on user input or time end
+                        SelectTurnIndicator(p2Main2PhaseIndicator);
+                        //if (P1ReadyToPass)
+                        //{
+                        //    GlobalCurrentPhase.Value = Phases.EndPhase;
+                        //    DeselectTurnIndicator(p2Main2PhaseIndicator);
+                        //}
+                        P1ReadyToPass = false;
+
+                        break;
+                    case Phases.EndPhase:
+                        SelectTurnIndicator(p2EndPhaseIndicator);
+                        //if (P1ReadyToPass)
+                        //{
+                        //    CurrentPlayerTurn = Turn.Self;
+                        //    GlobalCurrentPhase.Value = Phases.Draw;
+                        //    DeselectTurnIndicator(p2EndPhaseIndicator);
+                        //}
+                        P1ReadyToPass = false;
+                        canDrawCardsDuringDrawPhase = true;
+                        NeedsToInvestInACrystal = true;
+                        break;
+                }
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Purpose: Allows both clients and host to manipulate the currentTurn SyncVar
+    /// Restrictions: Only works for 2 players.
+    /// </summary>
+    /// <param name="currentPhase"></param>
+    [Command(requiresAuthority = false)]
+    public void CmdProgressTurn()
+    {
+        switch (currentPlayerTurn)
+        {
+            case Turn.Self:
+                currentPlayerTurn = Turn.Other;
+                break;
+            case Turn.Other:
+                currentPlayerTurn = Turn.Self;
+                break;
+        }
+    }
+    /// <summary>
+    /// Purpose: Allows both clients and host to manipulate the currentPhase SyncVar
+    /// Restrictions: Only works for 2 players.
+    /// </summary>
+    /// <param name="currentPhase"></param>
+    [Command(requiresAuthority =false)]
+    public void CmdProgressPhase()
+    {
+        switch (currentPhase)
+        {
+            case Phases.Draw:
+                currentPhase = Phases.ReadyPhase;
+                break;
+            case Phases.ReadyPhase:
+                currentPhase = Phases.MainPhase1;
+                break;
+            case Phases.MainPhase1:
+                currentPhase = Phases.BattlePhase;
+                break;
+            case Phases.BattlePhase:
+                currentPhase = Phases.MainPhase2;
+                break;
+            case Phases.MainPhase2:
+                currentPhase = Phases.EndPhase;
+                break;
+            case Phases.EndPhase:
+                currentPhase = Phases.Draw;
+                break;
         }
     }
 
