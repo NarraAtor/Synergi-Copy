@@ -11,7 +11,7 @@ public class CardDatabase : NetworkBehaviour
     private DeployableData[] listOfDeployables;
     //private List<CardData> listOfCards = new List<CardData>(3);
 
-    public override void OnStartClient()
+    public void Start()
     {
         listOfBeings = Resources.LoadAll<BeingData>("Scripts/Cards/List of Cards/Beings");
         listOfTactics = Resources.LoadAll<TacticData>("Scripts/Cards/List of Cards/Tactics");

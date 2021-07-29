@@ -33,7 +33,7 @@ public class Deck_InBattle_Manager : NetworkBehaviour
 
     //I can't exactly picture how a user will pick their own deck, so I'll just create a prototype-deck with hard coded data.
     // Start is called before the first frame update
-    override void NetworkStart()
+    public void Start()
     {
         
         MakeDeck();

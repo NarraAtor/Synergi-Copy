@@ -1027,7 +1027,7 @@ ScriptsOnlyBuild:
     className: ActivationTrack
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 6fd2bb55b3ee5edb6040a1c5bccd0e07
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CardDatabase
@@ -1435,7 +1435,7 @@ ScriptsOnlyBuild:
     className: Battlefield_Zone_Manager
   - hash:
       serializedVersion: 2
-      Hash: ce075e588ed278f6e789bd0a64c1b21d
+      Hash: e9e5bdd63a9367c3df148354a5c40f54
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Deck_InBattle_Manager

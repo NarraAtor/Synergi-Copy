@@ -11430,6 +11430,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd58da905a576d647b3d99cae195ddb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
 --- !u!4 &959040485
 Transform:
   m_ObjectHideFlags: 0
@@ -25862,6 +25864,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6619416133677331666}
   - component: {fileID: 7926349265602486298}
+  - component: {fileID: 7926349265602486299}
   m_Layer: 5
   m_Name: Player Deck
   m_TagString: Untagged
@@ -25881,6 +25884,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c46046a0e768dfb4293f0849d7fad624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   playerHand: {fileID: 60070664}
   playerGraveyard: {fileID: 1908102570}
   cardDatabase: {fileID: 959040483}
+--- !u!114 &7926349265602486299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7926349265602486297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 3816994325
+  serverOnly: 0
+  visible: 0
+  m_AssetId: 
+  hasSpawned: 0
