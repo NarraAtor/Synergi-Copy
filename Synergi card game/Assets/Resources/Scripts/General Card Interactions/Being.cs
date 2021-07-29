@@ -165,7 +165,7 @@ public class Being : Card
                     
                     if (cardIsPlayable)
                     {
-                        Player_Battlefield.SendMessage("ShowDeployableZones");
+                        player_Battlefield.SendMessage("ShowDeployableZones");
                     }
 
                 }
@@ -180,9 +180,9 @@ public class Being : Card
                     //attack declaration system is below
                     //may be moved to turn manager
 
-                    if (Turn_Manager.CurrentPhase == Phases.BattlePhase && Turn_Manager.CurrentPlayerTurn == Turn.Self)
+                    if (turn_Manager.CurrentPhase == Phases.BattlePhase && turn_Manager.CurrentPlayerTurn == Turn.Self)
                     {
-                        Turn_Manager.DeclareAttacker(this);
+                        turn_Manager.DeclareAttacker(this);
                         
 
                         //Deal Damage to the enemy
@@ -198,9 +198,9 @@ public class Being : Card
                     //attack declaration system is below
                     //may be moved to turn manager
 
-                    if (Turn_Manager.CurrentPhase == Phases.BattlePhase && Turn_Manager.CurrentPlayerTurn == Turn.Self)
+                    if (turn_Manager.CurrentPhase == Phases.BattlePhase && turn_Manager.CurrentPlayerTurn == Turn.Self)
                     {
-                        Turn_Manager.DeclareAttacker(this);
+                        turn_Manager.DeclareAttacker(this);
 
 
                         //Deal Damage to the enemy
@@ -216,9 +216,9 @@ public class Being : Card
                     //attack declaration system is below
                     //may be moved to turn manager
 
-                    if (Turn_Manager.CurrentPhase == Phases.BattlePhase && Turn_Manager.CurrentPlayerTurn == Turn.Self)
+                    if (turn_Manager.CurrentPhase == Phases.BattlePhase && turn_Manager.CurrentPlayerTurn == Turn.Self)
                     {
-                        Turn_Manager.DeclareAttacker(this);
+                        turn_Manager.DeclareAttacker(this);
 
 
                         //Deal Damage to the enemy
@@ -236,18 +236,19 @@ public class Being : Card
     public virtual void DeployBeing(string nameOfCardZone)
     {
         GameObject.Find(nameOfCardZone).GetComponent<CardZone>().SendMessage("Deploy", this.GetComponent<Being>());
-        Player_Hand.GetComponent<Hand_Manager>().GetRidOfDestroyedCards(this);
+        player_Hand.GetComponent<Hand_Manager>().GetRidOfDestroyedCards(this);
     }
 
     /// <summary>
     /// Purpose: Confirms that this card is attacking and deals damage to the opposing player.
     ///          TODO: Have this confirm attackers then go into declare defenders.
     ///          TODO: All cards will need to know if they belong to the player or not. I'll probably handle that
-    ///          with an Enum called owner. It would probably be handled in each card's update loop.
+    ///          with an Enum called owner. It would probably be handled in each card's update loop.(Edit:
+    ///          may be handled using isClientOnly and the like instead).
     /// </summary>
     public virtual void CommitAttack()
     {
-        Enemy_Portrait.GetComponent<LifeManager>().DamagePlayer(DamageTypes.Battle, CurrentPower);
+        game_Manager.GetComponent<LifeManager>().CmdDamagePlayer(DamageTypes.Battle, CurrentPower, enemy_Portrait);
     }
 
     //Helper method for setting this card's UI to the values in data.

@@ -46,12 +46,13 @@ public class Card : MonoBehaviour
 {
     //For when a card is in hand and clicked by a player.
     //Remove Serialized field later.
-    protected GameObject Player_Battlefield;
-    protected GameObject Player_Hand;
-    protected GameObject Player_Graveyard;
-    protected GameObject Player_Portrait;
-    protected GameObject Enemy_Portrait;
-    protected Turn_Manager Turn_Manager;
+    protected GameObject player_Battlefield;
+    protected GameObject player_Hand;
+    protected GameObject player_Graveyard;
+    protected GameObject player_Portrait;
+    protected GameObject enemy_Portrait;
+    protected GameObject game_Manager;
+    protected Turn_Manager turn_Manager;
     protected EnergySupplyManager Player_EnergySupply;
     [SerializeField] protected CardColor cardColor;
     protected CardType cardType;
@@ -245,13 +246,14 @@ public class Card : MonoBehaviour
     protected virtual void Start()
     {
         //I may have to eventually change these so that its assigned an object in a serialized field instead.
-        Player_Battlefield = GameObject.Find("Player Battlefield");
-        Player_Hand = GameObject.Find("Player Hand");
-        Player_Graveyard = GameObject.Find("Player Graveyard");
-        Player_Portrait = GameObject.Find("PlayerPortrait");
-        Enemy_Portrait = GameObject.Find("EnemyPortrait");
-        Player_EnergySupply = Player_Portrait.GetComponent<EnergySupplyManager>();
-        Turn_Manager = GameObject.Find("GameManager").GetComponent<Turn_Manager>();
+        player_Battlefield = GameObject.Find("Player Battlefield");
+        player_Hand = GameObject.Find("Player Hand");
+        player_Graveyard = GameObject.Find("Player Graveyard");
+        player_Portrait = GameObject.Find("PlayerPortrait");
+        enemy_Portrait = GameObject.Find("EnemyPortrait");
+        Player_EnergySupply = player_Portrait.GetComponent<EnergySupplyManager>();
+        game_Manager = GameObject.Find("GameManager");
+        turn_Manager = game_Manager.GetComponent<Turn_Manager>();
 
 
         //CardUI = new List<GameObject>();
@@ -345,7 +347,7 @@ public class Card : MonoBehaviour
     /// </summary>
     public virtual void IsClicked()
     {
-        switch (Turn_Manager.CurrentPlayerTurn)
+        switch (turn_Manager.CurrentPlayerTurn)
         {
             case Turn.Self:
                 switch (currentPosition)
@@ -355,9 +357,9 @@ public class Card : MonoBehaviour
                         playerActive = true;
                         cardIsPlayable = true;
                         //Only one card may be selected at a time. I get a component in each child just so I have an array.
-                        for (int i = 0; i < Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_Hand.Count; i++)
+                        for (int i = 0; i < player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_Hand.Count; i++)
                         {
-                            Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_Hand[i].GetComponent<Card>().IsSelected = false;
+                            player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_Hand[i].GetComponent<Card>().IsSelected = false;
                         }
 
                         isSelected = true;
@@ -372,8 +374,8 @@ public class Card : MonoBehaviour
 
                         //Checks if it is the main phase at this moment
                         //Again, certain keywords and abilities will be a part of this if statement in the future.)
-                        if (Turn_Manager.CurrentPhase != Phases.MainPhase1 &&
-                           Turn_Manager.CurrentPhase != Phases.MainPhase2)
+                        if (turn_Manager.CurrentPhase != Phases.MainPhase1 &&
+                           turn_Manager.CurrentPhase != Phases.MainPhase2)
                         {
                             cardIsPlayable = false;
                             return;

@@ -11411,6 +11411,7 @@ GameObject:
   - component: {fileID: 959040484}
   - component: {fileID: 959040486}
   - component: {fileID: 959040488}
+  - component: {fileID: 959040487}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -11465,6 +11466,22 @@ MonoBehaviour:
   p1PhaseIndicator: {fileID: 1033060309}
   p2PhaseIndicator: {fileID: 2038116136}
   p1PassButton: {fileID: 983995459}
+--- !u!114 &959040487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959040483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f32c5b64dc3f8914d8abbee71aac7a5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  portrait: {fileID: 2028914360}
+  opposingPortrait: {fileID: 1108005358}
 --- !u!114 &959040488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24102,7 +24119,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2028914361}
   - component: {fileID: 2028914362}
-  - component: {fileID: 2028914363}
   - component: {fileID: 2028914364}
   - component: {fileID: 2028914365}
   m_Layer: 5
@@ -24152,22 +24168,6 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   crystalUI: {fileID: 133328454}
---- !u!114 &2028914363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2028914360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f32c5b64dc3f8914d8abbee71aac7a5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  portrait: {fileID: 2028914360}
-  opposingPortrait: {fileID: 1108005358}
 --- !u!114 &2028914364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25509,6 +25509,7 @@ PrefabInstance:
       objectReference: {fileID: 2028914360}
     m_RemovedComponents:
     - {fileID: 866825751979630739, guid: b7998454b557a574ab03168a40152239, type: 3}
+    - {fileID: 866825751979630738, guid: b7998454b557a574ab03168a40152239, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b7998454b557a574ab03168a40152239, type: 3}
 --- !u!1001 &1430303447205233223
 PrefabInstance:

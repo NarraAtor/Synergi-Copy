@@ -96,12 +96,12 @@ public class Tactic : Card
     public virtual void Utilize()
     {
         TacticGrid.GetComponent<Tactic_Zone_Manager>().SendMessage("Add", this.GetComponent<Tactic>());
-        Player_Hand.GetComponent<Hand_Manager>().GetRidOfDestroyedCards(this);
+        player_Hand.GetComponent<Hand_Manager>().GetRidOfDestroyedCards(this);
     }
 
     public virtual void DestroyTactic()
     {
-        Player_Graveyard.GetComponent<Graveyard_Manager>().SendMessage("AddCardToGraveyard", this.GetComponent<Tactic>());
+        player_Graveyard.GetComponent<Graveyard_Manager>().SendMessage("AddCardToGraveyard", this.GetComponent<Tactic>());
         TacticGrid.GetComponent<Tactic_Zone_Manager>().SendMessage("Remove", this.GetComponent<Tactic>());
     }
 

@@ -98,7 +98,7 @@ public class Deployable : Card
 
                 if (cardIsPlayable)
                 {
-                    Player_Battlefield.SendMessage("ShowDeployableZones");
+                    player_Battlefield.SendMessage("ShowDeployableZones");
                 }
                 break;
         }
@@ -107,7 +107,7 @@ public class Deployable : Card
     public virtual void DeployDeployable(string nameOfCardZone)
     {
         GameObject.Find(nameOfCardZone).GetComponent<CardZone>().SendMessage("Deploy", this.GetComponent<Deployable>());
-        Player_Hand.GetComponent<Hand_Manager>().GetRidOfDestroyedCards(this);
+        player_Hand.GetComponent<Hand_Manager>().GetRidOfDestroyedCards(this);
     }
 
     //Helper method for setting this card's UI to the values in data.
