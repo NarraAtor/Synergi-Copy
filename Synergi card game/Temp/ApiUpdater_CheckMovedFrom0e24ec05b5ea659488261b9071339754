@@ -1,0 +1,128 @@
+3115999430832
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Cards/CardDatabase.cs
+5
+7
+Mirror
+0
+0
+3115999431048
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Combat Scripts/LifeManager.cs
+3
+7
+Mirror
+0
+0
+3115999431264
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Energy/EnergySupplyManager.cs
+6
+7
+Mirror
+0
+0
+3115999431480
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Energy/ResourceDeckManager.cs
+5
+7
+Mirror
+0
+0
+3115999431696
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/General Card Interactions/Card.cs
+7
+7
+Mirror
+0
+0
+3115999431912
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Hand Scripts/Hand_Manager.cs
+5
+7
+Mirror
+0
+0
+3115999432128
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Turn_Scripts/Turn_Manager.cs
+6
+7
+Mirror
+0
+0
+3115999432344
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Combat Scripts/LifeManager.cs
+14
+28
+NetworkBehaviour
+0
+0
+3115999432560
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Energy/EnergySupplyManager.cs
+15
+36
+NetworkBehaviour
+0
+0
+3115999432776
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Hand Scripts/Hand_Manager.cs
+13
+29
+NetworkBehaviour
+0
+0
+3115999432992
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Energy/ResourceDeckManager.cs
+7
+36
+NetworkBehaviour
+0
+0
+3115999433208
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Turn_Scripts/Turn_Manager.cs
+28
+29
+NetworkBehaviour
+0
+0
+3115999433424
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Turn_Scripts/Turn_Manager.cs
+30
+6
+SyncVarAttribute
+0
+0
+3115999433640
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Turn_Scripts/Turn_Manager.cs
+30
+6
+SyncVar
+0
+0
+3115999433856
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Turn_Scripts/Turn_Manager.cs
+32
+6
+SyncVarAttribute
+0
+0
+3115999434072
+-1485410143
+C:/Users/NarraAtor/source/repos/Synergi-Copy/Synergi card game/Assets/Resources/Scripts/Turn_Scripts/Turn_Manager.cs
+32
+6
+SyncVar
+0
+0

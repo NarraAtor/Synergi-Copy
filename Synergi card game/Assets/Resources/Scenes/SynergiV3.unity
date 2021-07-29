@@ -9396,7 +9396,7 @@ MonoBehaviour:
   authenticator: {fileID: 0}
   playerPrefab: {fileID: 829410449547890981, guid: d8586b4741258c24183e637ee809f276,
     type: 3}
-  autoCreatePlayer: 0
+  autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs:
   - {fileID: 0}
@@ -11457,7 +11457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
-  syncInterval: 0.1
+  syncInterval: 0.027
   p1deck: {fileID: 7926349265602486298}
   p1PhaseIndicator: {fileID: 1033060309}
   p2PhaseIndicator: {fileID: 2038116136}
@@ -13250,7 +13250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1153992430
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23654,7 +23654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1987065854
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24195,7 +24195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneId: 3855325089
   serverOnly: 0
-  visible: 2
+  visible: 0
   m_AssetId: 
   hasSpawned: 0
 --- !u!1 &2038116136
@@ -25382,7 +25382,7 @@ PrefabInstance:
     - target: {fileID: -1672858324239655629, guid: b7998454b557a574ab03168a40152239,
         type: 3}
       propertyPath: visible
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 866825751979630736, guid: b7998454b557a574ab03168a40152239,
         type: 3}
