@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using CardBase;
+using Mirror;
 
-public class Deck_InBattle_Manager : MonoBehaviour
+public class Deck_InBattle_Manager : NetworkBehaviour
 {
     
     private Stack<CardData> deckArray = new Stack<CardData>(40);
@@ -32,7 +33,7 @@ public class Deck_InBattle_Manager : MonoBehaviour
 
     //I can't exactly picture how a user will pick their own deck, so I'll just create a prototype-deck with hard coded data.
     // Start is called before the first frame update
-    void Start()
+    override void NetworkStart()
     {
         
         MakeDeck();
@@ -43,9 +44,9 @@ public class Deck_InBattle_Manager : MonoBehaviour
 
         //DeckArray.Push(LightningBolt);
 
-        //Draw();
-        //Draw();
-        //Draw();
+        Draw();
+        Draw();
+        Draw();
     }
 
     //Draw a card from the top of the deck.

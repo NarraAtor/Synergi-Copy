@@ -4,16 +4,18 @@ using UnityEngine;
 using CardBase;
 using Mirror;
 //This is a script for managing all of the scriptable object cards I make.
-public class CardDatabase : MonoBehaviour
+public class CardDatabase : NetworkBehaviour
 {
     private BeingData[] listOfBeings;
     private TacticData[] listOfTactics;
     private DeployableData[] listOfDeployables;
     //private List<CardData> listOfCards = new List<CardData>(3);
 
-    private void Start()
+    public override void OnStartClient()
     {
-        //TODO: Move variable intializaiton to here.
+        listOfBeings = Resources.LoadAll<BeingData>("Scripts/Cards/List of Cards/Beings");
+        listOfTactics = Resources.LoadAll<TacticData>("Scripts/Cards/List of Cards/Tactics");
+        listOfDeployables = Resources.LoadAll<DeployableData>("Scripts/Cards/List of Cards/Deployables");
     }
 
     /// <summary>
@@ -24,10 +26,6 @@ public class CardDatabase : MonoBehaviour
     /// </summary>
     public Stack<CardData> CreateDeck()
     {
-        //Variables moved here temporairly because it sometimes gets a null reference exception.
-        listOfBeings = Resources.LoadAll<BeingData>("Scripts/Cards/List of Cards/Beings");
-        listOfTactics = Resources.LoadAll<TacticData>("Scripts/Cards/List of Cards/Tactics");
-        listOfDeployables = Resources.LoadAll<DeployableData>("Scripts/Cards/List of Cards/Deployables");
         Stack<CardData> deck = new Stack<CardData>();
         for(int i = 0; i < 13; i++)
         {

@@ -17,8 +17,33 @@ public class LifeManager : NetworkBehaviour
     [SerializeField] private GameObject opposingPortrait;
     private Text lifeAmount;
     private Text opposingLifeAmount;
-    public int Life { get; private set; }
-    public int OpposingLife { get; private set; }
+    [SyncVar]
+    private int life;
+    [SyncVar]
+    private int opposingLife;
+    public int Life
+    {
+        get
+        {
+            return life;
+        }
+
+        private set
+        {
+            life = value;
+        }
+    }
+    public int OpposingLife {
+        get
+        {
+            return opposingLife;
+        }
+
+        private set
+        {
+            opposingLife = value;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -59,8 +84,8 @@ public class LifeManager : NetworkBehaviour
     /// <param name="damageAmount">how much damage was dealt</param>
     public void DamagePlayer(DamageTypes damageType, int damageAmount)
     {
-       
+
         //lifeAmount.text = $"Life: {Life}";
     }
 
-}   
+}
