@@ -181,6 +181,14 @@ public class Turn_Manager : NetworkBehaviour
     {
 
         //Set Turn based on whether this is a host (P1) or a client only (P2)
+        if(isServer)
+        {
+
+        }
+        else if(isClientOnly)
+        {
+
+        }
         //Resolve indicator glitch
         foreach (GameObject indicator in p1IndicatorArray)
         {
