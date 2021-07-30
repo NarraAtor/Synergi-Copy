@@ -244,7 +244,7 @@ public class Being : Card
     ///          TODO: Have this confirm attackers then go into declare defenders.
     ///          TODO: All cards will need to know if they belong to the player or not. I'll probably handle that
     ///          with an Enum called owner. It would probably be handled in each card's update loop.(Edit:
-    ///          may be handled using isClientOnly and the like instead).
+    ///          may be handled using isClientOnly and isServer instead).
     /// </summary>
     public virtual void CommitAttack()
     {
