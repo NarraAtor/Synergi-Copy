@@ -196,10 +196,10 @@ public class Turn_Manager : NetworkBehaviour
             switch (currentPlayerTurn)
             {
                 case Turn.Self:
-                    ProgressTurn(currentPlayerTurn, currentPhase);
+                    ProgressGame(currentPlayerTurn, currentPhase);
                     break;
                 case Turn.Other:
-                    ProgressTurn(currentPlayerTurn, currentPhase);
+                    ProgressGame(currentPlayerTurn, currentPhase);
                     break;
             }
         }
@@ -209,10 +209,10 @@ public class Turn_Manager : NetworkBehaviour
             switch (currentPlayerTurn)
             {
                 case Turn.Self:
-                    ProgressTurn(Turn.Other, currentPhase);
+                    ProgressGame(Turn.Other, currentPhase);
                     break;
                 case Turn.Other:
-                    ProgressTurn(Turn.Self, currentPhase);
+                    ProgressGame(Turn.Self, currentPhase);
                     break;
             }
         }
@@ -302,7 +302,7 @@ public class Turn_Manager : NetworkBehaviour
     /// </summary>
     /// <param name="turn">Whose turn it is.</param>
     /// <param name="phase">What phase it is.</param>
-    private void ProgressTurn(Turn turn, Phases phase)
+    private void ProgressGame(Turn turn, Phases phase)
     {
         //Phase/Turn State Machine
         switch (turn)
@@ -481,6 +481,29 @@ public class Turn_Manager : NetworkBehaviour
                 break;
         }
     }
+    /// <summary>
+    /// Purpose: Allows other methods to quickly sort through the logic to figure out which turn it is.
+    /// Restrictions: Limited to 2 players.
+    /// </summary>
+    /// <returns> whether or not it is the player's turn</returns>
+    public Turn GetCurrentTurnNetbased()
+    {
+        //if the client is clicking the card it has to do a swap
+        if (isClientOnly)
+        {
+            switch (currentPlayerTurn)
+            {
+                case Turn.Self:
+                    return Turn.Other;
+                case Turn.Other:
+                    return Turn.Self;
+            }
+        }
+
+        //otherwise the server is clicking the card and it can do things normally.
+        return currentPlayerTurn;
+
+    }
 
     /// <summary>
     /// Purpose: Allows both clients and host to manipulate the currentTurn SyncVar
@@ -505,7 +528,7 @@ public class Turn_Manager : NetworkBehaviour
     /// Restrictions: Only works for 2 players.
     /// </summary>
     /// <param name="currentPhase"></param>
-    [Command(requiresAuthority =false)]
+    [Command(requiresAuthority = false)]
     public void CmdProgressPhase()
     {
         switch (currentPhase)

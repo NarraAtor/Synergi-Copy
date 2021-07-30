@@ -347,7 +347,7 @@ public class Card : MonoBehaviour
     /// </summary>
     public virtual void IsClicked()
     {
-        switch (turn_Manager.CurrentPlayerTurn)
+        switch (turn_Manager.GetCurrentTurnNetbased())
         {
             case Turn.Self:
                 switch (currentPosition)
