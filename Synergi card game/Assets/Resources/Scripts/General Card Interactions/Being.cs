@@ -248,7 +248,7 @@ public class Being : Card
     /// </summary>
     public virtual void CommitAttack()
     {
-        game_Manager.GetComponent<LifeManager>().CmdDamagePlayer(DamageTypes.Battle, CurrentPower, enemy_Portrait);
+        game_Manager.GetComponent<LifeManager>().DamagePlayer(DamageTypes.Battle, CurrentPower, enemy_Portrait);
     }
 
     //Helper method for setting this card's UI to the values in data.
