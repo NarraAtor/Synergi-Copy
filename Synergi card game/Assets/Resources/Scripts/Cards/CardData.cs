@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 
 namespace CardBase
@@ -15,7 +16,9 @@ namespace CardBase
     [CreateAssetMenu(menuName = "Cards/Generic Card")]
     public class CardData : ScriptableObject
     {
+        [SyncVar]
         protected CardType cardType;
+        [SyncVar]
         [SerializeField] protected string cardTitle;
         [SerializeField] protected CardColor cardColor;
         [SerializeField] protected int genericEnergyCost;
