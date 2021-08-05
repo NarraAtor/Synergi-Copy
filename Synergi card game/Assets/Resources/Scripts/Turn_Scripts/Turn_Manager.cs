@@ -266,6 +266,7 @@ public class Turn_Manager : NetworkBehaviour
     /// Purpose: Triggers when a player clicks on a being during their battlephase.
     ///          If the clicked being is already in the queue, clear the entire thing.
     ///          Otherwise, add it to the queue.
+    ///          TODO: Change combat system so that attackers are declared and commited one at a time.
     /// </summary>
     /// <param name="being">the being being added to the queue</param>
     public void DeclareAttacker(Being being)
