@@ -16,6 +16,7 @@ ScriptsOnlyBuild:
     - Graveyard_Manager
     - Hand_Manager
     - LifeManager
+    - NetworkLogger
     - PassButton
     - ResourceDeckManager
     - Tactic
@@ -118,6 +119,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2064}
     - Class: 114
+      Script: {instanceID: 2072}
+    - Class: 114
       Script: {instanceID: 2260}
     - Class: 114
       Script: {instanceID: 2376}
@@ -190,7 +193,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4544}
     - Class: 114
-      Script: {instanceID: 18644}
+      Script: {instanceID: 18568}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -254,6 +257,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 1836}
     - Class: 114
       Script: {instanceID: 1926}
+    - Class: 114
+      Script: {instanceID: 2072}
     - Class: 114
       Script: {instanceID: 2260}
     - Class: 114
@@ -565,7 +570,7 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: bb560bc3eec556516d3480ba529763ad
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NetworkLogger
@@ -1099,7 +1104,7 @@ ScriptsOnlyBuild:
     className: GUIConsole
   - hash:
       serializedVersion: 2
-      Hash: dc819796810f7026e63fe3a93fa00a02
+      Hash: f6a67ad44488e2c8b69a90f4f9fb498e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Hand_Manager

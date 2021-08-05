@@ -13,9 +13,7 @@ public class CardDatabase : NetworkBehaviour
 
     public void Start()
     {
-        listOfBeings = Resources.LoadAll<BeingData>("Scripts/Cards/List of Cards/Beings");
-        listOfTactics = Resources.LoadAll<TacticData>("Scripts/Cards/List of Cards/Tactics");
-        listOfDeployables = Resources.LoadAll<DeployableData>("Scripts/Cards/List of Cards/Deployables");
+
     }
 
     /// <summary>
@@ -26,6 +24,11 @@ public class CardDatabase : NetworkBehaviour
     /// </summary>
     public Stack<CardData> CreateDeck()
     {
+        //Intialized here to avoid weird null reference exceptions from using Mirror.
+        listOfBeings = Resources.LoadAll<BeingData>("Scripts/Cards/List of Cards/Beings");
+        listOfTactics = Resources.LoadAll<TacticData>("Scripts/Cards/List of Cards/Tactics");
+        listOfDeployables = Resources.LoadAll<DeployableData>("Scripts/Cards/List of Cards/Deployables");
+
         Stack<CardData> deck = new Stack<CardData>();
         for(int i = 0; i < 13; i++)
         {
@@ -37,5 +40,39 @@ public class CardDatabase : NetworkBehaviour
         deck.Push(listOfBeings[0]);
 
         return deck;
+    }
+
+    /// <summary>
+    /// Purpose: Finds a card based on its title. 
+    ///          Made since CardData can't be sent over the network.
+    ///          Consider adding overloads later.
+    /// Restrictions: None
+    /// </summary>
+    /// <param name="cardTitle">The name of the card to find</param>
+    /// <returns></returns>
+    public CardData FindCard(string cardTitle)
+    {
+        foreach(BeingData beingData in listOfBeings)
+        {
+            if(cardTitle.Equals(beingData.CardTitle))
+            {
+                return beingData;
+            }
+        }
+        foreach (TacticData tacticData in listOfTactics)
+        {
+            if (cardTitle.Equals(tacticData.CardTitle))
+            {
+                return tacticData;
+            }
+        }
+        foreach (DeployableData deployableData in listOfDeployables)
+        {
+            if (cardTitle.Equals(deployableData.CardTitle))
+            {
+                return deployableData;
+            }
+        }
+        return null;
     }
 }

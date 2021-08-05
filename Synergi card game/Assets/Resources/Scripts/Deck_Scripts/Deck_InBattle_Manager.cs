@@ -4,6 +4,10 @@ using UnityEngine;
 using CardBase;
 using Mirror;
 
+/// <summary>
+/// Purpose: Manages the deck while each player is in battle.
+/// Restrictions: None
+/// </summary>
 public class Deck_InBattle_Manager : NetworkBehaviour
 {
     
@@ -14,6 +18,8 @@ public class Deck_InBattle_Manager : NetworkBehaviour
     [SerializeField] private  GameObject playerGraveyard;
 
     [SerializeField] private GameObject cardDatabase;
+    //Waits for client to connect before starting.
+    private bool gameHasStarted;
 
     //test object
     //public static TacticData LightningBolt;
@@ -35,7 +41,7 @@ public class Deck_InBattle_Manager : NetworkBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        
+        gameHasStarted = false;
         MakeDeck();
 
         //For testing purposes only, eventually I'll be using pre-created SOs from a card database.
@@ -44,9 +50,37 @@ public class Deck_InBattle_Manager : NetworkBehaviour
 
         //DeckArray.Push(LightningBolt);
 
-        Draw();
-        Draw();
-        Draw();
+    }
+
+    private void Update()
+    {
+        //Resolves the error where commands are sent to the server before client connects.
+        if(isServer)
+        {
+            if (!gameHasStarted)
+            {
+                if (NetworkManager.singleton.numPlayers > 1)
+                {
+                    Draw();
+                    Draw();
+                    Draw();
+                    gameHasStarted = true;
+                }
+            }
+        }
+        else if(isClientOnly)
+        {
+            if(!gameHasStarted)
+            {
+                Draw();
+                Draw();
+                Draw();
+                gameHasStarted = true;
+            }
+        }
+
+
+        print(gameHasStarted);
     }
 
     //Draw a card from the top of the deck.

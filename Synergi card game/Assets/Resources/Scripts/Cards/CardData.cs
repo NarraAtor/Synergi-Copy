@@ -16,9 +16,7 @@ namespace CardBase
     [CreateAssetMenu(menuName = "Cards/Generic Card")]
     public class CardData : ScriptableObject
     {
-        [SyncVar]
         protected CardType cardType;
-        [SyncVar]
         [SerializeField] protected string cardTitle;
         [SerializeField] protected CardColor cardColor;
         [SerializeField] protected int genericEnergyCost;

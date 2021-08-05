@@ -12,6 +12,7 @@ using Mirror;
 /// </summary>
 public class Hand_Manager : NetworkBehaviour
 {
+    [SerializeField] private CardDatabase cardDatabase;
     //This list is just to have some way to grab the data from each child in the Player's hand.
     private RectTransform[] childrenOfPlayer_Hand;
     //The list of game objects in the Player's hand.
@@ -85,26 +86,32 @@ public class Hand_Manager : NetworkBehaviour
     /// <param name="hand">the hand to add the card too</param>
     public void AddCardToHand(CardData card, GameObject hand)
     {
+        print(isServer + "\n" + isClientOnly);
         if(isServer)
         {
-            CmdAddCardToHandServer(card, hand, true);
+            CmdAddCardToHandServer(card.CardTitle, hand, true);
         }
         else if(isClientOnly)
         {
-            CmdAddCardToHandServer(card, hand, false);
+            CmdAddCardToHandServer(card.CardTitle, hand, false);
         }
     }
 
     /// <summary>
     /// Purpose: Adds a card to the selected player's hand and does the same on the client.
     /// Restrictions: Only works properly with "this" or "enemyHand" variables
+    ///               Mirror can't send my CardData over the network so I'll just send the card title
+    ///               over and search for the card locally
     /// </summary>
-    /// <param name="card">the card to add to the hand</param>
+    /// <param name="cardTitle">the card to add to the hand</param>
     /// <param name="hand">the hand to add the card too</param>
     /// 
     [Command(requiresAuthority = false)]
-    public void CmdAddCardToHandServer(CardData card, GameObject hand, bool sentFromServer)
+    public void CmdAddCardToHandServer(string cardTitle, GameObject hand, bool sentFromServer)
     {
+        //Find the scriptable object with the matching name locally.
+        CardData card = cardDatabase.FindCard(cardTitle);
+
         if(sentFromServer)
         {
             if (hand.Equals(this.gameObject))
@@ -120,7 +127,7 @@ public class Hand_Manager : NetworkBehaviour
                     beingData.RedEnergyCost, beingData.BlueEnergyCost, beingData.GreenEnergyCost, beingData.PurpleEnergyCost, beingData.GenericEnergyCost,
                     beingData.CardTitle);
                     cardsInPlayer_Hand.Add(addedCard.gameObject);
-
+                    print(addedCard);
                 }
                 if (card is TacticData)
                 {
