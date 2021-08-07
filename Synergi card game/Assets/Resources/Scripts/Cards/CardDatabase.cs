@@ -53,7 +53,14 @@ public class CardDatabase : NetworkBehaviour
     /// <returns>the data of the card with the passed in title</returns>
     public CardData FindCard(string cardTitle, bool sentFromServer)
     {
-        print($"Find Card called: {cardTitle} {sentFromServer}\n");
+        if(sentFromServer)
+        {
+            print($"Find Card called: {cardTitle} Server\n");
+        }
+        else
+        {
+            print($"Find Card called: {cardTitle} Client\n");
+        }
         foreach (BeingData beingData in listOfBeings)
         {
             if (cardTitle.Equals(beingData.CardTitle))

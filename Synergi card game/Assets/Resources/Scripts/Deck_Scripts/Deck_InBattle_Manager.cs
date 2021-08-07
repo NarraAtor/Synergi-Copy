@@ -21,6 +21,7 @@ public class Deck_InBattle_Manager : NetworkBehaviour
     //Waits for client to connect before starting.
     [SyncVar]
     private bool gameHasStarted;
+    [SyncVar]
     private bool playersDrewCards;
 
     //test object
