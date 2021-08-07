@@ -93,6 +93,7 @@ public class Hand_Manager : NetworkBehaviour
         }
         else if(isClientOnly)
         {
+            print($"Called from client");
             CmdAddCardToHandServer(card.CardTitle, hand, false);
         }
     }
@@ -234,7 +235,7 @@ public class Hand_Manager : NetworkBehaviour
                     beingData.RedEnergyCost, beingData.BlueEnergyCost, beingData.GreenEnergyCost, beingData.PurpleEnergyCost, beingData.GenericEnergyCost,
                     beingData.CardTitle);
                     cardsInPlayer_Hand.Add(addedCard.gameObject);
-
+                    RpcAddCardToHandClient(cardTitle, hand, sentFromServer);
                 }
                 if (card is TacticData)
                 {
@@ -338,6 +339,14 @@ public class Hand_Manager : NetworkBehaviour
     [ClientRpc(includeOwner = false)]
     public void RpcAddCardToHandClient(string cardTitle, GameObject hand, bool sentFromServer)
     {
+        if(sentFromServer)
+        {
+            print($"Client RPC called in server\n");
+        }
+        else
+        {
+            print($"Client RPC called in client\n");
+        }
         //Find the scriptable object with the matching name locally.
         CardData card = cardDatabase.FindCard(cardTitle, sentFromServer);
 
@@ -447,6 +456,7 @@ public class Hand_Manager : NetworkBehaviour
         {
             if (hand.Equals(this.gameObject))
             {
+
                 if (card is BeingData)
                 {
                     BeingData beingData = (BeingData)card;
