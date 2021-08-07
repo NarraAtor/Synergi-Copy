@@ -110,7 +110,7 @@ public class Hand_Manager : NetworkBehaviour
     public void CmdAddCardToHandServer(string cardTitle, GameObject hand, bool sentFromServer)
     {
         //Find the scriptable object with the matching name locally.
-        CardData card = cardDatabase.FindCard(cardTitle);
+        CardData card = cardDatabase.FindCard(cardTitle, sentFromServer);
 
         if(sentFromServer)
         {
@@ -127,7 +127,7 @@ public class Hand_Manager : NetworkBehaviour
                     beingData.RedEnergyCost, beingData.BlueEnergyCost, beingData.GreenEnergyCost, beingData.PurpleEnergyCost, beingData.GenericEnergyCost,
                     beingData.CardTitle);
                     cardsInPlayer_Hand.Add(addedCard.gameObject);
-                    print(addedCard);
+                    RpcAddCardToHandClient(cardTitle, hand, sentFromServer);
                 }
                 if (card is TacticData)
                 {
@@ -144,6 +144,7 @@ public class Hand_Manager : NetworkBehaviour
                                                           tacticData.AbilityText,
                                                           tacticData.Subtype);
                     cardsInPlayer_Hand.Add(addedCard.gameObject);
+                    RpcAddCardToHandClient(cardTitle, hand, sentFromServer);
                 }
 
                 if (card is DeployableData)
@@ -162,6 +163,7 @@ public class Hand_Manager : NetworkBehaviour
                                                               deployableData.Durability,
                                                               deployableData.Subtype);
                     cardsInPlayer_Hand.Add(addedCard.gameObject);
+                    RpcAddCardToHandClient(cardTitle, hand, sentFromServer);
                 }
             }
             else if (hand.Equals(enemyHand))
@@ -177,6 +179,7 @@ public class Hand_Manager : NetworkBehaviour
                     beingData.RedEnergyCost, beingData.BlueEnergyCost, beingData.GreenEnergyCost, beingData.PurpleEnergyCost, beingData.GenericEnergyCost,
                     beingData.CardTitle);
                     cardsInEnemy_Hand.Add(addedCard.gameObject);
+                    RpcAddCardToHandClient(cardTitle, hand, sentFromServer);
                 }
                 if (card is TacticData)
                 {
@@ -193,6 +196,7 @@ public class Hand_Manager : NetworkBehaviour
                                                           tacticData.AbilityText,
                                                           tacticData.Subtype);
                     cardsInEnemy_Hand.Add(addedCard.gameObject);
+                    RpcAddCardToHandClient(cardTitle, hand, sentFromServer);
                 }
 
                 if (card is DeployableData)
@@ -211,6 +215,7 @@ public class Hand_Manager : NetworkBehaviour
                                                               deployableData.Durability,
                                                               deployableData.Subtype);
                     cardsInEnemy_Hand.Add(addedCard.gameObject);
+                    RpcAddCardToHandClient(cardTitle, hand, sentFromServer);
                 }
             }
         }
@@ -230,6 +235,128 @@ public class Hand_Manager : NetworkBehaviour
                     beingData.CardTitle);
                     cardsInPlayer_Hand.Add(addedCard.gameObject);
 
+                }
+                if (card is TacticData)
+                {
+                    TacticData tacticData = (TacticData)card;
+                    GameObject addedCard = Instantiate(tacticPrefab, this.gameObject.transform);
+                    addedCard.GetComponent<Tactic>().CurrentPosition = CardPositions.Hand;
+                    addedCard.GetComponent<Tactic>().Init(tacticData.CardColorProperty,
+                                                          tacticData.RedEnergyCost,
+                                                          tacticData.BlueEnergyCost,
+                                                          tacticData.GreenEnergyCost,
+                                                          tacticData.PurpleEnergyCost,
+                                                          tacticData.GenericEnergyCost,
+                                                          tacticData.CardTitle,
+                                                          tacticData.AbilityText,
+                                                          tacticData.Subtype);
+                    cardsInPlayer_Hand.Add(addedCard.gameObject);
+                    RpcAddCardToHandClient(cardTitle, hand, sentFromServer);
+                }
+
+                if (card is DeployableData)
+                {
+                    DeployableData deployableData = (DeployableData)card;
+                    GameObject addedCard = Instantiate(deployablePrefab, this.gameObject.transform);
+                    addedCard.GetComponent<Deployable>().CurrentPosition = CardPositions.Hand;
+                    addedCard.GetComponent<Deployable>().Init(deployableData.CardColorProperty,
+                                                              deployableData.RedEnergyCost,
+                                                              deployableData.BlueEnergyCost,
+                                                              deployableData.GreenEnergyCost,
+                                                              deployableData.PurpleEnergyCost,
+                                                              deployableData.GenericEnergyCost,
+                                                              deployableData.CardTitle,
+                                                              deployableData.AbilityText,
+                                                              deployableData.Durability,
+                                                              deployableData.Subtype);
+                    cardsInPlayer_Hand.Add(addedCard.gameObject);
+                    RpcAddCardToHandClient(cardTitle, hand, sentFromServer);
+                }
+            }
+            else if (hand.Equals(this.gameObject))
+            {
+                if (card is BeingData)
+                {
+                    BeingData beingData = (BeingData)card;
+                    //addedCard.CardColor = beingData.CardColorProperty;
+                    GameObject addedCard = Instantiate(beingPrefab, enemyHand.transform);
+                    addedCard.GetComponent<Being>().CurrentPosition = CardPositions.Hand;
+                    addedCard.GetComponent<Being>().Init(beingData.CardColorProperty, beingData.OriginalMaxHealth,
+                    beingData.OriginalPower, beingData.Species, beingData.AbilityText,
+                    beingData.RedEnergyCost, beingData.BlueEnergyCost, beingData.GreenEnergyCost, beingData.PurpleEnergyCost, beingData.GenericEnergyCost,
+                    beingData.CardTitle);
+                    cardsInEnemy_Hand.Add(addedCard.gameObject);
+                    RpcAddCardToHandClient(cardTitle, hand, sentFromServer);
+                }
+                if (card is TacticData)
+                {
+                    TacticData tacticData = (TacticData)card;
+                    GameObject addedCard = Instantiate(tacticPrefab, enemyHand.transform);
+                    addedCard.GetComponent<Tactic>().CurrentPosition = CardPositions.Hand;
+                    addedCard.GetComponent<Tactic>().Init(tacticData.CardColorProperty,
+                                                          tacticData.RedEnergyCost,
+                                                          tacticData.BlueEnergyCost,
+                                                          tacticData.GreenEnergyCost,
+                                                          tacticData.PurpleEnergyCost,
+                                                          tacticData.GenericEnergyCost,
+                                                          tacticData.CardTitle,
+                                                          tacticData.AbilityText,
+                                                          tacticData.Subtype);
+                    cardsInEnemy_Hand.Add(addedCard.gameObject);
+                    RpcAddCardToHandClient(cardTitle, hand, sentFromServer);
+                }
+
+                if (card is DeployableData)
+                {
+                    DeployableData deployableData = (DeployableData)card;
+                    GameObject addedCard = Instantiate(deployablePrefab, enemyHand.transform);
+                    addedCard.GetComponent<Deployable>().CurrentPosition = CardPositions.Hand;
+                    addedCard.GetComponent<Deployable>().Init(deployableData.CardColorProperty,
+                                                              deployableData.RedEnergyCost,
+                                                              deployableData.BlueEnergyCost,
+                                                              deployableData.GreenEnergyCost,
+                                                              deployableData.PurpleEnergyCost,
+                                                              deployableData.GenericEnergyCost,
+                                                              deployableData.CardTitle,
+                                                              deployableData.AbilityText,
+                                                              deployableData.Durability,
+                                                              deployableData.Subtype);
+                    cardsInEnemy_Hand.Add(addedCard.gameObject);
+                    RpcAddCardToHandClient(cardTitle, hand, sentFromServer);
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Purpose: Sends a message to player 2 (the client) to add a card to their hand.
+    /// Restrictions: 
+    /// </summary>
+    /// <param name="cardTitle">the name of the card to add</param>
+    /// <param name="hand">the hand to add the card to</param>
+    /// <param name="sentFromServer">whether this was called from the server or the client</param>
+    [ClientRpc(includeOwner = false)]
+    public void RpcAddCardToHandClient(string cardTitle, GameObject hand, bool sentFromServer)
+    {
+        //Find the scriptable object with the matching name locally.
+        CardData card = cardDatabase.FindCard(cardTitle, sentFromServer);
+
+        if (sentFromServer)
+        {
+            if (hand.Equals(enemyHand))
+            {
+                if (card is BeingData)
+                {
+                    BeingData beingData = (BeingData)card;
+                    //addedCard.CardColor = beingData.CardColorProperty;
+                    GameObject addedCard = Instantiate(beingPrefab, this.gameObject.transform);
+                    addedCard.GetComponent<Being>().CurrentPosition = CardPositions.Hand;
+                    addedCard.GetComponent<Being>().Init(beingData.CardColorProperty, beingData.OriginalMaxHealth,
+                    beingData.OriginalPower, beingData.Species, beingData.AbilityText,
+                    beingData.RedEnergyCost, beingData.BlueEnergyCost, beingData.GreenEnergyCost, beingData.PurpleEnergyCost, beingData.GenericEnergyCost,
+                    beingData.CardTitle);
+                    cardsInPlayer_Hand.Add(addedCard.gameObject);
+                    print(addedCard);
                 }
                 if (card is TacticData)
                 {
@@ -316,8 +443,109 @@ public class Hand_Manager : NetworkBehaviour
                 }
             }
         }
-    }
+        else
+        {
+            if (hand.Equals(this.gameObject))
+            {
+                if (card is BeingData)
+                {
+                    BeingData beingData = (BeingData)card;
+                    //addedCard.CardColor = beingData.CardColorProperty;
+                    GameObject addedCard = Instantiate(beingPrefab, this.gameObject.transform);
+                    addedCard.GetComponent<Being>().CurrentPosition = CardPositions.Hand;
+                    addedCard.GetComponent<Being>().Init(beingData.CardColorProperty, beingData.OriginalMaxHealth,
+                    beingData.OriginalPower, beingData.Species, beingData.AbilityText,
+                    beingData.RedEnergyCost, beingData.BlueEnergyCost, beingData.GreenEnergyCost, beingData.PurpleEnergyCost, beingData.GenericEnergyCost,
+                    beingData.CardTitle);
+                    cardsInPlayer_Hand.Add(addedCard.gameObject);
 
+                }
+                if (card is TacticData)
+                {
+                    TacticData tacticData = (TacticData)card;
+                    GameObject addedCard = Instantiate(tacticPrefab, this.gameObject.transform);
+                    addedCard.GetComponent<Tactic>().CurrentPosition = CardPositions.Hand;
+                    addedCard.GetComponent<Tactic>().Init(tacticData.CardColorProperty,
+                                                          tacticData.RedEnergyCost,
+                                                          tacticData.BlueEnergyCost,
+                                                          tacticData.GreenEnergyCost,
+                                                          tacticData.PurpleEnergyCost,
+                                                          tacticData.GenericEnergyCost,
+                                                          tacticData.CardTitle,
+                                                          tacticData.AbilityText,
+                                                          tacticData.Subtype);
+                    cardsInPlayer_Hand.Add(addedCard.gameObject);
+                }
+
+                if (card is DeployableData)
+                {
+                    DeployableData deployableData = (DeployableData)card;
+                    GameObject addedCard = Instantiate(deployablePrefab, this.gameObject.transform);
+                    addedCard.GetComponent<Deployable>().CurrentPosition = CardPositions.Hand;
+                    addedCard.GetComponent<Deployable>().Init(deployableData.CardColorProperty,
+                                                              deployableData.RedEnergyCost,
+                                                              deployableData.BlueEnergyCost,
+                                                              deployableData.GreenEnergyCost,
+                                                              deployableData.PurpleEnergyCost,
+                                                              deployableData.GenericEnergyCost,
+                                                              deployableData.CardTitle,
+                                                              deployableData.AbilityText,
+                                                              deployableData.Durability,
+                                                              deployableData.Subtype);
+                    cardsInPlayer_Hand.Add(addedCard.gameObject);
+                }
+            }
+            else if (hand.Equals(enemyHand))
+            {
+                if (card is BeingData)
+                {
+                    BeingData beingData = (BeingData)card;
+                    //addedCard.CardColor = beingData.CardColorProperty;
+                    GameObject addedCard = Instantiate(beingPrefab, enemyHand.transform);
+                    addedCard.GetComponent<Being>().CurrentPosition = CardPositions.Hand;
+                    addedCard.GetComponent<Being>().Init(beingData.CardColorProperty, beingData.OriginalMaxHealth,
+                    beingData.OriginalPower, beingData.Species, beingData.AbilityText,
+                    beingData.RedEnergyCost, beingData.BlueEnergyCost, beingData.GreenEnergyCost, beingData.PurpleEnergyCost, beingData.GenericEnergyCost,
+                    beingData.CardTitle);
+                    cardsInEnemy_Hand.Add(addedCard.gameObject);
+                }
+                if (card is TacticData)
+                {
+                    TacticData tacticData = (TacticData)card;
+                    GameObject addedCard = Instantiate(tacticPrefab, enemyHand.transform);
+                    addedCard.GetComponent<Tactic>().CurrentPosition = CardPositions.Hand;
+                    addedCard.GetComponent<Tactic>().Init(tacticData.CardColorProperty,
+                                                          tacticData.RedEnergyCost,
+                                                          tacticData.BlueEnergyCost,
+                                                          tacticData.GreenEnergyCost,
+                                                          tacticData.PurpleEnergyCost,
+                                                          tacticData.GenericEnergyCost,
+                                                          tacticData.CardTitle,
+                                                          tacticData.AbilityText,
+                                                          tacticData.Subtype);
+                    cardsInEnemy_Hand.Add(addedCard.gameObject);
+                }
+
+                if (card is DeployableData)
+                {
+                    DeployableData deployableData = (DeployableData)card;
+                    GameObject addedCard = Instantiate(deployablePrefab, enemyHand.transform);
+                    addedCard.GetComponent<Deployable>().CurrentPosition = CardPositions.Hand;
+                    addedCard.GetComponent<Deployable>().Init(deployableData.CardColorProperty,
+                                                              deployableData.RedEnergyCost,
+                                                              deployableData.BlueEnergyCost,
+                                                              deployableData.GreenEnergyCost,
+                                                              deployableData.PurpleEnergyCost,
+                                                              deployableData.GenericEnergyCost,
+                                                              deployableData.CardTitle,
+                                                              deployableData.AbilityText,
+                                                              deployableData.Durability,
+                                                              deployableData.Subtype);
+                    cardsInEnemy_Hand.Add(addedCard.gameObject);
+                }
+            }
+        }
+    }
 
     /// <summary>
     /// Purpose: Removes a card from the CardInPlayer_Hand list (such as when it is deployed).

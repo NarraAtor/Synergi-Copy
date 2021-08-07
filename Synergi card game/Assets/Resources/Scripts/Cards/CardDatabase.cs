@@ -46,15 +46,17 @@ public class CardDatabase : NetworkBehaviour
     /// Purpose: Finds a card based on its title. 
     ///          Made since CardData can't be sent over the network.
     ///          Consider adding overloads later.
+    ///          TODO: Remove sentFromServer bool.
     /// Restrictions: None
     /// </summary>
     /// <param name="cardTitle">The name of the card to find</param>
-    /// <returns></returns>
-    public CardData FindCard(string cardTitle)
+    /// <returns>the data of the card with the passed in title</returns>
+    public CardData FindCard(string cardTitle, bool sentFromServer)
     {
-        foreach(BeingData beingData in listOfBeings)
+        print($"Find Card called: {cardTitle} {sentFromServer}\n");
+        foreach (BeingData beingData in listOfBeings)
         {
-            if(cardTitle.Equals(beingData.CardTitle))
+            if (cardTitle.Equals(beingData.CardTitle))
             {
                 return beingData;
             }
@@ -73,6 +75,9 @@ public class CardDatabase : NetworkBehaviour
                 return deployableData;
             }
         }
+
+        print($"unable to find card: {cardTitle}");
+        //return null;
         return null;
     }
 }

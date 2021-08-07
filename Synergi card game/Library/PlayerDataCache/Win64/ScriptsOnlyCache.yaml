@@ -193,7 +193,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4544}
     - Class: 114
-      Script: {instanceID: 18568}
+      Script: {instanceID: 18570}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -570,7 +570,7 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
-      Hash: bb560bc3eec556516d3480ba529763ad
+      Hash: f8f1862dc0f88b0f35551f249818f212
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NetworkLogger

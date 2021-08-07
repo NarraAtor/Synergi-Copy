@@ -12,7 +12,7 @@ public class NetworkLogger : MonoBehaviour
 {
     public string output = "";
     public string stack = "";
-
+    public TextMeshProUGUI textMeshProUGUI;
     void OnEnable()
     {
         Application.logMessageReceived += HandleLog;
@@ -27,6 +27,18 @@ public class NetworkLogger : MonoBehaviour
     {
         output = logString;
         stack = stackTrace;
-        this.gameObject.GetComponent<TextMeshProUGUI>().text = output;
+        textMeshProUGUI.text += output;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            textMeshProUGUI.pageToDisplay++;
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            textMeshProUGUI.pageToDisplay--;
+        }
     }
 }
