@@ -86,14 +86,15 @@ public class Hand_Manager : NetworkBehaviour
     /// <param name="hand">the hand to add the card too</param>
     public void AddCardToHand(CardData card, GameObject hand)
     {
-        print(isServer + "\n" + isClientOnly);
-        if(isServer)
+
+        if (isServer)
         {
+            print($"AddCardToHand called from Server");
             CmdAddCardToHandServer(card.CardTitle, hand, true);
         }
         else if(isClientOnly)
         {
-            print($"Called from client");
+            print($"AddCardToHand called from Client");
             CmdAddCardToHandServer(card.CardTitle, hand, false);
         }
     }
@@ -341,11 +342,11 @@ public class Hand_Manager : NetworkBehaviour
     {
         if(sentFromServer)
         {
-            print($"Client RPC called in server\n");
+            print($"Client RPC called from server");
         }
         else
         {
-            print($"Client RPC called in client\n");
+            print($"Client RPC called from client");
         }
         //Find the scriptable object with the matching name locally.
         CardData card = cardDatabase.FindCard(cardTitle, sentFromServer);

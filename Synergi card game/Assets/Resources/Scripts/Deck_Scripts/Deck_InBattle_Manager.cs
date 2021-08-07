@@ -21,7 +21,7 @@ public class Deck_InBattle_Manager : NetworkBehaviour
     //Waits for client to connect before starting.
     [SyncVar]
     private bool gameHasStarted;
-    [SyncVar]
+    [SyncVar(hook = nameof(DrawStartingHand))]
     private bool playersDrewCards;
 
     //test object
@@ -64,6 +64,7 @@ public class Deck_InBattle_Manager : NetworkBehaviour
         {
             return;
         }
+
         if (isClientOnly)
         {
             if (NetworkClient.ready)
@@ -82,20 +83,21 @@ public class Deck_InBattle_Manager : NetworkBehaviour
             }
         }
 
-        if(playersDrewCards)
-        {
-            Draw();
-            //Draw();
-            //Draw();
-        }
-
-
         print(gameHasStarted);
     }
 
     //Draw a card from the top of the deck.
     public void Draw()
     {
+
+        if(isServer)
+        {
+            print($"Server called Draw();");
+        }
+        if(isClientOnly)
+        {
+            print($"Client called Draw();");
+        }
         playerHand.GetComponent<Hand_Manager>().AddCardToHand(deckArray.Pop(), playerHand);
     }
 
@@ -123,5 +125,17 @@ public class Deck_InBattle_Manager : NetworkBehaviour
     private void CmdStartGame()
     {
         gameHasStarted = true;
+    }
+
+    /// <summary>
+    /// Purpose: Draws each player's starting hand. 
+    ///         
+    /// </summary>
+    private void DrawStartingHand(bool oldValue, bool newValue)
+    {
+        if(newValue)
+        {
+            Draw();
+        }
     }
 }

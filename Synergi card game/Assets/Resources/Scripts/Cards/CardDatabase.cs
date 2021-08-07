@@ -55,11 +55,11 @@ public class CardDatabase : NetworkBehaviour
     {
         if(sentFromServer)
         {
-            print($"Find Card called: {cardTitle} Server\n");
+            print($"Find Card called: {cardTitle} Server");
         }
         else
         {
-            print($"Find Card called: {cardTitle} Client\n");
+            print($"Find Card called: {cardTitle} Client");
         }
         foreach (BeingData beingData in listOfBeings)
         {
