@@ -340,6 +340,8 @@ public class Hand_Manager : NetworkBehaviour
     [ClientRpc(includeOwner = false)]
     public void RpcAddCardToHandClient(string cardTitle, GameObject hand, bool sentFromServer)
     {
+        if (isServer) { return; }
+
         if(sentFromServer)
         {
             print($"Client RPC called from server");

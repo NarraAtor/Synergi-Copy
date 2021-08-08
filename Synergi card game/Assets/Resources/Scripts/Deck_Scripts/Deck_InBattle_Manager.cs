@@ -129,12 +129,14 @@ public class Deck_InBattle_Manager : NetworkBehaviour
 
     /// <summary>
     /// Purpose: Draws each player's starting hand. 
-    ///         
+    /// Restrictions:
     /// </summary>
     private void DrawStartingHand(bool oldValue, bool newValue)
     {
         if(newValue)
         {
+            Draw();
+            Draw();
             Draw();
         }
     }
