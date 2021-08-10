@@ -13106,6 +13106,38 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 866825752531579156}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1108005359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108005358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d226b208a1c33746be5f740045713dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  energySupply: {fileID: 1108005358}
+  cardDatabase: {fileID: 959040483}
+--- !u!114 &1108005360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108005358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1433ba189f56a8445aabab60bbf5e0b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  crystalUI: {fileID: 866825752531579157}
+  enemyPortrait: {fileID: 0}
 --- !u!1 &1115938740
 GameObject:
   m_ObjectHideFlags: 0
@@ -24205,6 +24237,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   crystalUI: {fileID: 133328454}
+  enemyPortrait: {fileID: 1108005358}
 --- !u!114 &2028914364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25548,6 +25581,12 @@ PrefabInstance:
     - {fileID: 866825751979630739, guid: b7998454b557a574ab03168a40152239, type: 3}
     - {fileID: 866825751979630738, guid: b7998454b557a574ab03168a40152239, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b7998454b557a574ab03168a40152239, type: 3}
+--- !u!1 &866825752531579157 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 866825751406225543, guid: b7998454b557a574ab03168a40152239,
+    type: 3}
+  m_PrefabInstance: {fileID: 866825752531579156}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1430303447205233223
 PrefabInstance:
   m_ObjectHideFlags: 0

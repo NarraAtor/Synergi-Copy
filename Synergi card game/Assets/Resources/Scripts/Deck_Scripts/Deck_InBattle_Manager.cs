@@ -83,21 +83,21 @@ public class Deck_InBattle_Manager : NetworkBehaviour
             }
         }
 
-        print(gameHasStarted);
+        //print(gameHasStarted);
     }
 
     //Draw a card from the top of the deck.
     public void Draw()
     {
 
-        if(isServer)
-        {
-            print($"Server called Draw();");
-        }
-        if(isClientOnly)
-        {
-            print($"Client called Draw();");
-        }
+        //if(isServer)
+        //{
+        //    print($"Server called Draw();");
+        //}
+        //if(isClientOnly)
+        //{
+        //    print($"Client called Draw();");
+        //}
         playerHand.GetComponent<Hand_Manager>().AddCardToHand(deckArray.Pop(), playerHand);
     }
 

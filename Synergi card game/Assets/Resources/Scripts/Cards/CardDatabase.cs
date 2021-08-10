@@ -53,14 +53,14 @@ public class CardDatabase : NetworkBehaviour
     /// <returns>the data of the card with the passed in title</returns>
     public CardData FindCard(string cardTitle, bool sentFromServer)
     {
-        if(sentFromServer)
-        {
-            print($"Find Card called: {cardTitle} Server");
-        }
-        else
-        {
-            print($"Find Card called: {cardTitle} Client");
-        }
+        //if(sentFromServer)
+        //{
+        //    print($"Find Card called: {cardTitle} Server");
+        //}
+        //else
+        //{
+        //    print($"Find Card called: {cardTitle} Client");
+        //}
         foreach (BeingData beingData in listOfBeings)
         {
             if (cardTitle.Equals(beingData.CardTitle))
@@ -83,7 +83,7 @@ public class CardDatabase : NetworkBehaviour
             }
         }
 
-        print($"unable to find card: {cardTitle}");
+        //print($"unable to find card: {cardTitle}");
         //return null;
         return null;
     }

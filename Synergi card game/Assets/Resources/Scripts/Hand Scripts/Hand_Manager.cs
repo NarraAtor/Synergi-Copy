@@ -89,12 +89,12 @@ public class Hand_Manager : NetworkBehaviour
 
         if (isServer)
         {
-            print($"AddCardToHand called from Server");
+            //print($"AddCardToHand called from Server");
             CmdAddCardToHandServer(card.CardTitle, hand, true);
         }
         else if(isClientOnly)
         {
-            print($"AddCardToHand called from Client");
+            //print($"AddCardToHand called from Client");
             CmdAddCardToHandServer(card.CardTitle, hand, false);
         }
     }
@@ -342,14 +342,14 @@ public class Hand_Manager : NetworkBehaviour
     {
         if (isServer) { return; }
 
-        if(sentFromServer)
-        {
-            print($"Client RPC called from server");
-        }
-        else
-        {
-            print($"Client RPC called from client");
-        }
+        //if(sentFromServer)
+        //{
+        //    print($"Client RPC called from server");
+        //}
+        //else
+        //{
+        //    print($"Client RPC called from client");
+        //}
         //Find the scriptable object with the matching name locally.
         CardData card = cardDatabase.FindCard(cardTitle, sentFromServer);
 

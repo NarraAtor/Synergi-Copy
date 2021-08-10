@@ -46,7 +46,13 @@ public class ResourceDeckManager : NetworkBehaviour
     //{
     //    //energySupply.GetComponent<EnergySupplyManager>().Add(resourceDeckArray.Pop());
     //}
-
+    
+    /// <summary>
+    /// Purpose: Adds a crystal from the array of crystals to the player's energy supply.
+    ///          TODO: Figure out why I'm not using this right now.
+    /// Restrictions:
+    /// </summary>
+    /// <param name="color">the color of energy to add</param>
     public void AddCrystalToSupply(CardColor color)
     {
         switch(color)
