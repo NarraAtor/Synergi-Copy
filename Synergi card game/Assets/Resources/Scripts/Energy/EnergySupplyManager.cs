@@ -201,6 +201,12 @@ public class EnergySupplyManager : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// Purpose: An alternate add method that doesn't have the command lines in it. 
+    ///          This prevents an infinite loop.
+    /// Restrictions:
+    /// </summary>
+    /// <param name="cardColor"></param>
     public void Add(CardColor cardColor)
     {
         if (crystals.Count == 0)
@@ -208,14 +214,13 @@ public class EnergySupplyManager : NetworkBehaviour
             Init();
         }
 
-
         for (int i = 0; i < crystalStorage.Length; i++)
         {
             if (crystalStorage[i] is null)
             {
-                crystalStorage[i] = card;
+                crystalStorage[i] = this.gameObject.GetComponent<ResourceDeckManager>().GetACrystalBasedOnColor(cardColor);
                 //crystals[i].gameObject.SetActive(true);
-                switch (card.CardColorProperty)
+                switch (cardColor)
                 {
                     case CardColor.Blue:
                         crystals[i].color = Color.cyan;
@@ -256,7 +261,7 @@ public class EnergySupplyManager : NetworkBehaviour
     /// </summary>
     /// <param name="crystalCardColor">the crystal to add to the user's energy supply.</param>
     /// <param name="sentFromServer">whether or not this method was called from the server</param>
-    [ClientRpc(includeOwner = true)]
+    [ClientRpc(includeOwner = false)]
     private void RpcAdd(CardColor crystalCardColor, bool sentFromServer)
     {
         if(sentFromServer && isServer ||
