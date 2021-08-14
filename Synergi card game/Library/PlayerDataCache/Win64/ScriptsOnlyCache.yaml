@@ -101,97 +101,97 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1534}
     - Class: 114
-      Script: {instanceID: 1544}
+      Script: {instanceID: 1542}
     - Class: 114
-      Script: {instanceID: 1642}
+      Script: {instanceID: 1640}
     - Class: 114
-      Script: {instanceID: 1670}
+      Script: {instanceID: 1668}
     - Class: 114
-      Script: {instanceID: 1760}
+      Script: {instanceID: 1758}
     - Class: 114
-      Script: {instanceID: 1820}
+      Script: {instanceID: 1818}
     - Class: 114
-      Script: {instanceID: 1838}
+      Script: {instanceID: 1836}
     - Class: 114
-      Script: {instanceID: 1864}
+      Script: {instanceID: 1862}
     - Class: 114
-      Script: {instanceID: 1928}
+      Script: {instanceID: 1926}
     - Class: 114
-      Script: {instanceID: 2066}
+      Script: {instanceID: 2064}
     - Class: 114
-      Script: {instanceID: 2074}
+      Script: {instanceID: 2072}
     - Class: 114
-      Script: {instanceID: 2262}
+      Script: {instanceID: 2260}
     - Class: 114
-      Script: {instanceID: 2378}
+      Script: {instanceID: 2376}
     - Class: 114
-      Script: {instanceID: 2480}
+      Script: {instanceID: 2478}
     - Class: 114
-      Script: {instanceID: 2516}
+      Script: {instanceID: 2514}
     - Class: 114
-      Script: {instanceID: 2598}
+      Script: {instanceID: 2596}
     - Class: 114
-      Script: {instanceID: 2710}
+      Script: {instanceID: 2708}
     - Class: 114
-      Script: {instanceID: 2806}
+      Script: {instanceID: 2804}
     - Class: 114
-      Script: {instanceID: 2856}
+      Script: {instanceID: 2854}
     - Class: 114
-      Script: {instanceID: 2900}
+      Script: {instanceID: 2898}
     - Class: 114
-      Script: {instanceID: 2926}
+      Script: {instanceID: 2924}
     - Class: 114
-      Script: {instanceID: 2950}
+      Script: {instanceID: 2948}
     - Class: 114
-      Script: {instanceID: 2984}
+      Script: {instanceID: 2982}
     - Class: 114
-      Script: {instanceID: 3116}
+      Script: {instanceID: 3114}
     - Class: 114
-      Script: {instanceID: 3148}
+      Script: {instanceID: 3146}
     - Class: 114
-      Script: {instanceID: 3452}
+      Script: {instanceID: 3450}
+    - Class: 114
+      Script: {instanceID: 3454}
     - Class: 114
       Script: {instanceID: 3456}
     - Class: 114
-      Script: {instanceID: 3458}
+      Script: {instanceID: 3488}
     - Class: 114
-      Script: {instanceID: 3490}
+      Script: {instanceID: 3522}
     - Class: 114
-      Script: {instanceID: 3524}
+      Script: {instanceID: 3598}
     - Class: 114
-      Script: {instanceID: 3600}
+      Script: {instanceID: 3712}
     - Class: 114
-      Script: {instanceID: 3714}
+      Script: {instanceID: 3726}
     - Class: 114
-      Script: {instanceID: 3728}
+      Script: {instanceID: 3802}
     - Class: 114
-      Script: {instanceID: 3804}
+      Script: {instanceID: 3836}
     - Class: 114
-      Script: {instanceID: 3838}
+      Script: {instanceID: 3870}
     - Class: 114
-      Script: {instanceID: 3872}
+      Script: {instanceID: 3936}
     - Class: 114
-      Script: {instanceID: 3938}
+      Script: {instanceID: 4014}
     - Class: 114
-      Script: {instanceID: 4016}
+      Script: {instanceID: 4074}
     - Class: 114
-      Script: {instanceID: 4076}
+      Script: {instanceID: 4094}
     - Class: 114
-      Script: {instanceID: 4096}
+      Script: {instanceID: 4168}
     - Class: 114
-      Script: {instanceID: 4170}
+      Script: {instanceID: 4278}
     - Class: 114
-      Script: {instanceID: 4280}
+      Script: {instanceID: 4352}
     - Class: 114
-      Script: {instanceID: 4354}
+      Script: {instanceID: 4448}
     - Class: 114
-      Script: {instanceID: 4450}
+      Script: {instanceID: 4496}
     - Class: 114
-      Script: {instanceID: 4498}
+      Script: {instanceID: 4536}
     - Class: 114
-      Script: {instanceID: 4538}
-    - Class: 114
-      Script: {instanceID: 4546}
+      Script: {instanceID: 4544}
     - Class: 114
       Script: {instanceID: 18532}
     - Class: 115
@@ -246,77 +246,77 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1534}
     - Class: 114
-      Script: {instanceID: 1544}
+      Script: {instanceID: 1542}
     - Class: 114
-      Script: {instanceID: 1642}
+      Script: {instanceID: 1640}
     - Class: 114
-      Script: {instanceID: 1760}
+      Script: {instanceID: 1758}
     - Class: 114
-      Script: {instanceID: 1820}
+      Script: {instanceID: 1818}
     - Class: 114
-      Script: {instanceID: 1838}
+      Script: {instanceID: 1836}
     - Class: 114
-      Script: {instanceID: 1928}
+      Script: {instanceID: 1926}
     - Class: 114
-      Script: {instanceID: 2074}
+      Script: {instanceID: 2072}
     - Class: 114
-      Script: {instanceID: 2262}
+      Script: {instanceID: 2260}
     - Class: 114
-      Script: {instanceID: 2378}
+      Script: {instanceID: 2376}
     - Class: 114
-      Script: {instanceID: 2480}
+      Script: {instanceID: 2478}
     - Class: 114
-      Script: {instanceID: 2516}
+      Script: {instanceID: 2514}
     - Class: 114
-      Script: {instanceID: 2710}
+      Script: {instanceID: 2708}
     - Class: 114
-      Script: {instanceID: 2806}
+      Script: {instanceID: 2804}
     - Class: 114
-      Script: {instanceID: 2856}
+      Script: {instanceID: 2854}
     - Class: 114
-      Script: {instanceID: 2900}
+      Script: {instanceID: 2898}
     - Class: 114
-      Script: {instanceID: 2926}
+      Script: {instanceID: 2924}
     - Class: 114
-      Script: {instanceID: 2950}
+      Script: {instanceID: 2948}
     - Class: 114
-      Script: {instanceID: 2984}
+      Script: {instanceID: 2982}
     - Class: 114
-      Script: {instanceID: 3116}
+      Script: {instanceID: 3114}
     - Class: 114
-      Script: {instanceID: 3148}
+      Script: {instanceID: 3146}
     - Class: 114
-      Script: {instanceID: 3490}
+      Script: {instanceID: 3488}
     - Class: 114
-      Script: {instanceID: 3524}
+      Script: {instanceID: 3522}
     - Class: 114
-      Script: {instanceID: 3600}
+      Script: {instanceID: 3598}
     - Class: 114
-      Script: {instanceID: 3714}
+      Script: {instanceID: 3712}
     - Class: 114
-      Script: {instanceID: 3728}
+      Script: {instanceID: 3726}
     - Class: 114
-      Script: {instanceID: 3804}
+      Script: {instanceID: 3802}
     - Class: 114
-      Script: {instanceID: 3872}
+      Script: {instanceID: 3870}
     - Class: 114
-      Script: {instanceID: 3938}
+      Script: {instanceID: 3936}
     - Class: 114
-      Script: {instanceID: 4076}
+      Script: {instanceID: 4074}
     - Class: 114
-      Script: {instanceID: 4170}
+      Script: {instanceID: 4168}
     - Class: 114
-      Script: {instanceID: 4280}
+      Script: {instanceID: 4278}
     - Class: 114
-      Script: {instanceID: 4354}
+      Script: {instanceID: 4352}
     - Class: 114
-      Script: {instanceID: 4450}
+      Script: {instanceID: 4448}
     - Class: 114
-      Script: {instanceID: 4498}
+      Script: {instanceID: 4496}
     - Class: 114
-      Script: {instanceID: 4538}
+      Script: {instanceID: 4536}
     - Class: 114
-      Script: {instanceID: 4546}
+      Script: {instanceID: 4544}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -876,7 +876,7 @@ ScriptsOnlyBuild:
     className: Tactic_Zone_Manager
   - hash:
       serializedVersion: 2
-      Hash: a86c24afb8b7eb22cb2c7feae921d258
+      Hash: bfe51fa167baa9f59c72c96b2aab1634
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CardZone

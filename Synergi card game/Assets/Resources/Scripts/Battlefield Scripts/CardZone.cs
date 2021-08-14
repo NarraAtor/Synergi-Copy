@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Mirror;
 
 /// <summary>
 /// Author: Eric Fotang
 /// Purpose: Manages a card zone in the game.
 /// TODO: Make changes to the cases of variables, general code "cleanliness" clean up.
 /// </summary>
-public class CardZone : MonoBehaviour
+public class CardZone : NetworkBehaviour
 {
     //If a card zone is unoccupied, it can have its data set and is set to active when a being or deployable is deployed in to it.
     protected bool isOccupied;
@@ -18,8 +19,8 @@ public class CardZone : MonoBehaviour
     protected bool occupiedByDeployable;
 
     //All of these private variables need ot be lowerCamelCased
-    private GameObject Player_Battlefield;
-    private GameObject Player_Hand;
+    [SerializeField] private GameObject player_Battlefield;
+    [SerializeField] private GameObject player_Hand;
     private List<GameObject> CardUI;
     private GameObject CardBorder;
     private GameObject CardArt;
@@ -42,8 +43,8 @@ public class CardZone : MonoBehaviour
     private GameObject DeployableDurabilityText;
     private GameObject Placement_Text_D;
     //TODO: make these private
-    public Being BeingScript;
-    public Deployable DeployableScript;
+    private Being BeingScript;
+    private Deployable DeployableScript;
 
     // Start is called before the first frame update
     void Start()
@@ -52,8 +53,8 @@ public class CardZone : MonoBehaviour
         isClickable = false;
         occupiedByBeing = false;
         occupiedByDeployable = false;
-        Player_Battlefield = GameObject.Find("Player Battlefield");
-        Player_Hand = GameObject.Find("Player Hand");
+        //Player_Battlefield = GameObject.Find("Player Battlefield");
+        //Player_Hand = GameObject.Find("Player Hand");
         CardUI = new List<GameObject>();
         BeingScript = this.gameObject.GetComponent<Being>();
         DeployableScript = this.gameObject.GetComponent<Deployable>();
@@ -163,9 +164,9 @@ public class CardZone : MonoBehaviour
         if (!isOccupied && isClickable)
         {
             //Find the selected card in hand
-            for (int i = 0; i < Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_Hand.Count; i++)
+            for (int i = 0; i < player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_Hand.Count; i++)
             {
-                card = Player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_Hand[i];
+                card = player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_Hand[i];
                 if (card.GetComponent<Card>().IsSelected)
                 {
                     if (card.GetComponent<Card>() is Being)
@@ -179,7 +180,7 @@ public class CardZone : MonoBehaviour
                 }
             }
             isOccupied = true;
-            Player_Battlefield.BroadcastMessage("HideDeployableZones");
+            player_Battlefield.BroadcastMessage("HideDeployableZones");
         }
 
         //If there is a card there, hide deployable zones 
