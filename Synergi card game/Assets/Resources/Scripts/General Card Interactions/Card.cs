@@ -71,6 +71,8 @@ public class Card : MonoBehaviour
     protected bool playerActive;
     // a bool that allows the Card class to do all the work for its children
     protected bool cardIsPlayable;
+    // a bool that determines whether or not a card is visibile to the opponent
+    protected bool isVisible;
     protected GameObject m_CardTitle;
     protected GameObject CardBorder;
     protected GameObject CardArt;
@@ -81,6 +83,8 @@ public class Card : MonoBehaviour
     protected GameObject FlavorText;
     protected GameObject CardEnergyCost;
     protected GameObject CardBack;
+    protected GameObject CardFront;
+    protected List<GameObject> cardUI = new List<GameObject>();
 
     public bool IsSelected
     {
@@ -205,6 +209,17 @@ public class Card : MonoBehaviour
             currentPosition = value;
         }
     }
+    public bool IsVisible
+    {
+        get
+        {
+            return isVisible;
+        }
+        set
+        {
+            isVisible = value;
+        }
+    }
 
     public Card(CardType cardType, CardColor cardColor,
         int redEnergyCost, int blueEnergyCost, int greenEnergyCost, int purpleEnergyCost, int genericEnergyCost,
@@ -254,12 +269,14 @@ public class Card : MonoBehaviour
         Player_EnergySupply = player_Portrait.GetComponent<EnergySupplyManager>();
         game_Manager = GameObject.Find("GameManager");
         turn_Manager = game_Manager.GetComponent<Turn_Manager>();
+        isVisible = false;
 
 
-        //CardUI = new List<GameObject>();
         foreach (RectTransform component in this.GetComponentsInChildren<RectTransform>(true))
         {
-            //CardUI.Add(component.gameObject);
+            //Adds the components to a list for easier access later.
+            //cardUI.Add(component.gameObject);
+
             //This code allows me to access each component more specifically.
             //A switch would've been better here, oh well.
             if (component.gameObject.name == "CardBorder")
@@ -298,7 +315,23 @@ public class Card : MonoBehaviour
             {
                 CardEnergyCost = component.gameObject;
             }
+            if(component.gameObject.name == "CardFront")
+            {
+                CardFront = component.gameObject;
+            }
         }
+    }
+
+    protected virtual void Update()
+    {
+       if(!IsVisible)
+       {
+           ShowCardBack();
+       }
+       else
+       {
+           ShowCardFront();
+       }
     }
 
     //Helper method for setting this card's UI to the values in data.
@@ -306,6 +339,7 @@ public class Card : MonoBehaviour
     {
         //This line of code is kinda useless since Card's SetUIComponent can't be called when this method
         //is called from a child. The override "hides" the base method.
+        //???? I need to debug this later
         //SetUIComponentColor(cardColor);
 
         CardAbility.GetComponent<TMP_Text>().text = $"{this.abilityText}";
@@ -406,6 +440,21 @@ public class Card : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    /// <summary>
+    /// Purpose: Shows only the back of a card so that players don't know which one it is.
+    /// Restrictions:
+    /// 
+    /// </summary>
+    protected virtual void ShowCardBack()
+    {
+        CardFront.SetActive(false);
+    }
+
+    protected virtual void ShowCardFront()
+    {
+        //CardFront.SetActive(false);
     }
 
     public override string ToString()

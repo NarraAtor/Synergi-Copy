@@ -54,9 +54,9 @@ public class Tactic : Card
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-
+        base.Update();
     }
 
     //When a tactic is clicked, the system will ask for confirmation if you want to play this card. 

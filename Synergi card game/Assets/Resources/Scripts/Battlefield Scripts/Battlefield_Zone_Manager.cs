@@ -86,6 +86,7 @@ public class Battlefield_Zone_Manager : MonoBehaviour
         centerColumn = new GameObject[] { FC, MC, BC };
         rightColumn = new GameObject[] { FR, MR, BR };
 
+        //Replace this by making it serialize
         p1PassButton = GameObject.Find("Player Pass Button");
     }
 

@@ -149,8 +149,9 @@ public class Being : Card
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
     }
 
     //When a being is clicked while in the hand, it will prompt the user to select a card zone to deploy the being or hit back.

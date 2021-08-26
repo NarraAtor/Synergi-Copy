@@ -84,9 +84,9 @@ public class Deployable : Card
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-
+        base.Update();
     }
     //Deployables should follow the same road map as beings deployment wise. Look at that for reference.
     public override void IsClicked()
