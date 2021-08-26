@@ -269,7 +269,7 @@ public class Card : MonoBehaviour
         Player_EnergySupply = player_Portrait.GetComponent<EnergySupplyManager>();
         game_Manager = GameObject.Find("GameManager");
         turn_Manager = game_Manager.GetComponent<Turn_Manager>();
-        isVisible = false;
+        isVisible = true;
 
 
         foreach (RectTransform component in this.GetComponentsInChildren<RectTransform>(true))
@@ -328,16 +328,50 @@ public class Card : MonoBehaviour
 
     protected virtual void Update()
     {
-        ShowCardBack();
-        ShowCardFront();
-     //if(!IsVisible)
-     //{
-     //    ShowCardBack();
-     //}
-     //else
-     //{
-     //    ShowCardFront();
-     //}
+        //Determine which cards are and are not visible
+        switch (CurrentPosition)
+        {
+            //If a card is on the battlefield it should be visible
+            case CardPositions.FrontLeft:
+            case CardPositions.FrontCenter:
+            case CardPositions.FrontRight:
+            case CardPositions.MiddleLeft:
+            case CardPositions.MiddleCenter:
+            case CardPositions.MiddleRight:
+            case CardPositions.BackLeft:
+            case CardPositions.BackCenter:
+            case CardPositions.BackRight:
+            case CardPositions.TacticalField:
+            case CardPositions.Graveyard:
+            case CardPositions.Abyss:
+                //If Cloaked = false, a mechanic I'd like to add in the future
+                IsVisible = true;
+                break;
+            //If the card is in a player's own hand it should be visible by default.
+            //Else it should be invisible by default.
+            case CardPositions.Hand:
+                if(player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_Hand.Contains(this.gameObject))
+                {
+                    IsVisible = true;
+                }
+                else
+                {
+                    //Do a check to see if a card has been revealed here
+                    //if(isRevealed)
+                    IsVisible = false;
+                }
+                break;
+
+        }
+
+        if (!IsVisible)
+       {
+           ShowCardBack();
+       }
+       else
+       {
+           ShowCardFront();
+       }
     }
 
     //Helper method for setting this card's UI to the values in data.
