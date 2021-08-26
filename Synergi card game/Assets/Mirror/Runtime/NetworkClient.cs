@@ -74,6 +74,7 @@ namespace Mirror
         // => public so that custom NetworkManagers can hook into it
         public static Action OnConnectedEvent;
         public static Action OnDisconnectedEvent;
+        public static Action<Exception> OnErrorEvent;
 
         /// <summary>Registered spawnable prefabs by assetId.</summary>
         public static readonly Dictionary<Guid, GameObject> prefabs =
@@ -375,10 +376,12 @@ namespace Mirror
             // and short circuit running the Shutdown process twice.
             if (connectState == ConnectState.Disconnected) return;
 
+            // Raise the event before changing ConnectState
+            // because 'active' depends on this during shutdown
+            if (connection != null) OnDisconnectedEvent?.Invoke();
+
             connectState = ConnectState.Disconnected;
             ready = false;
-
-            if (connection != null) OnDisconnectedEvent?.Invoke();
 
             // now that everything was handled, clear the connection.
             // previously this was done in Disconnect() already, but we still
@@ -386,7 +389,11 @@ namespace Mirror
             connection = null;
         }
 
-        static void OnError(Exception exception) => Debug.LogException(exception);
+        static void OnError(Exception exception)
+        {
+            Debug.LogException(exception);
+            OnErrorEvent?.Invoke(exception);
+        }
 
         // send ////////////////////////////////////////////////////////////////
         /// <summary>Send a NetworkMessage to the server over the given channel.</summary>
@@ -1393,7 +1400,7 @@ namespace Mirror
         /// <summary>Shutdown the client.</summary>
         public static void Shutdown()
         {
-            Debug.Log("Shutting down client.");
+            //Debug.Log("Shutting down client.");
             ClearSpawners();
             spawnableObjects.Clear();
             ready = false;

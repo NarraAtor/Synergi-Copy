@@ -319,19 +319,25 @@ public class Card : MonoBehaviour
             {
                 CardFront = component.gameObject;
             }
+            if (component.gameObject.name == "CardBack")
+            {
+                CardBack = component.gameObject;
+            }
         }
     }
 
     protected virtual void Update()
     {
-       if(!IsVisible)
-       {
-           ShowCardBack();
-       }
-       else
-       {
-           ShowCardFront();
-       }
+        ShowCardBack();
+        ShowCardFront();
+     //if(!IsVisible)
+     //{
+     //    ShowCardBack();
+     //}
+     //else
+     //{
+     //    ShowCardFront();
+     //}
     }
 
     //Helper method for setting this card's UI to the values in data.
@@ -450,11 +456,13 @@ public class Card : MonoBehaviour
     protected virtual void ShowCardBack()
     {
         CardFront.SetActive(false);
+        CardBack.GetComponent<Image>().enabled = true;
     }
 
     protected virtual void ShowCardFront()
     {
-        //CardFront.SetActive(false);
+        CardFront.SetActive(true);
+        CardBack.GetComponent<Image>().enabled = false;
     }
 
     public override string ToString()

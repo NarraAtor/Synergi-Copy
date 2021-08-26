@@ -28,9 +28,6 @@ namespace Mirror
         public int tick;
         public NetworkWriter ownerWriter;
         public NetworkWriter observersWriter;
-        // TODO there is probably a more simple way later
-        public int ownerWritten;
-        public int observersWritten;
     }
 
     /// <summary>NetworkIdentity identifies objects across the network.</summary>
@@ -123,7 +120,7 @@ namespace Mirror
         /// <summary>Client's network connection to the server. This is only valid for player objects on the client.</summary>
         public NetworkConnection connectionToServer { get; internal set; }
 
-        /// <summary>Server's network connection to the client. This is only valid for player objects on the server.</summary>
+        /// <summary>Server's network connection to the client. This is only valid for client-owned objects (including the Player object) on the server.</summary>
         public NetworkConnectionToClient connectionToClient
         {
             get => _connectionToClient;
@@ -204,10 +201,10 @@ namespace Mirror
             internal set
             {
                 string newAssetIdString = value == Guid.Empty ? string.Empty : value.ToString("N");
-                string oldAssetIdSrting = m_AssetId;
+                string oldAssetIdString = m_AssetId;
 
                 // they are the same, do nothing
-                if (oldAssetIdSrting == newAssetIdString)
+                if (oldAssetIdString == newAssetIdString)
                 {
                     return;
                 }
@@ -215,14 +212,14 @@ namespace Mirror
                 // new is empty
                 if (string.IsNullOrEmpty(newAssetIdString))
                 {
-                    Debug.LogError($"Can not set AssetId to empty guid on NetworkIdentity '{name}', old assetId '{oldAssetIdSrting}'");
+                    Debug.LogError($"Can not set AssetId to empty guid on NetworkIdentity '{name}', old assetId '{oldAssetIdString}'");
                     return;
                 }
 
                 // old not empty
-                if (!string.IsNullOrEmpty(oldAssetIdSrting))
+                if (!string.IsNullOrEmpty(oldAssetIdString))
                 {
-                    Debug.LogError($"Can not Set AssetId on NetworkIdentity '{name}' because it already had an assetId, current assetId '{oldAssetIdSrting}', attempted new assetId '{newAssetIdString}'");
+                    Debug.LogError($"Can not Set AssetId on NetworkIdentity '{name}' because it already had an assetId, current assetId '{oldAssetIdString}', attempted new assetId '{newAssetIdString}'");
                     return;
                 }
 
@@ -871,11 +868,8 @@ namespace Mirror
         // check ownerWritten/observersWritten to know if anything was written
         // We pass dirtyComponentsMask into this function so that we can check
         // if any Components are dirty before creating writers
-        internal void OnSerializeAllSafely(bool initialState, NetworkWriter ownerWriter, out int ownerWritten, NetworkWriter observersWriter, out int observersWritten)
+        internal void OnSerializeAllSafely(bool initialState, NetworkWriter ownerWriter, NetworkWriter observersWriter)
         {
-            // clear 'written' variables
-            ownerWritten = observersWritten = 0;
-
             // check if components are in byte.MaxRange just to be 100% sure
             // that we avoid overflows
             NetworkBehaviour[] components = NetworkBehaviours;
@@ -903,7 +897,6 @@ namespace Mirror
                     // serialize into ownerWriter first
                     // (owner always gets everything!)
                     OnSerializeSafely(comp, ownerWriter, initialState);
-                    ++ownerWritten;
 
                     // copy into observersWriter too if SyncMode.Observers
                     // -> we copy instead of calling OnSerialize again because
@@ -919,7 +912,6 @@ namespace Mirror
                         ArraySegment<byte> segment = ownerWriter.ToArraySegment();
                         int length = ownerWriter.Position - startPosition;
                         observersWriter.WriteBytes(segment.Array, startPosition, length);
-                        ++observersWritten;
                     }
                 }
             }
@@ -940,9 +932,7 @@ namespace Mirror
                 // serialize
                 OnSerializeAllSafely(false,
                                      lastSerialization.ownerWriter,
-                                     out lastSerialization.ownerWritten,
-                                     lastSerialization.observersWriter,
-                                     out lastSerialization.observersWritten);
+                                     lastSerialization.observersWriter);
 
                 // set tick
                 lastSerialization.tick = tick;

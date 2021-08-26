@@ -366,7 +366,7 @@ ScriptsOnlyBuild:
     className: Toggle
   - hash:
       serializedVersion: 2
-      Hash: 6399109272b855570968e1d051f40791
+      Hash: 3ff6f790ae47fae80bc5c9c6db5d66bf
     assemblyName: Mirror.dll
     namespaceName: kcp2k
     className: KcpTransport
@@ -390,7 +390,7 @@ ScriptsOnlyBuild:
     className: Ball
   - hash:
       serializedVersion: 2
-      Hash: 48cd7033422a2bb9991e4ac303006d37
+      Hash: 41c9825cd53cff5bfe5d9f873c704b08
     assemblyName: Mirror.Components.dll
     namespaceName: Mirror
     className: NetworkTransformChild
@@ -1194,7 +1194,7 @@ ScriptsOnlyBuild:
     className: ResourceDeckManager
   - hash:
       serializedVersion: 2
-      Hash: 986f74463d386d5173ce708a1c8ff55a
+      Hash: e1be6cb5fb432e26f64fcb687a018983
     assemblyName: Mirror.Components.dll
     namespaceName: Mirror
     className: NetworkTransform
@@ -1302,7 +1302,7 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
-      Hash: 42a930c6b13af0df34d41f5b19ec8152
+      Hash: 6fd2bb55b3ee5edb6040a1c5bccd0e07
     assemblyName: Mirror.Components.dll
     namespaceName: Mirror
     className: NetworkMatchChecker
@@ -1444,6 +1444,30 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Deck_InBattle_Manager
+  - hash:
+      serializedVersion: 2
+      Hash: 3f71d9d53af34ea64cb743fef736aaa8
+    assemblyName: Mirror.Components.dll
+    namespaceName: Mirror
+    className: DistanceInterestManagementCustomRange
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Mirror.Components.dll
+    namespaceName: Mirror
+    className: SceneInterestManagement
+  - hash:
+      serializedVersion: 2
+      Hash: 6fd2bb55b3ee5edb6040a1c5bccd0e07
+    assemblyName: Mirror.Components.dll
+    namespaceName: Mirror
+    className: NetworkMatch
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Mirror.Components.dll
+    namespaceName: Mirror
+    className: MatchInterestManagement
   platform: 19
   scenePathNames:
   - Assets/Resources/Scenes/SynergiV3.unity
