@@ -328,6 +328,7 @@ public class Card : MonoBehaviour
 
     protected virtual void Update()
     {
+        bool isBattlefieldCard = false;
         //Determine which cards are and are not visible
         switch (CurrentPosition)
         {
@@ -344,9 +345,13 @@ public class Card : MonoBehaviour
             case CardPositions.TacticalField:
             case CardPositions.Graveyard:
             case CardPositions.Abyss:
+                //TODO: Cloaked mechanic
                 //If Cloaked = false, a mechanic I'd like to add in the future
-                IsVisible = true;
-                break;
+                //IsVisible = true;
+                //For now, if a card is in the battlefield, ignore it
+                isBattlefieldCard = true;
+                return;
+
             //If the card is in a player's own hand it should be visible by default.
             //Else it should be invisible by default.
             case CardPositions.Hand:
@@ -364,6 +369,10 @@ public class Card : MonoBehaviour
 
         }
 
+        if(isBattlefieldCard)
+        {
+            print($"{CurrentPosition}: Switching visibility");
+        }
         if (!IsVisible)
        {
            ShowCardBack();
@@ -489,13 +498,21 @@ public class Card : MonoBehaviour
     /// </summary>
     protected virtual void ShowCardBack()
     {
-        CardFront.SetActive(false);
+        foreach(RectTransform component in CardFront.GetComponentInChildren<RectTransform>())
+        {
+            component.gameObject.SetActive(false);
+        }
+        //CardFront.SetActive(false);
         CardBack.GetComponent<Image>().enabled = true;
     }
 
     protected virtual void ShowCardFront()
     {
-        CardFront.SetActive(true);
+        foreach (RectTransform component in CardFront.GetComponentInChildren<RectTransform>())
+        {
+            component.gameObject.SetActive(true);
+        }
+        //CardFront.SetActive(true);
         CardBack.GetComponent<Image>().enabled = false;
     }
 
