@@ -1024,6 +1024,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1164531602}
     m_Modifications:
+    - target: {fileID: 414882177979854083, guid: cb3e109b672844241907d4b726a1d4c4,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1724786658139337963, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_IsActive
@@ -1087,7 +1092,7 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -1097,7 +1102,7 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -1132,12 +1137,12 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6750187380104063191, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -1148,6 +1153,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy's Mid Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 7651229894695628637, guid: cb3e109b672844241907d4b726a1d4c4,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7651229894695628637, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -4929,6 +4939,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1164531602}
     m_Modifications:
+    - target: {fileID: 414882177979854083, guid: cb3e109b672844241907d4b726a1d4c4,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1724786658139337963, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_IsActive
@@ -4977,7 +4992,7 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -4987,7 +5002,7 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -5022,12 +5037,12 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6750187380104063191, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -5038,6 +5053,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy's Back Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 7651229894695628637, guid: cb3e109b672844241907d4b726a1d4c4,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7651229894695628637, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -11994,6 +12014,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1164531602}
     m_Modifications:
+    - target: {fileID: 414882177979854083, guid: cb3e109b672844241907d4b726a1d4c4,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1724786658139337963, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_IsActive
@@ -12042,7 +12067,7 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -12052,7 +12077,7 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -12087,12 +12112,12 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6750187380104063191, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -12103,6 +12128,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy's Mid Center
+      objectReference: {fileID: 0}
+    - target: {fileID: 7651229894695628637, guid: cb3e109b672844241907d4b726a1d4c4,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7651229894695628637, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -14463,6 +14493,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1164531602}
     m_Modifications:
+    - target: {fileID: 414882177979854083, guid: cb3e109b672844241907d4b726a1d4c4,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1724786658139337963, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_IsActive
@@ -14506,7 +14541,7 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -14516,7 +14551,7 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -14551,12 +14586,12 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6750187380104063191, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -14567,6 +14602,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy's Front Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 7651229894695628637, guid: cb3e109b672844241907d4b726a1d4c4,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7651229894695628637, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -15544,6 +15584,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1164531602}
     m_Modifications:
+    - target: {fileID: 414882177979854083, guid: cb3e109b672844241907d4b726a1d4c4,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1724786658139337963, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_IsActive
@@ -15592,7 +15637,7 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -15602,7 +15647,7 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -15637,12 +15682,12 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6750187380104063191, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -15653,6 +15698,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy's Front Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 7651229894695628637, guid: cb3e109b672844241907d4b726a1d4c4,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7651229894695628637, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -19213,7 +19263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1164531602
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22509,6 +22559,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1164531602}
     m_Modifications:
+    - target: {fileID: 414882177979854083, guid: cb3e109b672844241907d4b726a1d4c4,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1724786658139337963, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_IsActive
@@ -22557,7 +22612,7 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -22567,7 +22622,7 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -22602,12 +22657,12 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6750187380104063191, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -22618,6 +22673,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy's Back Center
+      objectReference: {fileID: 0}
+    - target: {fileID: 7651229894695628637, guid: cb3e109b672844241907d4b726a1d4c4,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7651229894695628637, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -23994,6 +24054,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1164531602}
     m_Modifications:
+    - target: {fileID: 414882177979854083, guid: cb3e109b672844241907d4b726a1d4c4,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1724786658139337963, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_IsActive
@@ -24042,7 +24107,7 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -24052,7 +24117,7 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -24087,12 +24152,12 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6750187380104063191, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -24103,6 +24168,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy's Mid Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 7651229894695628637, guid: cb3e109b672844241907d4b726a1d4c4,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7651229894695628637, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -27219,6 +27289,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1164531602}
     m_Modifications:
+    - target: {fileID: 414882177979854083, guid: cb3e109b672844241907d4b726a1d4c4,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1724786658139337963, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_IsActive
@@ -27267,7 +27342,7 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -27277,7 +27352,7 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -27312,12 +27387,12 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6750187380104063191, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -27328,6 +27403,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy's Back Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 7651229894695628637, guid: cb3e109b672844241907d4b726a1d4c4,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7651229894695628637, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -29342,6 +29422,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1164531602}
     m_Modifications:
+    - target: {fileID: 414882177979854083, guid: cb3e109b672844241907d4b726a1d4c4,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1724786658139337963, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_IsActive
@@ -29390,7 +29475,7 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -29400,7 +29485,7 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -29435,12 +29520,12 @@ PrefabInstance:
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683008272771592709, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6750187380104063191, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
@@ -29451,6 +29536,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy's Front Center
+      objectReference: {fileID: 0}
+    - target: {fileID: 7651229894695628637, guid: cb3e109b672844241907d4b726a1d4c4,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7651229894695628637, guid: cb3e109b672844241907d4b726a1d4c4,
         type: 3}
