@@ -328,6 +328,7 @@ public class Card : MonoBehaviour
 
     protected virtual void Update()
     {
+
         bool isBattlefieldCard = false;
         //Determine which cards are and are not visible
         switch (CurrentPosition)

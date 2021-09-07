@@ -160,7 +160,7 @@ public class CardZone : NetworkBehaviour
     public void IsClicked()
     {
         GameObject card;
-
+        print($"called IsClicked");
         if (!isOccupied && isClickable)
         {
             //Find the selected card in hand
@@ -169,6 +169,8 @@ public class CardZone : NetworkBehaviour
                 card = player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_Hand[i];
                 if (card.GetComponent<Card>().IsSelected)
                 {
+                    print($"Found selected card");
+                    //TODO: Change these from messages to method calls
                     if (card.GetComponent<Card>() is Being)
                     {
                         card.SendMessage("DeployBeing", this.gameObject.name);
