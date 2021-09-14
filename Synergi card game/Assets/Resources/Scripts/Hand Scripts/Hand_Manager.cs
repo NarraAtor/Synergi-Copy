@@ -585,6 +585,38 @@ public class Hand_Manager : NetworkBehaviour
         Destroy(card.gameObject);
     }
 
+    /// <summary>
+    /// Purpose: Searches the desired hand for a card.
+    /// </summary>
+    /// <param name="card">the card to search for</param>
+    /// <param name="hand">the hand to search through</param>
+    /// <returns>the index of the card from the specified hand</returns>
+    public int GetCardIndex(Card card, GameObject hand )
+    {
+        if(hand == this.gameObject)
+        {
+            for(int i = 0; i < cardsInPlayer_Hand.Count; i++)
+            {
+                if(card == cardsInPlayer_Hand[i].GetComponent<Card>())
+                {
+                    return i;
+                }
+            }
+        }
+        else if(hand == enemyHand)
+        {
+            for (int i = 0; i < cardsInEnemy_Hand.Count; i++)
+            {
+                if (card == cardsInEnemy_Hand[i].GetComponent<Card>())
+                {
+                    return i;
+                }
+            }
+        }
+
+        return -1;
+    }
+
 
 
 

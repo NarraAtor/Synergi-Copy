@@ -170,7 +170,6 @@ public class CardZone : NetworkBehaviour
                 if (card.GetComponent<Card>().IsSelected)
                 {
                     print($"Found selected card");
-                    //TODO: Change these from messages to method calls
                     if (card.GetComponent<Card>() is Being)
                     {
                         card.GetComponent<Being>().DeployBeing(this.gameObject.name);
@@ -236,37 +235,48 @@ public class CardZone : NetworkBehaviour
 
         if(isServer)
         {
-            CmdDeployServer(cardData.CardTitle, true);
+            CmdDeployServer(cardData.CardTitle, cardData.CurrentPosition, true);
         }
         else
         {
-            CmdDeployServer(cardData.CardTitle, false);
+            CmdDeployServer(cardData.CardTitle, cardData.CurrentPosition, false);
         }
     }
     /// <summary>
-    /// Purpose: Syncs the opposing player's hand by deploying the card to the correct battlefield on their screen
-    ///          and discarding the card.
+    /// Purpose: Syncs the opposing player's view of the battlefield by deploying the card to the 
+    ///          correct battlefield on their screen and discarding the card from the correct hand.
     ///          
     /// </summary>
     /// <param name="cardTitle"></param>
     /// <param name="sentFromServer"></param>
     [Command(requiresAuthority = false)]
-    private void CmdDeployServer(string cardTitle, bool sentFromServer)
+    private void CmdDeployServer(string cardTitle, CardPositions positions, bool sentFromServer)
     {
+        RpcDeployClient(cardTitle, sentFromServer);
+    }
+
+    /// <summary>
+    /// Purpose: Carries out the commands of the CmdDeployServer method.
+    ///          
+    /// </summary>
+    /// <param name="cardTitle"></param>
+    /// <param name="sentFromServer"></param>
+    [ClientRpc(includeOwner = false)]
+    private void RpcDeployClient(string cardTitle, bool sentFromServer)
+    {
+        //if from server, that means I'm copying the deployment to the client's enemy battlefield.
         if(sentFromServer)
         {
-
+            if(isClientOnly)
+            {
+                
+            }
         }
+        //if from client, that means I'm copying the deployment to the server's enemy battlefield.
         else
         {
 
         }
-    }
-
-    [ClientRpc(includeOwner = false)]
-    private void RpcDeployClient(string cardTitle, bool sentFromServer)
-    {
-
     }
 
     private void SetUIComponentColor(CardColor cardColor)
