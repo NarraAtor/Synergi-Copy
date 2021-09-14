@@ -617,6 +617,160 @@ public class Hand_Manager : NetworkBehaviour
         return -1;
     }
 
+    /// <summary>
+    /// Purpose: Searches the desired hand for a card.
+    /// </summary>
+    /// <param name="card">the card to search for</param>
+    /// <param name="hand">the hand to search through</param>
+    /// <returns>the index of the card from the specified hand</returns>
+    public int GetCardIndex(Card card, List<GameObject> hand)
+    {
+            for (int i = 0; i < hand.Count; i++)
+            {
+                if (card == hand[i].GetComponent<Card>())
+                {
+                    return i;
+                }
+            }
+
+
+        return -1;
+    }
+
+    /// <summary>
+    /// Purpose: Searches the desired hand for a card.
+    /// </summary>
+    /// <param name="cardTitle">the name of the card to search for</param>
+    /// <param name="hand">the hand to search through</param>
+    /// <returns>the index of the card from the specified hand</returns>
+    public int GetCardIndex(string cardTitle, GameObject hand)
+    {
+        if (hand == this.gameObject)
+        {
+            for (int i = 0; i < cardsInPlayer_Hand.Count; i++)
+            {
+                if (cardTitle == cardsInPlayer_Hand[i].GetComponent<Card>().CardTitle)
+                {
+                    return i;
+                }
+            }
+        }
+        else if (hand == enemyHand)
+        {
+            for (int i = 0; i < cardsInEnemy_Hand.Count; i++)
+            {
+                if (cardTitle == cardsInEnemy_Hand[i].GetComponent<Card>().CardTitle)
+                {
+                    return i;
+                }
+            }
+        }
+
+        return -1;
+    }
+
+    /// <summary>
+    /// Purpose: Searches the desired hand for a card.
+    /// </summary>
+    /// <param name="card">the card to search for</param>
+    /// <param name="hand">the hand to search through</param>
+    /// <returns>the index of the card from the specified hand</returns>
+    public Card GetCard(Card card, GameObject hand)
+    {
+        if (hand == this.gameObject)
+        {
+            for (int i = 0; i < cardsInPlayer_Hand.Count; i++)
+            {
+                if (card == cardsInPlayer_Hand[i].GetComponent<Card>())
+                {
+                    return cardsInPlayer_Hand[i].GetComponent<Card>();
+                }
+            }
+        }
+        else if (hand == enemyHand)
+        {
+            for (int i = 0; i < cardsInEnemy_Hand.Count; i++)
+            {
+                if (card == cardsInEnemy_Hand[i].GetComponent<Card>())
+                {
+                    return cardsInEnemy_Hand[i].GetComponent<Card>();
+                }
+            }
+        }
+
+        return null;
+    }
+    /// <summary>
+    /// Purpose: Searches the desired hand for a card.
+    /// </summary>
+    /// <param name="card">the card to search for</param>
+    /// <param name="hand">the hand to search through</param>
+    /// <returns>the index of the card from the specified hand</returns>
+    public Card GetCard(Card card, List<GameObject> hand)
+    {
+        for (int i = 0; i < hand.Count; i++)
+        {
+            if (card == hand[i].GetComponent<Card>())
+            {
+                return hand[i].GetComponent<Card>();
+            }
+        }
+
+
+        return null;
+    }
+
+    /// <summary>
+    /// Purpose: Searches the desired hand for a card.
+    /// </summary>
+    /// <param name="cardTitle">the name of the card to search for</param>
+    /// <param name="hand">the hand to search through</param>
+    /// <returns>the index of the card from the specified hand</returns>
+    public Card GetCard(string cardTitle, List<GameObject> hand)
+    {
+        for (int i = 0; i < hand.Count; i++)
+        {
+            if (cardTitle == hand[i].GetComponent<Card>().CardTitle)
+            {
+                return hand[i].GetComponent<Card>();
+            }
+        }
+
+
+        return null;
+    }
+    /// <summary>
+    /// Purpose: Searches the desired hand for a card.
+    /// </summary>
+    /// <param name="cardTitle">the name of the card to search for</param>
+    /// <param name="hand">the hand to search through</param>
+    /// <returns>the index of the card from the specified hand</returns>
+    public Card GetCard(string cardTitle, GameObject hand)
+    {
+        if (hand == this.gameObject)
+        {
+            for (int i = 0; i < cardsInPlayer_Hand.Count; i++)
+            {
+                if (cardTitle == cardsInPlayer_Hand[i].GetComponent<Card>().CardTitle)
+                {
+                    return cardsInPlayer_Hand[i].GetComponent<Card>();
+                }
+            }
+        }
+        else if (hand == enemyHand)
+        {
+            for (int i = 0; i < cardsInEnemy_Hand.Count; i++)
+            {
+                if (cardTitle == cardsInEnemy_Hand[i].GetComponent<Card>().CardTitle)
+                {
+                    return cardsInEnemy_Hand[i].GetComponent<Card>();
+                }
+            }
+        }
+
+        return null;
+    }
+
 
 
 

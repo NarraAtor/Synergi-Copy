@@ -235,11 +235,11 @@ public class CardZone : NetworkBehaviour
 
         if(isServer)
         {
-            CmdDeployServer(cardData.CardTitle, cardData.CurrentPosition, true);
+            CmdDeployServer(cardData.CardTitle, this.gameObject.name, true);
         }
         else
         {
-            CmdDeployServer(cardData.CardTitle, cardData.CurrentPosition, false);
+            CmdDeployServer(cardData.CardTitle, this.gameObject.name, false);
         }
     }
     /// <summary>
@@ -250,9 +250,9 @@ public class CardZone : NetworkBehaviour
     /// <param name="cardTitle"></param>
     /// <param name="sentFromServer"></param>
     [Command(requiresAuthority = false)]
-    private void CmdDeployServer(string cardTitle, CardPositions positions, bool sentFromServer)
+    private void CmdDeployServer(string cardTitle, string cardZone, bool sentFromServer)
     {
-        RpcDeployClient(cardTitle, sentFromServer);
+        RpcDeployClient(cardTitle, cardZone, sentFromServer);
     }
 
     /// <summary>
@@ -262,20 +262,35 @@ public class CardZone : NetworkBehaviour
     /// <param name="cardTitle"></param>
     /// <param name="sentFromServer"></param>
     [ClientRpc(includeOwner = false)]
-    private void RpcDeployClient(string cardTitle, bool sentFromServer)
+    private void RpcDeployClient(string cardTitle, string cardZone, bool sentFromServer)
     {
+        Card cardToDeploy = null;
         //if from server, that means I'm copying the deployment to the client's enemy battlefield.
         if(sentFromServer)
         {
             if(isClientOnly)
             {
-                
+                cardToDeploy = player_Hand.GetComponent<Hand_Manager>().GetCard(cardTitle, player_Hand);
             }
         }
         //if from client, that means I'm copying the deployment to the server's enemy battlefield.
         else
         {
+            if(isServer)
+            {
+                cardToDeploy = player_Hand.GetComponent<Hand_Manager>().GetCard(cardTitle, player_Hand.GetComponent<Hand_Manager>().CardsInEnemy_Hand);
+            }
+        }
 
+       if(cardToDeploy is Being)
+        {
+            Being beingToDeploy = (Being)cardToDeploy;
+            beingToDeploy.DeployBeing(cardZone);
+        }
+       else if(cardToDeploy is Deployable)
+        {
+            Deployable deployableToDeploy = (Deployable)cardToDeploy;
+            deployableToDeploy.DeployDeployable(cardZone);
         }
     }
 
