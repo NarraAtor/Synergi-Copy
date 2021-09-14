@@ -173,16 +173,16 @@ public class CardZone : NetworkBehaviour
                     //TODO: Change these from messages to method calls
                     if (card.GetComponent<Card>() is Being)
                     {
-                        card.SendMessage("DeployBeing", this.gameObject.name);
+                        card.GetComponent<Being>().DeployBeing(this.gameObject.name);
                     }
                     if (card.GetComponent<Card>() is Deployable)
                     {
-                        card.SendMessage("DeployDeployable", this.gameObject.name);
+                        card.GetComponent<Deployable>().DeployDeployable(this.gameObject.name);
                     }
                 }
             }
             isOccupied = true;
-            player_Battlefield.BroadcastMessage("HideDeployableZones");
+            player_Battlefield.GetComponent<Battlefield_Zone_Manager>().HideDeployableZones();
         }
 
         //If there is a card there, hide deployable zones 
@@ -230,8 +230,33 @@ public class CardZone : NetworkBehaviour
         SetUIComponentsToActive(cardData);
         SetUIComponentColor(cardData.CardColor);
         SendDataToCard(cardData);
+
+        if(isServer)
+        {
+            
+        }
+        else
+        {
+
+        }
+    }
+    /// <summary>
+    /// Purpose: Sends a message to the server taht 
+    /// </summary>
+    /// <param name="cardTitle"></param>
+    /// <param name="hand"></param>
+    /// <param name="sentFromServer"></param>
+    [Command(requiresAuthority = false)]
+    private void CmdDeployServer(string cardTitle, GameObject hand, bool sentFromServer)
+    {
+
     }
 
+    [ClientRpc(includeOwner = false)]
+    private void RpcDeployClient(string cardTitle, GameObject hand, bool sentFromServer)
+    {
+
+    }
     private void SetUIComponentColor(CardColor cardColor)
     {
         switch (cardColor)

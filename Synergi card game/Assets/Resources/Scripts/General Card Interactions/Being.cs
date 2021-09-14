@@ -236,7 +236,7 @@ public class Being : Card
     /// <param name="nameOfCardZone"></param>
     public virtual void DeployBeing(string nameOfCardZone)
     {
-        GameObject.Find(nameOfCardZone).GetComponent<CardZone>().SendMessage("Deploy", this.GetComponent<Being>());
+        GameObject.Find(nameOfCardZone).GetComponent<CardZone>().Deploy( this.GetComponent<Being>());
         player_Hand.GetComponent<Hand_Manager>().GetRidOfDestroyedCards(this);
     }
 
