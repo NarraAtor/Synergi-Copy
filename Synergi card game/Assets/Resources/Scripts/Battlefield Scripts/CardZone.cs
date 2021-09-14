@@ -270,8 +270,10 @@ public class CardZone : NetworkBehaviour
         {
             if(isClientOnly)
             {
-                cardToDeploy = player_Hand.GetComponent<Hand_Manager>().GetCard(cardTitle, player_Hand);
+                cardToDeploy = player_Hand.GetComponent<Hand_Manager>().GetCard(cardTitle, player_Hand.GetComponent<Hand_Manager>().CardsInEnemy_Hand);
             }
+
+            print($"{cardToDeploy}");
         }
         //if from client, that means I'm copying the deployment to the server's enemy battlefield.
         else
