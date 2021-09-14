@@ -222,9 +222,12 @@ public class CardZone : NetworkBehaviour
         }
     }
 
-    //Accepts the data from a card trying to deploy itself into this card zone.
-    //Uses the data to activate set the data in this card's inactive children.
-    //It takes card as a parameter so that it can match the data of the card being sent.
+    /// <summary>
+    /// Purpose:Accepts the data from a card trying to deploy itself into this card zone.
+    ///         Uses the data to set the data in this card's inactive children.
+    /// Restriction:
+    /// </summary>
+    /// <param name="cardData">data of the card in hand so that this can copy it</param>
     public void Deploy(Card cardData)
     {
         SetUIComponentsToActive(cardData);
@@ -233,30 +236,39 @@ public class CardZone : NetworkBehaviour
 
         if(isServer)
         {
-            
+            CmdDeployServer(cardData.CardTitle, true);
+        }
+        else
+        {
+            CmdDeployServer(cardData.CardTitle, false);
+        }
+    }
+    /// <summary>
+    /// Purpose: Syncs the opposing player's hand by deploying the card to the correct battlefield on their screen
+    ///          and discarding the card.
+    ///          
+    /// </summary>
+    /// <param name="cardTitle"></param>
+    /// <param name="sentFromServer"></param>
+    [Command(requiresAuthority = false)]
+    private void CmdDeployServer(string cardTitle, bool sentFromServer)
+    {
+        if(sentFromServer)
+        {
+
         }
         else
         {
 
         }
     }
-    /// <summary>
-    /// Purpose: Sends a message to the server taht 
-    /// </summary>
-    /// <param name="cardTitle"></param>
-    /// <param name="hand"></param>
-    /// <param name="sentFromServer"></param>
-    [Command(requiresAuthority = false)]
-    private void CmdDeployServer(string cardTitle, GameObject hand, bool sentFromServer)
-    {
-
-    }
 
     [ClientRpc(includeOwner = false)]
-    private void RpcDeployClient(string cardTitle, GameObject hand, bool sentFromServer)
+    private void RpcDeployClient(string cardTitle, bool sentFromServer)
     {
 
     }
+
     private void SetUIComponentColor(CardColor cardColor)
     {
         switch (cardColor)
