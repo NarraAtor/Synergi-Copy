@@ -28,6 +28,56 @@ public class Battlefield_Zone_Manager : MonoBehaviour
     [SerializeField] private GameObject BR;
 
     private GameObject p1PassButton;
+
+    public GameObject[] LeftColumn
+    {
+        get
+        {
+            return leftColumn;
+        }
+    }
+    public GameObject[] RightColumn
+    {
+        get
+        {
+            return rightColumn;
+        }
+    }
+    public GameObject[] CenterColumn
+    {
+        get
+        {
+            return centerColumn;
+        }
+    }
+    public GameObject[] FrontRow
+    {
+        get
+        {
+            return frontRow;
+        }
+    }
+    public GameObject[] MiddleRow
+    {
+        get
+        {
+            return middleRow;
+        }
+    }
+    public GameObject[] BackRow
+    {
+        get
+        {
+            return backRow;
+        }
+    }
+    public GameObject[][] BattleFieldMatric
+    {
+        get
+        {
+            return battlefieldMatrix;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
