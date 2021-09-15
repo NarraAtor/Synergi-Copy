@@ -42,13 +42,23 @@ public enum CardPositions
 //    Player1,//The player
 //    Player2//The enemy
 //}
+/// <summary>
+/// Purpose: The base card class from which all others are derived from.
+///          Although you can technically call this class, it serves as an abstract class for the most part.
+///          
+/// Restrictions: All game objects that have this script and its children are prefabs. 
+///               Therefore, slapping on serialized fields won't work
+///               because prefabs can't access scene references in the editor.
+///               As such, using GameObject.Find is our best bet. This makes it very important to watch strings.
+///               Carefully consider your options before trying to change strings in general.
+/// </summary>
 public class Card : MonoBehaviour
 {
     //For when a card is in hand and clicked by a player.
     //Remove Serialized field later.
-    protected GameObject player_Battlefield;
-    protected GameObject enemy_Battlefield;
-    protected GameObject player_Hand;
+    protected Battlefield_Zone_Manager player_Battlefield;
+    protected Battlefield_Zone_Manager enemy_Battlefield;
+    protected Hand_Manager player_Hand;
     protected GameObject player_Graveyard;
     protected GameObject player_Portrait;
     protected GameObject enemy_Portrait;
@@ -262,9 +272,9 @@ public class Card : MonoBehaviour
     protected virtual void Start()
     {
         //I may have to eventually change these so that its assigned an object in a serialized field instead.
-        player_Battlefield = GameObject.Find("Player Battlefield");
-        enemy_Battlefield = GameObject.Find("Enemy Battlefield"); 
-        player_Hand = GameObject.Find("Player Hand");
+        player_Battlefield = GameObject.Find("Player Battlefield").GetComponent<Battlefield_Zone_Manager>();
+        enemy_Battlefield = GameObject.Find("Enemy Battlefield").GetComponent<Battlefield_Zone_Manager>();
+        player_Hand = GameObject.Find("Player Hand").GetComponent<Hand_Manager>();
         player_Graveyard = GameObject.Find("Player Graveyard");
         player_Portrait = GameObject.Find("PlayerPortrait");
         enemy_Portrait = GameObject.Find("EnemyPortrait");
@@ -345,9 +355,6 @@ public class Card : MonoBehaviour
             case CardPositions.BackLeft:
             case CardPositions.BackCenter:
             case CardPositions.BackRight:
-            case CardPositions.TacticalField:
-            case CardPositions.Graveyard:
-            case CardPositions.Abyss:
                 //TODO: Cloaked mechanic
                 //If Cloaked = false, a mechanic I'd like to add in the future
                 //IsVisible = true;
