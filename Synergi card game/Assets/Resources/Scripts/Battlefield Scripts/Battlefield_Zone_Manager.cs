@@ -71,7 +71,7 @@ public class Battlefield_Zone_Manager : MonoBehaviour
             return backRow;
         }
     }
-    public GameObject[][] BattleFieldMatric
+    public GameObject[][] BattlefieldMatrix
     {
         get
         {
@@ -187,5 +187,33 @@ public class Battlefield_Zone_Manager : MonoBehaviour
             }
         }
         p1PassButton.GetComponent<PassButton>().ChangeButtonState(PassButton.PassButtonStates.PASS);
+    }
+
+    public CardZone GetCardZone(CardPositions cardZone)
+    {
+        //Input Checker
+        switch (cardZone)
+        {
+            case CardPositions.FrontLeft:
+                return FL.GetComponent<CardZone>();
+            case CardPositions.FrontCenter:
+                return FC.GetComponent<CardZone>();
+            case CardPositions.FrontRight:
+                return FR.GetComponent<CardZone>();
+            case CardPositions.MiddleLeft:
+                return ML.GetComponent<CardZone>();
+            case CardPositions.MiddleCenter:
+                return MC.GetComponent<CardZone>();
+            case CardPositions.MiddleRight:
+                return MR.GetComponent<CardZone>();
+            case CardPositions.BackLeft:
+                return BL.GetComponent<CardZone>();
+            case CardPositions.BackCenter:
+                return BC.GetComponent<CardZone>();
+            case CardPositions.BackRight:
+                return BR.GetComponent<CardZone>();
+            default:
+                throw new System.InvalidOperationException($"Invalid card position: {cardZone})");
+        }
     }
 }

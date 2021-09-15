@@ -232,6 +232,7 @@ public class Being : Card
 
     /// <summary>
     /// Purpose: "Plays" this card onto the battlefield by destroying this card and creating a new being with this card's info.
+    ///           Now obsolete.
     /// </summary>
     /// <param name="nameOfCardZone">the name of the card zone</param>
     public virtual void PlayBeing(string nameOfCardZone)
@@ -246,27 +247,7 @@ public class Being : Card
     /// <param name="cardZonePosition"> the card zone to play the card in</param>
     public virtual void PlayBeing(CardPositions cardZonePosition)
     {
-        //Input Checker
-        switch (cardZonePosition)
-        {
-            case CardPositions.FrontLeft:
-            case CardPositions.FrontCenter:
-            case CardPositions.FrontRight:
-            case CardPositions.MiddleLeft:
-            case CardPositions.MiddleCenter:
-            case CardPositions.MiddleRight:
-            case CardPositions.BackLeft:
-            case CardPositions.BackCenter:
-            case CardPositions.BackRight:
-                {
-                    //Check which hand this is in.
-                    if(this.gameObject.)
-                }
-                break;
-            default:
-                throw new System.InvalidOperationException($"Invalid card position: {cardZonePosition})");
-        }
-
+        player_Battlefield.GetComponent<Battlefield_Zone_Manager>().GetCardZone(cardZonePosition);
         player_Hand.GetComponent<Hand_Manager>().GetRidOfDestroyedCards(this);
     }
 
