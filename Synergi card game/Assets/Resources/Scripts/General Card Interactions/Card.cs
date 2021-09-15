@@ -46,14 +46,14 @@ public class Card : MonoBehaviour
 {
     //For when a card is in hand and clicked by a player.
     //Remove Serialized field later.
-    [SerializeField] protected GameObject player_Battlefield;
-    [SerializeField] protected GameObject enemy_Battlefield;
-    [SerializeField] protected GameObject player_Hand;
-    [SerializeField] protected GameObject player_Graveyard;
-    [SerializeField] protected GameObject player_Portrait;
-    [SerializeField] protected GameObject enemy_Portrait;
-    [SerializeField] protected GameObject game_Manager;
-    [SerializeField] protected Turn_Manager turn_Manager;
+    protected GameObject player_Battlefield;
+    protected GameObject enemy_Battlefield;
+    protected GameObject player_Hand;
+    protected GameObject player_Graveyard;
+    protected GameObject player_Portrait;
+    protected GameObject enemy_Portrait;
+    protected GameObject game_Manager;
+    protected Turn_Manager turn_Manager;
     protected EnergySupplyManager Player_EnergySupply;
     [SerializeField] protected CardColor cardColor;
     protected CardType cardType;
@@ -262,15 +262,15 @@ public class Card : MonoBehaviour
     protected virtual void Start()
     {
         //I may have to eventually change these so that its assigned an object in a serialized field instead.
-        //player_Battlefield = GameObject.Find("Player Battlefield");
-        //enemy_Battlefield = GameObject.Find("Enemy Battlefield"); 
-        //player_Hand = GameObject.Find("Player Hand");
-        //player_Graveyard = GameObject.Find("Player Graveyard");
-        //player_Portrait = GameObject.Find("PlayerPortrait");
-        //enemy_Portrait = GameObject.Find("EnemyPortrait");
-        //Player_EnergySupply = player_Portrait.GetComponent<EnergySupplyManager>();
-        //game_Manager = GameObject.Find("GameManager");
-        //turn_Manager = game_Manager.GetComponent<Turn_Manager>();
+        player_Battlefield = GameObject.Find("Player Battlefield");
+        enemy_Battlefield = GameObject.Find("Enemy Battlefield"); 
+        player_Hand = GameObject.Find("Player Hand");
+        player_Graveyard = GameObject.Find("Player Graveyard");
+        player_Portrait = GameObject.Find("PlayerPortrait");
+        enemy_Portrait = GameObject.Find("EnemyPortrait");
+        Player_EnergySupply = player_Portrait.GetComponent<EnergySupplyManager>();
+        game_Manager = GameObject.Find("GameManager");
+        turn_Manager = game_Manager.GetComponent<Turn_Manager>();
         isVisible = true;
 
 

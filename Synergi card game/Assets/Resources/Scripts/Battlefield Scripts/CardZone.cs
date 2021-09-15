@@ -304,7 +304,7 @@ public class CardZone : NetworkBehaviour
         else if (cardToDeploy is Deployable)
         {
             Deployable deployableToDeploy = (Deployable)cardToDeploy;
-            deployableToDeploy.PlayDeployable(cardZone);
+           // deployableToDeploy.PlayDeployable(cardZone);
         }
 
         print($" Post-Cast: {cardToDeploy}");
