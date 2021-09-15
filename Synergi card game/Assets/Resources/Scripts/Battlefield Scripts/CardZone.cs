@@ -176,11 +176,11 @@ public class CardZone : NetworkBehaviour
                     print($"Found selected card");
                     if (card.GetComponent<Card>() is Being)
                     {
-                        card.GetComponent<Being>().DeployBeing(this.gameObject.name);
+                        card.GetComponent<Being>().PlayBeing(this.gameObject.name);
                     }
                     else if (card.GetComponent<Card>() is Deployable)
                     {
-                        card.GetComponent<Deployable>().DeployDeployable(this.gameObject.name);
+                        card.GetComponent<Deployable>().PlayDeployable(this.gameObject.name);
                     }
                     else
                     {
@@ -299,12 +299,12 @@ public class CardZone : NetworkBehaviour
         if (cardToDeploy is Being)
         {
             Being beingToDeploy = (Being)cardToDeploy;
-            beingToDeploy.DeployBeing(cardZone);
+            beingToDeploy.PlayBeing(cardZone);
         }
         else if (cardToDeploy is Deployable)
         {
             Deployable deployableToDeploy = (Deployable)cardToDeploy;
-            deployableToDeploy.DeployDeployable(cardZone);
+            deployableToDeploy.PlayDeployable(cardZone);
         }
 
         print($" Post-Cast: {cardToDeploy}");

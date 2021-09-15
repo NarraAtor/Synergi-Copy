@@ -47,6 +47,7 @@ public class Card : MonoBehaviour
     //For when a card is in hand and clicked by a player.
     //Remove Serialized field later.
     protected GameObject player_Battlefield;
+    protected GameObject enemy_Battlefield;
     protected GameObject player_Hand;
     protected GameObject player_Graveyard;
     protected GameObject player_Portrait;
@@ -262,6 +263,7 @@ public class Card : MonoBehaviour
     {
         //I may have to eventually change these so that its assigned an object in a serialized field instead.
         player_Battlefield = GameObject.Find("Player Battlefield");
+        enemy_Battlefield = GameObject.Find("Enemy Battlefield"); 
         player_Hand = GameObject.Find("Player Hand");
         player_Graveyard = GameObject.Find("Player Graveyard");
         player_Portrait = GameObject.Find("PlayerPortrait");

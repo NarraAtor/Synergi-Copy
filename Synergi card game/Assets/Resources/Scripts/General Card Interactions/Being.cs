@@ -234,7 +234,7 @@ public class Being : Card
     /// Purpose: "Plays" this card onto the battlefield by destroying this card and creating a new being with this card's info.
     /// </summary>
     /// <param name="nameOfCardZone">the name of the card zone</param>
-    public virtual void DeployBeing(string nameOfCardZone)
+    public virtual void PlayBeing(string nameOfCardZone)
     {
         GameObject.Find(nameOfCardZone).GetComponent<CardZone>().Deploy( this.GetComponent<Being>());
         player_Hand.GetComponent<Hand_Manager>().GetRidOfDestroyedCards(this);
@@ -244,30 +244,27 @@ public class Being : Card
     /// Purpose: "Plays" this card onto the battlefield by destroying this card and creating a new being with this card's info.
     /// </summary>
     /// <param name="cardZonePosition"> the card zone to play the card in</param>
-    public virtual void DeployBeing(CardPositions cardZonePosition)
+    public virtual void PlayBeing(CardPositions cardZonePosition)
     {
+        //Input Checker
         switch (cardZonePosition)
         {
             case CardPositions.FrontLeft:
-                break;
             case CardPositions.FrontCenter:
-                break;
             case CardPositions.FrontRight:
-                break;
             case CardPositions.MiddleLeft:
-                break;
             case CardPositions.MiddleCenter:
-                break;
             case CardPositions.MiddleRight:
-                break;
             case CardPositions.BackLeft:
-                break;
             case CardPositions.BackCenter:
-                break;
             case CardPositions.BackRight:
+                {
+                    //Check which hand this is in.
+                    if(this.gameObject.)
+                }
                 break;
             default:
-                throw new System.InvalidOperationException($"Invalid card position: {cardZonePosition})";
+                throw new System.InvalidOperationException($"Invalid card position: {cardZonePosition})");
         }
 
         player_Hand.GetComponent<Hand_Manager>().GetRidOfDestroyedCards(this);

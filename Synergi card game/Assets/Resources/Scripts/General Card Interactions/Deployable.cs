@@ -104,7 +104,7 @@ public class Deployable : Card
         }
     }
 
-    public virtual void DeployDeployable(string nameOfCardZone)
+    public virtual void PlayDeployable(string nameOfCardZone)
     {
         GameObject.Find(nameOfCardZone).GetComponent<CardZone>().SendMessage("Deploy", this.GetComponent<Deployable>());
         player_Hand.GetComponent<Hand_Manager>().GetRidOfDestroyedCards(this);
