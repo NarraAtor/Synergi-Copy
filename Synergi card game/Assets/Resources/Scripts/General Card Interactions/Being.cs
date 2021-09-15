@@ -232,23 +232,12 @@ public class Being : Card
 
     /// <summary>
     /// Purpose: "Plays" this card onto the battlefield by destroying this card and creating a new being with this card's info.
-    ///           Now obsolete.
-    /// </summary>
-    /// <param name="nameOfCardZone">the name of the card zone</param>
-    public virtual void PlayBeing(string nameOfCardZone)
-    {
-        GameObject.Find(nameOfCardZone).GetComponent<CardZone>().Deploy( this.GetComponent<Being>());
-        player_Hand.GetComponent<Hand_Manager>().GetRidOfDestroyedCards(this);
-    }
-
-    /// <summary>
-    /// Purpose: "Plays" this card onto the battlefield by destroying this card and creating a new being with this card's info.
     /// </summary>
     /// <param name="cardZonePosition"> the card zone to play the card in</param>
     public virtual void PlayBeing(CardPositions cardZonePosition)
     {
-        player_Battlefield.GetComponent<Battlefield_Zone_Manager>().GetCardZone(cardZonePosition);
-        player_Hand.GetComponent<Hand_Manager>().GetRidOfDestroyedCards(this);
+        player_Battlefield.GetCardZone(cardZonePosition);
+        player_Hand.GetRidOfDestroyedCards(this);
     }
 
     /// <summary>
