@@ -771,6 +771,26 @@ public class Hand_Manager : NetworkBehaviour
         return null;
     }
 
+    /// <summary>
+    /// Purpose: Searches for and returns a card from a player's hand as a game object.
+    /// </summary>
+    /// <param name="hand">the hand to search through</param>
+    /// <param name="index">the index of the card to search through</param>
+    /// <returns>a card from a player's hand as a game object</returns>
+    public GameObject GetCardGameObject(GameObject hand, int index)
+    {
+        if(hand == this.gameObject)
+        {
+            return cardsInPlayer_Hand[index];
+        }
+        else if(hand == enemyHand.gameObject)
+        {
+            return cardsInEnemy_Hand[index];
+        }
+
+        return null;
+    }
+
 
 
 

@@ -250,7 +250,7 @@ public class CardZone : NetworkBehaviour
     /// <param name="cardTitle"></param>
     /// <param name="sentFromServer"></param>
     [Command(requiresAuthority = false)]
-    private void CmdDeployServer(Card card, string cardZone, bool sentFromServer)
+    private void CmdDeployServer(List<GameObject> cardsInHand, string cardZone, bool sentFromServer)
     {
         print($"CmdDeployServer called");
         //RpcDeployClient(cardTitle, cardZone, sentFromServer);
