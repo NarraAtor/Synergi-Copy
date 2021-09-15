@@ -181,11 +181,11 @@ public class CardZone : NetworkBehaviour
 
                     if (isServer)
                     {
-                        CmdDeployServer(card, this.gameObject.name, true);
+                        CmdDeployServer(card.GetComponent<Card>(), this.gameObject.name, true);
                     }
                     else
                     {
-                        CmdDeployServer(card, this.gameObject.name, false);
+                        CmdDeployServer(card.GetComponent<Card>(), this.gameObject.name, false);
                     }
                 }
             }
@@ -250,7 +250,7 @@ public class CardZone : NetworkBehaviour
     /// <param name="cardTitle"></param>
     /// <param name="sentFromServer"></param>
     [Command(requiresAuthority = false)]
-    private void CmdDeployServer(GameObject card, string cardZone, bool sentFromServer)
+    private void CmdDeployServer(Card card, string cardZone, bool sentFromServer)
     {
         print($"CmdDeployServer called");
         //RpcDeployClient(cardTitle, cardZone, sentFromServer);
