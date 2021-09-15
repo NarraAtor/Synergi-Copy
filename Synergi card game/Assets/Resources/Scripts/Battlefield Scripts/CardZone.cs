@@ -189,11 +189,11 @@ public class CardZone : NetworkBehaviour
 
                     if (isServer)
                     {
-                        CmdDeployServer(i, this.gameObject.name, true);
+                        CmdDeployServer(i, this.GetComponent<Card>().CurrentPosition, true);
                     }
                     else if (isClientOnly)
                     {
-                        CmdDeployServer(i, this.gameObject.name, false);
+                        CmdDeployServer(i, this.GetComponent<Card>().CurrentPosition, false);
                     }
                 }
             }
@@ -258,10 +258,10 @@ public class CardZone : NetworkBehaviour
     /// <param name="cardTitle"></param>
     /// <param name="sentFromServer"></param>
     [Command(requiresAuthority = false)]
-    private void CmdDeployServer(int index, string cardZone, bool sentFromServer)
+    private void CmdDeployServer(int index, CardPositions cardZone, bool sentFromServer)
     {
         print($"CmdDeployServer called");
-        RpcDeployClient(index, cardZone, sentFromServer);
+        //RpcDeployClient(index, cardZone, sentFromServer);
     }
 
     /// <summary>
@@ -271,7 +271,7 @@ public class CardZone : NetworkBehaviour
     /// <param name="cardTitle"></param>
     /// <param name="sentFromServer"></param>
     [ClientRpc(includeOwner = false)]
-    private void RpcDeployClient(int index, string cardZone, bool sentFromServer)
+    private void RpcDeployClient(int index, CardPositions cardZone, bool sentFromServer)
     {
         Card cardToDeploy = null;
         //if from server, that means I'm copying the deployment to the client's enemy battlefield.
