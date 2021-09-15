@@ -43,6 +43,13 @@ public class Hand_Manager : NetworkBehaviour
             return cardsInEnemy_Hand;
         }
     }
+    public GameObject EnemyHand
+    {
+        get
+        {
+            return enemyHand;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {

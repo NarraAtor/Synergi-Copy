@@ -21,6 +21,7 @@ public class CardZone : NetworkBehaviour
     //All of these private variables need ot be lowerCamelCased
     [SerializeField] private GameObject player_Battlefield;
     [SerializeField] private GameObject player_Hand;
+    private Hand_Manager hand_Manager;
     private List<GameObject> CardUI;
     private GameObject CardBorder;
     private GameObject CardArt;
@@ -58,6 +59,8 @@ public class CardZone : NetworkBehaviour
         CardUI = new List<GameObject>();
         BeingScript = this.gameObject.GetComponent<Being>();
         DeployableScript = this.gameObject.GetComponent<Deployable>();
+        hand_Manager = player_Hand.GetComponent<Hand_Manager>();
+
         //Get all the rect transforms in even the inactive components. We're using this to get access to all children.
         //Then, get the game object this component is attached to.
         foreach (RectTransform component in this.GetComponentsInChildren<RectTransform>(true))
@@ -185,11 +188,11 @@ public class CardZone : NetworkBehaviour
 
                     if (isServer)
                     {
-                        CmdDeployServer(player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_Hand, i, this.gameObject.name, true);
+                        CmdDeployServer(player_Hand, i, this.gameObject.name, true);
                     }
                     else if(isClientOnly)
                     {
-                        CmdDeployServer(player_Hand.GetComponent<Hand_Manager>().CardsInPlayer_Hand, i, this.gameObject.name, false);
+                        CmdDeployServer(player_Hand, i, this.gameObject.name, false);
                     }
                 }
             }
@@ -254,7 +257,7 @@ public class CardZone : NetworkBehaviour
     /// <param name="cardTitle"></param>
     /// <param name="sentFromServer"></param>
     [Command(requiresAuthority = false)]
-    private void CmdDeployServer(List<GameObject> cardsInHand, int index, string cardZone, bool sentFromServer)
+    private void CmdDeployServer(GameObject hand, int index, string cardZone, bool sentFromServer)
     {
         print($"CmdDeployServer called");
         //RpcDeployClient(cardTitle, cardZone, sentFromServer);
@@ -267,7 +270,7 @@ public class CardZone : NetworkBehaviour
     /// <param name="cardTitle"></param>
     /// <param name="sentFromServer"></param>
     [ClientRpc(includeOwner = false)]
-    private void RpcDeployClient(List<GameObject> cardsInHand, int index, string cardZone, bool sentFromServer)
+    private void RpcDeployClient(GameObject hand, int index, string cardZone, bool sentFromServer)
     {
         Card cardToDeploy = null;
         //if from server, that means I'm copying the deployment to the client's enemy battlefield.
@@ -275,7 +278,7 @@ public class CardZone : NetworkBehaviour
         {
             if(isClientOnly)
             {
-                cardToDeploy = player_Hand.GetComponent<Hand_Manager>().GetCardGameObject(player_Hand, index).GetComponent<Card>();
+                //cardToDeploy = player_Hand.GetComponent<Hand_Manager>().GetCardGameObject(enemy_Hand, index).GetComponent<Card>();
             }
 
             print($"{cardToDeploy}");
@@ -285,7 +288,7 @@ public class CardZone : NetworkBehaviour
         {
             if(isServer)
             {
-                cardToDeploy = player_Hand.GetComponent<Hand_Manager>().GetCard(cardTitle, player_Hand.GetComponent<Hand_Manager>().CardsInEnemy_Hand);
+                //cardToDeploy = player_Hand.GetComponent<Hand_Manager>().GetCardGameObject(enemy_Hand, index).GetComponent<Card>();
             }
         }
 
