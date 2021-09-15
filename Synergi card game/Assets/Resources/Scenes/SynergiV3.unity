@@ -717,6 +717,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   player_Battlefield: {fileID: 399855097}
+  enemy_Battlefield: {fileID: 1164531601}
   player_Hand: {fileID: 60070664}
 --- !u!114 &48091890
 MonoBehaviour:
@@ -1248,8 +1249,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  player_Battlefield: {fileID: 1164531601}
-  player_Hand: {fileID: 819565282}
+  player_Battlefield: {fileID: 399855097}
+  enemy_Battlefield: {fileID: 1164531601}
+  player_Hand: {fileID: 60070664}
 --- !u!1 &73133977
 GameObject:
   m_ObjectHideFlags: 0
@@ -5138,8 +5140,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  player_Battlefield: {fileID: 1164531601}
-  player_Hand: {fileID: 819565282}
+  player_Battlefield: {fileID: 399855097}
+  enemy_Battlefield: {fileID: 1164531601}
+  player_Hand: {fileID: 60070664}
 --- !u!1 &361419061
 GameObject:
   m_ObjectHideFlags: 0
@@ -5794,6 +5797,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   player_Battlefield: {fileID: 399855097}
+  enemy_Battlefield: {fileID: 1164531601}
   player_Hand: {fileID: 60070664}
 --- !u!114 &392108422
 MonoBehaviour:
@@ -6423,6 +6427,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   player_Battlefield: {fileID: 399855097}
+  enemy_Battlefield: {fileID: 1164531601}
   player_Hand: {fileID: 60070664}
 --- !u!114 &423376235
 MonoBehaviour:
@@ -12203,8 +12208,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  player_Battlefield: {fileID: 1164531601}
-  player_Hand: {fileID: 819565282}
+  player_Battlefield: {fileID: 399855097}
+  enemy_Battlefield: {fileID: 1164531601}
+  player_Hand: {fileID: 60070664}
 --- !u!1 &717534737
 GameObject:
   m_ObjectHideFlags: 0
@@ -12510,6 +12516,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   player_Battlefield: {fileID: 399855097}
+  enemy_Battlefield: {fileID: 1164531601}
   player_Hand: {fileID: 60070664}
 --- !u!114 &732354503
 MonoBehaviour:
@@ -14410,6 +14417,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   player_Battlefield: {fileID: 399855097}
+  enemy_Battlefield: {fileID: 1164531601}
   player_Hand: {fileID: 60070664}
 --- !u!114 &852232209
 MonoBehaviour:
@@ -14667,8 +14675,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  player_Battlefield: {fileID: 1164531601}
-  player_Hand: {fileID: 819565282}
+  player_Battlefield: {fileID: 399855097}
+  enemy_Battlefield: {fileID: 1164531601}
+  player_Hand: {fileID: 60070664}
 --- !u!1 &860143071
 GameObject:
   m_ObjectHideFlags: 0
@@ -15736,8 +15745,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  player_Battlefield: {fileID: 1164531601}
-  player_Hand: {fileID: 819565282}
+  player_Battlefield: {fileID: 399855097}
+  enemy_Battlefield: {fileID: 1164531601}
+  player_Hand: {fileID: 60070664}
 --- !u!114 &893219439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16072,6 +16082,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   player_Battlefield: {fileID: 399855097}
+  enemy_Battlefield: {fileID: 1164531601}
   player_Hand: {fileID: 60070664}
 --- !u!114 &933419550
 MonoBehaviour:
@@ -16650,6 +16661,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   player_Battlefield: {fileID: 399855097}
+  enemy_Battlefield: {fileID: 1164531601}
   player_Hand: {fileID: 60070664}
 --- !u!114 &967945456
 MonoBehaviour:
@@ -19150,6 +19162,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   player_Battlefield: {fileID: 399855097}
+  enemy_Battlefield: {fileID: 1164531601}
   player_Hand: {fileID: 60070664}
 --- !u!114 &1161881804
 MonoBehaviour:
@@ -22228,6 +22241,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   player_Battlefield: {fileID: 399855097}
+  enemy_Battlefield: {fileID: 1164531601}
   player_Hand: {fileID: 60070664}
 --- !u!114 &1288985673
 MonoBehaviour:
@@ -22718,8 +22732,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  player_Battlefield: {fileID: 1164531601}
-  player_Hand: {fileID: 819565282}
+  player_Battlefield: {fileID: 399855097}
+  enemy_Battlefield: {fileID: 1164531601}
+  player_Hand: {fileID: 60070664}
 --- !u!1 &1327797484
 GameObject:
   m_ObjectHideFlags: 0
@@ -24203,8 +24218,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  player_Battlefield: {fileID: 1164531601}
-  player_Hand: {fileID: 819565282}
+  player_Battlefield: {fileID: 399855097}
+  enemy_Battlefield: {fileID: 1164531601}
+  player_Hand: {fileID: 60070664}
 --- !u!1 &1462414061
 GameObject:
   m_ObjectHideFlags: 0
@@ -27428,8 +27444,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  player_Battlefield: {fileID: 1164531601}
-  player_Hand: {fileID: 819565282}
+  player_Battlefield: {fileID: 399855097}
+  enemy_Battlefield: {fileID: 1164531601}
+  player_Hand: {fileID: 60070664}
 --- !u!1 &1615995942
 GameObject:
   m_ObjectHideFlags: 0
@@ -29551,8 +29568,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  player_Battlefield: {fileID: 1164531601}
-  player_Hand: {fileID: 819565282}
+  player_Battlefield: {fileID: 399855097}
+  enemy_Battlefield: {fileID: 1164531601}
+  player_Hand: {fileID: 60070664}
 --- !u!1001 &1745744407
 PrefabInstance:
   m_ObjectHideFlags: 0

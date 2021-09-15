@@ -20,6 +20,7 @@ public class CardZone : NetworkBehaviour
 
     //All of these private variables need ot be lowerCamelCased
     [SerializeField] private GameObject player_Battlefield;
+    [SerializeField] private GameObject enemy_Battlefield;
     [SerializeField] private GameObject player_Hand;
     private Hand_Manager hand_Manager;
     private List<GameObject> CardUI;
@@ -188,11 +189,11 @@ public class CardZone : NetworkBehaviour
 
                     if (isServer)
                     {
-                        CmdDeployServer(player_Hand, i, this.gameObject.name, true);
+                        CmdDeployServer(i, this.gameObject.name, true);
                     }
-                    else if(isClientOnly)
+                    else if (isClientOnly)
                     {
-                        CmdDeployServer(player_Hand, i, this.gameObject.name, false);
+                        CmdDeployServer(i, this.gameObject.name, false);
                     }
                 }
             }
@@ -201,9 +202,9 @@ public class CardZone : NetworkBehaviour
         }
 
         //If there is a card there, hide deployable zones 
-        else if(isOccupied && isClickable)
+        else if (isOccupied && isClickable)
         {
-            if(occupiedByBeing)
+            if (occupiedByBeing)
             {
                 //print("Clicked from Card Zone");
                 BeingScript.IsClicked();
@@ -257,10 +258,10 @@ public class CardZone : NetworkBehaviour
     /// <param name="cardTitle"></param>
     /// <param name="sentFromServer"></param>
     [Command(requiresAuthority = false)]
-    private void CmdDeployServer(GameObject hand, int index, string cardZone, bool sentFromServer)
+    private void CmdDeployServer(int index, string cardZone, bool sentFromServer)
     {
         print($"CmdDeployServer called");
-        //RpcDeployClient(cardTitle, cardZone, sentFromServer);
+        RpcDeployClient(index, cardZone, sentFromServer);
     }
 
     /// <summary>
@@ -270,15 +271,16 @@ public class CardZone : NetworkBehaviour
     /// <param name="cardTitle"></param>
     /// <param name="sentFromServer"></param>
     [ClientRpc(includeOwner = false)]
-    private void RpcDeployClient(GameObject hand, int index, string cardZone, bool sentFromServer)
+    private void RpcDeployClient(int index, string cardZone, bool sentFromServer)
     {
         Card cardToDeploy = null;
         //if from server, that means I'm copying the deployment to the client's enemy battlefield.
-        if(sentFromServer)
+        if (sentFromServer)
         {
-            if(isClientOnly)
+            if (isClientOnly)
             {
-                //cardToDeploy = player_Hand.GetComponent<Hand_Manager>().GetCardGameObject(enemy_Hand, index).GetComponent<Card>();
+
+                cardToDeploy = hand_Manager.GetCardGameObject(hand_Manager.EnemyHand, index).GetComponent<Card>();
             }
 
             print($"{cardToDeploy}");
@@ -286,22 +288,27 @@ public class CardZone : NetworkBehaviour
         //if from client, that means I'm copying the deployment to the server's enemy battlefield.
         else
         {
-            if(isServer)
+            if (isServer)
             {
-                //cardToDeploy = player_Hand.GetComponent<Hand_Manager>().GetCardGameObject(enemy_Hand, index).GetComponent<Card>();
+                cardToDeploy = hand_Manager.GetCardGameObject(hand_Manager.EnemyHand, index).GetComponent<Card>();
             }
+            print($"{cardToDeploy}");
+
         }
 
-       if(cardToDeploy is Being)
+        if (cardToDeploy is Being)
         {
             Being beingToDeploy = (Being)cardToDeploy;
             beingToDeploy.DeployBeing(cardZone);
         }
-       else if(cardToDeploy is Deployable)
+        else if (cardToDeploy is Deployable)
         {
             Deployable deployableToDeploy = (Deployable)cardToDeploy;
             deployableToDeploy.DeployDeployable(cardZone);
         }
+
+        print($" Post-Cast: {cardToDeploy}");
+
     }
 
     private void SetUIComponentColor(CardColor cardColor)
@@ -395,16 +402,16 @@ public class CardZone : NetworkBehaviour
         {
             Being currentCard = (Being)cardData;
             BeingScript.SetUIComponentColor(currentCard.CardColor);
-            BeingScript.Init(currentCard.CardColor, 
-                             currentCard.OriginalMaxHealth, 
-                             currentCard.OriginalPower, 
+            BeingScript.Init(currentCard.CardColor,
+                             currentCard.OriginalMaxHealth,
+                             currentCard.OriginalPower,
                              currentCard.Species,
                              currentCard.AbilityText,
-                             currentCard.RedEnergyCost, 
-                             currentCard.BlueEnergyCost, 
-                             currentCard.GreenEnergyCost, 
+                             currentCard.RedEnergyCost,
+                             currentCard.BlueEnergyCost,
+                             currentCard.GreenEnergyCost,
                              currentCard.PurpleEnergyCost,
-                             currentCard.GenericEnergyCost, 
+                             currentCard.GenericEnergyCost,
                              currentCard.CardTitle);
             occupiedByBeing = true;
             //BeingScript =  currentCard; doesn't change the data on the editor.
@@ -415,15 +422,15 @@ public class CardZone : NetworkBehaviour
         {
             Deployable currentCard = (Deployable)cardData;
             DeployableScript.SetUIComponentColor(currentCard.CardColor);
-            DeployableScript.Init(currentCard.CardColor, 
-                                  currentCard.RedEnergyCost, 
+            DeployableScript.Init(currentCard.CardColor,
+                                  currentCard.RedEnergyCost,
                                   currentCard.BlueEnergyCost,
-                                  currentCard.GreenEnergyCost, 
+                                  currentCard.GreenEnergyCost,
                                   currentCard.PurpleEnergyCost,
                                   currentCard.GenericEnergyCost,
-                                  currentCard.CardTitle, 
-                                  currentCard.AbilityText, 
-                                  currentCard.Durability, 
+                                  currentCard.CardTitle,
+                                  currentCard.AbilityText,
+                                  currentCard.Durability,
                                   currentCard.Subtype);
             occupiedByDeployable = true;
             //Use this script to test how data is sent.
