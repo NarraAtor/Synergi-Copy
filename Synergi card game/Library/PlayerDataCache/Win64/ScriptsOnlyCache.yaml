@@ -58,6 +58,8 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    UnityEditor.UI.dll:
+    - UnityEditor.UI.ButtonEditor
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -894,7 +896,7 @@ ScriptsOnlyBuild:
     className: Tactic_Zone_Manager
   - hash:
       serializedVersion: 2
-      Hash: bfe51fa167baa9f59c72c96b2aab1634
+      Hash: acfd849fe84e69d79f8d21fbd0989b2c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CardZone

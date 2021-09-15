@@ -176,10 +176,11 @@ public class CardZone : NetworkBehaviour
                     print($"Found selected card");
                     if (card.GetComponent<Card>() is Being)
                     {
-                        card.GetComponent<Being>().PlayBeing(this.gameObject.name);
+                        card.GetComponent<Being>().PlayBeing(this.GetComponent<Card>().CurrentPosition);
                     }
                     else if (card.GetComponent<Card>() is Deployable)
                     {
+                        //TODO: card.GetComponent<Deployable>().PlayBeing(this.GetComponent<Card>().CurrentPosition);
                         card.GetComponent<Deployable>().PlayDeployable(this.gameObject.name);
                     }
                     else
