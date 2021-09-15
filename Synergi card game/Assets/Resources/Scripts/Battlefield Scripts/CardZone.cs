@@ -178,6 +178,15 @@ public class CardZone : NetworkBehaviour
                     {
                         card.GetComponent<Deployable>().DeployDeployable(this.gameObject.name);
                     }
+
+                    if (isServer)
+                    {
+                        CmdDeployServer(card, this.gameObject.name, true);
+                    }
+                    else
+                    {
+                        CmdDeployServer(card, this.gameObject.name, false);
+                    }
                 }
             }
             isOccupied = true;
@@ -232,15 +241,6 @@ public class CardZone : NetworkBehaviour
         SetUIComponentsToActive(cardData);
         SetUIComponentColor(cardData.CardColor);
         SendDataToCard(cardData);
-
-        if(isServer)
-        {
-            CmdDeployServer(cardData.CardTitle, this.gameObject.name, true);
-        }
-        else
-        {
-            CmdDeployServer(cardData.CardTitle, this.gameObject.name, false);
-        }
     }
     /// <summary>
     /// Purpose: Syncs the opposing player's view of the battlefield by deploying the card to the 
@@ -250,9 +250,10 @@ public class CardZone : NetworkBehaviour
     /// <param name="cardTitle"></param>
     /// <param name="sentFromServer"></param>
     [Command(requiresAuthority = false)]
-    private void CmdDeployServer(string cardTitle, string cardZone, bool sentFromServer)
+    private void CmdDeployServer(GameObject card, string cardZone, bool sentFromServer)
     {
-        RpcDeployClient(cardTitle, cardZone, sentFromServer);
+        print($"CmdDeployServer called");
+        //RpcDeployClient(cardTitle, cardZone, sentFromServer);
     }
 
     /// <summary>
