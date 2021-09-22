@@ -385,8 +385,10 @@ public class CardZone : NetworkBehaviour
                     default:
                         throw new System.Exception("Invalid Battlefield entered");
                 }
+                print($" Post-Cast: {cardToDeploy}");
+
             }
-        
+
         }
 
 
