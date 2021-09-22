@@ -261,7 +261,7 @@ public class CardZone : NetworkBehaviour
     private void CmdDeployServer(int index, CardPositions cardZone, bool sentFromServer)
     {
         print($"CmdDeployServer called");
-        //RpcDeployClient(index, cardZone, sentFromServer);
+        RpcDeployClient(index, cardZone, sentFromServer);
     }
 
     /// <summary>
