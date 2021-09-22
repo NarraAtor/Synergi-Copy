@@ -236,7 +236,7 @@ public class Being : Card
     /// <param name="cardZonePosition"> the card zone to play the card in</param>
     public virtual void PlayBeing(CardPositions cardZonePosition)
     {
-        player_Battlefield.GetCardZone(cardZonePosition);
+        player_Battlefield.GetCardZone(cardZonePosition).Deploy(this);
         player_Hand.GetRidOfDestroyedCards(this);
     }
 

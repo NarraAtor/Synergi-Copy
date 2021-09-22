@@ -164,7 +164,6 @@ public class CardZone : NetworkBehaviour
     public void IsClicked()
     {
         GameObject card;
-        print($"called IsClicked");
         if (!isOccupied && isClickable)
         {
             //Find the selected card in hand
