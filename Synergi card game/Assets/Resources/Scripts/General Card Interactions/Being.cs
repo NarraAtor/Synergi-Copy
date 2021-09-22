@@ -234,9 +234,10 @@ public class Being : Card
     /// Purpose: "Plays" this card onto the battlefield by destroying this card and creating a new being with this card's info.
     /// </summary>
     /// <param name="cardZonePosition"> the card zone to play the card in</param>
-    public virtual void PlayBeing(CardPositions cardZonePosition)
+    /// <param name="battlefield"> the battlefiled to play the card in</param>
+    public virtual void PlayBeing(CardPositions cardZonePosition, Battlefield_Zone_Manager battlefield)
     {
-        player_Battlefield.GetCardZone(cardZonePosition).Deploy(this);
+        battlefield.GetCardZone(cardZonePosition).Deploy(this);
         player_Hand.GetRidOfDestroyedCards(this);
     }
 

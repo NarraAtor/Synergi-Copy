@@ -175,7 +175,7 @@ public class CardZone : NetworkBehaviour
                     print($"Found selected card");
                     if (card.GetComponent<Card>() is Being)
                     {
-                        card.GetComponent<Being>().PlayBeing(this.GetComponent<Card>().CurrentPosition);
+                        card.GetComponent<Being>().PlayBeing(this.GetComponent<Card>().CurrentPosition, this.GetComponentInParent<Battlefield_Zone_Manager>());
                     }
                     else if (card.GetComponent<Card>() is Deployable)
                     {
@@ -285,21 +285,21 @@ public class CardZone : NetworkBehaviour
 
             print($"{cardToDeploy}");
         }
-        //if from client, that means I'm copying the deployment to the server's enemy battlefield.
-        else
-        {
-            if (isServer)
-            {
-                cardToDeploy = hand_Manager.GetCardGameObject(hand_Manager.EnemyHand, index).GetComponent<Card>();
-            }
-            print($"{cardToDeploy}");
-
-        }
+       ////if from client, that means I'm copying the deployment to the server's enemy battlefield.
+       //else
+       //{
+       //    if (isServer)
+       //    {
+       //        cardToDeploy = hand_Manager.GetCardGameObject(hand_Manager.EnemyHand, index).GetComponent<Card>();
+       //    }
+       //    print($"{cardToDeploy}");
+       //
+       //}
 
         if (cardToDeploy is Being)
         {
             Being beingToDeploy = (Being)cardToDeploy;
-            beingToDeploy.PlayBeing(cardZone);
+            beingToDeploy.PlayBeing(cardZone, enemy_Battlefield.GetComponent<Battlefield_Zone_Manager>());
         }
         else if (cardToDeploy is Deployable)
         {
