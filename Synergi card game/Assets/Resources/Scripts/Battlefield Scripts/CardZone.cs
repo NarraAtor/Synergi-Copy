@@ -180,7 +180,7 @@ public class CardZone : NetworkBehaviour
                     }
                     else if (card.GetComponent<Card>() is Deployable)
                     {
-                        //TODO: card.GetComponent<Deployable>().PlayBeing(this.GetComponent<Card>().CurrentPosition);
+                        //TODO: card.GetComponent<Deployable>().PlayDeployable(this.GetComponent<Card>().CurrentPosition);
                         card.GetComponent<Deployable>().PlayDeployable(this.gameObject.name);
                     }
                     else
