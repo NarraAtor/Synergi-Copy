@@ -6,6 +6,14 @@ using TMPro;
 using Mirror;
 
 /// <summary>
+/// Purpose: For syncing with Mirror. I can't send scripts over the network.
+/// </summary>
+public enum Battlefield
+{
+    Enemy,
+    Player
+}
+/// <summary>
 /// Author: Eric Fotang
 /// Purpose: Manages a card zone in the game.
 /// TODO: Make changes to the cases of variables, general code "cleanliness" clean up.
@@ -187,14 +195,18 @@ public class CardZone : NetworkBehaviour
                         throw new System.InvalidOperationException($"Card type was not being or deployable. Card: {card.GetComponent<Card>()}");
                     }
 
-                    if (isServer)
+                    if(this.GetComponentInParent<Battlefield_Zone_Manager>().gameObject == player_Battlefield)
                     {
-                        CmdDeployServer(i, this.GetComponent<Card>().CurrentPosition, true);
+                        if (isServer)
+                        {
+                            CmdDeployServer(i, this.GetComponent<Card>().CurrentPosition, true, Battlefield.Player);
+                        }
+                        else if (isClientOnly)
+                        {
+                            //CmdDeployServer(i, this.GetComponent<Card>().CurrentPosition, false);
+                        }
                     }
-                    else if (isClientOnly)
-                    {
-                        CmdDeployServer(i, this.GetComponent<Card>().CurrentPosition, false);
-                    }
+                    
                 }
             }
             isOccupied = true;
@@ -258,10 +270,10 @@ public class CardZone : NetworkBehaviour
     /// <param name="cardTitle"></param>
     /// <param name="sentFromServer"></param>
     [Command(requiresAuthority = false)]
-    private void CmdDeployServer(int index, CardPositions cardZone, bool sentFromServer)
+    private void CmdDeployServer(int index, CardPositions cardZone, bool sentFromServer, Battlefield battlefield)
     {
         print($"CmdDeployServer called");
-        RpcDeployClient(index, cardZone, sentFromServer);
+        RpcDeployClient(index, cardZone, sentFromServer, battlefield);
     }
 
     /// <summary>
@@ -271,40 +283,60 @@ public class CardZone : NetworkBehaviour
     /// <param name="cardTitle"></param>
     /// <param name="sentFromServer"></param>
     [ClientRpc(includeOwner = false)]
-    private void RpcDeployClient(int index, CardPositions cardZone, bool sentFromServer)
+    private void RpcDeployClient(int index, CardPositions cardZone, bool sentFromServer, Battlefield battlefield)
     {
         Card cardToDeploy = null;
-        //if from server, that means I'm copying the deployment to the client's enemy battlefield.
+
+        //Figure out which card to play from which hand.
         if (sentFromServer)
         {
             if (isClientOnly)
             {
-
                 cardToDeploy = hand_Manager.GetCardGameObject(hand_Manager.EnemyHand, index).GetComponent<Card>();
             }
 
             print($"{cardToDeploy}");
         }
-       ////if from client, that means I'm copying the deployment to the server's enemy battlefield.
-       //else
-       //{
-       //    if (isServer)
-       //    {
-       //        cardToDeploy = hand_Manager.GetCardGameObject(hand_Manager.EnemyHand, index).GetComponent<Card>();
-       //    }
-       //    print($"{cardToDeploy}");
-       //
-       //}
+       else
+       {
+           if (isServer)
+           {
+               cardToDeploy = hand_Manager.GetCardGameObject(hand_Manager.EnemyHand, index).GetComponent<Card>();
+           }
+           print($"{cardToDeploy}");
+       
+       }
 
-        if (cardToDeploy is Being)
+        //Figure out which battlefield to play the card to
+        switch (battlefield)
         {
-            Being beingToDeploy = (Being)cardToDeploy;
-            beingToDeploy.PlayBeing(cardZone, enemy_Battlefield.GetComponent<Battlefield_Zone_Manager>());
-        }
-        else if (cardToDeploy is Deployable)
-        {
-            Deployable deployableToDeploy = (Deployable)cardToDeploy;
-           // deployableToDeploy.PlayDeployable(cardZone);
+            case Battlefield.Enemy:
+                if (cardToDeploy is Being)
+                {
+                    Being beingToDeploy = (Being)cardToDeploy;
+                    beingToDeploy.PlayBeing(cardZone, player_Battlefield.GetComponent<Battlefield_Zone_Manager>());
+                }
+                else if (cardToDeploy is Deployable)
+                {
+                    Deployable deployableToDeploy = (Deployable)cardToDeploy;
+                    // deployableToDeploy.PlayDeployable(cardZone);
+                }
+                break;
+            case Battlefield.Player:
+                if (cardToDeploy is Being)
+                {
+                    Being beingToDeploy = (Being)cardToDeploy;
+                    beingToDeploy.PlayBeing(cardZone, enemy_Battlefield.GetComponent<Battlefield_Zone_Manager>());
+                }
+                else if (cardToDeploy is Deployable)
+                {
+                    Deployable deployableToDeploy = (Deployable)cardToDeploy;
+                    // deployableToDeploy.PlayDeployable(cardZone);
+                }
+                break;
+
+            default:
+                throw new System.Exception("Invalid Battlefield entered");
         }
 
         print($" Post-Cast: {cardToDeploy}");
