@@ -203,8 +203,23 @@ public class CardZone : NetworkBehaviour
                         }
                         else if (isClientOnly)
                         {
+                            CmdDeployServer(i, this.GetComponent<Card>().CurrentPosition, false, Battlefield.Player);
+                        }
+                    }
+                    else if(this.GetComponentInParent<Battlefield_Zone_Manager>().gameObject == enemy_Battlefield)
+                    {
+                        if (isServer)
+                        {
+                            CmdDeployServer(i, this.GetComponent<Card>().CurrentPosition, true, Battlefield.Enemy);
+                        }
+                        else if (isClientOnly)
+                        {
                             //CmdDeployServer(i, this.GetComponent<Card>().CurrentPosition, false);
                         }
+                    }
+                    else
+                    {
+                        throw new System.Exception($"Invalid battlefield argument: {this.GetComponentInParent<Battlefield_Zone_Manager>().gameObject}");
                     }
                     
                 }
@@ -308,6 +323,7 @@ public class CardZone : NetworkBehaviour
        }
 
         //Figure out which battlefield to play the card to
+        //The client should always pick the battlefield opposite from the server command.
         switch (battlefield)
         {
             case Battlefield.Enemy:
