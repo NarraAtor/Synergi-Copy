@@ -6,7 +6,7 @@ using TMPro;
 using Mirror;
 
 /// <summary>
-/// Purpose: For syncing with Mirror. I can't send scripts over the network.
+/// Purpose: For syncing with Mirror. I can't send scripts over the network easily.
 /// </summary>
 public enum Battlefield
 {
@@ -221,7 +221,6 @@ public class CardZone : NetworkBehaviour
                     {
                         throw new System.Exception($"Invalid battlefield argument: {this.GetComponentInParent<Battlefield_Zone_Manager>().gameObject}");
                     }
-
                 }
             }
             isOccupied = true;
@@ -304,6 +303,10 @@ public class CardZone : NetworkBehaviour
     {
         Card cardToDeploy = null;
 
+        for(int i = 0; i < hand_Manager.CardsInEnemy_Hand.Count; i++)
+        {
+            print($"{hand_Manager.CardsInEnemy_Hand[i]}");
+        }
         //Figure out which card to play from which hand.
         //TODO: Include other types of deployment aside from playing a card.
         if (sentFromServer)
@@ -388,11 +391,7 @@ public class CardZone : NetworkBehaviour
                 print($" Post-Cast: {cardToDeploy}");
 
             }
-
-        }
-
-
-        
+        }        
     }
 
     private void SetUIComponentColor(CardColor cardColor)
@@ -420,6 +419,7 @@ public class CardZone : NetworkBehaviour
                 break;
         }
     }
+
     //Helper method for setting all components that relate to the correct card type to active.
     //Since this is only for cards on the battlefield, it will only work for beings and deployables.
     //The cardData's type determines which components will be set to active.

@@ -238,6 +238,7 @@ public class Being : Card
     public virtual void PlayBeing(CardPositions cardZonePosition, Battlefield_Zone_Manager battlefield)
     {
         battlefield.GetCardZone(cardZonePosition).Deploy(this);
+
         player_Hand.GetRidOfDestroyedCards(this);
     }
 
