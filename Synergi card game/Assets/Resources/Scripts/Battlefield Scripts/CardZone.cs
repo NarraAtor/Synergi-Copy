@@ -195,7 +195,7 @@ public class CardZone : NetworkBehaviour
                         throw new System.InvalidOperationException($"Card type was not being or deployable. Card: {card.GetComponent<Card>()}");
                     }
 
-                    if(this.GetComponentInParent<Battlefield_Zone_Manager>().gameObject == player_Battlefield)
+                    if (this.GetComponentInParent<Battlefield_Zone_Manager>().gameObject == player_Battlefield)
                     {
                         if (isServer)
                         {
@@ -206,7 +206,7 @@ public class CardZone : NetworkBehaviour
                             CmdDeployServer(i, this.GetComponent<Card>().CurrentPosition, false, Battlefield.Player);
                         }
                     }
-                    else if(this.GetComponentInParent<Battlefield_Zone_Manager>().gameObject == enemy_Battlefield)
+                    else if (this.GetComponentInParent<Battlefield_Zone_Manager>().gameObject == enemy_Battlefield)
                     {
                         if (isServer)
                         {
@@ -221,7 +221,7 @@ public class CardZone : NetworkBehaviour
                     {
                         throw new System.Exception($"Invalid battlefield argument: {this.GetComponentInParent<Battlefield_Zone_Manager>().gameObject}");
                     }
-                    
+
                 }
             }
             isOccupied = true;
@@ -277,10 +277,12 @@ public class CardZone : NetworkBehaviour
         SetUIComponentColor(cardData.CardColor);
         SendDataToCard(cardData);
     }
+
     /// <summary>
     /// Purpose: Syncs the opposing player's view of the battlefield by deploying the card to the 
     ///          correct battlefield on their screen and discarding the card from the correct hand.
-    ///          
+    ///  
+    /// Restrictions: Only works for when a card is played.
     /// </summary>
     /// <param name="cardTitle"></param>
     /// <param name="sentFromServer"></param>
@@ -303,60 +305,92 @@ public class CardZone : NetworkBehaviour
         Card cardToDeploy = null;
 
         //Figure out which card to play from which hand.
+        //TODO: Include other types of deployment aside from playing a card.
         if (sentFromServer)
         {
             if (isClientOnly)
             {
                 cardToDeploy = hand_Manager.GetCardGameObject(hand_Manager.EnemyHand, index).GetComponent<Card>();
+
+                //Figure out which battlefield to play the card to
+                //The client should always pick the battlefield opposite from the server command.
+                switch (battlefield)
+                {
+                    case Battlefield.Enemy:
+                        if (cardToDeploy is Being)
+                        {
+                            Being beingToDeploy = (Being)cardToDeploy;
+                            beingToDeploy.PlayBeing(cardZone, player_Battlefield.GetComponent<Battlefield_Zone_Manager>());
+                        }
+                        else if (cardToDeploy is Deployable)
+                        {
+                            Deployable deployableToDeploy = (Deployable)cardToDeploy;
+                            // deployableToDeploy.PlayDeployable(cardZone);
+                        }
+                        break;
+                    case Battlefield.Player:
+                        if (cardToDeploy is Being)
+                        {
+                            Being beingToDeploy = (Being)cardToDeploy;
+                            beingToDeploy.PlayBeing(cardZone, enemy_Battlefield.GetComponent<Battlefield_Zone_Manager>());
+                        }
+                        else if (cardToDeploy is Deployable)
+                        {
+                            Deployable deployableToDeploy = (Deployable)cardToDeploy;
+                            // deployableToDeploy.PlayDeployable(cardZone);
+                        }
+                        break;
+
+                    default:
+                        throw new System.Exception("Invalid Battlefield entered");
+                }
+                print($" Post-Cast: {cardToDeploy}");
             }
 
-            print($"{cardToDeploy}");
         }
-       else
-       {
-           if (isServer)
-           {
-               cardToDeploy = hand_Manager.GetCardGameObject(hand_Manager.EnemyHand, index).GetComponent<Card>();
-           }
-           print($"{cardToDeploy}");
-       
-       }
-
-        //Figure out which battlefield to play the card to
-        //The client should always pick the battlefield opposite from the server command.
-        switch (battlefield)
+        else
         {
-            case Battlefield.Enemy:
-                if (cardToDeploy is Being)
+            if (isServer)
+            {
+                cardToDeploy = hand_Manager.GetCardGameObject(hand_Manager.EnemyHand, index).GetComponent<Card>();
+                //Figure out which battlefield to play the card to
+                //The client should always pick the battlefield opposite from the server command.
+                switch (battlefield)
                 {
-                    Being beingToDeploy = (Being)cardToDeploy;
-                    beingToDeploy.PlayBeing(cardZone, player_Battlefield.GetComponent<Battlefield_Zone_Manager>());
-                }
-                else if (cardToDeploy is Deployable)
-                {
-                    Deployable deployableToDeploy = (Deployable)cardToDeploy;
-                    // deployableToDeploy.PlayDeployable(cardZone);
-                }
-                break;
-            case Battlefield.Player:
-                if (cardToDeploy is Being)
-                {
-                    Being beingToDeploy = (Being)cardToDeploy;
-                    beingToDeploy.PlayBeing(cardZone, enemy_Battlefield.GetComponent<Battlefield_Zone_Manager>());
-                }
-                else if (cardToDeploy is Deployable)
-                {
-                    Deployable deployableToDeploy = (Deployable)cardToDeploy;
-                    // deployableToDeploy.PlayDeployable(cardZone);
-                }
-                break;
+                    case Battlefield.Enemy:
+                        if (cardToDeploy is Being)
+                        {
+                            Being beingToDeploy = (Being)cardToDeploy;
+                            beingToDeploy.PlayBeing(cardZone, player_Battlefield.GetComponent<Battlefield_Zone_Manager>());
+                        }
+                        else if (cardToDeploy is Deployable)
+                        {
+                            Deployable deployableToDeploy = (Deployable)cardToDeploy;
+                            // deployableToDeploy.PlayDeployable(cardZone);
+                        }
+                        break;
+                    case Battlefield.Player:
+                        if (cardToDeploy is Being)
+                        {
+                            Being beingToDeploy = (Being)cardToDeploy;
+                            beingToDeploy.PlayBeing(cardZone, enemy_Battlefield.GetComponent<Battlefield_Zone_Manager>());
+                        }
+                        else if (cardToDeploy is Deployable)
+                        {
+                            Deployable deployableToDeploy = (Deployable)cardToDeploy;
+                            // deployableToDeploy.PlayDeployable(cardZone);
+                        }
+                        break;
 
-            default:
-                throw new System.Exception("Invalid Battlefield entered");
+                    default:
+                        throw new System.Exception("Invalid Battlefield entered");
+                }
+            }
+        
         }
 
-        print($" Post-Cast: {cardToDeploy}");
 
+        
     }
 
     private void SetUIComponentColor(CardColor cardColor)
