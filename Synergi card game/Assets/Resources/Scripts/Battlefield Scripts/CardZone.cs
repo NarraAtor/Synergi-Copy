@@ -307,6 +307,8 @@ public class CardZone : NetworkBehaviour
         {
             print($"{hand_Manager.CardsInEnemy_Hand[i]}");
         }
+
+        print($"{index}");
         //Figure out which card to play from which hand.
         //TODO: Include other types of deployment aside from playing a card.
         if (sentFromServer)

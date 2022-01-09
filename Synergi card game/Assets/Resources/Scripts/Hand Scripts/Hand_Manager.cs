@@ -592,7 +592,7 @@ public class Hand_Manager : NetworkBehaviour
         Destroy(card.gameObject);
 
         //Copy the destruction on the opposing client's side.
-        CmdGetRidOfDestroyedCards()
+        //CmdGetRidOfDestroyedCards();
     }
 
     /// <summary>
