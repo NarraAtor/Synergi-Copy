@@ -31,6 +31,8 @@ public class Turn_Manager : NetworkBehaviour
     private Phases currentPhase;
     [SyncVar]
     private Turn currentPlayerTurn;
+    [SyncVar]
+    private int turnNumber;
     public Phases CurrentPhase
     {
         get
@@ -88,6 +90,7 @@ public class Turn_Manager : NetworkBehaviour
     [SerializeField] private GameObject p1PassButton;
     //[SerializeField] private GameObject p2PassButton;
     private bool canDrawCardsDuringDrawPhase;
+    private bool turnNumberWasDeclared = false;
 
     // Start is called before the first frame update
     void Start()
@@ -172,6 +175,8 @@ public class Turn_Manager : NetworkBehaviour
 
         //CurrentPhase = Phases.Draw;
         CurrentPlayerTurn = Turn.Self;
+        turnNumber = 1;
+        print($"\n--------------- Turn {turnNumber}----------\n");
     }
 
 
@@ -267,6 +272,7 @@ public class Turn_Manager : NetworkBehaviour
     ///          If the clicked being is already in the queue, clear the entire thing.
     ///          Otherwise, add it to the queue.
     ///          TODO: Change combat system so that attackers are declared and commited one at a time.
+    ///          TODO: Consider moving this to a new script
     /// </summary>
     /// <param name="being">the being being added to the queue</param>
     public void DeclareAttacker(Being being)
@@ -299,6 +305,7 @@ public class Turn_Manager : NetworkBehaviour
 
     /// <summary>
     /// Purpose: A helper method that progresses the player through the phases and turns.
+    ///          Is Being called constantly
     /// Restrictions: Limited to 2 players.
     /// </summary>
     /// <param name="turn">Whose turn it is.</param>
@@ -315,9 +322,9 @@ public class Turn_Manager : NetworkBehaviour
                     //TODO: Make each phase broadcast messages to the entire game.
                     //Alternatively, if I do more research into unity events or use C# events and delegates, use that instead. 
                     case Phases.Draw:
-
+                        
                         SelectTurnIndicator(p1DrawPhaseIndicator);
-
+                        
                         //Gets rid of infinite draw glitch
                         if (canDrawCardsDuringDrawPhase)
                         {
@@ -413,6 +420,7 @@ public class Turn_Manager : NetworkBehaviour
                     //TODO: Make each phase broadcast messages to the entire game.
                     case Phases.Draw:
                         SelectTurnIndicator(p2DrawPhaseIndicator);
+
                         //p2deck.Draw();
                         //if (P1ReadyToPass)
                         //{
@@ -523,6 +531,8 @@ public class Turn_Manager : NetworkBehaviour
                 currentPlayerTurn = Turn.Self;
                 break;
         }
+
+        turnNumber++;
     }
     /// <summary>
     /// Purpose: Allows both clients and host to manipulate the currentPhase SyncVar
@@ -551,6 +561,11 @@ public class Turn_Manager : NetworkBehaviour
                 break;
             case Phases.EndPhase:
                 currentPhase = Phases.Draw;
+                if (!turnNumberWasDeclared)
+                {
+                    print($"\n--------------- Turn {turnNumber}----------\n");
+                    turnNumberWasDeclared = true;
+                }
                 break;
         }
     }
